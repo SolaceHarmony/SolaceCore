@@ -6,6 +6,7 @@ val logbackVersion = "1.5.6"
 plugins {
     kotlin("jvm") version "2.0.0"
     kotlin("plugin.serialization") version "1.8.0"
+    application
 }
 
 group = "ai.solace.core"
@@ -68,10 +69,23 @@ dependencies {
     // Testing
     testImplementation("io.ktor:ktor-server-tests-jvm:2.3.12")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlinVersion")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.8.0")
+    testImplementation("io.mockk:mockk:1.13.10")
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.10.2")
+    testImplementation("org.junit.jupiter:junit-jupiter-params:5.10.2")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.10.2")
 }
 
 kotlin {
     compilerOptions {
         apiVersion.set(org.jetbrains.kotlin.gradle.dsl.KotlinVersion.KOTLIN_2_0)
+    }
+}
+
+tasks.test {
+    useJUnitPlatform()
+    testLogging {
+        events("passed", "skipped", "failed")
+        showStandardStreams = true
     }
 }
