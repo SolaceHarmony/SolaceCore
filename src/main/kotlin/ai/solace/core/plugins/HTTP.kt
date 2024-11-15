@@ -1,22 +1,26 @@
 package ai.solace.core.plugins
 
 import io.ktor.server.application.*
-import io.ktor.server.plugins.forwardedheaders.*
-import io.ktor.server.plugins.httpsredirect.*
-import io.ktor.server.plugins.openapi.*
-import io.ktor.server.response.*
-import io.ktor.server.routing.*
+import io.ktor.server.plugins.contentnegotiation.*
+import io.ktor.serialization.kotlinx.json.*
+import kotlinx.serialization.json.Json
+import io.ktor.server.plugins.cors.routing.*
+import io.ktor.http.*
 
 fun Application.configureHTTP() {
-    routing {
-        openAPI(path = "openapi")
+    // Content Negotiation with JSON support
+    install(ContentNegotiation) {
+        json(Json {
+            prettyPrint = true
+            isLenient = true
+        })
     }
-    install(ForwardedHeaders) // WARNING: for security, do not include this if not behind a reverse proxy
-    install(XForwardedHeaders) // WARNING: for security, do not include this if not behind a reverse proxy
-    install(HttpsRedirect) {
-        // The port to redirect to. By default 443, the default HTTPS port.
-        sslPort = 443
-        // 301 Moved Permanently, or 302 Found redirect.
-        permanentRedirect = true
+
+    // CORS Configuration
+    install(CORS) {
+        anyHost() // For development purposes, allow any host
+        allowHeader(HttpHeaders.ContentType)
     }
 }
+
+
