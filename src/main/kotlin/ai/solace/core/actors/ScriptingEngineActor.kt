@@ -9,10 +9,13 @@ class ScriptingEngineActor {
         val scriptContent = File(scriptPath).readText()
 
         // Put each argument into the script context
-        for ((name, value) in args) {
+        for (arg in args) {
+            for ((name, value) in arg) {
             engine.put(name, value)
         }
 
         return engine.eval(scriptContent)
+    }
+}
     }
 }

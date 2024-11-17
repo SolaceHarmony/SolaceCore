@@ -4,6 +4,7 @@ import ai.solace.core.actor.Actor
 import ai.solace.core.actor.interfaces.Port
 import kotlinx.coroutines.CoroutineScope
 import kotlin.reflect.KClass
+import kotlinx.coroutines.channels.Channel
 
 class ActorBuilder<A : Actor>(
     private val actorClass: KClass<A>,
@@ -58,7 +59,7 @@ class ActorBuilder<A : Actor>(
                 throw IllegalStateException("Type mismatch in connection: ${outputPort.type} -> ${inputPort.type}")
             }
 
-            (outputPort as Port.Output<Any>).connect(inputPort.channel!!)
+            (outputPort as Port.Output<Any>).connect(inputPort.channel as Channel<Any>)
         }
 
         return actor
