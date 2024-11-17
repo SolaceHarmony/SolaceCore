@@ -1,6 +1,10 @@
+
 package ai.solace.core.actor
 
+import ai.solace.core.actor.interfaces.SerializableState
 import ai.solace.core.actor.interfaces.ActorInterface
+import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
+import com.fasterxml.jackson.module.kotlin.readValue
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -11,7 +15,9 @@ import java.util.UUID
 abstract class Actor(
     val id: String = UUID.randomUUID().toString(),
     protected val scope: CoroutineScope = CoroutineScope(Dispatchers.Default)
-) {
+) : SerializableState {
+
+
     private var job: Job? = null
     protected val internalChannel = Channel<ActorMessage>(Channel.BUFFERED)
     protected val actorInterface = ActorInterface()
@@ -63,4 +69,9 @@ abstract class Actor(
     }
 
     fun getInterface(): ActorInterface = actorInterface
+override fun serialize(): String {
+    val mapper = jacksonObjectMapper()
+    return mapper.writeValueAsString(this)
+}
+
 }
