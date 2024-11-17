@@ -33,7 +33,7 @@ fun main() = runBlocking {
     
     // Send a test message
     scope.launch {
-        textProcessor.send(Actor.ActorMessage(
+        textProcessor.send(ai.solace.core.actor.Actor.ActorMessage(
             type = "ProcessText",
             payload = "Hello, World! 123"
         ))

@@ -9,6 +9,9 @@ class SupervisorActor(scope: CoroutineScope) : Actor(id = "supervisor", scope = 
     private val actors = ConcurrentHashMap<String, Actor>()
     private val mutex = Mutex()
 
+override fun defineInterface() {
+    // Define the interface for the SupervisorActor if needed
+}
     override suspend fun processMessage(message: ActorMessage) {
         when (message.type) {
             "RegisterActor" -> registerActor(message.payload as Actor)
