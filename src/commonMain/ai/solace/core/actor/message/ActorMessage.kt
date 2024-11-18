@@ -1,7 +1,5 @@
 package ai.solace.core.actor.message
 
-import java.util.*
-
 enum class MessagePriority {
     HIGH, NORMAL, LOW
 }
