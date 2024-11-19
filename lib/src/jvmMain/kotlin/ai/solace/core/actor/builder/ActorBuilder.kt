@@ -4,7 +4,7 @@ import ai.solace.core.actor.Actor
 import ai.solace.core.actor.types.KernelActor
 import ai.solace.core.actor.types.scripted.ScriptedActor
 import javax.script.ScriptEngine
-import kotlin.uuid.Uuid
+import kotlin.uuid.*
 import kotlin.uuid.ExperimentalUuidApi
 
 @OptIn(ExperimentalUuidApi::class)
@@ -29,9 +29,7 @@ sealed class ActorBuilder {
 
         override fun build(): Actor {
             requireNotNull(actorClass) { "Actor class must be provided for kernel actors" }
-            return actorClass!!.getDeclaredConstructor(String::class.java)
-                .newInstance(id ?: Uuid.random().toString())
-        }
+            return actorClass!!.getDeclaredConstructor(String::class.java).newInstance(id ?: Uuid.random().toString()) as Actor        }
     }
 
     /**
@@ -66,8 +64,11 @@ sealed class ActorBuilder {
         fun scripted() = ScriptedActorBuilder()
 
         // Factory methods for common kernel actors
+        /*
         fun router() = kernel().withActorClass(RouterActor::class.java)
         fun supervisor() = kernel().withActorClass(SupervisorActor::class.java)
         fun messageHub() = kernel().withActorClass(MessageHubActor::class.java)
+        */
+
     }
 }

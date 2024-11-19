@@ -3,28 +3,33 @@
 ## Project Structure
 ```
 ai.solace.core/
-├── channels/              # Channel-based communication
-│   ├── Port.kt           # Port definitions
-│   ├── InputPort.kt      # Input channel wrapper
-│   ├── OutputPort.kt     # Output channel wrapper
-│   └── ChannelRegistry.kt # Channel management
-├── workflow/             # Workflow management
+├── common/               # Shared utilities
+│   ├── Disposable.kt    # Resource management
+│   └── Lifecycle.kt     # Lifecycle management
+├── channels/            # Channel-based communication
+│   ├── Port.kt         # Base port interface
+│   ├── InputPort.kt    # Input port implementation
+│   ├── OutputPort.kt   # Output port implementation
+│   ├── PortRegistry.kt # Port management
+│   ├── PortConnection.kt # Connection representation
+│   └── PortExceptions.kt # Port-specific exceptions
+├── workflow/           # Workflow management
 │   ├── WorkflowBuilder.kt # Workflow construction
 │   ├── WorkflowManager.kt # Workflow execution
-│   └── Connection.kt     # Connection definitions
-└── actor/               # Actor system (as before)
-    ├── Actor.kt
-    ├── message/
-    ├── metrics/
-    └── types/
+│   └── Connection.kt   # Connection definitions
+└── actor/             # Actor system
+    ├── Actor.kt       # Base actor implementation
+    ├── connections/   # Actor connection management
+    ├── interfaces/    # Actor interface definitions
+    └── types/         # Actor type implementations
 ```
 
 ## Channel System
-```kotlin
-// Independent channel system that can work without actors
-package ai.solace.core.channels
+The channel system provides platform-independent message passing:
 
-interface Port<T> {
+```kotlin
+interface Port<T : Any> : Disposable {
+    val id: String
     val name: String
     val type: KClass<T>
 }
@@ -32,70 +37,46 @@ interface Port<T> {
 class InputPort<T : Any>(
     override val name: String,
     override val type: KClass<T>,
-    private val channel: Channel<T>
+    override val id: String = Port.generateId()
 ) : Port<T> {
-    suspend fun receive(): T = channel.receive()
+    suspend fun receive(): T
+    override suspend fun dispose()
 }
 
 class OutputPort<T : Any>(
     override val name: String,
     override val type: KClass<T>,
-    private val channel: Channel<T>
+    override val id: String = Port.generateId()
 ) : Port<T> {
-    suspend fun send(value: T) = channel.send(value)
+    suspend fun send(value: T)
+    override suspend fun dispose()
 }
 ```
 
-## Workflow System
+## Resource Management
+All components implement the Disposable interface for proper cleanup:
+
 ```kotlin
-package ai.solace.core.workflow
+interface Disposable {
+    suspend fun dispose()
+}
 
-data class Connection<T : Any>(
-    val from: OutputPort<T>,
-    val to: InputPort<T>
-)
-
-class WorkflowBuilder(private val scope: CoroutineScope) {
-    private val nodes = mutableListOf<Any>()  // Can be actors or any other processable node
-    private val connections = mutableListOf<Connection<*>>()
-
-    fun connect<T : Any>(
-        fromNode: Any,
-        fromPort: String,
-        toNode: Any,
-        toPort: String,
-        type: KClass<T>
-    ): WorkflowBuilder {
-        // Create connection between any nodes with ports
-        return this
-    }
+interface Lifecycle : Disposable {
+    suspend fun start()
+    suspend fun stop()
+    fun isActive(): Boolean
 }
 ```
 
-## Integration with Actors
-```kotlin
-// Actors become one type of node that can participate in workflows
-class ActorNode(private val actor: Actor) : WorkflowNode {
-    override val inputs: List<InputPort<*>> = actor.getInterface().inputs
-    override val outputs: List<OutputPort<*>> = actor.getInterface().outputs
-}
+## Integration Strategy
+The system is designed for:
+1. Platform independence through expect/actual declarations
+2. Distributed operation with minimal shared state
+3. Type-safe message passing
+4. Resource-safe lifecycle management
 
-// Usage
-val workflow = WorkflowBuilder(scope)
-    .addNode(ActorNode(filterActor))
-    .addNode(ActorNode(processActor))
-    .connect<String>(
-        fromNode = filterActor,
-        fromPort = "output",
-        toNode = processActor,
-        toPort = "input",
-        String::class
-    )
-    .build()
-```
-
-The benefits of this reorganization:
-1. Channels become a standalone system
-2. Workflows can connect any components with ports, not just actors
-3. Better separation of concerns
-4. More flexible architecture for future extensions
+## Next Steps
+1. Implement core message passing mechanism
+2. Add comprehensive testing
+3. Document usage patterns
+4. Add monitoring capabilities

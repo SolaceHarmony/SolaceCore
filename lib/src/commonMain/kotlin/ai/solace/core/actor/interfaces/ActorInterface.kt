@@ -1,48 +1,68 @@
 package ai.solace.core.actor.interfaces
 
+import ai.solace.core.common.Lifecycle
+import ai.solace.core.channels.InputPort
+import ai.solace.core.channels.OutputPort
+import ai.solace.core.actor.connections.ConnectionManager
 import ai.solace.core.channels.Port
+import ai.solace.core.common.Disposable
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
 import kotlin.reflect.KClass
 
-class ActorInterface {
-    private val inputs = mutableMapOf<String, Port.Input<*>>()
-    private val outputs = mutableMapOf<String, Port.Output<*>>()
-    private val tools = mutableMapOf<String, Port.Tool<*>>()
+class ActorInterface(private val scope: CoroutineScope) : Lifecycle {
+    private val connectionManager = ConnectionManager(scope)
+    private val ports = mutableMapOf<String, Port<*>>()
+    // private val tools = mutableMapOf<String, Tool<*, *>>()
+    private val stateMutex = Mutex()
+    private var active = false
 
-    fun <T : Any> input(name: String, type: KClass<T>): Port.Input<T> {
-        return Port.Input(name, type).also { inputs[name] = it }
-    }
-
-    fun <T : Any> output(name: String, type: KClass<T>): Port.Output<T> {
-        return Port.Output(name, type).also { outputs[name] = it }
-    }
-
-    fun <T : Any> tool(name: String, type: KClass<T>): Port.Tool<T> {
-        return Port.Tool(name, type).also { tools[name] = it }
-    }
-
-    @Suppress("UNCHECKED_CAST")
-    fun <T : Any> connect(
-        outputPort: Port.Output<T>,
-        inputPort: Port.Input<*>,
-        bufferSize: Int = Channel.BUFFERED
-    ) {
-        require(outputPort.type == inputPort.type) {
-            "Type mismatch: ${outputPort.type} cannot be connected to ${inputPort.type}"
+    override suspend fun start() {
+        stateMutex.withLock {
+            active = true
         }
-
-        val channel = Channel<T>(bufferSize)
-        outputPort.connect(channel)
-        (inputPort as Port.Input<T>).channel = channel
     }
 
-    fun getInput(name: String): Port.Input<*>? = inputs[name]
-    fun getOutput(name: String): Port.Output<*>? = outputs[name]
-    fun getTool(name: String): Port.Tool<*>? = tools[name]
+    override suspend fun stop() {
+        stateMutex.withLock {
+            active = false
+        }
+    }
 
-    fun getAllPorts(): Map<String, List<Port<*>>> = mapOf(
-        "inputs" to inputs.values.toList(),
-        "outputs" to outputs.values.toList(),
-        "tools" to tools.values.toList()
-    )
+    override fun isActive(): Boolean = active
+
+    override suspend fun dispose() {
+        stop()
+        connectionManager.dispose()
+        ports.values.filterIsInstance<Disposable>().forEach { it.dispose() }
+        ports.clear()
+        // tools.clear()
+    }
+
+    fun <T : Any> input(name: String, type: KClass<T>): InputPort<T> {
+        return InputPort(name, type, channel = Channel(Channel.BUFFERED)).also {
+            ports[name] = it
+        }
+    }
+
+    fun <T : Any> output(name: String, type: KClass<T>): OutputPort<T> {
+        return OutputPort(name, type, channel = Channel(Channel.BUFFERED)).also {
+            ports[name] = it
+        }
+    }
+
+    suspend fun <T : Any> connect(
+        output: OutputPort<T>,
+        input: InputPort<T>,
+        bufferSize: Int = Channel.BUFFERED
+    ): String {
+        require(isActive()) { "ActorInterface must be started before connecting ports" }
+        return connectionManager.connect(output, input, bufferSize)
+    }
+
+    companion object {
+        const val DEFAULT_BUFFER_SIZE = Channel.BUFFERED
+    }
 }

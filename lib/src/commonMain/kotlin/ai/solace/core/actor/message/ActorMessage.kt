@@ -1,5 +1,5 @@
 package ai.solace.core.actor.message
-
+import kotlin.uuid.*
 enum class MessagePriority {
     HIGH, NORMAL, LOW
 }
@@ -7,8 +7,8 @@ enum class MessagePriority {
 /**
  * Improved message structure with additional metadata and type safety
  */
-data class ActorMessage<T>(
-    val correlationId: String = UUID.randomUUID().toString(),
+data class ActorMessage<T> @OptIn(ExperimentalUuidApi::class) constructor(
+    val correlationId: String = Uuid.random().toString(),
     val type: String,
     val payload: T,
     val sender: String? = null,

@@ -63,7 +63,7 @@ abstract class Actor(
         _state = ActorState.STOPPED
     }
 
-    protected open val actorInterface = ActorInterface()
+    protected abstract val actorInterface: ActorInterface
 
     init {
         defineInterface()
