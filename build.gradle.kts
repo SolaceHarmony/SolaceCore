@@ -1,62 +1,43 @@
-@file:OptIn(ExperimentalKotlinGradlePluginApi::class)
-
-import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
-
 plugins {
-    kotlin("multiplatform") version "2.0.21" // Use the latest stable version available
+    kotlin("multiplatform") version "2.0.21"
 }
-
-group = "ai.solace.core"
-version = "0.0.1"
 
 repositories {
     mavenCentral()
 }
 
-val kotlinxCoroutinesVersion = "1.9.0"
-val kotlinxSerializationJsonVersion = "1.7.3" // Update to the latest stable version
-val kotlinVersion = "2.0.21" // Match Kotlin version
-val junitJupiterVersion = "5.10.2"
-
 kotlin {
-    jvm().withJava()
-    js().nodejs()
-    macosArm64("macosArm64Native")
+    jvm() // JVM target
+    // Add more targets here if needed in the future, like JS or Native.
+
     sourceSets {
+        // Shared code across platforms
         val commonMain by getting {
+            kotlin.srcDirs("lib/src/commonMain/kotlin")
             dependencies {
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinxCoroutinesVersion")
-                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:$kotlinxSerializationJsonVersion")
+                implementation(kotlin("stdlib"))
+                implementation("org.jetbrains.kotlinx:atomicfu:0.21.0")
+                runtimeOnly("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.9.0")
             }
         }
-        val commonTest by getting {
-            dependencies {
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:$kotlinxCoroutinesVersion")
-                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:$kotlinxSerializationJsonVersion")
-            }
-        }
-        val macosArm64NativeMain by getting {
-            dependencies {
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinxCoroutinesVersion")
-                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:$kotlinxSerializationJsonVersion")
-            }
-        }
+
+        // JVM-specific code
         val jvmMain by getting {
+            kotlin.srcDirs("lib/src/jvmMain/kotlin")
             dependencies {
-                implementation("org.jetbrains.kotlin:kotlin-scripting-jsr223:$kotlinVersion")
+                // https://mvnrepository.com/artifact/org.jetbrains.kotlinx/kotlinx-coroutines-core-jvm
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.9.0")
             }
         }
+
+        // JVM-specific tests
         val jvmTest by getting {
+            kotlin.srcDirs("lib/src/jvmTest/kotlin")
             dependencies {
-                implementation("org.jetbrains.kotlin:kotlin-scripting-jsr223:$kotlinVersion")
-                implementation("org.jetbrains.kotlin:kotlin-test:$kotlinVersion")
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:$kotlinxCoroutinesVersion")
-                implementation("io.mockk:mockk:1.13.10")
-                implementation("org.junit.jupiter:junit-jupiter-api:$junitJupiterVersion")
-                implementation("org.junit.jupiter:junit-jupiter-params:$junitJupiterVersion")
-                runtimeOnly("org.junit.jupiter:junit-jupiter-engine:$junitJupiterVersion")
+                implementation("org.jetbrains.kotlin:kotlin-test-junit5")
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.9.0")
+
             }
         }
     }
-    jvmToolchain(21)
 }
