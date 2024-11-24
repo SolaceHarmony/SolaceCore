@@ -18,6 +18,7 @@ kotlin {
                 implementation(kotlin("stdlib"))
                 implementation("org.jetbrains.kotlinx:atomicfu:0.21.0")
                 runtimeOnly("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.9.0")
+                implementation("org.jetbrains.kotlin:kotlin-test:2.0.21")
             }
         }
 
@@ -27,6 +28,7 @@ kotlin {
             dependencies {
                 // https://mvnrepository.com/artifact/org.jetbrains.kotlinx/kotlinx-coroutines-core-jvm
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.9.0")
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.9.0")
             }
         }
 
@@ -34,8 +36,8 @@ kotlin {
         val jvmTest by getting {
             kotlin.srcDirs("lib/src/jvmTest/kotlin")
             dependencies {
-                implementation("org.jetbrains.kotlin:kotlin-test-junit5")
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.9.0")
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-test-jvm:1.9.0")
 
             }
         }

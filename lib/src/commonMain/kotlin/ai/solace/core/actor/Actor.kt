@@ -1,172 +1,287 @@
+@file:OptIn(ExperimentalUuidApi::class, ExperimentalTime::class)
 package ai.solace.core.actor
 
-import ai.solace.core.actor.interfaces.ActorInterface
+import ai.solace.core.kernel.channels.ports.*
 import ai.solace.core.actor.metrics.ActorMetrics
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.ObsoleteCoroutinesApi
+import ai.solace.core.lifecycle.Lifecycle
+import kotlinx.atomicfu.atomic
+import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.Channel
-import kotlinx.coroutines.channels.SendChannel
-import kotlinx.coroutines.channels.actor
-import kotlin.uuid.*
-import kotlin.time.Duration
+import kotlin.time.ExperimentalTime
 import kotlin.time.measureTime
 import kotlin.uuid.ExperimentalUuidApi
+import kotlin.uuid.Uuid
+import java.util.concurrent.ConcurrentHashMap
+import java.util.Collections
+import kotlin.reflect.KClass
 
-enum class ActorState {
-    INITIALIZED,
-    RUNNING,
-    STOPPED,
-    ERROR
-}
 /**
- * Abstract class that provides a foundation for an actor-based concurrency model using Kotlin actors.
+ * A base class for defining actors, which are components designed to handle
+ * messages asynchronously using Kotlin coroutines.
  */
 abstract class Actor(
-    @OptIn(ExperimentalUuidApi::class)
     val id: String = Uuid.random().toString(),
-    protected val scope: CoroutineScope = CoroutineScope(Dispatchers.Default)
-) {
-    @Volatile
-    private var _state: ActorState = ActorState.INITIALIZED
+    var name: String = "Actor",
+    protected val scope: CoroutineScope = CoroutineScope(Dispatchers.Default + SupervisorJob())
+) : Lifecycle {
 
-    private val state: ActorState
-        get() = _state
+    private val _state = atomic<ActorState>(ActorState.Initialized)
+    val state: ActorState
+        get() = _state.value
 
     protected val metrics = ActorMetrics()
 
+    private val ports = ConcurrentHashMap<String, Port<*>>()
+    private val jobs = Collections.synchronizedList(mutableListOf<Job>())
+
     /**
-     * Actor's channel for processing messages asynchronously.
-     * Uses Kotlin's actor function to create a coroutine-based message processing loop.
+     * Enhanced port implementation with type-safe message handling
      */
-    @OptIn(ObsoleteCoroutinesApi::class)
-    private val actorChannel: SendChannel<ActorMessage> = scope.actor(Dispatchers.Default, capacity = Channel.BUFFERED) {
-        _state = ActorState.RUNNING
-        for (message in channel) {
-            try {
-                metrics.recordMessageReceived()
+    private inner class EnhancedPort<T : Any>(
+        override val name: String,
+        override val type: KClass<T>,
+        private val protocolAdapter: Port.ProtocolAdapter<T, T>?,
+        private val messageHandlers: List<Port.MessageHandler<T, T>>
+    ) : Port<T> {
+        override val id: String = Port.generateId()
+        private val channel: Channel<T> = Channel(Channel.BUFFERED)
 
-                // Measure the processing time using kotlin.time.measureTime
-                val processingTime: Duration = measureTime {
-                    processMessage(message)
-                }
+        override fun asChannel(): Channel<T> = channel
 
-                metrics.recordMessageProcessed()
-                // The Duration object already contains the time in milliseconds
-                metrics.recordProcessingTime(processingTime)
-            } catch (e: Exception) {
-                _state = ActorState.ERROR
-                handleError(e, message)
-                metrics.recordError()
+        override suspend fun dispose() {
+            withContext(NonCancellable) {
+                channel.close()
             }
         }
-        _state = ActorState.STOPPED
-    }
 
-    protected abstract val actorInterface: ActorInterface
+        suspend fun processMessage(message: T): T {
+            var processed = message
+            for (handler in messageHandlers) {
+                processed = handler.handle(processed)
+            }
+            return processed
+        }
 
-    init {
-        defineInterface()
-    }
-
-    /**
-     * Defines the actor's interface by setting up input and output ports as well as tools.
-     * This method is intended to be overridden by subclasses to provide specific implementations
-     * of the actor's interface.
-     */
-    protected abstract fun defineInterface()
-
-    /**
-     * Starts the actor if it hasn't already been started.
-     */
-    fun start() {
-        if (_state == ActorState.INITIALIZED || _state == ActorState.STOPPED) {
-            _state = ActorState.RUNNING
+        suspend fun adaptMessage(message: T): T {
+            return protocolAdapter?.let { adapter ->
+                adapter.decode(adapter.encode(message))
+            } ?: message
         }
     }
 
     /**
-     * Sends a message to the actor's internal channel.
-     *
-     * @param message The message to be sent to the actor.
-     * @throws kotlin.IllegalStateException if the actor is not running.
+     * Creates a new communication port with type safety.
      */
-    suspend fun send(message: ActorMessage) {
-        if (state == ActorState.RUNNING) {
-            actorChannel.send(message)
-        } else {
-            throw IllegalStateException("Cannot send message; actor is not running.")
+    protected fun <T : Any> createPort(
+        name: String,
+        type: Any,
+        protocolAdapter: Port.ProtocolAdapter<T, T>? = null,
+        handlers: List<Port.MessageHandler<T, T>> = emptyList()
+    ): Port<T> {
+        if (ports.containsKey(name)) {
+            throw PortException("Port with name $name already exists")
+        }
+
+        protocolAdapter?.let { adapter ->
+            validateProtocolAdapter(adapter, type)
+        }
+
+        return EnhancedPort(name, type, protocolAdapter, handlers).also { port ->
+            ports[name] = port
+            val job = scope.launch {
+                try {
+                    for (message in port.asChannel()) {
+                        if (state == ActorState.Running) {
+                            try {
+                                metrics.recordMessageReceived()
+                                val processingTime = measureTime {
+                                    processMessage(port, message)
+                                }
+                                metrics.recordMessageProcessed()
+                                metrics.recordProcessingTime(processingTime)
+                            } catch (e: Exception) {
+                                handleMessageProcessingError(e, message)
+                            }
+                        }
+                    }
+                } catch (e: Exception) {
+                    handlePortError(port.name, e)
+                }
+            }
+            jobs.add(job)
         }
     }
 
     /**
-     * Processes an incoming message in an actor.
-     *
-     * Subclasses must override this method to define specific
-     * message handling logic.
-     *
-     * @param message The message to be processed.
+     * Processes a message using the provided port with type safety.
      */
-    protected abstract suspend fun processMessage(message: ActorMessage)
+    private suspend fun <T : Any> processMessage(port: Port<T>, message: T) {
+        when (port) {
+            is EnhancedPort<T> -> {
+                val processedMessage = port.processMessage(message)
+                val adaptedMessage = port.adaptMessage(processedMessage)
 
-    /**
-     * Handles errors that occur during the processing of actor messages.
-     *
-     * Subclasses can override this method to provide custom error handling behavior.
-     *
-     * @param error The exception that was thrown during message processing.
-     * @param message The actor message that was being processed when the error occurred.
-     */
-    protected open fun handleError(error: Exception, message: ActorMessage) {
-        println("Error processing message ${message.correlationId}: ${error.message}")
+                if (adaptedMessage is ActorMessage<*>) {
+                    @Suppress("UNCHECKED_CAST")
+                    onActorMessage(adaptedMessage as ActorMessage<Any>)
+                } else {
+                    onGenericMessage(adaptedMessage)
+                }
+            }
+            else -> onGenericMessage(message)
+        }
     }
 
     /**
-     * Stops the actor by cancelling its current job and setting it to null.
-     * Ensures that no further messages are processed.
+     * Validates if the given protocol adapter can handle the specified type.
      */
-    fun stop() {
-        actorChannel.close()
-        _state = ActorState.STOPPED
+    private fun validateProtocolAdapter(adapter: Port.ProtocolAdapter<*, *>, type: Any) {
+        require(adapter.canHandle(type, type)) {
+            "Protocol adapter cannot handle type: $type"
+        }
     }
 
     /**
-     * Retrieves the current ActorInterface for the actor.
-     * This interface provides access to the actor's input ports, output ports, and tools.
-     *
-     * @return The ActorInterface instance associated with the actor.
+     * Creates a communication port specifically for actor messages.
      */
-    fun getInterface(): ActorInterface = actorInterface
-
-    /**
-     * Retrieves the current state of the actor.
-     *
-     * @return The current state of the actor.
-     */
-    fun getState(): ActorState = state
-
-    /**
-     * Checks if the actor is in a healthy state.
-     *
-     * @return true if the actor is running and not in an error state, false otherwise.
-     */
-    fun isHealthy(): Boolean {
-        return state == ActorState.RUNNING
-    }
-
-    /**
-     * Represents a message to be sent or received by an actor.
-     *
-     * @property correlationId A unique identifier for the message, used for tracing and pairing requests and responses.
-     * @property type The type of the message, usually indicating the action to be performed or the nature of the message.
-     * @property payload The actual content or data of the message, which can be of any type.
-     * @property sender An optional identifier of the sender of the message, useful for identifying the source of the message.
-     */
-    data class ActorMessage(
-        @OptIn(ExperimentalUuidApi::class)
-        val correlationId: String = Uuid.random().toString(),
-        val type: String,
-        val payload: Any,
-        val sender: String? = null
+    protected fun <T : Any> createActorPort(
+        name: String,
+        messageType: Any
+    ): Port<ActorMessage<T>> = createPort(
+        name = name,
+        type = messageType,
+        handlers = listOf(createDefaultActorMessageHandler())
     )
+
+    /**
+     * Creates a default message handler for actor messages.
+     */
+    private fun <T : Any> createDefaultActorMessageHandler():
+            Port.MessageHandler<ActorMessage<T>, ActorMessage<T>> =
+        object : ActorMessageHandler<T>() {
+            override suspend fun processMessage(
+                message: ActorMessage<T>
+            ): ActorMessage<T> = message
+        }
+
+    /**
+     * Retrieves a port by its name with type safety.
+     */
+    @Suppress("UNCHECKED_CAST")
+    fun <T : Any> getPort(name: String): Port<T>? = ports[name] as? Port<T>
+
+    /**
+     * Sends a message through the specified port.
+     */
+    protected suspend fun <T : Any> send(port: Port<T>, message: T) {
+        try {
+            if (state == ActorState.Running) {
+                when (port) {
+                    is EnhancedPort<T> -> {
+                        val adaptedMessage = port.adaptMessage(message)
+                        port.asChannel().send(adaptedMessage)
+                    }
+                    else -> port.asChannel().send(message)
+                }
+            } else {
+                throw IllegalStateException("Cannot send message while actor is in state: $state")
+            }
+        } catch (e: Exception) {
+            handleSendError(port, e)
+        }
+    }
+
+    /**
+     * Sends an actor message through the specified port.
+     */
+    protected suspend fun <T : Any> sendActorMessage(
+        port: Port<ActorMessage<T>>,
+        payload: T,
+        priority: MessagePriority = MessagePriority.NORMAL,
+        metadata: Map<String, Any> = emptyMap()
+    ) {
+        val message = ActorMessage(
+            payload = payload,
+            sender = id,
+            priority = priority,
+            metadata = metadata
+        )
+        send(port, message)
+    }
+
+    protected open suspend fun handleMessageProcessingError(error: Throwable, message: Any) {
+        when (error) {
+            is CancellationException -> throw error
+            is PortException -> handlePortError("unknown", error)
+            else -> {
+                _state.value = ActorState.Error(error.message ?: "Unknown error")
+                metrics.recordError()
+                handleError(error as Exception, message)
+            }
+        }
+    }
+
+    private fun handlePortError(portName: String, error: Exception) {
+        _state.value = ActorState.Error("Port $portName failure: ${error.message}")
+        metrics.recordError()
+        throw PortException("Port $portName channel failed: ${error.message}")
+    }
+
+    private fun handleSendError(port: Port<*>, error: Exception) {
+        _state.value = ActorState.Error(error.message ?: "Send failure")
+        metrics.recordError()
+        throw PortConnectionException(
+            sourceId = id,
+            targetId = port.id,
+            message = error.message ?: "Send failure"
+        )
+    }
+
+    protected abstract suspend fun onActorMessage(message: ActorMessage<Any>)
+
+    protected open suspend fun onGenericMessage(message: Any) {}
+
+    protected open fun handleError(error: Exception, message: Any) {
+        metrics.recordError()
+    }
+
+    override suspend fun start() {
+        if (state == ActorState.Initialized || state == ActorState.Stopped) {
+            _state.value = ActorState.Running
+        }
+    }
+
+    override suspend fun stop() {
+        _state.value = ActorState.Stopped
+        jobs.forEach { it.cancel() }
+        ports.values.forEach { it.dispose() }
+    }
+
+    override fun isActive(): Boolean = state == ActorState.Running
+
+    override suspend fun dispose() {
+        withContext(NonCancellable) {
+            try {
+                stop()
+                jobs.forEach { it.cancelAndJoin() }
+                ports.values.forEach { it.dispose() }
+            } finally {
+                scope.cancel()
+            }
+        }
+    }
+
+    fun pause(reason: String) {
+        if (state == ActorState.Running) {
+            _state.value = ActorState.Paused(reason)
+        }
+    }
+
+    fun resume() {
+        if (state is ActorState.Paused) {
+            _state.value = ActorState.Running
+        }
+    }
+
+    suspend fun getMetrics(): Map<String, Any> = metrics.getMetrics()
 }

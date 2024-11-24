@@ -4,22 +4,23 @@
 ```
 ai.solace.core.actor/
 ├── Actor.kt                 # Base abstract actor class
-├── ActorSystem.kt          # Actor system management
 ├── config/
 │   └── ActorConfiguration.kt
-├── message/
-│   └── ActorMessage.kt     # Message data class
-├── metrics/
-│   └── ActorMetrics.kt     # Metrics collection
 ├── interfaces/
-│   └── ActorInterface.kt   # Port and tool definitions
+│   ├── ActorInterface.kt    # Defined connection points for Actors
+│   ├── ActorMessage.kt     # Message data class
+│   └── PortDefinition.kt   # Port definitions for Actors
+├── observability/
+│   ├── ActorState.kt       # Running state of Actor
+│   └── ActorMetrics.kt     # Metrics collection
 ├── builder/
 │   └── ActorBuilder.kt     # Actor construction
 └── types/
     ├── KernelActor.kt      # Framework/core actors
+    ├── RouterActor.kt      # Router Actor 
+    ├── SupervisorActor.kt  # Supervisor Actor
     └── scripted/           # Runtime script actors
         └── ScriptedActor.kt
-
 ```
 
 ## Class Hierarchy

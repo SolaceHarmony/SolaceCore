@@ -1,4 +1,4 @@
-package ai.solace.core.common
+package ai.solace.core.lifecycle
 
 /**
  * Platform-independent interface for lifecycle management
