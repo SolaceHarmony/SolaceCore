@@ -15,9 +15,10 @@ import kotlin.reflect.KClass
 class BidirectionalPort<T : Any>(
     override val name: String,
     override val id: String = Port.generateId(),
-    override val type: KClass<T>,
-    private val channel: Channel<T> = Channel(Channel.BUFFERED)
+    override val type: KClass<out T>,
+    private val bufferSize: Int = Channel.BUFFERED
 ) : Port<T> {
+    private val channel: Channel<T> = Channel(bufferSize)
     private val handlers = mutableListOf<Port.MessageHandler<T, T>>()
     private val conversionRules = mutableListOf<Port.ConversionRule<T, T>>()
 
