@@ -1,0 +1,66 @@
+# Actor System Architecture
+
+## Overview
+The actor system is the core component of the Solace Core Framework, responsible for managing the execution and interaction of modular actors. Each actor encapsulates specific functionality and communicates with other actors through message passing via typed ports.
+
+## Design Principles
+- **Isolation**: Actors operate independently, with their own state and behavior
+- **Message-Driven Communication**: Actors communicate exclusively through message passing
+- **Type Safety**: All communication is type-safe, ensuring compatibility between connected actors
+- **Concurrency**: Actors process messages concurrently using Kotlin coroutines
+- **Lifecycle Management**: Actors follow a well-defined lifecycle (initialize, start, stop, dispose)
+- **Error Handling**: Robust error handling with timeouts and recovery mechanisms
+
+## Architecture
+
+### Core Components
+
+#### Actor
+The `Actor` class is the fundamental building block of the system. It:
+- Manages its own lifecycle (start, stop, dispose)
+- Creates and manages ports for communication
+- Processes messages asynchronously
+- Handles errors and timeouts
+- Collects performance metrics
+
+#### Port System
+The port system enables type-safe communication between actors:
+- **Port Interface**: Defines the contract for sending and receiving messages
+- **BidirectionalPort**: Implements bidirectional communication with message handling and conversion
+- **Port Connections**: Establish connections between compatible ports
+- **Protocol Adapters**: Enable communication between ports with different message types
+- **Conversion Rules**: Transform messages between different formats
+
+#### Actor State
+Actors can be in various states:
+- **Initialized**: Actor has been created but not started
+- **Running**: Actor is actively processing messages
+- **Paused**: Actor has temporarily suspended processing
+- **Stopped**: Actor has been stopped and is no longer processing messages
+- **Error**: Actor has encountered an error
+
+### Communication Flow
+1. Actor A creates an output port of type T
+2. Actor B creates an input port of type T
+3. A connection is established between the ports
+4. Actor A sends a message through its output port
+5. The message is processed by any handlers or conversion rules
+6. The message is received by Actor B through its input port
+7. Actor B processes the message
+
+## Current Implementation Status
+- ✅ Basic actor structure and lifecycle management
+- ✅ Port system with type-safe message passing
+- ✅ Error handling and timeout mechanisms
+- ✅ Performance metrics collection
+- ⚠️ Dynamic actor registration (partially implemented)
+- ⚠️ Hot-swapping capabilities (in progress)
+- ❌ Advanced queuing mechanisms (planned)
+- ❌ Correlation IDs for task tracking (planned)
+
+## Future Enhancements
+- **Dynamic Actor Management**: Implement dynamic addition, removal, and modification of actors without system restarts
+- **Queuing Mechanisms**: Develop advanced queuing mechanisms for managing message flow and preventing overload
+- **Correlation IDs**: Introduce correlation IDs for tracking and managing tasks across actors
+- **Distributed Actor System**: Extend the actor system to work across multiple nodes in a distributed environment
+- **Actor Supervision Hierarchies**: Implement hierarchical supervision for better error handling and recovery

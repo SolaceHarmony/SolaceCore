@@ -1,5 +1,6 @@
 plugins {
     kotlin("multiplatform") version "2.0.21"
+    kotlin("plugin.serialization") version "2.0.21"
 }
 
 repositories {
@@ -29,6 +30,15 @@ kotlin {
                 // https://mvnrepository.com/artifact/org.jetbrains.kotlinx/kotlinx-coroutines-core-jvm
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.9.0")
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.9.0")
+
+                // Kotlin scripting dependencies
+                implementation("org.jetbrains.kotlin:kotlin-scripting-common:2.0.21")
+                implementation("org.jetbrains.kotlin:kotlin-scripting-jvm:2.0.21")
+                implementation("org.jetbrains.kotlin:kotlin-scripting-jvm-host:2.0.21")
+                implementation("org.jetbrains.kotlin:kotlin-scripting-compiler-embeddable:2.0.21")
+
+                // Serialization for script metadata and state
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.2")
             }
         }
 

@@ -36,3 +36,6 @@ out/
 .vscode/
 # Ignore Gradle build output directory
 build
+.kotlin/
+.gitignore
+.DS_Store
