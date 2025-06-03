@@ -76,10 +76,19 @@
 - [x] Fix deadlocks in `InMemoryActorStateStorage`
 - [x] Add timeout handling to tests to prevent hanging
 
+## ✅ Completed
+
+### Advanced Features
+- [x] Implement transaction support for atomic operations
+  - [x] Define Transaction interface
+  - [x] Create TransactionalStorage interface
+  - [x] Implement TransactionalInMemoryStorage
+  - [x] Implement TransactionalFileStorage
+  - [x] Write tests for transaction support
+
 ## 🚧 In Progress
 
 ### Advanced Features
-- [ ] Implement transaction support for atomic operations
 - [ ] Implement caching support for improved performance
 - [ ] Implement compression support for large data
 - [ ] Implement encryption support for sensitive data
