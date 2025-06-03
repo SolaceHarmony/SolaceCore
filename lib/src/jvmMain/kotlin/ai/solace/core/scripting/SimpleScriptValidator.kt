@@ -53,6 +53,16 @@ class SimpleScriptValidator : ScriptValidator {
         val stack = mutableListOf<Pair<Char, Pair<Int, Int>>>()
         val lines = scriptSource.lines()
 
+        // Check for unbalanced parentheses in function declarations
+        val functionRegex = """fun\s+\w+\s*\([^)]*\{""".toRegex()
+        val functionMatch = functionRegex.find(scriptSource)
+        if (functionMatch != null) {
+            val matchText = functionMatch.value
+            val lineIndex = scriptSource.substring(0, functionMatch.range.first).count { it == '\n' }
+            val charIndex = functionMatch.range.first - scriptSource.lastIndexOf('\n', functionMatch.range.first)
+            errors.add(ValidationError("Unbalanced parenthesis in function declaration", lineIndex + 1, charIndex))
+        }
+
         for ((lineIndex, line) in lines.withIndex()) {
             for ((charIndex, char) in line.withIndex()) {
                 when (char) {
@@ -107,13 +117,15 @@ class SimpleScriptValidator : ScriptValidator {
             // Check for multiple statements on a single line without semicolons
             val trimmedLine = line.trim()
             if (trimmedLine.isNotEmpty() && !trimmedLine.startsWith("//") && !trimmedLine.startsWith("/*")) {
-                val statements = trimmedLine.split(";")
-                if (statements.size > 1) {
-                    // Check if the last statement is empty (i.e., the line ends with a semicolon)
-                    if (statements.last().trim().isNotEmpty()) {
-                        errors.add(ValidationError("Multiple statements on a single line should be separated by semicolons", lineIndex + 1, trimmedLine.length))
-                    }
+                // Check for multiple val/var declarations on a single line
+                val valMatches = Regex("\\bval\\b").findAll(trimmedLine).count()
+                val varMatches = Regex("\\bvar\\b").findAll(trimmedLine).count()
+
+                if (valMatches + varMatches > 1) {
+                    errors.add(ValidationError("Multiple statements on a single line should be separated by semicolons", lineIndex + 1, trimmedLine.length))
                 }
+
+                // Note: Semicolons in import statements are checked in checkInvalidImports
             }
         }
     }
@@ -128,11 +140,13 @@ class SimpleScriptValidator : ScriptValidator {
         val lines = scriptSource.lines()
         for ((lineIndex, line) in lines.withIndex()) {
             val trimmedLine = line.trim()
-            if (trimmedLine.startsWith("import ")) {
+            // Check for import statements
+            if (trimmedLine == "import" || (trimmedLine.startsWith("import ") && trimmedLine.substring("import ".length).trim().isEmpty())) {
+                // This covers both "import" and "import " cases as empty imports
+                errors.add(ValidationError("Empty import statement", lineIndex + 1, "import".length + 1))
+            } else if (trimmedLine.startsWith("import ")) {
                 val importStatement = trimmedLine.substring("import ".length).trim()
-                if (importStatement.isEmpty()) {
-                    errors.add(ValidationError("Empty import statement", lineIndex + 1, "import ".length + 1))
-                } else if (importStatement.endsWith(";")) {
+                if (importStatement.endsWith(";")) {
                     // Kotlin imports don't need semicolons
                     errors.add(ValidationError("Import statements in Kotlin don't need semicolons", lineIndex + 1, trimmedLine.length))
                 }

@@ -13,14 +13,14 @@ class SimpleScriptValidatorTest {
         val scriptSource = """
             // This is a valid Kotlin script
             import ai.solace.core.actor.Actor
-            
+
             val message = "Hello, World!"
             println(message)
-            
+
             fun greet(name: String) {
                 println("Hello, ${'$'}name!")
             }
-            
+
             greet("Kotlin")
         """.trimIndent()
 
@@ -70,7 +70,7 @@ class SimpleScriptValidatorTest {
         val scriptSource = """
             fun greet(name: String) {
                 println("Hello, ${'$'}name!")
-            
+
         """.trimIndent()
 
         // Validate the script

@@ -1,0 +1,191 @@
+package ai.solace.core.storage
+
+import ai.solace.core.lifecycle.Lifecycle
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
+import kotlinx.coroutines.withContext
+import java.nio.file.Files
+import java.nio.file.Paths
+
+/**
+ * File-based implementation of the StorageManager interface.
+ *
+ * This implementation manages file-based storage implementations for different types of data.
+ * It provides a unified interface for accessing these storage implementations and managing the storage system as a whole.
+ *
+ * @param baseDirectory The base directory where data will be stored.
+ */
+class FileStorageManager(
+    private val baseDirectory: String
+) : StorageManager {
+    /**
+     * The configuration storage implementation.
+     */
+    private val configurationStorage = FileConfigurationStorage(baseDirectory)
+
+    /**
+     * The actor state storage implementation.
+     */
+    private val actorStateStorage = FileActorStateStorage(baseDirectory)
+
+    /**
+     * Map of storage implementations by key class, value class, and name.
+     */
+    private val storageMap = mutableMapOf<Triple<String, String, String>, Storage<*, *>>()
+
+    /**
+     * Mutex for thread-safe access to the storage map.
+     */
+    private val mutex = Mutex()
+
+    /**
+     * Coroutine scope for asynchronous operations.
+     */
+    private val scope = CoroutineScope(Dispatchers.Default + SupervisorJob())
+
+    /**
+     * Flag indicating whether the storage manager is active.
+     */
+    private var isActive = false
+
+    init {
+        // Create the base directory if it doesn't exist
+        Files.createDirectories(Paths.get(baseDirectory))
+    }
+
+    /**
+     * Gets the configuration storage.
+     *
+     * @return The configuration storage implementation.
+     */
+    override fun getConfigurationStorage(): ConfigurationStorage {
+        return configurationStorage
+    }
+
+    /**
+     * Gets the actor state storage.
+     *
+     * @return The actor state storage implementation.
+     */
+    override fun getActorStateStorage(): ActorStateStorage {
+        return actorStateStorage
+    }
+
+    /**
+     * Gets a generic storage implementation for the specified key and value types.
+     *
+     * @param keyClass The class of the key type.
+     * @param valueClass The class of the value type.
+     * @param storageName The name of the storage implementation to get.
+     * @return The storage implementation, or null if no implementation is available for the specified types.
+     */
+    @Suppress("UNCHECKED_CAST")
+    override fun <K, V> getStorage(keyClass: Class<K>, valueClass: Class<V>, storageName: String): Storage<K, V>? {
+        val key = Triple(keyClass.name, valueClass.name, storageName)
+        return storageMap[key] as? Storage<K, V>
+    }
+
+    /**
+     * Registers a storage implementation for the specified key and value types.
+     *
+     * @param keyClass The class of the key type.
+     * @param valueClass The class of the value type.
+     * @param storage The storage implementation to register.
+     * @param storageName The name to register the storage implementation under.
+     * @return True if the storage implementation was registered successfully, false otherwise.
+     */
+    override fun <K, V> registerStorage(keyClass: Class<K>, valueClass: Class<V>, storage: Storage<K, V>, storageName: String): Boolean {
+        val key = Triple(keyClass.name, valueClass.name, storageName)
+        storageMap[key] = storage
+        return true
+    }
+
+    /**
+     * Unregisters a storage implementation for the specified key and value types.
+     *
+     * @param keyClass The class of the key type.
+     * @param valueClass The class of the value type.
+     * @param storageName The name of the storage implementation to unregister.
+     * @return True if the storage implementation was unregistered successfully, false otherwise.
+     */
+    override fun <K, V> unregisterStorage(keyClass: Class<K>, valueClass: Class<V>, storageName: String): Boolean {
+        val key = Triple(keyClass.name, valueClass.name, storageName)
+        return storageMap.remove(key) != null
+    }
+
+    /**
+     * Flushes all pending changes to persistent storage.
+     *
+     * @return True if all changes were flushed successfully, false otherwise.
+     */
+    override suspend fun flushAll(): Boolean {
+        // File-based storage implementations write changes immediately, so there's nothing to flush
+        return true
+    }
+
+    /**
+     * Clears all data from all storage implementations.
+     *
+     * @return True if all data was cleared successfully, false otherwise.
+     */
+    override suspend fun clearAll(): Boolean {
+        return withContext(Dispatchers.IO) {
+            try {
+                // Clear all registered storage implementations
+                mutex.withLock {
+                    storageMap.values.forEach { storage ->
+                        if (storage is FileStorage<*, *>) {
+                            storage.clearCache()
+                        }
+                    }
+                }
+                
+                // Delete all files in the storage directories
+                val configStorageDir = Paths.get(baseDirectory, "storage")
+                if (Files.exists(configStorageDir)) {
+                    Files.walk(configStorageDir)
+                        .sorted(Comparator.reverseOrder())
+                        .forEach { Files.deleteIfExists(it) }
+                }
+                
+                true
+            } catch (e: Exception) {
+                false
+            }
+        }
+    }
+
+    /**
+     * Starts the storage manager.
+     */
+    override suspend fun start() {
+        isActive = true
+    }
+
+    /**
+     * Stops the storage manager.
+     */
+    override suspend fun stop() {
+        isActive = false
+    }
+
+    /**
+     * Checks if the storage manager is active.
+     *
+     * @return True if the storage manager is active, false otherwise.
+     */
+    override fun isActive(): Boolean {
+        return isActive
+    }
+
+    /**
+     * Disposes of the storage manager and releases all resources.
+     */
+    override suspend fun dispose() {
+        stop()
+        // No need to clear data when disposing, as it's stored on disk
+    }
+}

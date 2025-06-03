@@ -56,6 +56,8 @@ class FileScriptVersionManager(
                 "version" to newVersion,
                 "timestamp" to Instant.now().toEpochMilli()
             )
+
+            // Save the script with the updated metadata
             scriptStorage.saveScript(scriptName, scriptSource, metadata)
 
             newVersion
@@ -113,22 +115,26 @@ class FileScriptVersionManager(
     override suspend fun rollback(scriptName: String, version: Int): Boolean {
         return withContext(Dispatchers.IO) {
             val currentVersion = getCurrentVersion(scriptName)
+
             if (version <= 0 || version > currentVersion) {
                 return@withContext false
             }
 
             val versionFile = versionsDirectory.resolve("$scriptName/$version.kts")
+
             if (!Files.exists(versionFile)) {
                 return@withContext false
             }
 
             val scriptSource = Files.readString(versionFile)
+
             val metadata = mapOf(
                 "version" to version,
                 "timestamp" to Instant.now().toEpochMilli(),
                 "rollback" to true,
                 "previousVersion" to currentVersion
             )
+
             scriptStorage.saveScript(scriptName, scriptSource, metadata)
 
             true
@@ -136,17 +142,35 @@ class FileScriptVersionManager(
     }
 
     /**
-     * Gets the current version number of a script.
+     * Gets the current version number of a script by checking both the metadata and the version files.
+     * This ensures that we always have the correct version number, even if the metadata is out of sync.
      *
      * @param scriptName The name of the script.
      * @return The current version number, or 0 if the script doesn't exist.
      */
     private suspend fun getCurrentVersion(scriptName: String): Int {
+        // Check the metadata for the version
         val scriptData = scriptStorage.loadScript(scriptName)
-        return if (scriptData != null) {
+        val metadataVersion = if (scriptData != null) {
             scriptData.second["version"] as? Int ?: 0
         } else {
             0
         }
+
+        // Also check the versions directory to see if there are any version files
+        val scriptVersionsDir = versionsDirectory.resolve(scriptName)
+        if (Files.exists(scriptVersionsDir)) {
+            val versionFiles = Files.list(scriptVersionsDir)
+                .filter { it.toString().endsWith(".kts") }
+                .map { it.fileName.toString().removeSuffix(".kts").toIntOrNull() ?: 0 }
+                .toList()
+
+            val maxFileVersion = versionFiles.maxOrNull() ?: 0
+
+            // Return the maximum of the metadata version and the version files
+            return maxOf(metadataVersion, maxFileVersion)
+        }
+
+        return metadataVersion
     }
 }
