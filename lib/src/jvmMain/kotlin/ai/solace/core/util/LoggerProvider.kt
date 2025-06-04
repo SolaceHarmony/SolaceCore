@@ -14,7 +14,6 @@ object LoggerProvider {
      * @return The logger instance.
      */
     fun getLogger(clazz: Class<*>): Logger = LoggerFactory.getLogger(clazz)
-
     /**
      * Gets a logger using the specified name.
      *

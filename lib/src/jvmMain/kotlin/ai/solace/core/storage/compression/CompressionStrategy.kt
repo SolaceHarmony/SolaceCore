@@ -1,8 +1,5 @@
 package ai.solace.core.storage.compression
 
-import kotlinx.serialization.json.Json
-import kotlinx.serialization.encodeToString
-import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.Serializable
 
 /**
@@ -49,10 +46,3 @@ interface CompressionStrategy {
     fun <T> deserialize(data: ByteArray, clazz: Class<T>): T
 }
 
-/**
- * A simple serialization wrapper for non-serializable types.
- *
- * @param value The value to wrap.
- */
-@Serializable
-data class SerializationWrapper(val value: String)

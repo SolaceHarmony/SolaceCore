@@ -1,7 +1,17 @@
 package ai.solace.core.storage.encryption
 
 import ai.solace.core.storage.Storage
-import kotlinx.serialization.json.*
+import ai.solace.core.util.logger
+import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.JsonObject
+import kotlinx.serialization.json.JsonPrimitive
+import kotlinx.serialization.json.JsonElement
+import kotlinx.serialization.json.jsonObject
+import kotlinx.serialization.json.booleanOrNull
+import kotlinx.serialization.json.doubleOrNull
+import kotlinx.serialization.json.longOrNull
+import kotlinx.serialization.json.intOrNull
+import kotlinx.serialization.encodeToString
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 
@@ -27,7 +37,10 @@ class EncryptedStorage<K, V>(
         Json.parseToJsonElement(it) as V 
     }
 ) : Storage<K, V> {
-    private val mutex = Mutex()
+    // Each operation gets its own mutex to avoid deadlocks when operations call each other
+    private val storeMutex = Mutex()
+    private val retrieveMutex = Mutex()
+    private val updateMetadataMutex = Mutex()
     private val json = Json { prettyPrint = true }
 
     /**
@@ -42,35 +55,38 @@ class EncryptedStorage<K, V>(
      * @return True if the value was stored successfully, false otherwise.
      */
     override suspend fun store(key: K, value: V, metadata: Map<String, Any>): Boolean {
-        return mutex.withLock {
-            try {
-                // Serialize value to JSON
-                val valueJson = valueSerializer(value)
+        try {
+            // Prepare data outside of the mutex lock
+            // Serialize value to JSON
+            val valueJson = valueSerializer(value)
 
-                // Serialize metadata to JSON
-                val metadataJson = json.encodeToString(JsonObject.serializer(), JsonObject(metadata.mapValues {
-                    when (val v = it.value) {
-                        is String -> JsonPrimitive(v)
-                        is Number -> JsonPrimitive(v)
-                        is Boolean -> JsonPrimitive(v)
-                        else -> JsonPrimitive(v.toString())
-                    }
-                }))
+            // Serialize metadata to JSON
+            val metadataJson = json.encodeToString(JsonObject.serializer(), JsonObject(metadata.mapValues {
+                when (val v = it.value) {
+                    is String -> JsonPrimitive(v)
+                    is Number -> JsonPrimitive(v)
+                    is Boolean -> JsonPrimitive(v)
+                    else -> JsonPrimitive(v.toString())
+                }
+            }))
 
-                // Create a combined JSON object with value and metadata
-                val combinedJson = json.encodeToString(JsonObject.serializer(), JsonObject(mapOf(
-                    "value" to JsonPrimitive(valueJson),
-                    "metadata" to JsonPrimitive(metadataJson)
-                )))
+            // Create a combined JSON object with value and metadata
+            val combinedJson = json.encodeToString(JsonObject.serializer(), JsonObject(mapOf(
+                "value" to JsonPrimitive(valueJson),
+                "metadata" to JsonPrimitive(metadataJson)
+            )))
 
-                // Encrypt the combined JSON
-                val encryptedData = encryptionStrategy.encrypt(combinedJson.toByteArray(Charsets.UTF_8))
+            // Encrypt the combined JSON
+            val encryptedData = encryptionStrategy.encrypt(combinedJson.toByteArray(Charsets.UTF_8))
 
+            // Only use the storeMutex for the actual storage operation
+            return storeMutex.withLock {
                 // Store the encrypted data in the underlying storage
                 storage.store(key, encryptedData)
-            } catch (e: Exception) {
-                false
             }
+        } catch (e: Exception) {
+            logger.error("Failed to store encrypted data for key: $key", e)
+            return false
         }
     }
 
@@ -84,42 +100,105 @@ class EncryptedStorage<K, V>(
      * @return The value and its metadata, or null if the key doesn't exist.
      */
     override suspend fun retrieve(key: K): Pair<V, Map<String, Any>>? {
-        return mutex.withLock {
-            try {
-                // Retrieve the encrypted data from the underlying storage
-                val encryptedData = storage.retrieve(key)?.first ?: return@withLock null
-
-                // Decrypt the data
-                val decryptedJson = encryptionStrategy.decrypt(encryptedData).toString(Charsets.UTF_8)
-
-                // Parse the combined JSON object
-                val combinedObj = json.parseToJsonElement(decryptedJson).jsonObject
-
-                // Extract value and metadata
-                val valueJson = combinedObj["value"]?.jsonPrimitive?.content ?: return@withLock null
-                val metadataJson = combinedObj["metadata"]?.jsonPrimitive?.content ?: return@withLock null
-
-                // Deserialize value
-                val value = valueDeserializer(valueJson)
-
-                // Deserialize metadata
-                val metadataObj = json.parseToJsonElement(metadataJson).jsonObject
-                val metadata = metadataObj.mapValues { (_, element) ->
-                    when {
-                        element is JsonPrimitive && element.isString -> element.content
-                        element is JsonPrimitive && element.content == "true" -> true
-                        element is JsonPrimitive && element.content == "false" -> false
-                        element is JsonPrimitive && element.content.toIntOrNull() != null -> element.content.toInt()
-                        element is JsonPrimitive && element.content.toLongOrNull() != null -> element.content.toLong()
-                        element is JsonPrimitive && element.content.toDoubleOrNull() != null -> element.content.toDouble()
-                        else -> element.toString()
-                    }
+        try {
+            // First retrieve the encrypted data with a short-lived lock
+            val encryptedData = retrieveMutex.withLock {
+                try {
+                    // Retrieve the encrypted data from the underlying storage
+                    storage.retrieve(key)?.first ?: return null
+                } catch (e: Exception) {
+                    logger.error("Failed to retrieve encrypted data for key: $key", e)
+                    return null
                 }
-
-                Pair(value, metadata)
-            } catch (e: Exception) {
-                null
             }
+
+            // Safety check for data size before decryption
+            if (encryptedData.isEmpty()) {
+                logger.warn("Empty encrypted data found for key: $key")
+                return null
+            }
+
+            // Decrypt the data outside the mutex lock
+            val decryptedJson: String
+            try {
+                decryptedJson = encryptionStrategy.decrypt(encryptedData).toString(Charsets.UTF_8)
+            } catch (e: Exception) {
+                logger.error("Failed to decrypt data for key: $key", e)
+                return null
+            }
+
+            // Parse the combined JSON object with safety check
+            val jsonElement = try {
+                json.parseToJsonElement(decryptedJson)
+            } catch (e: Exception) {
+                logger.error("Failed to parse JSON for key: $key", e)
+                return null
+            }
+            val combinedObj = jsonElement.jsonObject
+
+            // Extract value and metadata with validation
+            val valueElement = combinedObj["value"] ?: run {
+                logger.warn("Missing 'value' field in JSON for key: $key")
+                return null
+            }
+            if (valueElement !is JsonPrimitive) {
+                logger.warn("'value' field is not a primitive in JSON for key: $key")
+                return null
+            }
+            val valueJson = valueElement.content
+
+            val metadataElement = combinedObj["metadata"] ?: run {
+                logger.warn("Missing 'metadata' field in JSON for key: $key")
+                return null
+            }
+            if (metadataElement !is JsonPrimitive) {
+                logger.warn("'metadata' field is not a primitive in JSON for key: $key")
+                return null
+            }
+            val metadataJson = metadataElement.content
+
+            // Deserialize value with error handling
+            val value = try {
+                valueDeserializer(valueJson)
+            } catch (e: Exception) {
+                logger.error("Failed to deserialize value for key: $key", e)
+                return null
+            }
+
+            // Deserialize metadata with safe parsing
+            val metadataJsonElement = try {
+                json.parseToJsonElement(metadataJson)
+            } catch (e: Exception) {
+                logger.error("Failed to parse metadata JSON for key: $key", e)
+                return null
+            }
+
+            if (metadataJsonElement !is JsonObject) {
+                logger.warn("Metadata is not a JSON object for key: $key")
+                return null
+            }
+
+            val metadataObj = metadataJsonElement
+            val metadata = metadataObj.mapValues { (_, element) ->
+                when {
+                    element is JsonPrimitive -> {
+                        val value = when {
+                            element.booleanOrNull != null -> element.booleanOrNull
+                            element.intOrNull != null -> element.intOrNull
+                            element.longOrNull != null -> element.longOrNull
+                            element.doubleOrNull != null -> element.doubleOrNull
+                            else -> element.content
+                        }
+                        value ?: element.toString()
+                    }
+                    else -> element.toString()
+                }
+            }
+
+            return Pair(value, metadata)
+        } catch (e: Exception) {
+            logger.error("Failed to retrieve and decrypt data for key: $key", e)
+            return null
         }
     }
 
@@ -129,6 +208,7 @@ class EncryptedStorage<K, V>(
      * @return A list of all keys.
      */
     override suspend fun listKeys(): List<K> {
+        // No mutex needed as we're just delegating to the underlying storage
         return storage.listKeys()
     }
 
@@ -139,7 +219,10 @@ class EncryptedStorage<K, V>(
      * @return True if the value was deleted successfully, false otherwise.
      */
     override suspend fun delete(key: K): Boolean {
-        return storage.delete(key)
+        // We use storeMutex since deletion modifies storage
+        return storeMutex.withLock {
+            storage.delete(key)
+        }
     }
 
     /**
@@ -149,6 +232,7 @@ class EncryptedStorage<K, V>(
      * @return True if the key exists, false otherwise.
      */
     override suspend fun exists(key: K): Boolean {
+        // No mutex needed for a read-only operation that doesn't interact with our other methods
         return storage.exists(key)
     }
 
@@ -163,16 +247,34 @@ class EncryptedStorage<K, V>(
      * @return True if the metadata was updated successfully, false otherwise.
      */
     override suspend fun updateMetadata(key: K, metadata: Map<String, Any>): Boolean {
-        return mutex.withLock {
-            try {
-                // Retrieve the current value and metadata
-                val current = retrieve(key) ?: return@withLock false
-
-                // Store the value with the new metadata
-                store(key, current.first, metadata)
-            } catch (e: Exception) {
-                false
+        try {
+            // First retrieve the encrypted data with a short-lived lock
+            val encryptedData = updateMetadataMutex.withLock {
+                storage.retrieve(key) ?: return false
             }
+
+            // Decrypt outside the lock
+            val decryptedJson = encryptionStrategy.decrypt(encryptedData.first).toString(Charsets.UTF_8)
+            val jsonElement = json.parseToJsonElement(decryptedJson)
+            val combinedObj = jsonElement.jsonObject
+
+            val valueElement = combinedObj["value"] ?: return false
+            if (valueElement !is JsonPrimitive) return false
+            val valueJson = valueElement.content
+
+            // Deserialize value
+            val value = try {
+                valueDeserializer(valueJson)
+            } catch (e: Exception) {
+                logger.error("Failed to deserialize value for key: $key", e)
+                return false
+            }
+
+            // Store the value with the new metadata
+            return store(key, value, metadata)
+        } catch (e: Exception) {
+            logger.error("Failed to update metadata for key: $key", e)
+            return false
         }
     }
 }
