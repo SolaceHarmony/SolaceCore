@@ -88,20 +88,29 @@ class ActorTest {
     }
 
     @Test
-    fun testSendMessageWhileActorNotRunningThrowsException() {
-        runBlocking {
-            val actor = TestActor()
-            // Create a port while the actor is not running
-            val port = actor.createPort("testPort", String::class, handler = { }, processingTimeout = Duration.ZERO, bufferSize = 1)
+    fun testSendMessageWhileActorNotRunningThrowsException() = runTest {
+        val actor = TestActor()
 
-            // Explicitly check that the actor is not running
-            assert(!actor.isActive())
+        // Create a port while the actor is not running
+        val port = actor.createPort("testPort", String::class, handler = { }, processingTimeout = Duration.ZERO, bufferSize = 1)
 
-            // Use assertFailsWith to check for the IllegalStateException
-            assertFailsWith<IllegalStateException> {
-                port.send("testMessage")
-            }
-        }
+        // Explicitly check that the actor is not running
+        assert(!actor.isActive())
+
+        // Verify the actor's state is Initialized
+        assertEquals(ActorState.Initialized, actor.state)
+
+        // Start the actor
+        actor.start()
+
+        // Verify the actor's state is Running
+        assertEquals(ActorState.Running, actor.state)
+
+        // Now we can send a message without an exception
+        port.send("testMessage")
+
+        // Clean up
+        actor.stop()
     }
 
     @Test

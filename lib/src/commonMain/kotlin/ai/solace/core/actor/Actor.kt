@@ -218,6 +218,9 @@ abstract class Actor(
                         processMessageWithTimeout(message)
                     }
                 }
+            } catch (e: CancellationException) {
+                // Propagate cancellation exceptions
+                throw e
             } catch (e: Exception) {
                 handlePortError(port.name, e)
             }
@@ -406,7 +409,8 @@ abstract class Actor(
         val existingPort = getPort(name, messageClass) ?: return null
 
         // Remove the existing port
-        if (!removePort(name)) {
+        val removed = removePort(name)
+        if (!removed) {
             throw PortException.Validation("Failed to remove port $name")
         }
 
@@ -439,7 +443,8 @@ abstract class Actor(
         val existingPort = getPort(name, messageClass) ?: return null
 
         // Remove the existing port
-        if (!removePort(name)) {
+        val removed = removePort(name)
+        if (!removed) {
             throw PortException.Validation("Failed to remove port $name")
         }
 
@@ -448,7 +453,7 @@ abstract class Actor(
             name = name,
             messageClass = messageClass,
             handler = { /* Do nothing */ },
-            bufferSize = Channel.BUFFERED,
+            bufferSize = 1, // Use a positive buffer size
             processingTimeout = DEFAULT_PROCESSING_TIMEOUT
         )
     }
