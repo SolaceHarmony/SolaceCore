@@ -36,6 +36,9 @@ kotlin {
                 implementation("org.jetbrains.kotlin:kotlin-scripting-jvm:2.0.21")
                 implementation("org.jetbrains.kotlin:kotlin-scripting-jvm-host:2.0.21")
                 implementation("org.jetbrains.kotlin:kotlin-scripting-compiler-embeddable:2.0.21")
+                implementation("org.jetbrains.kotlin:kotlin-main-kts:2.0.21")
+                implementation("org.jetbrains.kotlin:kotlin-scripting-dependencies:2.0.21")
+                implementation("org.jetbrains.kotlin:kotlin-scripting-dependencies-maven:2.0.21")
 
                 // Serialization for script metadata and state
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.3")

@@ -10,6 +10,9 @@
 - [x] Workflow Manager for actor network handling
 - [x] Basic example actors (TextProcessor, Filter)
 - [x] Example workflow demonstration
+- [x] Actor discovery and registration system (via SupervisorActor)
+- [x] Actor hot-swapping capabilities (via SupervisorActor)
+- [x] Dynamic port management system
 
 ### Infrastructure
 - [x] Basic Kotlin project setup
@@ -36,8 +39,6 @@
 ### Core Features
 - [ ] Neo4j integration for graph-based metadata
 - [ ] Kotlin-native storage implementation
-- [ ] Actor discovery and registration system
-- [ ] Dynamic port type system
 - [ ] Actor state serialization
 - [ ] Actor migration between nodes
 - [ ] Cluster management system

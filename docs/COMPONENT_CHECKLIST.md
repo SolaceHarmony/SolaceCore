@@ -12,8 +12,8 @@
 - [ ] Add actor health checks
 
 ### Actor Interface
-- [ ] Support dynamic port creation
-- [ ] Implement port disconnection logic
+- [x] Support dynamic port creation
+- [x] Implement port disconnection logic
 
 ### Actor Builder
 - [ ] Add validation for actor configurations

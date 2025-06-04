@@ -53,14 +53,28 @@ Actors can be in various states:
 - ✅ Port system with type-safe message passing
 - ✅ Error handling and timeout mechanisms
 - ✅ Performance metrics collection
-- ⚠️ Dynamic actor registration (partially implemented)
-- ⚠️ Hot-swapping capabilities (in progress)
+- ✅ Dynamic actor registration (implemented via SupervisorActor)
+- ✅ Hot-swapping capabilities (implemented via SupervisorActor)
 - ❌ Advanced queuing mechanisms (planned)
 - ❌ Correlation IDs for task tracking (planned)
 
+## SupervisorActor
+
+The SupervisorActor is a specialized actor responsible for managing the lifecycle of other actors in the system. It provides functionality for dynamic actor registration, unregistration, and hot-swapping, allowing for runtime modification of the actor system without requiring system restarts.
+
+Key features:
+- Dynamic actor registration and unregistration at runtime
+- Hot-swapping actors with new instances of the same type
+- Type-safe actor management
+- Thread-safe operations using a mutex
+- Lifecycle management for all managed actors
+
+For more details, see [SupervisorActor.md](SupervisorActor.md).
+
 ## Future Enhancements
-- **Dynamic Actor Management**: Implement dynamic addition, removal, and modification of actors without system restarts
-- **Queuing Mechanisms**: Develop advanced queuing mechanisms for managing message flow and preventing overload
+- **Advanced Queuing Mechanisms**: Develop sophisticated queuing mechanisms for managing message flow and preventing overload
 - **Correlation IDs**: Introduce correlation IDs for tracking and managing tasks across actors
 - **Distributed Actor System**: Extend the actor system to work across multiple nodes in a distributed environment
-- **Actor Supervision Hierarchies**: Implement hierarchical supervision for better error handling and recovery
+- **Hierarchical Supervision**: Implement nested supervisor hierarchies for better error handling and recovery
+- **Actor State Transfer**: Support transferring state between actors during hot-swapping
+- **Dynamic Port Reconnection**: Automatically reconnect ports after hot-swapping actors
