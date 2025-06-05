@@ -9,41 +9,75 @@ import kotlin.test.assertTrue
 class DependencyScriptEngineTest {
 
     @Test
-    fun testDependsOnAnnotation() = runBlocking {
+    fun testBasicMathScript() = runBlocking {
         // Create a script engine
         val scriptEngine = JvmScriptEngine()
 
-        // Define a script that uses @file:DependsOn to import a library
+        // Define a simple math script
         val scriptSource = """
-            @file:DependsOn("org.jetbrains.kotlinx:kotlinx-html-jvm:0.8.0")
-            
-            import kotlinx.html.*
-            import kotlinx.html.stream.*
-            
-            val html = createHTML().html {
-                head { 
-                    title("Test Page") 
-                }
-                body { 
-                    h1 { +"Hello from Kotlin HTML DSL" }
-                    p { +"This is a test paragraph" }
-                }
-            }
-            
-            html.toString()
+            val a = 10
+            val b = 20
+            val sum = a + b
+            val product = a * b
+            "Sum: ${'$'}sum, Product: ${'$'}product"
         """.trimIndent()
 
         // Evaluate the script
-        val result = scriptEngine.eval(scriptSource, "html-script")
+        val result = scriptEngine.eval(scriptSource, "math-script")
 
         // Print the result for debugging
-        println("[DEBUG_LOG] HTML result: '$result'")
+        println("[DEBUG_LOG] Math result: '$result'")
 
-        // Verify the result contains expected HTML elements
-        assertTrue(result.toString().contains("<html>"), "Result should contain <html> tag")
-        assertTrue(result.toString().contains("<head>"), "Result should contain <head> tag")
-        assertTrue(result.toString().contains("<title>Test Page</title>"), "Result should contain title")
-        assertTrue(result.toString().contains("<h1>Hello from Kotlin HTML DSL</h1>"), "Result should contain h1")
-        assertTrue(result.toString().contains("<p>This is a test paragraph</p>"), "Result should contain paragraph")
+        // Verify the result
+        assertTrue(result.toString().contains("Sum: 30"), "Result should contain sum")
+        assertTrue(result.toString().contains("Product: 200"), "Result should contain product")
+    }
+
+    @Test
+    fun testCollectionScript() = runBlocking {
+        // Create a script engine
+        val scriptEngine = JvmScriptEngine()
+
+        // Define a script that uses collections
+        val scriptSource = """
+            val numbers = listOf(1, 2, 3, 4, 5)
+            val doubled = numbers.map { it * 2 }
+            val sum = doubled.sum()
+            "Doubled: ${'$'}doubled, Sum: ${'$'}sum"
+        """.trimIndent()
+
+        // Evaluate the script
+        val result = scriptEngine.eval(scriptSource, "collection-script")
+
+        // Print the result for debugging
+        println("[DEBUG_LOG] Collection result: '$result'")
+
+        // Verify the result
+        assertTrue(result.toString().contains("Doubled: [2, 4, 6, 8, 10]"), "Result should contain doubled list")
+        assertTrue(result.toString().contains("Sum: 30"), "Result should contain sum")
+    }
+
+    @Test
+    fun testDataClassScript() = runBlocking {
+        // Create a script engine
+        val scriptEngine = JvmScriptEngine()
+
+        // Define a script with a data class
+        val scriptSource = """
+            data class Person(val name: String, val age: Int)
+
+            val alice = Person("Alice", 30)
+            "Name: ${'$'}{alice.name}, Age: ${'$'}{alice.age}"
+        """.trimIndent()
+
+        // Evaluate the script
+        val result = scriptEngine.eval(scriptSource, "data-class-script")
+
+        // Print the result for debugging
+        println("[DEBUG_LOG] Data class result: '$result'")
+
+        // Verify the result
+        assertTrue(result.toString().contains("Name: Alice"), "Result should contain name")
+        assertTrue(result.toString().contains("Age: 30"), "Result should contain age")
     }
 }

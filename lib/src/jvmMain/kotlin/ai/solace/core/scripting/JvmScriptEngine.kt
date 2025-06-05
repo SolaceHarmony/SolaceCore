@@ -24,6 +24,7 @@ import java.io.File
 class JvmScriptEngine : ScriptEngine {
     /**
      * A cache of compiled scripts to avoid recompilation.
+     * The key is a combination of the script name and a hash of the script content.
      */
     private val scriptCache = mutableMapOf<String, KotlinCompiledScript>()
 
@@ -66,8 +67,11 @@ class JvmScriptEngine : ScriptEngine {
      */
     override suspend fun compile(scriptSource: String, scriptName: String): CompiledScript {
         return withContext(Dispatchers.IO) {
+            // Create a cache key that includes both the script name and a hash of the script content
+            val cacheKey = "$scriptName:${scriptSource.hashCode()}"
+
             // Check if the script is already in the cache
-            scriptCache[scriptName]?.let { return@withContext it }
+            scriptCache[cacheKey]?.let { return@withContext it }
 
             try {
                 // Create a source code object from the script source
@@ -89,8 +93,8 @@ class JvmScriptEngine : ScriptEngine {
                     compiledScript = (compilationResult as ResultWithDiagnostics.Success).value
                 )
 
-                // Cache the compiled script
-                scriptCache[scriptName] = compiledScript
+                // Cache the compiled script using the combined key
+                scriptCache[cacheKey] = compiledScript
 
                 compiledScript
             } catch (e: Exception) {
@@ -118,7 +122,14 @@ class JvmScriptEngine : ScriptEngine {
             try {
                 // Create an evaluation configuration with the provided parameters
                 val evaluationConfiguration = ScriptEvaluationConfiguration {
-                    providedProperties(parameters)
+                    // MainKtsScript expects an "args" parameter, so we provide an empty array if not present
+                    val updatedParameters = if (!parameters.containsKey("args")) {
+                        parameters + ("args" to emptyArray<String>())
+                    } else {
+                        parameters
+                    }
+
+                    providedProperties(updatedParameters)
                     jvm {
                         baseClassLoader(JvmScriptEngine::class.java.classLoader)
                     }

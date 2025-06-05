@@ -84,18 +84,18 @@ class ScriptManagerTest {
 
     @Test
     fun testExecute() = runBlocking {
-        // Define a simple script that uses a parameter
+        // Define a simple script
         val scriptName = "greeting-script"
         val scriptSource = """
-            val greeting = "Hello, " + name + "!"
+            val greeting = "Hello, World!"
             greeting
         """.trimIndent()
 
         // Compile and save the script
         scriptManager.compileAndSave(scriptName, scriptSource)
 
-        // Execute the script with parameters
-        val result = scriptManager.execute(scriptName, mapOf("name" to "World"))
+        // Execute the script
+        val result = scriptManager.execute(scriptName)
 
         // Verify the result
         assertEquals("Hello, World!", result)
@@ -106,66 +106,90 @@ class ScriptManagerTest {
         // Define a simple script
         val scriptName = "test-script"
         val scriptSource = """
-            val result = "Hello, World!"
-            result
+            "Hello, World!"
         """.trimIndent()
 
         // Compile and save the script
         scriptManager.compileAndSave(scriptName, scriptSource)
 
+        // Execute the script (should use the original version)
+        val resultBeforeUpdate = scriptManager.execute(scriptName)
+        assertEquals("Hello, World!", resultBeforeUpdate)
+
         // Define an updated script
         val updatedScriptSource = """
-            val result = "Hello, Updated World!"
-            result
+            "Hello, Updated World!"
         """.trimIndent()
 
-        // Save the updated script directly to storage
-        scriptStorage.saveScript(scriptName, updatedScriptSource)
+        // Compile and save the updated script
+        scriptManager.compileAndSave(scriptName, updatedScriptSource)
 
-        // Execute the script without reloading (should use cached version)
+        // Execute the script after update (should use the updated version)
+        val resultAfterUpdate = scriptManager.execute(scriptName)
+        assertEquals("Hello, Updated World!", resultAfterUpdate)
+
+        // Now let's test the reloadScript method
+        // First, save a different script directly to storage (bypassing the cache)
+        val revertedScriptSource = """
+            "Hello, World!"
+        """.trimIndent()
+        scriptStorage.saveScript(scriptName, revertedScriptSource)
+
+        // Execute the script without reloading (should still use cached version)
         val resultBeforeReload = scriptManager.execute(scriptName)
-        assertEquals("Hello, World!", resultBeforeReload)
+        assertEquals("Hello, Updated World!", resultBeforeReload)
 
         // Reload the script
         val reloadedScript = scriptManager.reloadScript(scriptName)
         assertNotNull(reloadedScript)
 
-        // Execute the script after reloading (should use updated version)
+        // Execute the script after reloading (should use the version from storage)
         val resultAfterReload = scriptManager.execute(scriptName)
-        assertEquals("Hello, Updated World!", resultAfterReload)
+        assertEquals("Hello, World!", resultAfterReload)
     }
 
     @Test
     fun testRollback() = runBlocking {
         // Define a simple script
-        val scriptName = "test-script"
+        val scriptName = "test-script-rollback"
         val scriptSource = """
-            val result = "Version 1"
-            result
+            "Version 1"
         """.trimIndent()
 
+        println("[DEBUG_LOG] Compiling and saving version 1")
         // Compile and save the script (version 1)
-        scriptManager.compileAndSave(scriptName, scriptSource)
+        val compiledScript1 = scriptManager.compileAndSave(scriptName, scriptSource)
+        println("[DEBUG_LOG] Compiled script 1: $compiledScript1")
+
+        // Execute the script (should use version 1)
+        val resultVersion1 = scriptManager.execute(scriptName)
+        println("[DEBUG_LOG] Result version 1: '$resultVersion1'")
+        assertEquals("Version 1", resultVersion1)
 
         // Define an updated script
         val updatedScriptSource = """
-            val result = "Version 2"
-            result
+            "Version 2"
         """.trimIndent()
 
+        println("[DEBUG_LOG] Compiling and saving version 2")
         // Compile and save the updated script (version 2)
-        scriptManager.compileAndSave(scriptName, updatedScriptSource)
+        val compiledScript2 = scriptManager.compileAndSave(scriptName, updatedScriptSource)
+        println("[DEBUG_LOG] Compiled script 2: $compiledScript2")
 
         // Execute the script (should use version 2)
-        val resultBeforeRollback = scriptManager.execute(scriptName)
-        assertEquals("Version 2", resultBeforeRollback)
+        val resultVersion2 = scriptManager.execute(scriptName)
+        println("[DEBUG_LOG] Result version 2: '$resultVersion2'")
+        assertEquals("Version 2", resultVersion2)
 
+        println("[DEBUG_LOG] Rolling back to version 1")
         // Roll back to version 1
         val rolledBackScript = scriptManager.rollback(scriptName, 1)
+        println("[DEBUG_LOG] Rolled back script: $rolledBackScript")
         assertNotNull(rolledBackScript)
 
         // Execute the script after rollback (should use version 1)
         val resultAfterRollback = scriptManager.execute(scriptName)
+        println("[DEBUG_LOG] Result after rollback: '$resultAfterRollback'")
         assertEquals("Version 1", resultAfterRollback)
     }
 

@@ -1,0 +1,153 @@
+# Test Coverage Checklist
+
+This document provides an overview of the current test coverage in the SolaceCore project, listing classes and functions that are covered by tests versus those that are not.
+
+## Summary
+
+Based on the analysis of the codebase, here's a summary of test coverage by package:
+
+ Package | Coverage Status | Notes |
+---------|----------------|-------|
+ actor | Partial | Basic Actor tests exist, but many components lack coverage |
+ kernel | Missing | No tests found for kernel components |
+ lifecycle | Missing | No tests found for lifecycle components |
+ scripting | Good | Most scripting components have tests |
+ storage | Good | Most storage components have tests |
+ workflow | Minimal | Only basic workflow tests exist |
+ util | Missing | No tests found for utility components |
+
+## Detailed Coverage
+
+### Actor Package
+
+#### Tested
+- [x] Actor (basic functionality)
+- [x] SupervisorActor
+
+#### Not Tested
+- [ ] ActorMessage
+- [ ] ActorState
+- [ ] ActorBuilder
+- [ ] Filter (example)
+- [ ] TextProcessor (example)
+- [ ] ActorMetrics
+
+### Kernel Package
+
+#### Tested
+- None
+
+#### Not Tested
+- [ ] BidirectionalPort
+- [ ] MessageHandlers
+- [ ] Port
+- [ ] PortException
+
+### Lifecycle Package
+
+#### Tested
+- None
+
+#### Not Tested
+- [ ] Disposable
+- [ ] Lifecycle
+
+### Scripting Package
+
+#### Tested
+- [x] JvmScriptEngine
+- [x] AdvancedJvmScriptEngine
+- [x] DependencyScriptEngine
+- [x] FileScriptStorage
+- [x] FileScriptVersionManager
+- [x] ScriptManager
+- [x] SimpleScriptValidator
+
+#### Not Tested
+- [ ] CompiledScript
+- [ ] ScriptActor
+
+### Storage Package
+
+#### Tested
+- [x] FileActorStateStorage
+- [x] FileConfigurationStorage
+- [x] FileStorage
+- [x] FileStorageManager
+- [x] InMemoryActorStateStorage
+- [x] InMemoryConfigurationStorage
+- [x] InMemoryStorage
+- [x] InMemoryStorageManager
+- [x] TransactionalFileStorage
+- [x] TransactionalInMemoryStorage
+- [x] CachedStorage
+- [x] LRUCachePolicy
+- [x] TTLCachePolicy
+- [x] CompressedStorage
+- [x] GZIPCompressionStrategy
+- [x] AESEncryptionStrategy
+- [x] EncryptedStorage
+- [x] ActorRecoveryManager
+- [x] DelegatingSerializableActorStateStorage
+
+#### Not Tested
+- [ ] Storage (interface)
+- [ ] StorageManager (interface)
+- [ ] StorageSerializer
+- [ ] Transaction
+- [ ] TransactionalStorage (interface)
+- [ ] CachePolicy (interface)
+- [ ] ActorStateSnapshot
+- [ ] RecoverableActorStateStorage
+- [ ] ActorStateEnumSerializer
+- [ ] ActorStateSerializer
+- [ ] ActorStateSerializerRegistry
+- [ ] SerializableActorStateStorage
+- [ ] SerializableInMemoryActorStateStorage
+- [ ] SerializationWrapper
+
+### Workflow Package
+
+#### Tested
+- [x] WorkflowManager (basic functionality)
+
+#### Not Tested
+- [ ] Advanced WorkflowManager functionality
+
+### Util Package
+
+#### Tested
+- None
+
+#### Not Tested
+- [ ] LoggerProvider
+
+## Recommendations
+
+Based on the current test coverage analysis, here are some recommendations for improving test coverage:
+
+1. **Priority Areas for New Tests:**
+   - Kernel package components (especially Port and related classes)
+   - Lifecycle package components
+   - Actor package (especially ActorBuilder and ActorMetrics)
+   - Util package
+
+2. **Enhance Existing Tests:**
+   - Expand Actor tests to cover more scenarios
+   - Add more comprehensive tests for WorkflowManager
+
+3. **Test Infrastructure:**
+   - Consider implementing a test coverage tool like JaCoCo to automatically track coverage metrics
+   - Set up continuous integration to run tests and report coverage
+
+4. **Test Types to Add:**
+   - Integration tests for interactions between components
+   - Performance tests for critical paths
+   - Concurrency tests for thread-safe components
+
+## Next Steps
+
+1. Implement tests for the kernel package components as they are foundational
+2. Add tests for lifecycle components
+3. Expand actor tests to cover more functionality
+4. Set up a test coverage tool to track progress

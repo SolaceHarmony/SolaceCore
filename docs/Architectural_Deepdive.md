@@ -176,7 +176,7 @@ graph TD
         A --> |collects| M[Metrics]
         SA[Supervisor Actor] --> |manages| A
     end
-    
+
     subgraph "Kernel"
         P --> |implements| D[Disposable]
         P --> |uses| CH[Channels]
@@ -185,24 +185,24 @@ graph TD
         PA[Protocol Adapter] --> |converts| P
         CR[Conversion Rule] --> |transforms| P
     end
-    
+
     subgraph "Lifecycle Management"
         L --> |extends| D
         D --> |manages| R[Resources]
     end
-    
+
     subgraph "Workflow Management (Planned)"
         WM[Workflow Manager] --> |orchestrates| A
         WB[Workflow Builder] --> |constructs| W[Workflow]
         W --> |contains| A
     end
-    
+
     subgraph "External Systems (Integration Points)"
         NEO[Neo4j] -.-> |graph storage| SA
         KDB[Kotlin DB] -.-> |structured storage| A
         KTR[Kotlin Interpreter] -.-> |scripting| A
     end
-    
+
     %% Connections between subgraphs (illustrative)
     A --> WM
     L --> A
@@ -414,69 +414,7 @@ A concrete implementation of the `Port<T>` interface that supports both sending 
 *   **Implements:** `Port<T>`.
 *   **Constructor:** `name: String`, `id: String = Port.generateId()`, `type: KClass<out T>`, `bufferSize: Int = Channel.BUFFERED`.
 *   **Key Features:**
-```mermaid
-classDiagram
-    class Disposable {
-        <<interface>>
-        +dispose() suspend
-        +safeDispose() suspend
-        +dispose(vararg disposables: Disposable) suspend$
-    }
-    
-    class Lifecycle {
-        <<interface>>
-        +start() suspend
-        +stop() suspend
-        +isActive() boolean
-    }
-    
-    class Actor {
-        <<abstract>>
-        -lifecycle: DefaultLifecycle
-        -state: ActorState
-        +start() suspend
-        +stop() suspend
-        +isActive() boolean
-        +dispose() suspend
-    }
-    
-    class Port~T~ {
-        <<interface>>
-        +dispose() suspend
-    }
-    
-    class BidirectionalPort~T~ {
-        -channel: Channel~T~
-        +dispose() suspend
-    }
-    
-    class DefaultLifecycle {
-        -stateMutex: Mutex
-        -isRunning: boolean
-        +start() suspend
-        +stop() suspend
-        +isActive() boolean
-        +dispose() suspend
-    }
-    
-    Disposable <|-- Lifecycle
-    Lifecycle <|.. DefaultLifecycle
-    Lifecycle <|.. Actor
-    Disposable <|-- Port
-    Port <|.. BidirectionalPort
-    DefaultLifecycle --* Actor
-```
-
-**Description of Key Relationships (from `lifecycle_class_diagram.md`):**
-
-1.  **`Disposable`** is the base interface for resource management, providing methods for disposing of resources.
-2.  **`Lifecycle`** extends **`Disposable`** and adds methods for starting, stopping, and checking the active status of components.
-3.  **`DefaultLifecycle`** is a concrete implementation of the **`Lifecycle`** interface, potentially used by classes like **`Actor`**.
-4.  **`Actor`** implements the **`Lifecycle`** interface (possibly via delegation to a `DefaultLifecycle` instance).
-5.  **`Port`** implements the **`Disposable`** interface for resource management.
-6.  **`BidirectionalPort`** (as an example implementation of `Port`) would also handle disposal.
-
-This lifecycle management system provides a consistent approach to managing the lifecycle of components throughout the Solace Core Framework, ensuring proper resource management and system stability.
+*Note: The lifecycle class diagram and its description have been moved to `/docs/components/lifecycle/lifecycle_class_diagram.md`.*
     *   Manages an internal `kotlinx.coroutines.channels.Channel<T>`.
     *   Allows registration of `Port.MessageHandler<T, T>` instances via `addHandler()`.
     *   Allows registration of `Port.ConversionRule<T, T>` instances via `addConversionRule()`.
@@ -1747,65 +1685,7 @@ The actor system is built upon the following core principles:
     *   Correlation IDs for tracking tasks across multiple actors.
 #### 4.0.1. Conceptual Actor Communication Flow (Sequence Diagram)
 
-The following sequence diagram, derived from `docs/diagrams/actor_communication_sequence.md`, illustrates the typical communication flow between two actors within the SolaceCore framework:
-
-```mermaid
-sequenceDiagram
-    participant ActorA
-    participant PortA as ActorA.OutputPort
-    participant PortB as ActorB.InputPort
-    participant ActorB
-    
-    Note over ActorA, ActorB: Initialization Phase
-    ActorA->>PortA: createPort("output", MessageType::class)
-    ActorB->>PortB: createPort("input", MessageType::class)
-    
-    Note over ActorA, ActorB: Connection Phase
-    ActorA->>PortA: connect(PortA, PortB)
-    
-    Note over ActorA, ActorB: Communication Phase
-    ActorA->>PortA: send(message)
-    PortA->>PortA: Apply handlers
-    PortA->>PortA: Apply conversion rules
-    PortA->>PortB: Channel.send(processedMessage)
-    
-    Note over PortB: Message is queued in channel
-    
-    PortB->>ActorB: startProcessing() job receives message
-    ActorB->>ActorB: processMessageWithTimeout(message)
-    
-    alt Successful processing
-        ActorB->>ActorB: Process message
-        ActorB->>ActorB: Record metrics
-    else Timeout occurs
-        ActorB->>ActorB: handleProcessingTimeout(message)
-        ActorB->>ActorB: Record error
-    else Error occurs
-        ActorB->>ActorB: handleMessageProcessingError(error, message)
-        ActorB->>ActorB: Record error
-    end
-    
-    Note over ActorA, ActorB: Cleanup Phase
-    ActorA->>PortA: dispose()
-    ActorB->>PortB: dispose()
-```
-
-**Description of Communication Flow:**
-
-1.  **Initialization Phase**:
-    *   Actor A creates an output port.
-    *   Actor B creates an input port.
-2.  **Connection Phase**:
-    *   A connection is established between the output port of Actor A and the input port of Actor B (details of connection establishment are managed by port/channel system or a workflow manager).
-3.  **Communication Phase**:
-    *   Actor A sends a message through its output port.
-    *   The message may be processed by handlers and conversion rules associated with the port or connection.
-    *   The (potentially processed) message is sent via the underlying channel to Actor B's input port.
-    *   Actor B receives and processes the message, potentially handling success, timeout, or error scenarios.
-4.  **Cleanup Phase**:
-    *   Both actors dispose of their ports when they are no longer needed, releasing associated resources.
-
-This diagram demonstrates the asynchronous, message-passing nature of the actor system and how type-safe communication is maintained.
+*Note: The actor communication sequence diagram and its description have been moved to `/docs/components/actor_system/actor_communication_sequence.md`.*
 ### 4.1. Core Actor Definitions
 
 The foundational components of the actor model are defined in `ActorState.kt`, `ActorMessage.kt`, and `Actor.kt`.
@@ -1884,138 +1764,7 @@ The central abstraction for all actors in the system.
 
 #### 4.1.5. Actor System Core Class Relationships (Diagram)
 
-The following class diagram, derived from `docs/diagrams/actor_system_class_diagram.md`, illustrates the key classes in the actor system and their relationships:
-
-```mermaid
-classDiagram
-    class Lifecycle {
-        <<interface>>
-        +start() suspend
-        +stop() suspend
-        +isActive() boolean
-        +dispose() suspend
-    }
-    
-    class Disposable {
-        <<interface>>
-        +dispose() suspend
-    }
-    
-    class Actor {
-        <<abstract>>
-        -id: String
-        -name: String
-        -scope: CoroutineScope
-        -state: ActorState
-        -metrics: ActorMetrics
-        -ports: Map~String, TypedPort~
-        -jobs: List~Job~
-        +start() suspend
-        +stop() suspend
-        +isActive() boolean
-        +dispose() suspend
-        +createPort() suspend
-        +getPort() suspend
-        +getMetrics() suspend
-        +pause(reason: String) suspend
-        +resume() suspend
-        #handleMessageProcessingError(error: Throwable, message: Any) suspend
-        #onError(error: Throwable, message: Any) suspend
-    }
-    
-    class TypedPort~T~ {
-        -port: Port~T~
-        -messageClass: KClass~T~
-        -handler: suspend (T) -> Unit
-        -bufferSize: Int
-        -processingTimeout: Duration
-        +send(message: T) suspend
-        +startProcessing() Job
-        -processMessageWithTimeout(message: T) suspend
-        -processMessage(message: T) suspend
-        -handleProcessingTimeout(message: T) suspend
-    }
-    
-    class Port~T~ {
-        <<interface>>
-        +id: String
-        +name: String
-        +type: KClass~T~
-        +asChannel() Channel~T~
-        +send(message: T) suspend
-    }
-    
-    class BidirectionalPort~T~ {
-        -channel: Channel~T~
-        -handlers: List~MessageHandler~
-        -conversionRules: List~ConversionRule~
-        +asChannel() Channel~T~
-        +addHandler(handler: MessageHandler~T, T~)
-        +addConversionRule(rule: ConversionRule~T, T~)
-        +send(message: T) suspend
-        +receive() T suspend
-        +dispose() suspend
-    }
-    
-    class ActorState {
-        <<sealed class>>
-    }
-    
-    class Initialized {
-        <<object>>
-    }
-    
-    class Running {
-        <<object>>
-    }
-    
-    class Stopped {
-        <<object>>
-    }
-    
-    class Error {
-        -reason: String
-    }
-    
-    class Paused {
-        -reason: String
-    }
-    
-    class ActorMetrics {
-        -messageReceived: AtomicLong
-        -messageProcessed: AtomicLong
-        -errors: AtomicLong
-        -processingTimes: List~Duration~
-        +recordMessageReceived()
-        +recordMessageProcessed()
-        +recordError()
-        +recordProcessingTime(duration: Duration)
-        +getMetrics() Map~String, Any~
-    }
-    
-    Lifecycle <|-- Actor
-    Disposable <|-- Lifecycle
-    Actor *-- TypedPort
-    Actor *-- ActorMetrics
-    Actor o-- ActorState
-    TypedPort o-- Port
-    Port <|.. BidirectionalPort
-    ActorState <|-- Initialized
-    ActorState <|-- Running
-    ActorState <|-- Stopped
-    ActorState <|-- Error
-    ActorState <|-- Paused
-```
-
-**Description of Key Relationships (from `actor_system_class_diagram.md`):**
-
-1.  **`Actor`** implements the **`Lifecycle`** interface, which extends **`Disposable`**.
-2.  **`Actor`** contains multiple **`TypedPort`** instances for communication (managed internally).
-3.  **`TypedPort`** wraps a **`Port`** interface. The `Port` interface (detailed in the Kernel module) can be implemented by classes like `BidirectionalPort`.
-4.  **`Actor`** maintains an **`ActorState`** (which can be `Initialized`, `Running`, `Stopped`, `Error`, or `Paused`).
-5.  **`Actor`** uses **`ActorMetrics`** for performance monitoring.
-
-This diagram provides a comprehensive view of the core classes within the actor system and their primary relationships.
+*Note: The actor system class diagram and its description have been moved to `/docs/components/actor_system/actor_system_class_diagram.md`.*
 ### 4.2. Actor Construction (`builder` Subdirectory)
 
 The `ai.solace.core.actor.builder` package provides a fluent API for constructing networks of actors and defining their interconnections.
@@ -2329,186 +2078,7 @@ The archived `SolaceCoreFramework.md` document details a sophisticated design fo
 This design aims to balance efficiency and resilience, enabling actors to handle diverse task types effectively.
 ## 5. Workflow Module (`ai.solace.core.workflow`)
 
-The `workflow` module, centered around the `WorkflowManager` class, is designed to orchestrate the execution of actors within SolaceCore. It enables the dynamic composition of actors into workflows, facilitating the creation of flexible and scalable processing pipelines. This module ties together individual actor capabilities into cohesive, manageable, and higher-level operational units.
-
-### 5.0. Design Philosophy, Planned Architecture, and Status (from design documents & README)
-
-The [`Workflow_Management_Design.md`](docs/components/actor_system/Workflow_Management_Design.md:1) and `docs/components/workflow/README.md` outline the core philosophy, planned architecture, and status of the workflow management system:
-
-**A. Core Purpose & Design Principles:**
-
-*   **Core Purpose (from Design Doc & README):** To orchestrate the execution of actors, enabling the dynamic composition of actors into workflows. This allows for the creation of flexible and scalable processing pipelines within the Solace Core Framework.
-*   **Design Principles (from workflow/README.md):**
-    *   **Flexibility**: Support for dynamic composition of actors into workflows.
-    *   **Type Safety**: Ensure type compatibility between connected actors.
-    *   **State Management**: Maintain and manage workflow state throughout execution.
-    *   **Error Handling**: Provide robust error handling and recovery mechanisms.
-    *   **Persistence**: Support for persisting workflow state for recovery and continuity.
-
-**B. Planned Architecture (from workflow/README.md):**
-
-*   **`WorkflowManager` Key Design Responsibilities (from Design Doc & README):**
-    *   Managing the lifecycle of workflows.
-    *   Orchestrating the execution of actors within workflows.
-    *   Handling errors and state transitions.
-    *   Providing monitoring and control capabilities.
-    *   (From Design Doc) Actor Network Management: Managing a network of actors, which includes adding actors, defining connections between them, and overseeing their collective lifecycle.
-    *   (From Design Doc) Workflow State Management: Maintaining the overall state of the workflow.
-*   **`WorkflowBuilder` Concept (from workflow/README.md):**
-    *   A fluent API for constructing workflows.
-    *   Methods for adding actors to workflows.
-    *   Methods for connecting actors within workflows.
-    *   Validation of workflow structure and connections.
-*   **Workflow States (from workflow/README.md & Design Doc):**
-    *   Initialized: The workflow has been created/defined (actors added, connections specified) but not started.
-    *   Running: The workflow is actively executing / its actors are typically running and processing messages.
-    *   Paused: The workflow has been temporarily suspended / its actors are temporarily paused.
-    *   Stopped: The workflow and its actors have been stopped.
-    *   Error: The workflow has encountered an error.
-*   **Conceptual Execution Flow (from workflow/README.md):**
-    1.  A workflow is constructed (e.g., using the `WorkflowBuilder` concept or direct `WorkflowManager` calls).
-    2.  The workflow is started using the `WorkflowManager`.
-    3.  Actors within the workflow are executed according to their connections.
-    4.  The workflow can be paused, resumed, or stopped as needed.
-    5.  When the workflow completes or is stopped, resources are properly disposed.
-
-**C. Implementation Status (as per design documents & README):**
-
-*   **`Workflow_Management_Design.md` noted:**
-    *   **Completed:** Basic workflow management functionalities and actor composition capabilities.
-    *   **Partially Completed / In Progress:** Advanced state management features and more sophisticated error handling mechanisms.
-*   **`workflow/README.md` noted (indicating a potentially earlier or more focused view):**
-    *   ⚠️ Basic workflow management (partially implemented)
-    *   ⚠️ Actor composition (partially implemented)
-    *   ❌ Advanced state management (planned)
-    *   ❌ Workflow pause and resume (planned - *Note: `WorkflowManager` class already implements this*)
-    *   ❌ State persistence (planned)
-
-This consolidated view provides a comprehensive understanding of the intended design and development stage of the workflow system.
-### 5.1. `WorkflowState` Sealed Class (from `WorkflowManager.kt`)
-
-Defines the possible operational states of a `WorkflowManager`.
-
-*   **Purpose:** To represent the distinct phases of a workflow's execution.
-*   **States:**
-    *   `object Initialized`: The workflow has been defined (actors added, connections specified) but not yet started.
-    *   `object Running`: The workflow is active, and its actors are typically running and processing messages.
-    *   `data class Paused(val reason: String)`: The workflow and its actors are temporarily paused.
-    *   `object Stopped`: The workflow and its actors have been stopped.
-    *   `data class Error(val message: String)`: The workflow encountered an error during its operation.
-
-### 5.2. `WorkflowManager` Class (from `WorkflowManager.kt`)
-
-*   **Purpose:** To orchestrate a collection of `Actor` instances, manage their lifecycles (start, stop, pause, resume) as a group, and establish the connections between their ports to enable message flow.
-*   **Inheritance:** Implements `ai.solace.core.lifecycle.Lifecycle`.
-*   **Key Responsibilities and Features:**
-    *   **Workflow State Management:**
-        *   Maintains its current operational state using the `WorkflowState` sealed class (e.g., `Initialized`, `Running`, `Paused`, `Stopped`, `Error`).
-    *   **Actor Registry:**
-        *   Keeps an internal map (`actors: Map<String, Actor>`) of all actors added to the workflow, keyed by actor ID. Access is synchronized with a `Mutex`.
-    *   **Connection Management:**
-        *   **Connection Declaration (`connectActors` method):** Allows declaration of connection *intent* between specified ports of source and target actors. These declarations are stored internally as `Connection` data class instances (each holding `sourceActorId`, `sourcePortName`, `targetActorId`, `targetPortName`). This operation can only be performed when the workflow is in `Initialized` or `Stopped` state. Access to the internal list of connections is synchronized with a `Mutex`.
-        *   **Connection Establishment (Internal `establishConnections` method):** During the `start()` phase of the workflow, this internal method is responsible for iterating through all declared connections. For each declared link:
-            1.  It retrieves the source and target `Actor` instances from the registry.
-            2.  It attempts to retrieve the specified source and target `Port` instances from these actors.
-                *   *Port Type Resolution Strategy:* The system first attempts to get ports assuming `String` as the message type (e.g., `actor.getPort<String>(portName, String::class)`). If both `String` ports are found, it proceeds to connect them.
-                *   If `String` ports are not successfully retrieved for both ends, it falls back to attempting to get ports assuming `Any` as the message type (e.g., `actor.getPort<Any>(portName, Any::class)`).
-            3.  If compatible ports are successfully retrieved, it calls `Port.connect(sourcePort, targetPort)` to establish the actual data flow.
-            4.  Errors during actor/port retrieval or if `Port.connect()` fails (e.g., due to underlying type mismatches not caught by the `String`/`Any` attempts, or other `PortConnectionException`s) will result in an `IllegalArgumentException`, typically causing the workflow start-up to fail and transition to an `Error` state.
-    *   **Configuration (via `ActorBuilder` or direct calls):**
-        *   `suspend fun addActor(actor: Actor)`: Adds an actor to the workflow. This can only be done when the workflow is in `Initialized` or `Stopped` state.
-        *   `suspend fun connectActors(sourceActor: Actor, sourcePortName: String, targetActor: Actor, targetPortName: String)`: Declares a connection intent between the named ports of the two specified actors, which must have already been added to the workflow.
-    *   **Collective Lifecycle Control:**
-        *   `override suspend fun start()`: Transitions the workflow to `Running`. This critical process involves two main steps:
-            1.  Starting all managed actors by iterating through the actor registry and calling their respective `start()` methods.
-            2.  Establishing all declared connections between actor ports by invoking the internal `establishConnections()` method, which systematically calls `Port.connect()` for each defined link as described above.
-            If any step fails, the workflow typically transitions to an `Error` state.
-        *   `override suspend fun stop()`: Transitions the workflow to `Stopped`. This involves calling `stop()` on all managed actors. Active connections are expected to be closed or become inactive as part of the actors' and ports' stop/dispose lifecycle.
-        *   `suspend fun pause(reason: String)`: Transitions the workflow to `Paused` and calls `pause(reason)` on all managed actors.
-        *   `suspend fun resume()`: Transitions the workflow from `Paused` to `Running` and calls `resume()` on all managed actors.
-        *   `override fun isActive(): Boolean`: Returns `true` if the workflow state is `Running`.
-    *   **Resource Cleanup (`dispose()`):**
-        *   Ensures the workflow is stopped (calling `stop()` if necessary).
-        *   Calls `dispose()` on all managed actors. This is crucial as actor disposal should trigger the disposal of their ports, thereby cleaning up any underlying resources associated with active connections.
-        *   Clears its internal actor registry and the list of declared connections.
-    *   **Actor/Connection Introspection:**
-        *   `suspend fun getActor(actorId: String): Actor?`: Retrieves a registered actor by its ID.
-        *   `suspend fun getActors(): List<Actor>`: Returns a list of all actors currently managed by the workflow.
-        *   `suspend fun getConnections(): List<Connection>`: Returns the list of declared `Connection` intents.
-
-```mermaid
-classDiagram
-    direction LR
-
-    package "ai.solace.core.lifecycle" {
-        interface Lifecycle {
-            <<Interface>>
-            +start()
-            +stop()
-            +isActive(): Boolean
-            +dispose()
-        }
-    }
-
-    package "ai.solace.core.actor" {
-        abstract class Actor {
-            <<Abstract>>
-            +id: String
-            +start()
-            +stop()
-            +pause(reason: String)
-            +resume()
-            +dispose()
-        }
-    }
-
-    package "ai.solace.core.workflow" {
-        class WorkflowState {
-            <<Sealed>>
-            +static Initialized
-            +static Running
-            +static Paused(reason: String)
-            +static Stopped
-            +static Error(message: String)
-        }
-
-        class "WorkflowManager.Connection" {
-            +sourceActorId: String
-            +sourcePortName: String
-            +targetActorId: String
-            +targetPortName: String
-        }
-
-        class WorkflowManager {
-            +id: String
-            +name: String
-            +state: WorkflowState
-            +addActor(actor: Actor)
-            +connectActors(sourceActor, sourcePort, targetActor, targetPort)
-            +pause(reason: String)
-            +resume()
-            +getActor(actorId: String): Actor?
-            +getActors(): List<Actor>
-            +getConnections(): List<Connection>
-        }
-        Lifecycle <|-- WorkflowManager
-        WorkflowManager o-- WorkflowState : current state
-        WorkflowManager o-- "*" Actor : manages
-        WorkflowManager o-- "*" "WorkflowManager.Connection" : defines
-    }
-```
-The `WorkflowManager` is the primary entity for defining and controlling a complete, interconnected system of actors. It is typically configured using the `ActorBuilder`.
-### 5.3. Future Enhancements (Workflow Module - from design document)
-
-The [`Workflow_Management_Design.md`](docs/components/actor_system/Workflow_Management_Design.md:1) and `docs/components/workflow/README.md` documents also outline potential future enhancements for the workflow system, primarily focusing on resilience, control, and advanced capabilities:
-
-*   **State Persistence:** Develop mechanisms for persisting workflow state. This would enable recovery of workflows from previous states in case of restarts or failures, ensuring continuity and improving overall system resilience.
-*   **Advanced State Management and Error Handling:** While basic functionalities were noted as complete, the design document indicated that more advanced state management and error handling capabilities were areas for further development. This could include more granular control over workflow states or more sophisticated responses to errors occurring within the workflow.
-
-(Note: The design document also mentioned "Workflow Pause and Resume" as a future enhancement. However, the `WorkflowManager` class as implemented already includes `pause(reason: String)` and `resume()` methods, so this capability appears to be present.)
-*   **Distributed Workflows (from workflow/README.md):** Support for workflows that can span multiple nodes or processes, enabling larger-scale and more resilient distributed applications.
-*   **Workflow Versioning (from workflow/README.md):** Implement support for versioning of workflow definitions, allowing for updates and migration of workflows over time.
-*   **Visual Workflow Designer (from workflow/README.md):** Develop a visual interface or tool for designing, constructing, and potentially monitoring workflows, which would greatly enhance usability and development speed.
+*Note: The workflow module documentation has been moved to `/docs/components/workflow/Workflow_Management_Design.md`.*
 ## 6. Scripting Module (`ai.solace.core.scripting`)
 
 The `scripting` module in SolaceCore provides a robust framework for integrating and executing dynamic Kotlin scripts (`.kts` files). This allows for flexible and updatable logic within the system, particularly for actor behaviors. The design emphasizes Kotlin script integration, hot-reloading, validation, versioning, and persistent storage.
@@ -3117,10 +2687,10 @@ To avoid deadlocks, the storage system's design and its documented best practice
         // 1. Retrieve data (potentially under a brief lock or from a cache)
         val currentData = retrieve(key) // Assuming retrieve handles its own locking or is safe
         val modifiableData = currentData?.first?.toMutableStructure() ?: newMutableStructure()
-        
+
         // 2. Perform complex computations or data preparation outside the main lock
         val processedValue = processData(modifiableData, newValuePart)
-        
+
         // 3. Acquire lock only for the final update to shared state
         mutex.withLock {
             // Store processedValue

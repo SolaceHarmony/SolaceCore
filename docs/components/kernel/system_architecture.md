@@ -8,7 +8,7 @@ graph TD
         A --> |collects| M[Metrics]
         SA[Supervisor Actor] --> |manages| A
     end
-    
+
     subgraph "Kernel"
         P --> |implements| D[Disposable]
         P --> |uses| CH[Channels]
@@ -17,24 +17,24 @@ graph TD
         PA[Protocol Adapter] --> |converts| P
         CR[Conversion Rule] --> |transforms| P
     end
-    
+
     subgraph "Lifecycle Management"
         L --> |extends| D
         D --> |manages| R[Resources]
     end
-    
+
     subgraph "Workflow Management (Planned)"
         WM[Workflow Manager] --> |orchestrates| A
         WB[Workflow Builder] --> |constructs| W[Workflow]
         W --> |contains| A
     end
-    
+
     subgraph "External Systems"
         NEO[Neo4j] -.-> |graph storage| SA
         KDB[Kotlin DB] -.-> |structured storage| A
         KTR[Kotlin Interpreter] -.-> |scripting| A
     end
-    
+
     %% Connections between subgraphs
     A --> WM
     P --> PC

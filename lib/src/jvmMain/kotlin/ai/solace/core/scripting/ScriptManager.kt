@@ -155,8 +155,17 @@ class ScriptManager(
             // Remove the script from the cache
             compiledScriptCache.remove(scriptName)
 
-            // Load and compile the script
-            loadAndCompile(scriptName)
+            // Load the script from storage
+            val scriptData = scriptStorage.loadScript(scriptName) ?: return@withContext null
+            val (scriptSource, metadata) = scriptData
+
+            // Compile the script
+            val compiledScript = scriptEngine.compile(scriptSource, scriptName)
+
+            // Update the cache
+            compiledScriptCache[scriptName] = compiledScript
+
+            compiledScript
         }
     }
 
@@ -176,8 +185,17 @@ class ScriptManager(
                 return@withContext null
             }
 
-            // Reload the script
-            reloadScript(scriptName)
+            // Get the rolled back script source
+            val scriptSource = scriptVersionManager.getVersion(scriptName, version)
+                ?: return@withContext null
+
+            // Compile the script
+            val compiledScript = scriptEngine.compile(scriptSource, scriptName)
+
+            // Update the cache
+            compiledScriptCache[scriptName] = compiledScript
+
+            compiledScript
         }
     }
 
