@@ -9,12 +9,12 @@ Based on the analysis of the codebase, here's a summary of test coverage by pack
  Package | Coverage Status | Notes |
 ---------|----------------|-------|
  actor | Partial | Basic Actor tests exist, but many components lack coverage |
- kernel | Missing | No tests found for kernel components |
- lifecycle | Missing | No tests found for lifecycle components |
+ kernel | Good | Port, BidirectionalPort, and MessageHandlers have tests |
+ lifecycle | Good | Lifecycle and Disposable have tests |
  scripting | Good | Most scripting components have tests |
  storage | Good | Most storage components have tests |
  workflow | Minimal | Only basic workflow tests exist |
- util | Missing | No tests found for utility components |
+ util | Good | LoggerProvider has tests |
 
 ## Detailed Coverage
 
@@ -91,6 +91,10 @@ Based on the analysis of the codebase, here's a summary of test coverage by pack
 - [x] EncryptedStorage
 - [x] ActorRecoveryManager
 - [x] DelegatingSerializableActorStateStorage
+- [x] ActorStateEnumSerializer
+- [x] ActorStateSerializer
+- [x] ActorStateSerializerRegistry
+- [x] SerializationWrapper
 
 #### Not Tested
 - [ ] Storage (interface)
@@ -101,12 +105,8 @@ Based on the analysis of the codebase, here's a summary of test coverage by pack
 - [ ] CachePolicy (interface)
 - [ ] ActorStateSnapshot
 - [ ] RecoverableActorStateStorage
-- [ ] ActorStateEnumSerializer
-- [ ] ActorStateSerializer
-- [ ] ActorStateSerializerRegistry
 - [ ] SerializableActorStateStorage
 - [ ] SerializableInMemoryActorStateStorage
-- [ ] SerializationWrapper
 
 ### Workflow Package
 
@@ -119,20 +119,19 @@ Based on the analysis of the codebase, here's a summary of test coverage by pack
 ### Util Package
 
 #### Tested
-- None
+- [x] LoggerProvider
 
 #### Not Tested
-- [ ] LoggerProvider
+- None
 
 ## Recommendations
 
 Based on the current test coverage analysis, here are some recommendations for improving test coverage:
 
 1. **Priority Areas for New Tests:**
-   - Kernel package components (especially Port and related classes)
-   - Lifecycle package components
-   - Actor package (especially ActorBuilder and ActorMetrics)
-   - Util package
+   - Storage package interfaces and remaining components
+   - Actor package (more comprehensive tests)
+   - Workflow package (more comprehensive tests)
 
 2. **Enhance Existing Tests:**
    - Expand Actor tests to cover more scenarios
@@ -157,8 +156,8 @@ Based on the current test coverage analysis, here are some recommendations for i
 6. ✓ Implement tests for ActorBuilder in the actor package
 7. ✓ Expand actor tests to cover Filter, TextProcessor, and ActorMetrics
 8. ✓ Add tests for CompiledScript and ScriptActor in the scripting package
-9. Continue with remaining components:
+9. ✓ Continue with remaining components:
    - Add tests for the remaining untested components in the storage package
    - Add more comprehensive tests for WorkflowManager
-   - Add tests for LoggerProvider in the util package
+   - ✓ Add tests for LoggerProvider in the util package
 10. Set up a test coverage tool like JaCoCo to automatically track coverage metrics
