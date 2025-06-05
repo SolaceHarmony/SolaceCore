@@ -63,10 +63,11 @@ Based on the analysis of the codebase, here's a summary of test coverage by pack
 - [x] FileScriptVersionManager
 - [x] ScriptManager
 - [x] SimpleScriptValidator
+- [x] CompiledScript
+- [x] ScriptActor
 
 #### Not Tested
-- [ ] CompiledScript
-- [ ] ScriptActor
+- None
 
 ### Storage Package
 
@@ -155,8 +156,9 @@ Based on the current test coverage analysis, here are some recommendations for i
 5. ✓ Implement tests for ActorState in the actor package
 6. ✓ Implement tests for ActorBuilder in the actor package
 7. ✓ Expand actor tests to cover Filter, TextProcessor, and ActorMetrics
-8. Continue with remaining components:
-   - Add tests for CompiledScript and ScriptActor in the scripting package
+8. ✓ Add tests for CompiledScript and ScriptActor in the scripting package
+9. Continue with remaining components:
    - Add tests for the remaining untested components in the storage package
    - Add more comprehensive tests for WorkflowManager
-9. Set up a test coverage tool like JaCoCo to automatically track coverage metrics
+   - Add tests for LoggerProvider in the util package
+10. Set up a test coverage tool like JaCoCo to automatically track coverage metrics
