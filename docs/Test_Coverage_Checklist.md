@@ -26,11 +26,12 @@ Based on the analysis of the codebase, here's a summary of test coverage by pack
 - [x] ActorMessage
 - [x] ActorState
 - [x] ActorBuilder
+- [x] Filter (example)
+- [x] TextProcessor (example)
+- [x] ActorMetrics
 
 #### Not Tested
-- [ ] Filter (example)
-- [ ] TextProcessor (example)
-- [ ] ActorMetrics
+- None
 
 ### Kernel Package
 
@@ -153,9 +154,9 @@ Based on the current test coverage analysis, here are some recommendations for i
 4. ✓ Implement tests for ActorMessage in the actor package
 5. ✓ Implement tests for ActorState in the actor package
 6. ✓ Implement tests for ActorBuilder in the actor package
-7. Continue with remaining components:
-   - Expand actor tests to cover Filter, TextProcessor, and ActorMetrics
+7. ✓ Expand actor tests to cover Filter, TextProcessor, and ActorMetrics
+8. Continue with remaining components:
    - Add tests for CompiledScript and ScriptActor in the scripting package
    - Add tests for the remaining untested components in the storage package
    - Add more comprehensive tests for WorkflowManager
-8. Set up a test coverage tool like JaCoCo to automatically track coverage metrics
+9. Set up a test coverage tool like JaCoCo to automatically track coverage metrics
