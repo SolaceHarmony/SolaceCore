@@ -23,11 +23,11 @@ Based on the analysis of the codebase, here's a summary of test coverage by pack
 #### Tested
 - [x] Actor (basic functionality)
 - [x] SupervisorActor
+- [x] ActorMessage
+- [x] ActorState
+- [x] ActorBuilder
 
 #### Not Tested
-- [ ] ActorMessage
-- [ ] ActorState
-- [ ] ActorBuilder
 - [ ] Filter (example)
 - [ ] TextProcessor (example)
 - [ ] ActorMetrics
@@ -35,22 +35,22 @@ Based on the analysis of the codebase, here's a summary of test coverage by pack
 ### Kernel Package
 
 #### Tested
-- None
+- [x] BidirectionalPort
+- [x] Port (connection functionality)
+- [x] PortException
+- [x] MessageHandlers
 
 #### Not Tested
-- [ ] BidirectionalPort
-- [ ] MessageHandlers
-- [ ] Port
-- [ ] PortException
+- None
 
 ### Lifecycle Package
 
 #### Tested
-- None
+- [x] Disposable
+- [x] Lifecycle
 
 #### Not Tested
-- [ ] Disposable
-- [ ] Lifecycle
+- None
 
 ### Scripting Package
 
@@ -147,7 +147,15 @@ Based on the current test coverage analysis, here are some recommendations for i
 
 ## Next Steps
 
-1. Implement tests for the kernel package components as they are foundational
-2. Add tests for lifecycle components
-3. Expand actor tests to cover more functionality
-4. Set up a test coverage tool to track progress
+1. ✓ Implement tests for the kernel package components (BidirectionalPort, Port, PortException)
+2. ✓ Add tests for lifecycle components (Disposable, Lifecycle)
+3. ✓ Implement tests for MessageHandlers in the kernel package
+4. ✓ Implement tests for ActorMessage in the actor package
+5. ✓ Implement tests for ActorState in the actor package
+6. ✓ Implement tests for ActorBuilder in the actor package
+7. Continue with remaining components:
+   - Expand actor tests to cover Filter, TextProcessor, and ActorMetrics
+   - Add tests for CompiledScript and ScriptActor in the scripting package
+   - Add tests for the remaining untested components in the storage package
+   - Add more comprehensive tests for WorkflowManager
+8. Set up a test coverage tool like JaCoCo to automatically track coverage metrics
