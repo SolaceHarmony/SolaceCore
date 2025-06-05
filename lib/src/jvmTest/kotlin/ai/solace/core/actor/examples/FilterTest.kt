@@ -1,14 +1,7 @@
 package ai.solace.core.actor.examples
 
-import ai.solace.core.actor.Actor
 import kotlinx.coroutines.test.runTest
-import kotlinx.coroutines.test.advanceTimeBy
-import kotlin.test.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertNotNull
-import kotlin.test.assertTrue
-import kotlin.test.assertFalse
-import kotlinx.coroutines.channels.Channel
+import kotlin.test.*
 
 class FilterTest {
 

@@ -249,9 +249,9 @@ The memory tool is designed to serve as a **memory persistence and retrieval** s
             - Store the memory in a structured format.
             - Insert embeddings into **Milvus** and create relationships in **Neo4j**.
             - Ensure compatibility with the actor system design.
-        2. **Memory Retrieval Actor**: Retrieves past interactions using a combination of keyword matching, embedding similarity, and emotional alignment.
+        1. **Memory Retrieval Actor**: Retrieves past interactions using a combination of keyword matching, embedding similarity, and emotional alignment.
         - **Actor-Specific Implementation**: Adapt the retrieval actor to interact with Milvus and Neo4j. The actor will take user queries and output retrieved memories.
-        3. **Reflection Actor**: Creates reflections based on retrieved memories, enhancing Solace's ability to empathize and connect.
+        1. **Reflection Actor**: Creates reflections based on retrieved memories, enhancing Solace's ability to empathize and connect.
     - **Session Memory Handling**: Configure the **ReflectionMemory** to maintain session-specific memory for short-term context handling. This will ensure that the most recent interactions are always at Solace's disposal without having to perform a database lookup.
 
 ### Workflow Example
@@ -276,11 +276,11 @@ The proposed **memory tool** will replicate the current capabilities of Solace's
 **Multimodal Perception & Cross‑Perspective Nudging for the Seamless Reflective AI Framework**
 *(Extends SRAF‑25‑06‑04 v1.0)*
 
- **Addendum ID** | SRAF‑MM‑25‑06‑04              |
- --------------- | ----------------------------- |
- **Relates To**  | Sections 2–4 (Component Spec) |
- **Author**      | Assistant                     |
- **Status**      | Draft                         |
+| **Addendum ID** | SRAF‑MM‑25‑06‑04              |
+|-----------------| ----------------------------- |
+| **Relates To**  | Sections 2–4 (Component Spec) |
+| **Author**      | Assistant                     |
+|  **Status**     | Draft                         |
 
 ---
 
@@ -320,21 +320,21 @@ flowchart TD
 
 ### A‑3.1 Vision Actor
 
- Aspect      | Design                                                                                           |
- ----------- | ------------------------------------------------------------------------------------------------ |
- Ingress     | `VideoFrame` or `ImageTensor` via dedicated queue.                                               |
- Model       | Frozen or streaming ViT/CLIP fine‑tuned for attribute tagging & scene graph extraction.          |
- Output      | `VisionCue` {*objects*, *attributes*, *relations*, *confidence*}.                                |
- Cross‑Nudge | For each salient tag, craft a **prompt token**: <br>`[V‑NUDGE] The scene contains a blue shirt.` |
+| Aspect       | Design                                                                                           |
+|--------------| ------------------------------------------------------------------------------------------------ |
+| Ingress      | `VideoFrame` or `ImageTensor` via dedicated queue.                                               |
+| Model        | Frozen or streaming ViT/CLIP fine‑tuned for attribute tagging & scene graph extraction.          |
+| Output       | `VisionCue` {*objects*, *attributes*, *relations*, *confidence*}.                                |
+|  Cross‑Nudge | For each salient tag, craft a **prompt token**: <br>`[V‑NUDGE] The scene contains a blue shirt.` |
 
 ### A‑3.2 Audio Actor
 
- Aspect      | Design                                                   |
- ----------- | -------------------------------------------------------- |
- Ingress     | PCM chunks / spectrogram tensors.                        |
- Model       | SSL (e.g., wav2vec 2.0) + emotion classification head.   |
- Output      | `AudioCue` {*speaker\_state*, *emotion*, *keywords*}.    |
- Cross‑Nudge | <br>`[A‑NUDGE] Detected angry tone in speaker‑1 (0.83).` |
+| Aspect       | Design                                                   |
+|--------------| -------------------------------------------------------- |
+| Ingress      | PCM chunks / spectrogram tensors.                        |
+| Model        | SSL (e.g., wav2vec 2.0) + emotion classification head.   |
+| Output       | `AudioCue` {*speaker\_state*, *emotion*, *keywords*}.    |
+|  Cross‑Nudge | <br>`[A‑NUDGE] Detected angry tone in speaker‑1 (0.83).` |
 
 ### A‑3.3 Cross‑Perspective Bus
 

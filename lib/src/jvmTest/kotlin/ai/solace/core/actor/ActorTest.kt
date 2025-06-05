@@ -2,21 +2,18 @@
 
 package ai.solace.core.actor
 
-import ai.solace.core.actor.Actor.Companion.DEFAULT_PROCESSING_TIMEOUT
 import ai.solace.core.kernel.channels.ports.Port
 import ai.solace.core.kernel.channels.ports.PortException
 import junit.framework.TestCase.assertEquals
 import junit.framework.TestCase.assertNotNull
-import kotlinx.atomicfu.atomic
 import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.Channel
-import kotlinx.coroutines.channels.actor
 import kotlinx.coroutines.test.runTest
 import kotlin.reflect.KClass
 import kotlin.test.Test
 import kotlin.test.assertFailsWith
 import kotlin.time.Duration
-import kotlin.coroutines.*
+
 @OptIn(ExperimentalCoroutinesApi::class)
 @Suppress("unused")
 @ExperimentalCoroutinesApi

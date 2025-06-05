@@ -1,7 +1,5 @@
 package ai.solace.core.storage.compression
 
-import kotlinx.serialization.Serializable
-
 /**
  * Interface for compression strategies.
  *

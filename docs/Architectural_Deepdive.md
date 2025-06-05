@@ -24,7 +24,6 @@ This document provides an exhaustive and detailed exploration of the SolaceCore 
 Our aim is to capture every critical aspect, ensuring no line of code or diagram detail that contributes to understanding the system is missed.
 
 *This document is actively under construction and will be built iteratively.*
-*Archived MVP Context:* An archived document, [`docs/archive/MVPPlan.md`](docs/archive/MVPPlan.md:1), outlines an early Minimum Viable Product (MVP) plan for Solace. This MVP focused on establishing basic memory persistence (initially using LangFlow's `ConversationBufferMemory`) and simple tool integration (via LangFlow plugins) to achieve foundational conversational capabilities. This highlights an iterative approach to realizing the broader Solace vision.
 ### 0.2. Key Solace AI Requirements (from ProjectPlan_v2)
 
 The `ProjectPlan_v2` (Sec 2) details numerous requirements for the Solace AI. Key themes include:
@@ -232,7 +231,7 @@ The Solace Core Framework is built around several key components:
     *   **Kotlin Interpreter**: For enabling dynamic scripting within actors.
 
 This architecture provides a robust foundation for building scalable, concurrent applications with dynamic components and type-safe communication, forming the core library for the broader Solace AI.
-4.  **Response Delivery:** Text via Open-WebUI; voice synthesized and delivered via LiveKit. Open-WebUI provides visual feedback.
+1. **Response Delivery:** Text via Open-WebUI; voice synthesized and delivered via LiveKit. Open-WebUI provides visual feedback.
 
 (This is a condensed summary; the original `ProjectPlan_v2` and the archived diagram provide more granular steps for the overall Solace AI.)
 
@@ -474,8 +473,8 @@ The architecture of the Channel System adheres to the following core principles 
 The following example illustrates how ports might be created using the `BidirectionalPort` implementation and connected using `Port.connect`:
 
 ```kotlin
-import ai.solace.core.kernel.channels.ports.BidirectionalPort
-import ai.solace.core.kernel.channels.ports.Port // For Port.connect
+// import ai.solace.core.kernel.channels.ports.BidirectionalPort
+// import ai.solace.core.kernel.channels.ports.Port // For Port.connect
 
 suspend fun main() { // Example, typically run in a coroutine scope
     // Create ports using BidirectionalPort concrete implementation

@@ -35,12 +35,12 @@ class CompressedStorage<K, V>(
     /**
      * Metadata key for storing whether a value is compressed.
      */
-    private val COMPRESSED_KEY = "compressed"
+    private val compressedKey = "compressed"
 
     /**
      * Metadata key for storing the original size of a compressed value.
      */
-    private val ORIGINAL_SIZE_KEY = "originalSize"
+    private val originalSizeKey = "originalSize"
 
     /**
      * Stores a value with the given key.
@@ -58,14 +58,14 @@ class CompressedStorage<K, V>(
 
                 // Check if the value should be compressed
                 val shouldCompress = shouldCompress(value)
-                mutableMetadata[COMPRESSED_KEY] = shouldCompress
+                mutableMetadata[compressedKey] = shouldCompress
 
                 if (shouldCompress) {
                     // Serialize and compress the value
                     @Suppress("UNCHECKED_CAST")
                     val serialized = compressionStrategy.serialize(value as Any)
                     val originalSize = serialized.size
-                    mutableMetadata[ORIGINAL_SIZE_KEY] = originalSize
+                    mutableMetadata[originalSizeKey] = originalSize
 
                     val compressed = compressionStrategy.compress(serialized)
 
@@ -94,7 +94,7 @@ class CompressedStorage<K, V>(
                 val (storedValue, metadata) = result
 
                 // Check if the value is compressed
-                val isCompressed = metadata[COMPRESSED_KEY] as? Boolean ?: false
+                val isCompressed = metadata[compressedKey] as? Boolean ?: false
 
                 if (isCompressed) {
                     // Decompress the value
@@ -161,11 +161,11 @@ class CompressedStorage<K, V>(
 
                 // Preserve compression-related metadata
                 val mutableMetadata = metadata.toMutableMap()
-                if (currentMetadata.containsKey(COMPRESSED_KEY)) {
-                    mutableMetadata[COMPRESSED_KEY] = currentMetadata[COMPRESSED_KEY]!!
+                if (currentMetadata.containsKey(compressedKey)) {
+                    mutableMetadata[compressedKey] = currentMetadata[compressedKey]!!
                 }
-                if (currentMetadata.containsKey(ORIGINAL_SIZE_KEY)) {
-                    mutableMetadata[ORIGINAL_SIZE_KEY] = currentMetadata[ORIGINAL_SIZE_KEY]!!
+                if (currentMetadata.containsKey(originalSizeKey)) {
+                    mutableMetadata[originalSizeKey] = currentMetadata[originalSizeKey]!!
                 }
 
                 // Update the metadata
@@ -206,13 +206,13 @@ class CompressedStorage<K, V>(
                 val metadata = result.second
 
                 // Check if the value is compressed
-                val isCompressed = metadata[COMPRESSED_KEY] as? Boolean ?: false
+                val isCompressed = metadata[compressedKey] as? Boolean ?: false
                 if (!isCompressed) {
                     return@withContext 1.0
                 }
 
                 // Get the original size
-                val originalSize = metadata[ORIGINAL_SIZE_KEY] as? Int ?: return@withContext 1.0
+                val originalSize = metadata[originalSizeKey] as? Int ?: return@withContext 1.0
 
                 // Get the compressed size
                 @Suppress("UNCHECKED_CAST")

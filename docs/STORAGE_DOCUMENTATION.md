@@ -133,7 +133,7 @@ The `InMemoryStorage<K, V>` class implements the `Storage<K, V>` interface and s
 open class InMemoryStorage<K, V> : Storage<K, V> {
     protected val storage = mutableMapOf<K, Pair<V, MutableMap<String, Any>>>()
     protected val mutex = Mutex()
-    
+
     // Implementation of Storage methods
 }
 ```
@@ -170,7 +170,7 @@ class InMemoryStorageManager : StorageManager {
     private val mutex = Mutex()
     private var isActive = false
     private val lifecycleMutex = Mutex()
-    
+
     // Implementation of StorageManager methods
 }
 ```
@@ -185,7 +185,7 @@ open class TransactionalInMemoryStorage<K, V> : InMemoryStorage<K, V>(), Transac
     private val transactionMutex = Mutex()
     private val transactionStorage = mutableMapOf<K, Pair<V, MutableMap<String, Any>>>()
     private val transactionDeletes = mutableSetOf<K>()
-    
+
     // Implementation of Transaction methods
     // Implementation of TransactionalStorage methods
 }
@@ -210,7 +210,7 @@ open class FileStorage<K, V>(
     private val json = Json { prettyPrint = true }
     protected val mutex = Mutex()
     private val cache = ConcurrentHashMap<K, Pair<V, Map<String, Any>>>()
-    
+
     // Implementation of Storage methods
 }
 ```
@@ -263,7 +263,7 @@ class FileStorageManager(
     private val mutex = Mutex()
     private var isActive = false
     private val lifecycleMutex = Mutex()
-    
+
     // Implementation of StorageManager methods
 }
 ```
@@ -289,7 +289,7 @@ open class TransactionalFileStorage<K, V>(
     private val transactionStorage = ConcurrentHashMap<K, Pair<V, Map<String, Any>>>()
     private val transactionDeletes = ConcurrentHashMap.newKeySet<K>()
     private val transactionDirectory: Path = Paths.get(baseDirectory, "transaction")
-    
+
     // Implementation of Transaction methods
     // Implementation of TransactionalStorage methods
 }
@@ -366,6 +366,24 @@ The storage system is designed to be thread-safe and to prevent deadlocks in con
 
 All storage implementations use mutex locks to protect access to shared resources. This ensures that operations are thread-safe and that data is not corrupted by concurrent access.
 
+#### Use of runBlocking in Synchronous Methods
+
+Some synchronous methods in the storage managers (`InMemoryStorageManager` and `FileStorageManager`) use `kotlinx.coroutines.runBlocking` to make these methods thread-safe by acquiring a mutex lock. This is necessary because these methods are part of interfaces that cannot be changed to use suspend functions without breaking backward compatibility.
+
+The following methods use `runBlocking` for thread safety:
+- `getStorage()`
+- `registerStorage()`
+- `unregisterStorage()`
+- `isActive()`
+
+**Justification:** While the project generally aims to avoid blocking calls in favor of coroutines, these specific uses of `runBlocking` are justified because:
+1. They are used in synchronous interface methods that cannot be changed to suspend functions
+2. They only block for a very short time to acquire a mutex lock and perform a simple operation
+3. They are well-documented in the code with comments explaining their purpose
+4. They follow best practices for deadlock prevention by minimizing the scope of the lock
+
+**Note:** For new code, it's recommended to use suspend functions and coroutines instead of blocking calls whenever possible.
+
 ```kotlin
 protected val mutex = Mutex()
 
@@ -391,9 +409,9 @@ suspend fun setActorState(actorId: String, state: ActorState): Boolean {
     return mutex.withLock {
         val actorData = retrieve(actorId)?.first?.toMutableMap() ?: mutableMapOf()
         val metadata = retrieve(actorId)?.second?.toMutableMap() ?: mutableMapOf()
-        
+
         // Make changes to actorData
-        
+
         store(actorId, actorData, metadata)
     }
 }
@@ -404,7 +422,7 @@ suspend fun setActorState(actorId: String, state: ActorState): Boolean {
     val retrievedData = retrieve(actorId)
     val actorData = retrievedData?.first?.toMutableMap() ?: mutableMapOf()
     val metadata = retrievedData?.second?.toMutableMap() ?: mutableMapOf()
-    
+
     // Create state data outside the lock
     val stateData = when (state) {
         is ActorState.Initialized -> mapOf("type" to "Initialized")
@@ -413,10 +431,10 @@ suspend fun setActorState(actorId: String, state: ActorState): Boolean {
         is ActorState.Error -> mapOf("type" to "Error", "exception" to state.exception)
         is ActorState.Paused -> mapOf("type" to "Paused", "reason" to state.reason)
     }
-    
+
     // Set state in actor data outside the lock
     actorData["state"] = stateData
-    
+
     // Update the storage with mutex lock
     return mutex.withLock {
         storage[actorId] = Pair(actorData, metadata)
@@ -476,7 +494,7 @@ return try {
     // Retrieve data outside the mutex lock
     val retrievedData = retrieve(key)
     // ...
-    
+
     mutex.withLock {
         // Update storage
         true

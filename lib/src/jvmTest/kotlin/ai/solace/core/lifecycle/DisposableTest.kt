@@ -1,12 +1,11 @@
 package ai.solace.core.lifecycle
 
 import kotlinx.coroutines.test.runTest
-import kotlin.test.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertTrue
-import kotlin.test.assertFalse
 import java.io.ByteArrayOutputStream
 import java.io.PrintStream
+import kotlin.test.Test
+import kotlin.test.assertFalse
+import kotlin.test.assertTrue
 
 class DisposableTest {
 

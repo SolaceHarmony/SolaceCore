@@ -72,7 +72,7 @@ classDiagram
     }
     
     class ActorState {
-        <<sealed class>>
+        <<sealed_class>>
     }
     
     class Initialized {

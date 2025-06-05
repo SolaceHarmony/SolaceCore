@@ -2,7 +2,6 @@ package ai.solace.core.actor.supervisor
 
 import ai.solace.core.actor.Actor
 import ai.solace.core.actor.ActorState
-import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.runTest
 import kotlin.test.*
 

@@ -1,7 +1,6 @@
 package ai.solace.core.storage.serialization
 
 import ai.solace.core.actor.ActorState
-import ai.solace.core.storage.InMemoryActorStateStorage
 import kotlinx.coroutines.runBlocking
 import kotlin.test.*
 

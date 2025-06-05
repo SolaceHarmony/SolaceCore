@@ -1,13 +1,8 @@
 package ai.solace.core.scripting
 
 import ai.solace.core.actor.Actor
-import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.runTest
-import kotlin.test.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertNotNull
-import kotlin.test.assertTrue
-import kotlin.test.assertFalse
+import kotlin.test.*
 
 class ScriptActorTest {
 

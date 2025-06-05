@@ -2,17 +2,15 @@ package ai.solace.core.scripting
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import org.jetbrains.kotlin.mainKts.MainKtsScript
 import java.time.Instant
 import kotlin.script.experimental.api.*
-import kotlin.script.experimental.jvm.*
-import kotlin.script.experimental.host.*
+import kotlin.script.experimental.host.toScriptSource
+import kotlin.script.experimental.jvm.baseClassLoader
+import kotlin.script.experimental.jvm.dependenciesFromCurrentContext
+import kotlin.script.experimental.jvm.jvm
 import kotlin.script.experimental.jvmhost.BasicJvmScriptingHost
 import kotlin.script.experimental.jvmhost.createJvmCompilationConfigurationFromTemplate
-import kotlin.script.experimental.dependencies.DependsOn
-import kotlin.script.experimental.dependencies.Repository
-import org.jetbrains.kotlin.mainKts.MainKtsScript
-import org.jetbrains.kotlin.mainKts.MainKtsScriptDefinition
-import java.io.File
 
 /**
  * JVM implementation of the ScriptEngine interface using Kotlin's scripting APIs.

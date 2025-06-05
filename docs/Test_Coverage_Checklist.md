@@ -6,15 +6,15 @@ This document provides an overview of the current test coverage in the SolaceCor
 
 Based on the analysis of the codebase, here's a summary of test coverage by package:
 
- Package | Coverage Status | Notes |
----------|----------------|-------|
- actor | Partial | Basic Actor tests exist, but many components lack coverage |
- kernel | Good | Port, BidirectionalPort, and MessageHandlers have tests |
- lifecycle | Good | Lifecycle and Disposable have tests |
- scripting | Good | Most scripting components have tests |
- storage | Good | Most storage components have tests |
- workflow | Minimal | Only basic workflow tests exist |
- util | Good | LoggerProvider has tests |
+| Package   | Coverage Status | Notes                                                      |
+|-----------|-----------------|------------------------------------------------------------|
+| actor     | Partial         | Basic Actor tests exist, but many components lack coverage |
+| kernel    | Good            | Port, BidirectionalPort, and MessageHandlers have tests    |
+| lifecycle | Good            | Lifecycle and Disposable have tests                        |
+| scripting | Good            | Most scripting components have tests                       |
+| storage   | Good            | Most storage components have tests                         |
+| workflow  | Minimal         | Only basic workflow tests exist                            |
+|  util     | Good            | LoggerProvider has tests                                   |
 
 ## Detailed Coverage
 

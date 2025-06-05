@@ -1,9 +1,8 @@
 package ai.solace.core.util
 
 import kotlin.test.Test
-import kotlin.test.assertNotNull
 import kotlin.test.assertEquals
-import org.slf4j.Logger
+import kotlin.test.assertNotNull
 
 class LoggerProviderTest {
     

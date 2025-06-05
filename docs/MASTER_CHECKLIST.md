@@ -31,7 +31,9 @@ This document consolidates all actionable items, quality assurance checks, docum
 4. Concurrency Issues [HIGH PRIORITY]
    ❌ Remove runBlocking from ActorBuilder methods
    ❌ Make ActorBuilder fully asynchronous or provide sync/async variants
-   ❌ Review all uses of runBlocking throughout codebase
+   ⚠️ Review all uses of runBlocking throughout codebase
+      ✅ Storage managers (InMemoryStorageManager, FileStorageManager) - Reviewed and documented
+      ❌ Other components - Need review
    ❌ Add deadlock detection mechanisms
    Status: Current implementation can cause thread blocking
 
@@ -505,7 +507,7 @@ This document consolidates all actionable items, quality assurance checks, docum
 
 ### Code Quality
 - All public APIs have KDoc documentation
-- No usage of runBlocking in library code
+- No usage of runBlocking in library code except for justified cases (documented in component documentation)
 - All exceptions are properly documented with @Throws
 - Resource cleanup verified with leak detection
 - Thread safety verified for all shared state
