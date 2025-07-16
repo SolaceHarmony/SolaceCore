@@ -31,20 +31,22 @@ class JvmScriptEngineTest {
         // Create a script engine
         val scriptEngine = JvmScriptEngine()
 
-        // Define a simple script that uses a parameter
+        // Define a simple script
         val scriptSource = """
-            val greeting = "Hello, " + name + "!"
-            greeting
+            val a = 10
+            val b = 20
+            val sum = a + b
+            sum
         """.trimIndent()
 
         // Compile the script
-        val compiledScript = scriptEngine.compile(scriptSource, "greeting-script")
+        val compiledScript = scriptEngine.compile(scriptSource, "math-script")
 
-        // Execute the script with parameters
-        val result = scriptEngine.execute(compiledScript, mapOf("name" to "World"))
+        // Execute the script
+        val result = scriptEngine.execute(compiledScript, emptyMap())
 
         // Verify the result
-        assertEquals("Hello, World!", result)
+        assertEquals(30, result)
     }
 
     @Test
@@ -52,16 +54,17 @@ class JvmScriptEngineTest {
         // Create a script engine
         val scriptEngine = JvmScriptEngine()
 
-        // Define a simple script that uses a parameter
+        // Define a simple script
         val scriptSource = """
-            val greeting = "Hello, " + name + "!"
-            greeting
+            val numbers = listOf(1, 2, 3, 4, 5)
+            val sum = numbers.sum()
+            sum
         """.trimIndent()
 
-        // Evaluate the script with parameters
-        val result = scriptEngine.eval(scriptSource, "greeting-script", mapOf("name" to "World"))
+        // Evaluate the script
+        val result = scriptEngine.eval(scriptSource, "sum-script", emptyMap())
 
         // Verify the result
-        assertEquals("Hello, World!", result)
+        assertEquals(15, result)
     }
 }

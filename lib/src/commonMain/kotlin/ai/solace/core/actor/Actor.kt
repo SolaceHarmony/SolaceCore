@@ -218,6 +218,9 @@ abstract class Actor(
                         processMessageWithTimeout(message)
                     }
                 }
+            } catch (e: CancellationException) {
+                // Propagate cancellation exceptions
+                throw e
             } catch (e: Exception) {
                 handlePortError(port.name, e)
             }
@@ -330,6 +333,129 @@ abstract class Actor(
         } else {
             null
         }
+    }
+
+
+    /**
+     * Removes a port from the actor.
+     *
+     * This method stops the processing job associated with the port, disposes the port,
+     * and removes it from the actor's port registry.
+     *
+     * @param name The name of the port to remove.
+     * @return true if the port was successfully removed, false if the port doesn't exist.
+     * @throws IllegalStateException if the actor is not in a state that allows port removal.
+     */
+    suspend fun removePort(name: String): Boolean {
+        if (state != ActorState.Running && state != ActorState.Initialized && state !is ActorState.Paused) {
+            throw IllegalStateException("Cannot remove port while actor is in state: $state")
+        }
+
+        return portsMutex.withLock {
+            val typedPort = ports[name] ?: return@withLock false
+
+            // Cancel all jobs and recreate them for the remaining ports
+            jobsMutex.withLock {
+                // Cancel all jobs
+                jobs.forEach { it.cancel() }
+                jobs.clear()
+
+                // Restart processing for all ports except the one being removed
+                ports.forEach { (portName, port) ->
+                    if (portName != name) {
+                        val processingJob = port.startProcessing()
+                        jobs.add(processingJob)
+                    }
+                }
+            }
+
+            // Dispose the port
+            typedPort.port.dispose()
+
+            // Remove the port from the registry
+            ports.remove(name)
+            true
+        }
+    }
+
+    /**
+     * Recreates a port with a new handler, effectively disconnecting it from all its connections.
+     *
+     * This method removes the existing port and creates a new one with the same name and type,
+     * but with a new handler. This is useful for changing the behavior of a port without
+     * changing its connections.
+     *
+     * @param name The name of the port to recreate.
+     * @param messageClass The class type of the messages that the port handles.
+     * @param handler The new handler for the port.
+     * @param bufferSize The buffer size for the new port's channel. Defaults to [Channel.BUFFERED].
+     * @param processingTimeout The maximum duration for processing a single message before timing out. Defaults to [DEFAULT_PROCESSING_TIMEOUT].
+     * @return The newly created port, or null if the port doesn't exist or the message class doesn't match.
+     * @throws IllegalStateException if the actor is not in a state that allows port recreation.
+     * @throws PortException.Validation if the port removal fails.
+     */
+    suspend fun <T : Any> recreatePort(
+        name: String,
+        messageClass: KClass<T>,
+        handler: suspend (T) -> Unit,
+        bufferSize: Int = Channel.BUFFERED,
+        processingTimeout: Duration = DEFAULT_PROCESSING_TIMEOUT
+    ): Port<T>? {
+        if (state != ActorState.Running && state != ActorState.Initialized && state !is ActorState.Paused) {
+            throw IllegalStateException("Cannot recreate port while actor is in state: $state")
+        }
+
+        // Check if the port exists and has the correct type
+        val existingPort = getPort(name, messageClass) ?: return null
+
+        // Remove the existing port
+        val removed = removePort(name)
+        if (!removed) {
+            throw PortException.Validation("Failed to remove port $name")
+        }
+
+        // Create a new port with the same name and type but a new handler
+        return createPort(name, messageClass, handler, bufferSize, processingTimeout)
+    }
+
+
+    /**
+     * Disconnects a port from all its connections.
+     *
+     * This method removes the existing port and creates a new one with the same name and type,
+     * but with a new handler that does nothing. This effectively disconnects the port from all
+     * its connections while maintaining its registration with the actor.
+     *
+     * @param name The name of the port to disconnect.
+     * @param messageClass The class type of the messages that the port handles.
+     * @return The newly created port, or null if the port doesn't exist or the message class doesn't match.
+     * @throws IllegalStateException if the actor is not in a state that allows port disconnection.
+     */
+    suspend fun <T : Any> disconnectPort(
+        name: String,
+        messageClass: KClass<T>
+    ): Port<T>? {
+        if (state != ActorState.Running && state != ActorState.Initialized && !(state is ActorState.Paused)) {
+            throw IllegalStateException("Cannot disconnect port while actor is in state: $state")
+        }
+
+        // Check if the port exists and has the correct type
+        val existingPort = getPort(name, messageClass) ?: return null
+
+        // Remove the existing port
+        val removed = removePort(name)
+        if (!removed) {
+            throw PortException.Validation("Failed to remove port $name")
+        }
+
+        // Create a new port with the same name and type but a handler that does nothing
+        return createPort(
+            name = name,
+            messageClass = messageClass,
+            handler = { /* Do nothing */ },
+            bufferSize = 1, // Use a positive buffer size
+            processingTimeout = DEFAULT_PROCESSING_TIMEOUT
+        )
     }
 
     /**

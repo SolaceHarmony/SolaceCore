@@ -1,11 +1,10 @@
 package ai.solace.core.workflow
 
 import ai.solace.core.actor.builder.buildActorNetwork
-import ai.solace.core.actor.examples.TextProcessor
 import ai.solace.core.actor.examples.Filter
+import ai.solace.core.actor.examples.TextProcessor
 import kotlinx.coroutines.runBlocking
 import kotlin.test.Test
-import kotlin.test.assertEquals
 
 /**
  * Example demonstrating the use of the workflow management system.

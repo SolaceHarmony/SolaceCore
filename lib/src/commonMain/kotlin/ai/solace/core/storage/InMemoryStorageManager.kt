@@ -1,6 +1,5 @@
 package ai.solace.core.storage
 
-import ai.solace.core.lifecycle.Lifecycle
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -64,6 +63,8 @@ class InMemoryStorageManager : StorageManager {
 
     /**
      * Gets a generic storage implementation for the specified key and value types.
+     * 
+     * Note: This method acquires a mutex lock to ensure thread-safe access to the storage map.
      *
      * @param keyClass The class of the key type.
      * @param valueClass The class of the value type.
@@ -73,11 +74,18 @@ class InMemoryStorageManager : StorageManager {
     @Suppress("UNCHECKED_CAST")
     override fun <K, V> getStorage(keyClass: Class<K>, valueClass: Class<V>, storageName: String): Storage<K, V>? {
         val key = Triple(keyClass.name, valueClass.name, storageName)
-        return storageMap[key] as? Storage<K, V>
+        // Use runBlocking to make this synchronous method thread-safe
+        return kotlinx.coroutines.runBlocking {
+            mutex.withLock {
+                storageMap[key] as? Storage<K, V>
+            }
+        }
     }
 
     /**
      * Registers a storage implementation for the specified key and value types.
+     * 
+     * Note: This method acquires a mutex lock to ensure thread-safe access to the storage map.
      *
      * @param keyClass The class of the key type.
      * @param valueClass The class of the value type.
@@ -87,12 +95,19 @@ class InMemoryStorageManager : StorageManager {
      */
     override fun <K, V> registerStorage(keyClass: Class<K>, valueClass: Class<V>, storage: Storage<K, V>, storageName: String): Boolean {
         val key = Triple(keyClass.name, valueClass.name, storageName)
-        storageMap[key] = storage
-        return true
+        // Use runBlocking to make this synchronous method thread-safe
+        return kotlinx.coroutines.runBlocking {
+            mutex.withLock {
+                storageMap[key] = storage
+                true
+            }
+        }
     }
 
     /**
      * Unregisters a storage implementation for the specified key and value types.
+     * 
+     * Note: This method acquires a mutex lock to ensure thread-safe access to the storage map.
      *
      * @param keyClass The class of the key type.
      * @param valueClass The class of the value type.
@@ -101,7 +116,12 @@ class InMemoryStorageManager : StorageManager {
      */
     override fun <K, V> unregisterStorage(keyClass: Class<K>, valueClass: Class<V>, storageName: String): Boolean {
         val key = Triple(keyClass.name, valueClass.name, storageName)
-        return storageMap.remove(key) != null
+        // Use runBlocking to make this synchronous method thread-safe
+        return kotlinx.coroutines.runBlocking {
+            mutex.withLock {
+                storageMap.remove(key) != null
+            }
+        }
     }
 
     /**
@@ -117,55 +137,96 @@ class InMemoryStorageManager : StorageManager {
     /**
      * Clears all data from all storage implementations.
      *
+     * Note: This method follows best practices for deadlock prevention by:
+     * 1. Collecting all storage implementations that need to be cleared outside the lock
+     * 2. Only acquiring the lock for the minimum time necessary
+     * 3. Not calling methods on other objects while holding the lock
+     *
      * @return True if all data was cleared successfully, false otherwise.
      */
     override suspend fun clearAll(): Boolean {
-        return mutex.withLock {
-            try {
-                (configurationStorage as? InMemoryStorage<*, *>)?.clear()
-                (actorStateStorage as? InMemoryStorage<*, *>)?.clear()
-                
-                storageMap.values.forEach { storage ->
-                    if (storage is InMemoryStorage<*, *>) {
-                        storage.clear()
-                    }
-                }
-                
-                true
-            } catch (e: Exception) {
-                false
+        try {
+            // First, get a snapshot of all storage implementations outside the lock
+            val storagesToClear = mutableListOf<InMemoryStorage<*, *>>()
+
+            // Add the configuration and actor state storage if they are InMemoryStorage instances
+            (configurationStorage as? InMemoryStorage<*, *>)?.let { storagesToClear.add(it) }
+            (actorStateStorage as? InMemoryStorage<*, *>)?.let { storagesToClear.add(it) }
+
+            // Get a snapshot of the storage map values outside the lock
+            val storageMapValues = mutex.withLock {
+                storageMap.values.toList()
             }
+
+            // Add all InMemoryStorage instances from the storage map
+            storageMapValues.forEach { storage ->
+                if (storage is InMemoryStorage<*, *>) {
+                    storagesToClear.add(storage)
+                }
+            }
+
+            // Now clear all storage implementations outside the lock
+            storagesToClear.forEach { storage ->
+                storage.clear()
+            }
+
+            return true
+        } catch (e: Exception) {
+            // Log the error
+            println("Error clearing storage: ${e.message}")
+            return false
         }
     }
 
     /**
      * Starts the storage manager.
+     *
+     * Note: This method acquires a mutex lock to ensure thread-safe access to the isActive flag.
      */
     override suspend fun start() {
-        isActive = true
+        mutex.withLock {
+            isActive = true
+        }
     }
 
     /**
      * Stops the storage manager.
+     *
+     * Note: This method acquires a mutex lock to ensure thread-safe access to the isActive flag.
      */
     override suspend fun stop() {
-        isActive = false
+        mutex.withLock {
+            isActive = false
+        }
     }
 
     /**
      * Checks if the storage manager is active.
      *
+     * Note: This method acquires a mutex lock to ensure thread-safe access to the isActive flag.
+     *
      * @return True if the storage manager is active, false otherwise.
      */
     override fun isActive(): Boolean {
-        return isActive
+        return kotlinx.coroutines.runBlocking {
+            mutex.withLock {
+                isActive
+            }
+        }
     }
 
     /**
      * Disposes of the storage manager and releases all resources.
+     *
+     * Note: This method handles exceptions that might be thrown during disposal.
      */
     override suspend fun dispose() {
-        stop()
-        clearAll()
+        try {
+            stop()
+            clearAll()
+        } catch (e: Exception) {
+            // Log the error
+            println("Error disposing storage manager: ${e.message}")
+        }
     }
 }
