@@ -36,15 +36,15 @@ The framework is under active development. Here's the current status of major co
 - ✅ Port system with type-safe message passing
 - ✅ Error handling and timeout mechanisms
 - ✅ Performance metrics collection
-- ⚠️ Dynamic actor registration (partially implemented)
-- ⚠️ Hot-swapping capabilities (in progress)
+- ✅ Dynamic actor registration via `SupervisorActor`
+- ✅ Hot-swapping capabilities for replacing actors at runtime
 
 ### Kernel
 - ✅ Port interface and BidirectionalPort implementation
 - ✅ Port connections with validation
 - ✅ Message handlers and conversion rules
 - ✅ Protocol adapters for type conversion
-- ⚠️ Dynamic port creation and disconnection (partially implemented)
+- ✅ Dynamic port creation and disconnection through `Actor`
 
 ### Lifecycle Management
 - ✅ Disposable interface for resource management
