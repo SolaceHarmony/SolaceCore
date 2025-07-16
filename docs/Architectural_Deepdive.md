@@ -2408,7 +2408,7 @@ classDiagram
         ScriptManager o-- ScriptValidator
         ScriptManager ..> CompiledScript : caches
     }
-    note for JvmScriptEngine "Current impl. is simplified/simulated.\nTODO: Use real Kotlin scripting APIs."
+    note for JvmScriptEngine "Uses Kotlin scripting APIs for compilation and execution."
     note for SimpleScriptValidator "Performs basic, non-compiler checks."
 ```
 These JVM implementations provide a functional, albeit with some current simplifications (like `JvmScriptEngine` and `SimpleScriptValidator`), scripting subsystem for SolaceCore, enabling dynamic code execution with support for file-based persistence and versioning.
