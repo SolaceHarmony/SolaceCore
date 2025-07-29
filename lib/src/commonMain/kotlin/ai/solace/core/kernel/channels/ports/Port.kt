@@ -1,7 +1,10 @@
 package ai.solace.core.kernel.channels.ports
 
 import ai.solace.core.lifecycle.Disposable
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.launch
 import kotlin.reflect.KClass
 import kotlin.random.Random
 
@@ -203,6 +206,44 @@ interface Port<T : Any> : Disposable {
         val protocolAdapter: ProtocolAdapter<*, @UnsafeVariance OUT>?,
         val rules: List<ConversionRule<IN, OUT>>
     ) {
+        private var routingJob: Job? = null
+
+        /** Starts routing messages from the source port to the target port. */
+        fun start(scope: CoroutineScope): Job {
+            val job = scope.launch {
+                for (msg in sourcePort.asChannel()) {
+                    var intermediate: Any = msg
+                    @Suppress("UNCHECKED_CAST")
+                    for (handler in handlers as List<MessageHandler<Any, Any>>) {
+                        intermediate = handler.handle(intermediate)
+                    }
+
+                    @Suppress("UNCHECKED_CAST")
+                    var out: Any = if (protocolAdapter != null) {
+                        (protocolAdapter as ProtocolAdapter<Any, Any>).encode(intermediate)
+                    } else {
+                        intermediate
+                    }
+
+                    if (rules.isNotEmpty()) {
+                        for (rule in rules as List<ConversionRule<Any, Any>>) {
+                            out = rule.convert(out)
+                        }
+                    }
+
+                    @Suppress("UNCHECKED_CAST")
+                    targetPort.send(out as OUT)
+                }
+            }
+            routingJob = job
+            return job
+        }
+
+        /** Stops routing messages between the ports. */
+        fun stop() {
+            routingJob?.cancel()
+            routingJob = null
+        }
         /**
          * Validates the connection between the source and target ports.
          *
