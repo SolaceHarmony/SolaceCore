@@ -1,1 +1,0 @@
-# Task 1: Advanced Usage Examples\n\nThis task covers the "Include examples of advanced usage" item from docs/MASTER_CHECKLIST.md.\nWe will create an example demonstrating an advanced workflow that chains multiple actors with error handling.\nStatus: In Progress

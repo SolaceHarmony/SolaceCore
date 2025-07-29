@@ -92,6 +92,12 @@ git clone https://github.com/yourusername/SolaceCore.git
 cd SolaceCore
 ./gradlew build
 ```
+### Docker
+To build and run the project in a container:
+```bash
+docker build -t solacecore .
+docker run --rm solacecore
+```
 
 ## Usage
 
@@ -146,6 +152,12 @@ Comprehensive documentation is available in the `docs/` directory:
 ## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
+
+### Actor Template Generator
+A helper script is available in `tools/generate_actor.sh` to scaffold new actors:
+```bash
+./tools/generate_actor.sh MyActor
+```
 
 ## License
 

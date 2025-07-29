@@ -10,6 +10,8 @@ The `docs` directory contains comprehensive documentation for the Solace Core Fr
   - **lifecycle/**: Documentation for the standardized approach to component lifecycle management
   - **workflow/**: Documentation for the workflow management system (planned)
 - **diagrams/**: Visual representations of the framework's architecture are located within the corresponding component folders
+- **examples/**: Usage snippets and small workflows
+  - [Basic Actor Usage](examples/Basic_Actor_Usage.md)
   - [kernel/system_architecture.md](components/kernel/system_architecture.md): High-level overview of the system architecture
   - [actor_system/actor_system_class_diagram.md](components/actor_system/actor_system_class_diagram.md): Class structure of the actor system
   - [actor_system/actor_communication_sequence.md](components/actor_system/actor_communication_sequence.md): Sequence diagram showing actor interaction
@@ -25,6 +27,7 @@ The `docs` directory contains comprehensive documentation for the Solace Core Fr
   - [MASTER_CHECKLIST.md](MASTER_CHECKLIST.md): Consolidated project checklist
   - [STORAGE_CHECKLIST.md](STORAGE_CHECKLIST.md): Storage subsystem tasks
   - [Test_Coverage_Checklist.md](Test_Coverage_Checklist.md): Test coverage tracking
+- [SETUP.md](SETUP.md): Basic development setup
 
 ## Current Implementation Status
 
