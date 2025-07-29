@@ -61,6 +61,7 @@ SolaceCore consists of several key components organized in a layered architectur
 
 For more detailed information about the architecture, see the [Architectural Deep Dive](docs/Architectural_Deepdive.md) and [System Architecture](docs/components/kernel/system_architecture.md) documentation.
 
+
 ## Installation
 
 ### Prerequisites
@@ -131,6 +132,7 @@ Comprehensive documentation is available in the `docs/` directory:
 - [Architectural Deep Dive](docs/Architectural_Deepdive.md) - Exhaustive exploration of the project's architecture and implementation
  - [System Architecture](docs/components/kernel/system_architecture.md) - Concise overview of the system architecture and components
 
+
 ## Roadmap
 
 - **Neo4j Integration**: Implement graph database integration for complex data relationships
@@ -146,7 +148,7 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## License
 
-This project is licensed under the Apache 2.0 License.
+This project is licensed under the Apache License 2.0. See the [LICENSE](LICENSE) file for details.
 
 ## Acknowledgements
 
