@@ -9,12 +9,10 @@ The `docs` directory contains comprehensive documentation for the Solace Core Fr
   - **kernel/**: Documentation for the foundational communication and resource management infrastructure
   - **lifecycle/**: Documentation for the standardized approach to component lifecycle management
   - **workflow/**: Documentation for the workflow management system (planned)
-- **diagrams/**: Visual representations of the framework's architecture
-  - **system_architecture.md**: High-level overview of the system architecture
-  - **actor_system_class_diagram.md**: Class structure of the actor system
-  - **actor_communication_sequence.md**: Sequence diagram showing actor interaction
-  - **kernel_class_diagram.md**: Class structure of the kernel component
-  - **lifecycle_class_diagram.md**: Class structure of the lifecycle management system
+- **diagrams/**: Visual representations of the framework's architecture are located within the corresponding component folders
+  - [kernel/system_architecture.md](components/kernel/system_architecture.md): High-level overview of the system architecture
+  - [actor_system/actor_system_class_diagram.md](components/actor_system/actor_system_class_diagram.md): Class structure of the actor system
+  - [actor_system/actor_communication_sequence.md](components/actor_system/actor_communication_sequence.md): Sequence diagram showing actor interaction
 - **archive/**: Older documentation and planning documents that have been superseded by the current documentation structure
 - **Design Documents**: Detailed design documents for core components and systems
   - [SolaceCoreFramework.md](SolaceCoreFramework.md): Vision and design overview
@@ -23,9 +21,9 @@ The `docs` directory contains comprehensive documentation for the Solace Core Fr
   - [Hot-Pluggable_Actor_System.md](Hot-Pluggable_Actor_System.md): Design of the hot-pluggable actor system
   - [Workflow_Management_Design.md](Workflow_Management_Design.md): Design of the workflow management system
 - **Checklists**: Task lists for tracking progress and planning future work
-  - [CHECKLIST.md](CHECKLIST.md): General project checklist
-  - [COMPONENT_CHECKLIST.md](COMPONENT_CHECKLIST.md): Component-specific checklist
-  - [FRAMEWORK_CHECKLIST.md](FRAMEWORK_CHECKLIST.md): Framework-specific checklist
+  - [MASTER_CHECKLIST.md](MASTER_CHECKLIST.md): Consolidated project checklist
+  - [STORAGE_CHECKLIST.md](STORAGE_CHECKLIST.md): Storage subsystem tasks
+  - [Test_Coverage_Checklist.md](Test_Coverage_Checklist.md): Test coverage tracking
 
 ## Current Implementation Status
 
@@ -64,7 +62,7 @@ The framework is under active development. Here's the current status of major co
 When contributing to the documentation, please follow these guidelines:
 
 1. Place component-specific documentation in the appropriate subfolder under `components/`
-2. Add architectural diagrams to the `diagrams/` directory
+2. Store architectural diagrams alongside their respective components
 3. Use Markdown for all documentation
 4. Include code examples where appropriate
 5. Keep documentation up-to-date with code changes
