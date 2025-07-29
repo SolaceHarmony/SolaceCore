@@ -1,0 +1,1 @@
+# Task 3: Storage Interface Tests\n\nThis task covers the "Add tests for the remaining untested components in the storage package" from docs/Test_Coverage_Checklist.md.\nWe will implement unit tests for Storage, StorageManager, and StorageSerializer interfaces.\nStatus: In Progress
