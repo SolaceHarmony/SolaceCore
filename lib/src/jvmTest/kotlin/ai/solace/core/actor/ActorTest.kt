@@ -9,9 +9,12 @@ import junit.framework.TestCase.assertNotNull
 import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.test.runTest
+import kotlinx.coroutines.delay
 import kotlin.reflect.KClass
 import kotlin.test.Test
 import kotlin.test.assertFailsWith
+import kotlin.test.assertTrue
+import kotlin.test.assertFalse
 import kotlin.time.Duration
 
 @OptIn(ExperimentalCoroutinesApi::class)
@@ -230,5 +233,231 @@ class ActorTest {
         // Try to disconnect a port that doesn't exist
         val result = actor.disconnectPort("nonExistentPort", String::class)
         assertEquals(null, result)
+    }
+
+    // ===== ENHANCED ERROR HANDLING TESTS =====
+    
+    @Test
+    fun testActorHandlesPortErrors() = runTest {
+        val actor = TestActor()
+        
+        // Test that actor handles port validation errors appropriately
+        assertFailsWith<PortException.Validation> {
+            actor.exposeCreatePort("port1", String::class, { }, bufferSize = 1)
+            actor.exposeCreatePort("port1", String::class, { }, bufferSize = 1) // Duplicate name
+        }
+    }
+    
+    // ===== ENHANCED LIFECYCLE MANAGEMENT TESTS =====
+    
+    @Test
+    fun testCompleteLifecycleFromInitializedToDisposed() = runTest {
+        val actor = TestActor()
+        
+        // Initial state
+        assertEquals(ActorState.Initialized, actor.state)
+        assertFalse(actor.isActive())
+        
+        // Start
+        actor.start()
+        assertEquals(ActorState.Running, actor.state)
+        assertTrue(actor.isActive())
+        
+        // Stop
+        actor.stop()
+        assertEquals(ActorState.Stopped, actor.state)
+        assertFalse(actor.isActive())
+        
+        // Dispose
+        actor.dispose()
+        assertEquals(ActorState.Stopped, actor.state)
+        assertFalse(actor.isActive())
+    }
+    
+    @Test
+    fun testCanRestartStoppedActor() = runTest {
+        val actor = TestActor()
+        
+        // Start and stop
+        actor.start()
+        assertEquals(ActorState.Running, actor.state)
+        actor.stop()
+        assertEquals(ActorState.Stopped, actor.state)
+        
+        // Restart
+        actor.start()
+        assertEquals(ActorState.Running, actor.state)
+        assertTrue(actor.isActive())
+        
+        actor.stop()
+    }
+    
+    // ===== PAUSE/RESUME FUNCTIONALITY TESTS =====
+    
+    @Test
+    fun testPauseAndResumeActor() = runTest {
+        val actor = TestActor()
+        actor.start()
+        assertEquals(ActorState.Running, actor.state)
+        
+        // Pause the actor
+        actor.pause("Test pause")
+        assertTrue(actor.state is ActorState.Paused)
+        val pausedState = actor.state as ActorState.Paused
+        assertEquals("Test pause", pausedState.reason)
+        assertFalse(actor.isActive())
+        
+        // Resume the actor
+        actor.resume()
+        assertEquals(ActorState.Running, actor.state)
+        assertTrue(actor.isActive())
+        
+        actor.stop()
+    }
+    
+    @Test
+    fun testCannotPauseNonRunningActor() = runTest {
+        val actor = TestActor()
+        // Actor is in Initialized state
+        
+        actor.pause("Should not work")
+        // State should remain Initialized
+        assertEquals(ActorState.Initialized, actor.state)
+    }
+    
+    @Test
+    fun testCannotResumeNonPausedActor() = runTest {
+        val actor = TestActor()
+        actor.start()
+        assertEquals(ActorState.Running, actor.state)
+        
+        actor.resume() // Should not change state
+        assertEquals(ActorState.Running, actor.state)
+        
+        actor.stop()
+    }
+    
+    // ===== HEALTHY STATE CHECK TESTS (isActive method) =====
+    
+    @Test
+    fun testIsActiveReturnsTrueOnlyWhenRunning() = runTest {
+        val actor = TestActor()
+        
+        // Initialized state
+        assertFalse(actor.isActive())
+        
+        // Running state
+        actor.start()
+        assertTrue(actor.isActive())
+        
+        // Paused state  
+        actor.pause("test")
+        assertFalse(actor.isActive())
+        
+        // Resume to running
+        actor.resume()
+        assertTrue(actor.isActive())
+        
+        // Stopped state
+        actor.stop()
+        assertFalse(actor.isActive())
+    }
+    
+    // ===== METRICS FUNCTIONALITY TESTS =====
+    
+    @Test
+    fun testGetMetrics() = runTest {
+        val actor = TestActor()
+        
+        val metrics = actor.getMetrics()
+        assertNotNull(metrics)
+        assertTrue(metrics is Map<String, Any>)
+    }
+    
+    // ===== COMPREHENSIVE MESSAGE PROCESSING TESTS =====
+    
+    @Test
+    fun testMessageSendingToChannel() = runTest {
+        val actor = TestActor()
+        
+        val handler: suspend (String) -> Unit = { _ -> 
+            // Handler that does nothing
+        }
+        
+        val port = actor.exposeCreatePort("testPort", String::class, handler, bufferSize = 1)
+        
+        // Actor not started yet, but Port.send() should still work
+        // because it just sends to the underlying channel
+        assertEquals(ActorState.Initialized, actor.state)
+        
+        // This should work because Port.send() doesn't check actor state
+        port.send("test message")
+        
+        // Start actor for proper processing
+        actor.start()
+        assertEquals(ActorState.Running, actor.state)
+        
+        // Sending should still work
+        port.send("another message")
+        
+        actor.stop()
+    }
+    
+    @Test
+    fun testMultiplePortTypes() = runTest {
+        val actor = TestActor()
+        
+        // Create ports for different types
+        val stringPort = actor.exposeCreatePort("stringPort", String::class, { }, bufferSize = 1)
+        val intPort = actor.createPort("intPort", Int::class, { }, bufferSize = 1)
+        
+        actor.start()
+        
+        // Both ports should work
+        stringPort.send("test")
+        intPort.send(42)
+        
+        actor.stop()
+    }
+    
+    // ===== ENHANCED PORT MANAGEMENT TESTS =====
+    
+    @Test
+    fun testPortBufferSizeValidation() = runTest {
+        val actor = TestActor()
+        
+        // Test that invalid buffer size is rejected
+        assertFailsWith<IllegalArgumentException> {
+            actor.exposeCreatePort("invalidPort", String::class, { }, bufferSize = 0)
+        }
+        
+        assertFailsWith<IllegalArgumentException> {
+            actor.exposeCreatePort("invalidPort2", String::class, { }, bufferSize = -1)
+        }
+    }
+    
+    @Test 
+    fun testPortOperationsInDifferentStates() = runTest {
+        val actor = TestActor()
+        
+        // Can remove port in initialized state
+        val port = actor.exposeCreatePort("testPort", String::class, { }, bufferSize = 1)
+        assertTrue(actor.removePort("testPort"))
+        
+        // Can recreate port in initialized state
+        actor.exposeCreatePort("testPort2", String::class, { }, bufferSize = 1)
+        val recreated = actor.recreatePort("testPort2", String::class, { }, bufferSize = 1)
+        assertNotNull(recreated)
+        
+        // Test in running state
+        actor.start()
+        assertTrue(actor.removePort("testPort2"))
+        
+        // Test error state operations
+        actor.stop()
+        
+        assertFailsWith<IllegalStateException> {
+            actor.removePort("nonexistent")
+        }
     }
 }
