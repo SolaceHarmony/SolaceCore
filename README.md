@@ -130,7 +130,8 @@ Comprehensive documentation is available in the `docs/` directory:
 
 - [Architectural Document: Solace Core Framework](docs/Architectural_Document_Solace_Core_Framework.md) - Detailed overview of the framework's architecture and design principles
 - [Architectural Deep Dive](docs/Architectural_Deepdive.md) - Exhaustive exploration of the project's architecture and implementation
- - [System Architecture](docs/components/kernel/system_architecture.md) - Concise overview of the system architecture and components
+- [System Architecture](docs/components/kernel/system_architecture.md) - Concise overview of the system architecture and components
+- [Advanced Workflow Example](docs/examples/advanced_workflow_example.md) - Demonstrates chaining multiple actors with dynamic ports
 
 
 ## Roadmap
