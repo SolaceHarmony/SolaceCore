@@ -59,7 +59,7 @@ SolaceCore consists of several key components organized in a layered architectur
 - **Applications**: Domain-specific implementations built on the framework
 - **Data Storage**: Persistence layer using graph and relational databases
 
-For more detailed information about the architecture, see the [Architectural Deep Dive](docs/Architectural_Deepdive.md) and [System Architecture](docs/components/kernel/system_architecture.md) documentation.
+For more detailed information about the architecture, see the [Architectural Document](docs/Architectural_Document_Solace_Core_Framework.md) and [System Architecture](docs/components/kernel/system_architecture.md) documentation.
 
 
 ## Installation
