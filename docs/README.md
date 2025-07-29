@@ -16,6 +16,7 @@ The `docs` directory contains comprehensive documentation for the Solace Core Fr
   - [actor_system/actor_system_class_diagram.md](components/actor_system/actor_system_class_diagram.md): Class structure of the actor system
   - [actor_system/actor_communication_sequence.md](components/actor_system/actor_communication_sequence.md): Sequence diagram showing actor interaction
 - **archive/**: Older documentation and planning documents that have been superseded by the current documentation structure
+- **examples/**: Usage examples demonstrating basic and advanced workflows
 - **Design Documents**: Detailed design documents for core components and systems
   - [SolaceCoreFramework.md](SolaceCoreFramework.md): Vision and design overview
   - [Actor_System_Design.md](Actor_System_Design.md): Design of the actor system

@@ -51,7 +51,7 @@ This document consolidates all actionable items, quality assurance checks, docum
 - [ ] Document all public interfaces.
 - [ ] Add usage examples for each component.
 - [ ] Add detailed setup instructions.
-- [ ] Include examples of advanced usage.
+- [x] Include examples of advanced usage.
 - [ ] Document best practices for utilizing the system effectively.
 - [ ] Continuously update all documentation.
 
