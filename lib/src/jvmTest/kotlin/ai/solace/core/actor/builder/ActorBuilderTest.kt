@@ -248,10 +248,11 @@ class ActorBuilderTest {
         builder.addActor(actor2, mapOf("input" to String::class))
         
         // Try to connect to an actor not in the builder
-        // This should throw an error because WorkflowManager validates actor membership
-        assertFailsWith<IllegalArgumentException> {
+        // This should throw an IllegalArgumentException because actor3 is not part of the builder.
+        val exception = assertFailsWith<IllegalArgumentException> {
             builder.connect(actor1, "output", actor3, "input")
         }
+        assertTrue(exception.message?.contains("Actor not found in builder") == true, "Expected exception message to indicate missing actor.")
     }
     
     @Test
