@@ -4,10 +4,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
-import kotlinx.serialization.json.Json
-import kotlinx.serialization.json.JsonObject
-import kotlinx.serialization.json.JsonPrimitive
-import kotlinx.serialization.json.jsonObject
+import kotlinx.serialization.json.*
 import java.nio.file.Files
 import java.nio.file.Path
 import java.nio.file.Paths
@@ -312,14 +309,31 @@ open class FileStorage<K, V>(
      */
     protected fun createJson(map: Map<String, Any>): String {
         val jsonObject = JsonObject(map.mapValues { (_, value) ->
-            when (value) {
-                is String -> JsonPrimitive(value)
-                is Number -> JsonPrimitive(value)
-                is Boolean -> JsonPrimitive(value)
-                else -> JsonPrimitive(value.toString())
-            }
+            createJsonValue(value)
         })
         return json.encodeToString(JsonObject.serializer(), jsonObject)
+    }
+    
+    /**
+     * Recursively creates a JSON value from a Kotlin value.
+     */
+    private fun createJsonValue(value: Any): kotlinx.serialization.json.JsonElement {
+        return when (value) {
+            is String -> JsonPrimitive(value)
+            is Number -> JsonPrimitive(value)
+            is Boolean -> JsonPrimitive(value)
+            is Map<*, *> -> {
+                // Recursively handle nested maps
+                @Suppress("UNCHECKED_CAST")
+                val stringMap = value as Map<String, Any>
+                JsonObject(stringMap.mapValues { (_, nestedValue) -> createJsonValue(nestedValue) })
+            }
+            is List<*> -> {
+                // Handle lists (though we might not use them much in this context)
+                kotlinx.serialization.json.JsonArray(value.map { createJsonValue(it ?: "null") })
+            }
+            else -> JsonPrimitive(value.toString())
+        }
     }
 
     /**
@@ -331,19 +345,34 @@ open class FileStorage<K, V>(
     protected fun parseJson(jsonString: String): Map<String, Any> {
         val jsonObject = json.parseToJsonElement(jsonString).jsonObject
         return jsonObject.mapValues { (_, value) ->
-            when (value) {
-                is JsonPrimitive -> {
-                    when {
-                        value.isString -> value.content
-                        value.content == "true" || value.content == "false" -> value.content.toBoolean()
-                        value.content.toIntOrNull() != null -> value.content.toInt()
-                        value.content.toLongOrNull() != null -> value.content.toLong()
-                        value.content.toDoubleOrNull() != null -> value.content.toDouble()
-                        else -> value.content
-                    }
+            parseJsonValue(value)
+        }
+    }
+    
+    /**
+     * Recursively parses a JSON value into the appropriate Kotlin type.
+     */
+    private fun parseJsonValue(value: kotlinx.serialization.json.JsonElement): Any {
+        return when (value) {
+            is JsonPrimitive -> {
+                when {
+                    value.isString -> value.content
+                    value.content == "true" || value.content == "false" -> value.content.toBoolean()
+                    value.content.toIntOrNull() != null -> value.content.toInt()
+                    value.content.toLongOrNull() != null -> value.content.toLong()
+                    value.content.toDoubleOrNull() != null -> value.content.toDouble()
+                    else -> value.content
                 }
-                else -> value.toString()
             }
+            is JsonObject -> {
+                // Recursively parse nested objects
+                value.mapValues { (_, nestedValue) -> parseJsonValue(nestedValue) }
+            }
+            is kotlinx.serialization.json.JsonArray -> {
+                // Parse arrays (though we might not use them much in this context)
+                value.map { parseJsonValue(it) }
+            }
+            else -> value.toString()
         }
     }
 }

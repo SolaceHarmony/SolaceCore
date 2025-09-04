@@ -72,23 +72,26 @@ class JvmScriptEngine : ScriptEngine {
             scriptCache[cacheKey]?.let { return@withContext it }
 
             try {
-                // Create a source code object from the script source
+                // For scripts that might have parameters, we'll store the source and compile later
+                // Try to compile first - if it fails due to undefined variables, we'll handle it during execution
                 val source = scriptSource.toScriptSource(scriptName)
-
-                // Compile the script
                 val compilationResult = scriptingHost.compiler(source, compilationConfiguration)
 
-                // Check for compilation errors
-                if (compilationResult is ResultWithDiagnostics.Failure) {
-                    val errors = compilationResult.reports.joinToString("\n") { it.message }
-                    throw ScriptCompilationException("Script compilation failed: $errors")
+                val compiledScriptResult = if (compilationResult is ResultWithDiagnostics.Success) {
+                    // Successfully compiled without parameters
+                    compilationResult.value
+                } else {
+                    // Compilation failed - this might be due to undefined variables for parameters
+                    // We'll store null and handle compilation during execution
+                    null
                 }
 
-                // Create a compiled script object
+                // Create a compiled script object that stores both the result and original source
                 val compiledScript = KotlinCompiledScript(
                     name = scriptName,
                     compilationTimestamp = Instant.now().toEpochMilli(),
-                    compiledScript = (compilationResult as ResultWithDiagnostics.Success).value
+                    compiledScript = compiledScriptResult,
+                    originalSource = scriptSource  // Always store the original source
                 )
 
                 // Cache the compiled script using the combined key
@@ -118,7 +121,15 @@ class JvmScriptEngine : ScriptEngine {
 
         return withContext(Dispatchers.IO) {
             try {
-                // Create an evaluation configuration with the provided parameters
+                // If we have parameters and original source, or if the script didn't compile initially, create a parameterized script
+                if ((parameters.isNotEmpty() && compiledScript.originalSource != null) || compiledScript.compiledScript == null) {
+                    if (compiledScript.originalSource == null) {
+                        throw ScriptExecutionException("Cannot execute script with parameters: original source not available")
+                    }
+                    return@withContext executeParameterizedScript(compiledScript.originalSource, parameters, compiledScript.name)
+                }
+
+                // Otherwise, execute the compiled script normally
                 val evaluationConfiguration = ScriptEvaluationConfiguration {
                     // MainKtsScript expects an "args" parameter, so we provide an empty array if not present
                     val updatedParameters = if (!parameters.containsKey("args")) {
@@ -135,7 +146,7 @@ class JvmScriptEngine : ScriptEngine {
 
                 // Execute the script
                 val evaluationResult = scriptingHost.evaluator(
-                    compiledScript.compiledScript,
+                    compiledScript.compiledScript!!,
                     evaluationConfiguration
                 )
 
@@ -146,37 +157,90 @@ class JvmScriptEngine : ScriptEngine {
                 }
 
                 // Return the result of the script execution
-                val resultValue = (evaluationResult as ResultWithDiagnostics.Success).value.returnValue
+                extractResultValue((evaluationResult as ResultWithDiagnostics.Success).value.returnValue)
 
-                // Extract the actual value from the ResultValue object
-                when (resultValue) {
-                    is ResultValue.Value -> {
-                        // Extract the actual value from the ResultValue.Value object
-                        val valueString = resultValue.toString()
-                        if (valueString.contains("=")) {
-                            // Extract the value after the equals sign
-                            val extractedValue = valueString.substringAfter("=").trim()
-
-                            // Try to convert numeric strings to their appropriate types
-                            when {
-                                // Check if it's an integer
-                                extractedValue.toIntOrNull() != null -> extractedValue.toInt()
-                                // Check if it's a double
-                                extractedValue.toDoubleOrNull() != null -> extractedValue.toDouble()
-                                // Otherwise, return as string
-                                else -> extractedValue
-                            }
-                        } else {
-                            // If there's no equals sign, return the value as is
-                            resultValue.value
-                        }
-                    }
-                    else -> resultValue
-                }
             } catch (e: Exception) {
                 if (e is ScriptExecutionException) throw e
                 throw ScriptExecutionException("Script execution failed: ${e.message}")
             }
+        }
+    }
+
+    /**
+     * Execute a script with parameters by injecting them as variable declarations.
+     */
+    private suspend fun executeParameterizedScript(originalSource: String, parameters: Map<String, Any?>, scriptName: String): Any? {
+        // Create parameter declarations
+        val parameterDeclarations = parameters.entries.joinToString("\n") { (key, value) ->
+            when (value) {
+                is String -> "val $key = \"${value.replace("\"", "\\\"")}\""
+                is Number -> "val $key = $value"
+                is Boolean -> "val $key = $value"
+                null -> "val $key = null"
+                else -> "val $key = \"$value\""
+            }
+        }
+
+        // Combine parameter declarations with the original script
+        val parameterizedScript = "$parameterDeclarations\n\n$originalSource"
+
+        // Create and execute the parameterized script
+        val source = parameterizedScript.toScriptSource("${scriptName}-parameterized")
+        val compilationResult = scriptingHost.compiler(source, compilationConfiguration)
+
+        if (compilationResult is ResultWithDiagnostics.Failure) {
+            val errors = compilationResult.reports.joinToString("\n") { it.message }
+            throw ScriptCompilationException("Parameterized script compilation failed: $errors")
+        }
+
+        val evaluationConfiguration = ScriptEvaluationConfiguration {
+            // Provide an empty args array for MainKtsScript
+            providedProperties(mapOf("args" to emptyArray<String>()))
+            jvm {
+                baseClassLoader(JvmScriptEngine::class.java.classLoader)
+            }
+        }
+
+        val evaluationResult = scriptingHost.evaluator(
+            (compilationResult as ResultWithDiagnostics.Success).value,
+            evaluationConfiguration
+        )
+
+        if (evaluationResult is ResultWithDiagnostics.Failure) {
+            val errors = evaluationResult.reports.joinToString("\n") { it.message }
+            throw ScriptExecutionException("Parameterized script execution failed: $errors")
+        }
+
+        return extractResultValue((evaluationResult as ResultWithDiagnostics.Success).value.returnValue)
+    }
+
+    /**
+     * Extract the actual result value from a ResultValue.
+     */
+    private fun extractResultValue(resultValue: ResultValue): Any? {
+        return when (resultValue) {
+            is ResultValue.Value -> {
+                // Extract the actual value from the ResultValue.Value object
+                val valueString = resultValue.toString()
+                if (valueString.contains("=")) {
+                    // Extract the value after the equals sign
+                    val extractedValue = valueString.substringAfter("=").trim()
+
+                    // Try to convert numeric strings to their appropriate types
+                    when {
+                        // Check if it's an integer
+                        extractedValue.toIntOrNull() != null -> extractedValue.toInt()
+                        // Check if it's a double
+                        extractedValue.toDoubleOrNull() != null -> extractedValue.toDouble()
+                        // Otherwise, return as string
+                        else -> extractedValue
+                    }
+                } else {
+                    // If there's no equals sign, return the value as is
+                    resultValue.value
+                }
+            }
+            else -> resultValue
         }
     }
 
@@ -217,7 +281,8 @@ class JvmScriptEngine : ScriptEngine {
     private class KotlinCompiledScript(
         override val name: String,
         override val compilationTimestamp: Long,
-        val compiledScript: kotlin.script.experimental.api.CompiledScript
+        val compiledScript: kotlin.script.experimental.api.CompiledScript?,  // Can be null if deferred compilation
+        val originalSource: String? = null  // Store original source for parameter injection
     ) : ai.solace.core.scripting.CompiledScript
 }
 
