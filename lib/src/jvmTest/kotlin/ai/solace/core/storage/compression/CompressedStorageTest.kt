@@ -47,8 +47,8 @@ class CompressedStorageTest {
     
     @Test
     fun `test store and retrieve large data (with compression)`(): Unit = runBlocking {
-        // Create a large test string that will be compressed
-        val original = "This is a larger string that will definitely be compressed because it's longer than the threshold."
+        // Create a large test string that will be compressed (highly repetitive for good compression ratio)
+        val original = "AAAA".repeat(100) // 400 bytes of highly compressible data
         val originalBytes = original.toByteArray()
         
         // Store the data
