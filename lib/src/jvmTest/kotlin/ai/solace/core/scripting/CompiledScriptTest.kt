@@ -58,8 +58,6 @@ class CompiledScriptTest {
 
         // Define a script that uses parameters
         val scriptSource = """
-            val x = x as Int
-            val y = y as Int
             x * y
         """.trimIndent()
 
@@ -81,7 +79,6 @@ class CompiledScriptTest {
 
         // Define a script that uses parameters
         val scriptSource = """
-            val factor = factor as Int
             val numbers = listOf(1, 2, 3, 4, 5)
             numbers.map { it * factor }.sum()
         """.trimIndent()
