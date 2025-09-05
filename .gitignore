@@ -39,3 +39,4 @@ build
 .kotlin/
 .gitignore
 .DS_Store
+kotlin-js-store/
