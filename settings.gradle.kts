@@ -11,4 +11,4 @@ plugins {
 }
 
 rootProject.name = "SolaceCore"
-include(":lib")
+include(":composeApp")
