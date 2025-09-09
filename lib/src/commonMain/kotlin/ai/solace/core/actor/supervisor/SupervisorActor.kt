@@ -30,6 +30,14 @@ class SupervisorActor : Actor() {
     private val actorTypeRegistry = mutableMapOf<String, KClass<out Actor>>()
 
     /**
+     * Registry of actor factories mapped by actor class.
+     *
+     * Factories allow the supervisor to instantiate actors on demand,
+     * enabling dynamic registration and factory-based hot-swapping.
+     */
+    private val actorFactoryRegistry = mutableMapOf<KClass<out Actor>, suspend () -> Actor>()
+
+    /**
      * Registers an actor with the supervisor.
      *
      * @param actor The actor to register.
@@ -49,6 +57,35 @@ class SupervisorActor : Actor() {
         actorTypeRegistry[actor.id] = actor::class
 
         return true
+    }
+
+    /**
+     * Registers a factory for creating actors of a specific type.
+     *
+     * @param actorType The class of the actor to associate with the factory.
+     * @param factory A suspend function returning a new instance of the actor.
+     */
+    suspend fun registerActorFactory(
+        actorType: KClass<out Actor>,
+        factory: suspend () -> Actor
+    ) = registryMutex.withLock {
+        actorFactoryRegistry[actorType] = factory
+    }
+
+    /**
+     * Creates an actor using a registered factory and registers it.
+     *
+     * @param actorType The type of actor to create.
+     * @return The newly created actor.
+     * @throws IllegalArgumentException if no factory is registered for the given type.
+     */
+    suspend fun createAndRegisterActor(actorType: KClass<out Actor>): Actor {
+        val factory = registryMutex.withLock { actorFactoryRegistry[actorType] }
+            ?: throw IllegalArgumentException("No factory registered for actor type ${actorType.simpleName}")
+
+        val actor = factory()
+        registerActor(actor)
+        return actor
     }
 
     /**
@@ -106,6 +143,39 @@ class SupervisorActor : Actor() {
         }
 
         return true
+    }
+
+    /**
+     * Hot-swaps an actor using a factory registered for its type.
+     *
+     * The new actor instance is created via the factory associated with the
+     * old actor's type. This allows hot-swapping without supplying an explicit
+     * actor instance.
+     *
+     * @param oldActorId The ID of the actor to replace.
+     * @return True if the hot-swap succeeded, false otherwise.
+     * @throws IllegalStateException if the supervisor is not in the Running state.
+     */
+    suspend fun hotSwapActor(oldActorId: String): Boolean = registryMutex.withLock {
+        if (state != ActorState.Running) {
+            throw IllegalStateException("Cannot hot-swap actor while supervisor is in state: $state")
+        }
+
+        val oldActor = actorRegistry[oldActorId] ?: return false
+        val actorType = actorTypeRegistry[oldActorId] ?: return false
+        val factory = actorFactoryRegistry[actorType] ?: return false
+
+        val wasRunning = oldActor.state == ActorState.Running
+        oldActor.stop()
+
+        val newActor = factory()
+        actorRegistry[oldActorId] = newActor
+
+        if (wasRunning) {
+            newActor.start()
+        }
+
+        true
     }
 
     /**
