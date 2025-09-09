@@ -185,6 +185,38 @@ class SupervisorActorTest {
     }
 
     @Test
+    fun testCreateAndRegisterActorFromFactory() = runTest {
+        val supervisor = SupervisorActor()
+        supervisor.start()
+
+        supervisor.registerActorFactory(TestActor::class) { TestActor() }
+
+        val actor = supervisor.createAndRegisterActor(TestActor::class)
+        val retrieved = supervisor.getActor(actor.id)
+        assertNotNull(retrieved)
+        assertEquals(actor.id, retrieved.id)
+    }
+
+    @Test
+    fun testHotSwapActorUsingFactory() = runTest {
+        val supervisor = SupervisorActor()
+        supervisor.start()
+
+        supervisor.registerActorFactory(TestActor::class) { TestActor() }
+
+        val actor = supervisor.createAndRegisterActor(TestActor::class) as TestActor
+        actor.customState = "old"
+        actor.start()
+
+        val result = supervisor.hotSwapActor(actor.id)
+        assertTrue(result)
+
+        val swapped = supervisor.getActor(actor.id) as TestActor
+        assertEquals(ActorState.Running, swapped.state)
+        assertEquals("initial", swapped.customState)
+    }
+
+    @Test
     fun testGetActorsByType() = runTest {
         val supervisor = SupervisorActor()
         val actor1 = TestActor()
