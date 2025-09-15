@@ -18,6 +18,8 @@ import org.solace.composeapp.ui.data.ActorDisplayData
 @Composable
 fun ActorListView(
     actors: List<ActorDisplayData>,
+    selectedActorId: String? = null,
+    onActorSelected: ((String) -> Unit)? = null,
     modifier: Modifier = Modifier
 ) {
     Card(
@@ -37,7 +39,11 @@ fun ActorListView(
                 verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 items(actors) { actor ->
-                    ActorItemView(actor = actor)
+                    ActorItemView(
+                        actor = actor,
+                        isSelected = selectedActorId == actor.id,
+                        onClick = { onActorSelected?.invoke(actor.id) }
+                    )
                 }
             }
         }
@@ -50,10 +56,19 @@ fun ActorListView(
 @Composable
 fun ActorItemView(
     actor: ActorDisplayData,
+    isSelected: Boolean = false,
+    onClick: (() -> Unit)? = null,
     modifier: Modifier = Modifier
 ) {
     Card(
-        modifier = modifier.fillMaxWidth()
+        modifier = modifier.fillMaxWidth(),
+        colors = CardDefaults.cardColors(
+            containerColor = if (isSelected) 
+                MaterialTheme.colorScheme.primaryContainer 
+            else 
+                MaterialTheme.colorScheme.surface
+        ),
+        onClick = { onClick?.invoke() }
     ) {
         Column(
             modifier = Modifier.padding(12.dp)
@@ -66,12 +81,19 @@ fun ActorItemView(
                 Column {
                     Text(
                         text = actor.name,
-                        style = MaterialTheme.typography.titleMedium
+                        style = MaterialTheme.typography.titleMedium,
+                        color = if (isSelected) 
+                            MaterialTheme.colorScheme.onPrimaryContainer 
+                        else 
+                            MaterialTheme.colorScheme.onSurface
                     )
                     Text(
                         text = "ID: ${actor.id}",
                         style = MaterialTheme.typography.bodySmall,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                        color = if (isSelected) 
+                            MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.7f)
+                        else 
+                            MaterialTheme.colorScheme.onSurfaceVariant
                     )
                 }
                 
