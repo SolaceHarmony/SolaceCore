@@ -239,24 +239,32 @@ private fun calculateActorPositions(actorCount: Int): List<Offset> {
 }
 
 /**
- * Draw connections between actors based on channels
+ * Draw connections between actors based on channels and their positions
+ * @param channels List of channels to draw
+ * @param actorPositions Map of actorId to normalized Offset (x, y in [0,1])
  */
-private fun DrawScope.drawWorkflowConnections(channels: List<ChannelDisplayData>) {
-    // For now, just draw placeholder connections
-    // In a real implementation, you would calculate actor positions and draw lines between them
+private fun DrawScope.drawWorkflowConnections(
+    channels: List<ChannelDisplayData>,
+    actorPositions: Map<String, Offset>
+) {
     channels.forEach { channel ->
         val connectionColor = when (channel.connectionState) {
             is org.solace.composeapp.ui.data.ChannelConnectionState.Connected -> Color(0xFF4CAF50)
             is org.solace.composeapp.ui.data.ChannelConnectionState.Error -> Color(0xFFF44336)
             else -> Color(0xFF9E9E9E)
         }
-        
-        // Draw placeholder connection line
-        drawLine(
-            color = connectionColor,
-            start = Offset(size.width * 0.2f, size.height * 0.5f),
-            end = Offset(size.width * 0.8f, size.height * 0.5f),
-            strokeWidth = 2.dp.toPx()
-        )
+        val sourcePos = actorPositions[channel.sourceActorId]
+        val targetPos = actorPositions[channel.targetActorId]
+        if (sourcePos != null && targetPos != null) {
+            // Scale normalized positions to canvas size
+            val start = Offset(sourcePos.x * size.width, sourcePos.y * size.height)
+            val end = Offset(targetPos.x * size.width, targetPos.y * size.height)
+            drawLine(
+                color = connectionColor,
+                start = start,
+                end = end,
+                strokeWidth = 2.dp.toPx()
+            )
+        }
     }
 }
