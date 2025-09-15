@@ -78,6 +78,12 @@ fun SolaceRealTimeUI() {
             
             // Actor list
             ActorListView(actors = actors)
+            
+            // Actor control panel for lifecycle management
+            ActorControlPanel(
+                actors = actors,
+                actorService = actorService
+            )
         }
     }
 }

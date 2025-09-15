@@ -11,6 +11,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import org.solace.composeapp.actor.ActorState
 import org.solace.composeapp.ui.data.ActorDisplayData
+import kotlin.math.roundToInt
 
 /**
  * Component that displays a list of actors with their current state and metrics
@@ -150,11 +151,11 @@ fun ActorMetricsView(
         ) {
             MetricItem(
                 label = "Success Rate",
-                value = "${String.format("%.1f", metrics.successRate)}%"
+                value = "${((metrics.successRate * 10).roundToInt() / 10.0)}%"
             )
             MetricItem(
                 label = "Avg Time",
-                value = "${String.format("%.1f", metrics.averageProcessingTime)}ms"
+                value = "${((metrics.averageProcessingTime * 10).roundToInt() / 10.0)}ms"
             )
         }
     }
