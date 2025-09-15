@@ -120,7 +120,6 @@ fun SolaceRealTimeUI() {
                 channels = channels,
                 actorService = actorService
             )
-            
             // Two-column layout for better organization
             Row(
                 modifier = Modifier.fillMaxWidth(),
@@ -157,7 +156,6 @@ fun SolaceRealTimeUI() {
 
                     // Workflow visualization
                     WorkflowVisualizationView(workflow = selectedWorkflow)
-
                 }
             }
             
