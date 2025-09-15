@@ -25,7 +25,7 @@ kotlin {
         val desktopMain by getting {
             dependencies {
                 implementation(compose.desktop.currentOs)
-                implementation(project(":"))
+                implementation(project(":lib"))
             }
         }
         val webMain by getting {

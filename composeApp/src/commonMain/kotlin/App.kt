@@ -114,7 +114,6 @@ fun SolaceRealTimeUI() {
                     actorService.startMonitoring()
                 }
             )
-            
             // Two-column layout for better organization
             Row(
                 modifier = Modifier.fillMaxWidth(),
@@ -129,15 +128,15 @@ fun SolaceRealTimeUI() {
                     ActorListView(
                         actors = actors,
                         selectedActorId = selectedActorId,
-                        onActorSelected = { actorId -> 
-                            selectedActorId = if (selectedActorId == actorId) null else actorId 
+                        onActorSelected = { actorId ->
+                            selectedActorId = if (selectedActorId == actorId) null else actorId
                         }
                     )
-                    
+
                     // Channel monitoring
                     ChannelMonitoringView(channels = channels)
                 }
-                
+
                 // Right column: Controls and Visualization
                 Column(
                     modifier = Modifier.weight(1f),
@@ -145,38 +144,34 @@ fun SolaceRealTimeUI() {
                 ) {
                     // Actor control panel
                     ActorControlPanel(
-                        selectedActor = selectedActor,
-                        onCreateActor = { actorService.createActor() },
-                        onDeleteActor = { actorId -> actorService.deleteActor(actorId) },
-                        onStartActor = { actorId -> actorService.startActor(actorId) },
-                        onStopActor = { actorId -> actorService.stopActor(actorId) },
-                        onPauseActor = { actorId -> actorService.pauseActor(actorId) },
-                        onResumeActor = { actorId -> actorService.resumeActor(actorId) }
+                        actors = actors,
+                        actorService = actorService
                     )
-                    
+
                     // Workflow visualization
                     WorkflowVisualizationView(workflow = selectedWorkflow)
-                    
+
                     // Quick action buttons
                     QuickActionButtons(
-                        onStartAll = { 
-                            actors.forEach { actor -> 
-                                actorService.startActor(actor.id) 
+                        onStartAll = {
+                            actors.forEach { actor ->
+                                actorService.startActor(actor.id)
                             }
                         },
-                        onStopAll = { 
-                            actors.forEach { actor -> 
-                                actorService.stopActor(actor.id) 
+                        onStopAll = {
+                            actors.forEach { actor ->
+                                actorService.stopActor(actor.id)
                             }
                         },
-                        onPauseAll = { 
-                            actors.forEach { actor -> 
-                                actorService.pauseActor(actor.id) 
+                        onPauseAll = {
+                            actors.forEach { actor ->
+                                actorService.pauseActor(actor.id)
                             }
                         }
                     )
                 }
             }
+            
         }
     }
 }

@@ -8,6 +8,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import org.solace.composeapp.ui.data.SystemMetricsData
+import kotlin.math.roundToInt
 
 /**
  * Dashboard component displaying system-wide metrics
@@ -67,7 +68,7 @@ fun SystemMetricsDashboard(
                 
                 SystemMetricCard(
                     title = "Avg Response",
-                    value = "${(metrics.averageResponseTime * 10).toInt() / 10.0}ms",
+                    value = "${((metrics.averageResponseTime * 10).roundToInt() / 10.0)}ms",
                     color = MaterialTheme.colorScheme.tertiary
                 )
                 
@@ -195,12 +196,10 @@ fun MonitoringControlPanel(
 /**
  * Format large numbers with K, M suffixes
  */
-private fun formatLargeNumber(number: Long): String {
-    return when {
-        number >= 1_000_000 -> "${(number / 100_000).toInt() / 10.0}M"
-        number >= 1_000 -> "${(number / 100).toInt() / 10.0}K"
-        else -> number.toString()
-    }
+private fun formatLargeNumber(number: Long): String = when {
+    number >= 1_000_000 -> "${((number / 1_000_000.0 * 10).roundToInt() / 10.0)}M"
+    number >= 1_000 -> "${((number / 1_000.0 * 10).roundToInt() / 10.0)}K"
+    else -> number.toString()
 }
 
 /**
