@@ -128,7 +128,7 @@ class RealTimeActorService(
             pausedActors = pausedCount,
             totalMessages = totalMessages,
             averageResponseTime = avgResponseTime,
-            systemUptime = System.currentTimeMillis()
+            systemUptime = Clock.System.now().toEpochMilliseconds()
         )
     }
     

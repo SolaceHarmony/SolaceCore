@@ -150,11 +150,11 @@ fun ActorMetricsView(
         ) {
             MetricItem(
                 label = "Success Rate",
-                value = "${String.format("%.1f", metrics.successRate)}%"
+                value = "${(metrics.successRate * 10).toInt() / 10.0}%"
             )
             MetricItem(
                 label = "Avg Time",
-                value = "${String.format("%.1f", metrics.averageProcessingTime)}ms"
+                value = "${(metrics.averageProcessingTime * 10).toInt() / 10.0}ms"
             )
         }
     }
