@@ -23,8 +23,13 @@ fun App() {
 fun SolaceRealTimeUI() {
     val actorService = remember { RealTimeActorService() }
     val actors by actorService.actors.collectAsState()
+    val channels by actorService.channels.collectAsState()
+    val selectedWorkflow by actorService.selectedWorkflow.collectAsState()
     val systemMetrics by actorService.systemMetrics.collectAsState()
     val isMonitoring by actorService.isMonitoring.collectAsState()
+    
+    var selectedActorId by remember { mutableStateOf<String?>(null) }
+    val selectedActor = actors.find { it.id == selectedActorId }
     
     LaunchedEffect(Unit) {
         actorService.startMonitoring()
@@ -76,8 +81,68 @@ fun SolaceRealTimeUI() {
                 }
             )
             
-            // Actor list
-            ActorListView(actors = actors)
+            // Two-column layout for better organization
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.spacedBy(16.dp)
+            ) {
+                // Left column: Actor and Channel monitoring
+                Column(
+                    modifier = Modifier.weight(1f),
+                    verticalArrangement = Arrangement.spacedBy(16.dp)
+                ) {
+                    // Actor list with clickable items
+                    ActorListView(
+                        actors = actors,
+                        selectedActorId = selectedActorId,
+                        onActorSelected = { actorId -> 
+                            selectedActorId = if (selectedActorId == actorId) null else actorId 
+                        }
+                    )
+                    
+                    // Channel monitoring
+                    ChannelMonitoringView(channels = channels)
+                }
+                
+                // Right column: Controls and Visualization
+                Column(
+                    modifier = Modifier.weight(1f),
+                    verticalArrangement = Arrangement.spacedBy(16.dp)
+                ) {
+                    // Actor control panel
+                    ActorControlPanel(
+                        selectedActor = selectedActor,
+                        onCreateActor = { actorService.createActor() },
+                        onDeleteActor = { actorId -> actorService.deleteActor(actorId) },
+                        onStartActor = { actorId -> actorService.startActor(actorId) },
+                        onStopActor = { actorId -> actorService.stopActor(actorId) },
+                        onPauseActor = { actorId -> actorService.pauseActor(actorId) },
+                        onResumeActor = { actorId -> actorService.resumeActor(actorId) }
+                    )
+                    
+                    // Workflow visualization
+                    WorkflowVisualizationView(workflow = selectedWorkflow)
+                    
+                    // Quick action buttons
+                    QuickActionButtons(
+                        onStartAll = { 
+                            actors.forEach { actor -> 
+                                actorService.startActor(actor.id) 
+                            }
+                        },
+                        onStopAll = { 
+                            actors.forEach { actor -> 
+                                actorService.stopActor(actor.id) 
+                            }
+                        },
+                        onPauseAll = { 
+                            actors.forEach { actor -> 
+                                actorService.pauseActor(actor.id) 
+                            }
+                        }
+                    )
+                }
+            }
         }
     }
 }

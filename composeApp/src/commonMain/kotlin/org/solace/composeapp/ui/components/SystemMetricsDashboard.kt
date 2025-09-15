@@ -67,7 +67,7 @@ fun SystemMetricsDashboard(
                 
                 SystemMetricCard(
                     title = "Avg Response",
-                    value = "${String.format("%.1f", metrics.averageResponseTime)}ms",
+                    value = "${(metrics.averageResponseTime * 10).toInt() / 10.0}ms",
                     color = MaterialTheme.colorScheme.tertiary
                 )
                 
@@ -197,8 +197,8 @@ fun MonitoringControlPanel(
  */
 private fun formatLargeNumber(number: Long): String {
     return when {
-        number >= 1_000_000 -> "${(number / 1_000_000.0).let { String.format("%.1f", it) }}M"
-        number >= 1_000 -> "${(number / 1_000.0).let { String.format("%.1f", it) }}K"
+        number >= 1_000_000 -> "${(number / 100_000).toInt() / 10.0}M"
+        number >= 1_000 -> "${(number / 100).toInt() / 10.0}K"
         else -> number.toString()
     }
 }

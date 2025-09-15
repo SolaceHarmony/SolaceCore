@@ -7,6 +7,11 @@ import kotlinx.datetime.Clock
 import org.solace.composeapp.ui.data.ActorDisplayData
 import org.solace.composeapp.ui.data.ActorMetricsData
 import org.solace.composeapp.ui.data.SystemMetricsData
+import org.solace.composeapp.ui.data.ChannelDisplayData
+import org.solace.composeapp.ui.data.ChannelConnectionState
+import org.solace.composeapp.ui.data.ChannelMetricsData
+import org.solace.composeapp.ui.data.WorkflowDisplayData
+import org.solace.composeapp.ui.data.WorkflowState
 
 /**
  * Service that provides real-time updates for the actor system UI
@@ -16,6 +21,15 @@ class RealTimeActorService(
 ) {
     private val _actors = MutableStateFlow<List<ActorDisplayData>>(emptyList())
     val actors: StateFlow<List<ActorDisplayData>> = _actors.asStateFlow()
+    
+    private val _channels = MutableStateFlow<List<ChannelDisplayData>>(emptyList())
+    val channels: StateFlow<List<ChannelDisplayData>> = _channels.asStateFlow()
+    
+    private val _workflows = MutableStateFlow<List<WorkflowDisplayData>>(emptyList())
+    val workflows: StateFlow<List<WorkflowDisplayData>> = _workflows.asStateFlow()
+    
+    private val _selectedWorkflow = MutableStateFlow<WorkflowDisplayData?>(null)
+    val selectedWorkflow: StateFlow<WorkflowDisplayData?> = _selectedWorkflow.asStateFlow()
     
     private val _systemMetrics = MutableStateFlow(SystemMetricsData())
     val systemMetrics: StateFlow<SystemMetricsData> = _systemMetrics.asStateFlow()
@@ -35,6 +49,8 @@ class RealTimeActorService(
         monitoringJob = scope.launch {
             while (_isMonitoring.value) {
                 updateActorData()
+                updateChannelData()
+                updateWorkflowData()
                 updateSystemMetrics()
                 delay(UPDATE_INTERVAL_MS)
             }
@@ -60,12 +76,12 @@ class RealTimeActorService(
         val sampleActors = listOf(
             ActorDisplayData(
                 id = "actor-1",
-                name = "Sample Actor 1",
+                name = "Message Processor",
                 state = ActorState.Running,
                 lastUpdate = currentTime,
                 metrics = ActorMetricsData(
-                    messagesReceived = (0..1000).random().toLong(),
-                    messagesProcessed = (0..800).random().toLong(),
+                    messagesReceived = (500..1500).random().toLong(),
+                    messagesProcessed = (400..1200).random().toLong(),
                     messagesFailed = (0..50).random().toLong(),
                     successRate = (85..99).random().toDouble(),
                     averageProcessingTime = (10..100).random().toDouble(),
@@ -74,12 +90,12 @@ class RealTimeActorService(
             ),
             ActorDisplayData(
                 id = "actor-2",
-                name = "Sample Actor 2",
-                state = ActorState.Paused("Maintenance"),
+                name = "Data Transformer",
+                state = if ((0..10).random() > 7) ActorState.Paused("Maintenance") else ActorState.Running,
                 lastUpdate = currentTime,
                 metrics = ActorMetricsData(
-                    messagesReceived = (0..500).random().toLong(),
-                    messagesProcessed = (0..400).random().toLong(),
+                    messagesReceived = (200..800).random().toLong(),
+                    messagesProcessed = (180..750).random().toLong(),
                     messagesFailed = (0..20).random().toLong(),
                     successRate = (90..100).random().toDouble(),
                     averageProcessingTime = (15..80).random().toDouble(),
@@ -88,21 +104,140 @@ class RealTimeActorService(
             ),
             ActorDisplayData(
                 id = "actor-3",
-                name = "Sample Actor 3",
-                state = ActorState.Error("Connection timeout"),
+                name = "Result Aggregator",
+                state = if ((0..10).random() > 8) ActorState.Error("Connection timeout") else ActorState.Running,
                 lastUpdate = currentTime,
                 metrics = ActorMetricsData(
-                    messagesReceived = (0..200).random().toLong(),
-                    messagesProcessed = (0..100).random().toLong(),
-                    messagesFailed = (10..80).random().toLong(),
-                    successRate = (30..70).random().toDouble(),
-                    averageProcessingTime = (50..200).random().toDouble(),
-                    lastProcessingTime = (100..500).random().toLong()
+                    messagesReceived = (100..600).random().toLong(),
+                    messagesProcessed = (80..500).random().toLong(),
+                    messagesFailed = (5..80).random().toLong(),
+                    successRate = (70..95).random().toDouble(),
+                    averageProcessingTime = (25..150).random().toDouble(),
+                    lastProcessingTime = (50..200).random().toLong()
+                )
+            ),
+            ActorDisplayData(
+                id = "actor-4",
+                name = "Logger Service",
+                state = ActorState.Running,
+                lastUpdate = currentTime,
+                metrics = ActorMetricsData(
+                    messagesReceived = (1000..2000).random().toLong(),
+                    messagesProcessed = (950..1950).random().toLong(),
+                    messagesFailed = (0..10).random().toLong(),
+                    successRate = (98..100).random().toDouble(),
+                    averageProcessingTime = (5..20).random().toDouble(),
+                    lastProcessingTime = (2..10).random().toLong()
                 )
             )
         )
         
         _actors.value = sampleActors
+    }
+    
+    /**
+     * Simulate channel data for demonstration
+     */
+    private suspend fun updateChannelData() {
+        val currentTime = Clock.System.now()
+        val currentActors = _actors.value
+        
+        val sampleChannels = listOf(
+            ChannelDisplayData(
+                id = "channel-1",
+                name = "Input Channel",
+                type = "String",
+                sourceActorId = "External",
+                targetActorId = "actor-1",
+                connectionState = ChannelConnectionState.Connected,
+                lastActivity = currentTime,
+                metrics = ChannelMetricsData(
+                    messagesSent = (100..500).random().toLong(),
+                    messagesReceived = (95..495).random().toLong(),
+                    messagesDropped = (0..5).random().toLong(),
+                    averageLatency = (1..10).random().toDouble(),
+                    throughputPerSecond = (10..50).random().toDouble(),
+                    errorRate = (0..2).random().toDouble()
+                )
+            ),
+            ChannelDisplayData(
+                id = "channel-2",
+                name = "Processing Pipeline",
+                type = "ProcessedMessage",
+                sourceActorId = "actor-1",
+                targetActorId = "actor-2",
+                connectionState = if ((0..10).random() > 8) ChannelConnectionState.Error("Network timeout") 
+                                else ChannelConnectionState.Connected,
+                lastActivity = currentTime,
+                metrics = ChannelMetricsData(
+                    messagesSent = (80..400).random().toLong(),
+                    messagesReceived = (75..395).random().toLong(),
+                    messagesDropped = (0..10).random().toLong(),
+                    averageLatency = (2..15).random().toDouble(),
+                    throughputPerSecond = (8..40).random().toDouble(),
+                    errorRate = (0..5).random().toDouble()
+                )
+            ),
+            ChannelDisplayData(
+                id = "channel-3",
+                name = "Aggregation Channel",
+                type = "TransformedData",
+                sourceActorId = "actor-2",
+                targetActorId = "actor-3",
+                connectionState = ChannelConnectionState.Connected,
+                lastActivity = currentTime,
+                metrics = ChannelMetricsData(
+                    messagesSent = (60..300).random().toLong(),
+                    messagesReceived = (58..295).random().toLong(),
+                    messagesDropped = (0..5).random().toLong(),
+                    averageLatency = (5..25).random().toDouble(),
+                    throughputPerSecond = (5..30).random().toDouble(),
+                    errorRate = (0..3).random().toDouble()
+                )
+            ),
+            ChannelDisplayData(
+                id = "channel-4",
+                name = "Logging Channel",
+                type = "LogMessage",
+                sourceActorId = "actor-3",
+                targetActorId = "actor-4",
+                connectionState = ChannelConnectionState.Connected,
+                lastActivity = currentTime,
+                metrics = ChannelMetricsData(
+                    messagesSent = (50..250).random().toLong(),
+                    messagesReceived = (50..250).random().toLong(),
+                    messagesDropped = (0..2).random().toLong(),
+                    averageLatency = (1..5).random().toDouble(),
+                    throughputPerSecond = (15..60).random().toDouble(),
+                    errorRate = (0..1).random().toDouble()
+                )
+            )
+        )
+        
+        _channels.value = sampleChannels
+    }
+    
+    /**
+     * Simulate workflow data
+     */
+    private suspend fun updateWorkflowData() {
+        val currentTime = Clock.System.now()
+        val currentActors = _actors.value
+        val currentChannels = _channels.value
+        
+        val sampleWorkflow = WorkflowDisplayData(
+            id = "workflow-1",
+            name = "Message Processing Pipeline",
+            state = WorkflowState.Running,
+            actors = currentActors,
+            channels = currentChannels,
+            lastUpdate = currentTime
+        )
+        
+        _workflows.value = listOf(sampleWorkflow)
+        if (_selectedWorkflow.value == null) {
+            _selectedWorkflow.value = sampleWorkflow
+        }
     }
     
     /**
@@ -128,11 +263,39 @@ class RealTimeActorService(
             pausedActors = pausedCount,
             totalMessages = totalMessages,
             averageResponseTime = avgResponseTime,
-            systemUptime = System.currentTimeMillis()
+            systemUptime = Clock.System.now().toEpochMilliseconds()
         )
     }
     
+    /**
+     * Actor lifecycle management methods
+     */
+    fun createActor() {
+        // In a real implementation, this would interface with the actor system
+        println("Creating new actor...")
+    }
+    
+    fun deleteActor(actorId: String) {
+        println("Deleting actor: $actorId")
+    }
+    
+    fun startActor(actorId: String) {
+        println("Starting actor: $actorId")
+    }
+    
+    fun stopActor(actorId: String) {
+        println("Stopping actor: $actorId")
+    }
+    
+    fun pauseActor(actorId: String) {
+        println("Pausing actor: $actorId")
+    }
+    
+    fun resumeActor(actorId: String) {
+        println("Resuming actor: $actorId")
+    }
+    
     companion object {
-        private const val UPDATE_INTERVAL_MS = 1000L // 1 second updates
+        private const val UPDATE_INTERVAL_MS = 2000L // 2 second updates for demo
     }
 }
