@@ -117,17 +117,20 @@ fun WorkflowDiagram(
             .fillMaxWidth()
             .height(300.dp)
     ) {
+        // Position actors in a grid layout
+        val actorPositionsList = calculateActorPositions(workflow.actors.size)
+        val actorPositions = workflow.actors.mapIndexed { index, actor ->
+            actor.id to (actorPositionsList.getOrNull(index) ?: Offset(0.5f, 0.5f))
+        }.toMap()
+        
         Canvas(
             modifier = Modifier.fillMaxSize()
         ) {
-            drawWorkflowConnections(workflow.channels)
+            drawWorkflowConnections(workflow.channels, actorPositions)
         }
         
-        // Position actors in a grid layout
-        val actorPositions = calculateActorPositions(workflow.actors.size)
-        
-        workflow.actors.forEachIndexed { index, actor ->
-            val position = actorPositions.getOrNull(index) ?: Offset(0.5f, 0.5f)
+        workflow.actors.forEach { actor ->
+            val position = actorPositions[actor.id] ?: Offset(0.5f, 0.5f)
             
             ActorNode(
                 actor = actor,

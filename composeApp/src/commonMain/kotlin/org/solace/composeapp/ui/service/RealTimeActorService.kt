@@ -1,3 +1,4 @@
+@file:OptIn(ExperimentalUuidApi::class)
 package org.solace.composeapp.ui.service
 
 import org.solace.composeapp.actor.ActorState
@@ -12,6 +13,8 @@ import org.solace.composeapp.ui.data.ChannelConnectionState
 import org.solace.composeapp.ui.data.ChannelMetricsData
 import org.solace.composeapp.ui.data.WorkflowDisplayData
 import org.solace.composeapp.ui.data.WorkflowState
+import kotlin.uuid.ExperimentalUuidApi
+import kotlin.uuid.Uuid
 
 /**
  * Service that provides real-time updates for the actor system UI
@@ -75,7 +78,7 @@ class RealTimeActorService(
         // For now, create sample data until we have actual supervisor integration
         val sampleActors = listOf(
             ActorDisplayData(
-                id = "actor-1",
+                id = DEMO_ACTOR_MESSAGE_PROCESSOR,
                 name = "Message Processor",
                 state = ActorState.Running,
                 lastUpdate = currentTime,
@@ -89,7 +92,7 @@ class RealTimeActorService(
                 )
             ),
             ActorDisplayData(
-                id = "actor-2",
+                id = DEMO_ACTOR_DATA_TRANSFORMER,
                 name = "Data Transformer",
                 state = if ((0..10).random() > 7) ActorState.Paused("Maintenance") else ActorState.Running,
                 lastUpdate = currentTime,
@@ -103,7 +106,7 @@ class RealTimeActorService(
                 )
             ),
             ActorDisplayData(
-                id = "actor-3",
+                id = DEMO_ACTOR_RESULT_AGGREGATOR,
                 name = "Result Aggregator",
                 state = if ((0..10).random() > 8) ActorState.Error("Connection timeout") else ActorState.Running,
                 lastUpdate = currentTime,
@@ -117,7 +120,7 @@ class RealTimeActorService(
                 )
             ),
             ActorDisplayData(
-                id = "actor-4",
+                id = DEMO_ACTOR_LOGGER_SERVICE,
                 name = "Logger Service",
                 state = ActorState.Running,
                 lastUpdate = currentTime,
@@ -144,11 +147,11 @@ class RealTimeActorService(
         
         val sampleChannels = listOf(
             ChannelDisplayData(
-                id = "channel-1",
+                id = DEMO_CHANNEL_INPUT,
                 name = "Input Channel",
                 type = "String",
                 sourceActorId = "External",
-                targetActorId = "actor-1",
+                targetActorId = DEMO_ACTOR_MESSAGE_PROCESSOR,
                 connectionState = ChannelConnectionState.Connected,
                 lastActivity = currentTime,
                 metrics = ChannelMetricsData(
@@ -161,11 +164,11 @@ class RealTimeActorService(
                 )
             ),
             ChannelDisplayData(
-                id = "channel-2",
+                id = DEMO_CHANNEL_PROCESSING,
                 name = "Processing Pipeline",
                 type = "ProcessedMessage",
-                sourceActorId = "actor-1",
-                targetActorId = "actor-2",
+                sourceActorId = DEMO_ACTOR_MESSAGE_PROCESSOR,
+                targetActorId = DEMO_ACTOR_DATA_TRANSFORMER,
                 connectionState = if ((0..10).random() > 8) ChannelConnectionState.Error("Network timeout") 
                                 else ChannelConnectionState.Connected,
                 lastActivity = currentTime,
@@ -179,11 +182,11 @@ class RealTimeActorService(
                 )
             ),
             ChannelDisplayData(
-                id = "channel-3",
+                id = DEMO_CHANNEL_AGGREGATION,
                 name = "Aggregation Channel",
                 type = "TransformedData",
-                sourceActorId = "actor-2",
-                targetActorId = "actor-3",
+                sourceActorId = DEMO_ACTOR_DATA_TRANSFORMER,
+                targetActorId = DEMO_ACTOR_RESULT_AGGREGATOR,
                 connectionState = ChannelConnectionState.Connected,
                 lastActivity = currentTime,
                 metrics = ChannelMetricsData(
@@ -196,11 +199,11 @@ class RealTimeActorService(
                 )
             ),
             ChannelDisplayData(
-                id = "channel-4",
+                id = DEMO_CHANNEL_LOGGING,
                 name = "Logging Channel",
                 type = "LogMessage",
-                sourceActorId = "actor-3",
-                targetActorId = "actor-4",
+                sourceActorId = DEMO_ACTOR_RESULT_AGGREGATOR,
+                targetActorId = DEMO_ACTOR_LOGGER_SERVICE,
                 connectionState = ChannelConnectionState.Connected,
                 lastActivity = currentTime,
                 metrics = ChannelMetricsData(
@@ -297,5 +300,18 @@ class RealTimeActorService(
     
     companion object {
         private const val UPDATE_INTERVAL_MS = 2000L // 2 second updates for demo
+        
+        // Stable UUID-based IDs for demo actors to ensure consistency across UI updates
+        // Using predictable UUIDs for demo purposes while maintaining uniqueness guarantees
+        private val DEMO_ACTOR_MESSAGE_PROCESSOR = "a1234567-1234-4123-8123-123456789012"
+        private val DEMO_ACTOR_DATA_TRANSFORMER = "a2345678-2345-4234-8234-234567890123"  
+        private val DEMO_ACTOR_RESULT_AGGREGATOR = "a3456789-3456-4345-8345-345678901234"
+        private val DEMO_ACTOR_LOGGER_SERVICE = "a4567890-4567-4456-8456-456789012345"
+        
+        // Stable UUID-based IDs for demo channels
+        private val DEMO_CHANNEL_INPUT = "c1234567-1234-4123-8123-123456789012"
+        private val DEMO_CHANNEL_PROCESSING = "c2345678-2345-4234-8234-234567890123"
+        private val DEMO_CHANNEL_AGGREGATION = "c3456789-3456-4345-8345-345678901234" 
+        private val DEMO_CHANNEL_LOGGING = "c4567890-4567-4456-8456-456789012345"
     }
 }
