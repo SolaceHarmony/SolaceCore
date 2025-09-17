@@ -303,15 +303,15 @@ class RealTimeActorService(
         
         // Stable UUID-based IDs for demo actors to ensure consistency across UI updates
         // Using predictable UUIDs for demo purposes while maintaining uniqueness guarantees
-        private val DEMO_ACTOR_MESSAGE_PROCESSOR = "a1234567-1234-4123-8123-123456789012"
-        private val DEMO_ACTOR_DATA_TRANSFORMER = "a2345678-2345-4234-8234-234567890123"  
-        private val DEMO_ACTOR_RESULT_AGGREGATOR = "a3456789-3456-4345-8345-345678901234"
-        private val DEMO_ACTOR_LOGGER_SERVICE = "a4567890-4567-4456-8456-456789012345"
+        private val DEMO_ACTOR_MESSAGE_PROCESSOR = "a1e2f3d4-1234-4abc-8def-1234567890ab"
+        private val DEMO_ACTOR_DATA_TRANSFORMER = "b2f3e4c5-2345-4bcd-9abc-2345678901bc"
+        private val DEMO_ACTOR_RESULT_AGGREGATOR = "c3d4f5e6-3456-4cde-8bcd-3456789012cd"
+        private val DEMO_ACTOR_LOGGER_SERVICE = "d4e5c6f7-4567-4def-9cde-4567890123de"
         
         // Stable UUID-based IDs for demo channels
-        private val DEMO_CHANNEL_INPUT = "c1234567-1234-4123-8123-123456789012"
-        private val DEMO_CHANNEL_PROCESSING = "c2345678-2345-4234-8234-234567890123"
-        private val DEMO_CHANNEL_AGGREGATION = "c3456789-3456-4345-8345-345678901234" 
-        private val DEMO_CHANNEL_LOGGING = "c4567890-4567-4456-8456-456789012345"
+        private val DEMO_CHANNEL_INPUT = "e5f6d7c8-5678-4abc-8def-5678901234ef"
+        private val DEMO_CHANNEL_PROCESSING = "f6c7e8d9-6789-4bcd-9abc-6789012345fa"
+        private val DEMO_CHANNEL_AGGREGATION = "a7d8f9e0-7890-4cde-8bcd-7890123456ab" 
+        private val DEMO_CHANNEL_LOGGING = "b8e9c0f1-8901-4def-9cde-8901234567bc"
     }
 }
