@@ -1,7 +1,7 @@
 package org.solace.composeapp
 
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import org.jetbrains.compose.web.dom.Text
 
 @Composable
 actual fun PlatformText(text: String) {
