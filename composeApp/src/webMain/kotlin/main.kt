@@ -1,9 +1,11 @@
 package org.solace.composeapp
 
-import org.jetbrains.compose.web.renderComposable
+import androidx.compose.ui.ExperimentalComposeUiApi
+import androidx.compose.ui.window.CanvasBasedWindow
 
+@OptIn(ExperimentalComposeUiApi::class)
 fun main() {
-    renderComposable(rootElementId = "root") {
+    CanvasBasedWindow(title = "SolaceCore Monitor") {
         App()
     }
 }

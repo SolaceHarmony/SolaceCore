@@ -1,20 +1,54 @@
 package org.solace.composeapp
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.unit.dp
 import org.solace.composeapp.ui.components.*
 import org.solace.composeapp.ui.service.RealTimeActorService
+import org.solace.composeapp.ui.theme.SolaceTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun App() {
-    MaterialTheme {
-        SolaceRealTimeUI()
+    SolaceTheme {
+        Surface(
+            modifier = Modifier.fillMaxSize(),
+            color = MaterialTheme.colorScheme.background
+        ) {
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(
+                        Brush.verticalGradient(
+                            colors = listOf(
+                                MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.6f),
+                                MaterialTheme.colorScheme.background
+                            )
+                        )
+                    )
+                    .padding(horizontal = 24.dp, vertical = 16.dp)
+            ) {
+                Surface(
+                    modifier = Modifier
+                        .align(Alignment.TopCenter)
+                        .fillMaxSize()
+                        .widthIn(max = 1320.dp),
+                    tonalElevation = 4.dp,
+                    shadowElevation = 16.dp,
+                    shape = MaterialTheme.shapes.large,
+                    color = MaterialTheme.colorScheme.surface.copy(alpha = 0.95f)
+                ) {
+                    SolaceRealTimeUI()
+                }
+            }
+        }
     }
 }
 
