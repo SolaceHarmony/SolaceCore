@@ -11,7 +11,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import org.solace.composeapp.actor.ActorState
 import org.solace.composeapp.ui.data.ActorDisplayData
-import kotlin.math.roundToInt
 
 /**
  * Component that displays a list of actors with their current state and metrics
@@ -19,6 +18,8 @@ import kotlin.math.roundToInt
 @Composable
 fun ActorListView(
     actors: List<ActorDisplayData>,
+    selectedActorId: String? = null,
+    onActorSelected: ((String) -> Unit)? = null,
     modifier: Modifier = Modifier
 ) {
     Card(
@@ -38,7 +39,11 @@ fun ActorListView(
                 verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 items(actors) { actor ->
-                    ActorItemView(actor = actor)
+                    ActorItemView(
+                        actor = actor,
+                        isSelected = selectedActorId == actor.id,
+                        onClick = { onActorSelected?.invoke(actor.id) }
+                    )
                 }
             }
         }
@@ -51,10 +56,19 @@ fun ActorListView(
 @Composable
 fun ActorItemView(
     actor: ActorDisplayData,
+    isSelected: Boolean = false,
+    onClick: (() -> Unit)? = null,
     modifier: Modifier = Modifier
 ) {
     Card(
-        modifier = modifier.fillMaxWidth()
+        modifier = modifier.fillMaxWidth(),
+        colors = CardDefaults.cardColors(
+            containerColor = if (isSelected) 
+                MaterialTheme.colorScheme.primaryContainer 
+            else 
+                MaterialTheme.colorScheme.surface
+        ),
+        onClick = { onClick?.invoke() }
     ) {
         Column(
             modifier = Modifier.padding(12.dp)
@@ -67,12 +81,19 @@ fun ActorItemView(
                 Column {
                     Text(
                         text = actor.name,
-                        style = MaterialTheme.typography.titleMedium
+                        style = MaterialTheme.typography.titleMedium,
+                        color = if (isSelected) 
+                            MaterialTheme.colorScheme.onPrimaryContainer 
+                        else 
+                            MaterialTheme.colorScheme.onSurface
                     )
                     Text(
                         text = "ID: ${actor.id}",
                         style = MaterialTheme.typography.bodySmall,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                        color = if (isSelected) 
+                            MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.7f)
+                        else 
+                            MaterialTheme.colorScheme.onSurfaceVariant
                     )
                 }
                 
@@ -151,11 +172,11 @@ fun ActorMetricsView(
         ) {
             MetricItem(
                 label = "Success Rate",
-                value = "${((metrics.successRate * 10).roundToInt() / 10.0)}%"
+                value = "${(metrics.successRate * 10).toInt() / 10.0}%"
             )
             MetricItem(
                 label = "Avg Time",
-                value = "${((metrics.averageProcessingTime * 10).roundToInt() / 10.0)}ms"
+                value = "${(metrics.averageProcessingTime * 10).toInt() / 10.0}ms"
             )
         }
     }
