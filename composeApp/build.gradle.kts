@@ -1,7 +1,7 @@
 plugins {
-    kotlin("multiplatform") version "2.0.21"
-    kotlin("plugin.compose") version "2.0.21"
-    id("org.jetbrains.compose") version "1.7.0"
+    kotlin("multiplatform") version "2.2.20"
+    kotlin("plugin.compose") version "2.2.20"
+    id("org.jetbrains.compose") version "1.9.0"
 }
 
 kotlin {
@@ -18,6 +18,7 @@ kotlin {
                 implementation(compose.foundation)
                 implementation(compose.material3)
                 implementation(compose.ui)
+                implementation(compose.materialIconsExtended)
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.9.0")
                 implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.6.1")
             }

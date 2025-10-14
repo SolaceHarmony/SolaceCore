@@ -102,12 +102,13 @@ fun ChannelStatusBadge(
     state: ChannelConnectionState,
     modifier: Modifier = Modifier
 ) {
-    val (color, text, icon) = when (state) {
+    val statusTriple: Triple<Color, String, ImageVector> = when (state) {
         is ChannelConnectionState.Connected -> Triple(Color(0xFF4CAF50), "Connected", Icons.Default.CheckCircle)
         is ChannelConnectionState.Disconnected -> Triple(Color(0xFF9E9E9E), "Disconnected", Icons.Default.CheckCircle)
         is ChannelConnectionState.Connecting -> Triple(Color(0xFFFF9800), "Connecting", Icons.Default.CheckCircle)
         is ChannelConnectionState.Error -> Triple(Color(0xFFF44336), "Error", Icons.Default.CheckCircle)
     }
+    val (color, text, icon) = statusTriple
     
     Surface(
         color = color.copy(alpha = 0.1f),
