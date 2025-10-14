@@ -230,8 +230,8 @@ class TypeConversionPropertyTest {
             port.send(randomString)
             val received = port.receive()
             
-            // Since we're not actually converting, we should get the same string back
-            assertEquals(randomString, received, "Random string test failed for: '$randomString'")
+            // With length conversion rule, the output should be the input length as a string
+            assertEquals(randomString.length.toString(), received, "Random string length conversion failed for: '$randomString'")
         }
         
         port.dispose()

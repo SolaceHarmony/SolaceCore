@@ -56,7 +56,7 @@ Represents a rule for converting an input type `IN` to an output type `OUT`.
 
 ### `Port.PortConnection<in IN : Any, out OUT : Any>` Data Class
 
-Represents a validated connection between a source port and a target port, potentially involving handlers, a protocol adapter, and conversion rules.
+Represents a validated connection between a source port and a target port, and actively routes messages when started. Connections may include handlers, a protocol adapter, and a conversion-rule chain.
 *   **Key Properties:**
     *   `sourcePort: Port<@UnsafeVariance IN>`
     *   `targetPort: Port<@UnsafeVariance OUT>`
@@ -64,8 +64,19 @@ Represents a validated connection between a source port and a target port, poten
     *   `protocolAdapter: Port.ProtocolAdapter<*, @UnsafeVariance OUT>?`
     *   `rules: List<Port.ConversionRule<IN, OUT>>`
 *   **Key Methods:**
-    *   `fun validateConnection()`: Validates if the connection is possible based on types, adapter, and rules. Throws `PortConnectionException` on failure.
+    *   `fun start(scope: CoroutineScope): Job` — starts a routing coroutine that consumes from `sourcePort.asChannel()`, applies `handlers`, optional `protocolAdapter`, and `rules`, then delivers to `targetPort.send(...)`.
+    *   `fun stop()` — cancels the routing job.
+    *   `suspend fun stopAndJoin()` — cancels and waits for the routing job to finish; recommended during shutdown.
+    *   `fun validateConnection()` — validates that a connection is possible based on types, adapter, and rules; throws `PortConnectionException` if invalid.
     *   Internal methods `canConnect()`, `validateConversionChain()`, and `buildConnectionErrorMessage()` support the validation logic.
+
+#### Routing error semantics
+- Target closed channel: a guarded send prevents crashes; the router exits cleanly if the target channel is closed.
+- Handler/adapter/rule failures: raise `PortException.Validation` and stop routing.
+
+#### Buffering and backpressure
+- Ports are built on `kotlinx.coroutines.channels.Channel`. Use a non-zero buffer for throughput; the default is generally suitable for most use cases.
+- For send-only roles (producers/egress), prefer actor `createOutputPort(...)`, which registers a port without launching a consumer job, to avoid self-consumption of the same channel.
 
 The relationships between these core abstractions can be visualized as follows:
 
@@ -230,10 +241,10 @@ suspend fun main() { // Example, typically run in a coroutine scope
 ## Future Enhancements & Considerations
 
 Several areas for future development and refinement include:
-*   **Connection Implementation Details:**
-    *   Implementing the actual message passing mechanism (the current `Port.connect` establishes the connection data class but doesn't actively pipe messages; this is typically handled by higher-level constructs or actor systems that use these ports).
-    *   Supporting multiple subscribers for a single `OutputPort`.
-    *   Handling backpressure to prevent overwhelming consumers.
+*   **Fan-out and multi-subscriber routing:**
+    *   First-class support for multiple subscribers from a single output port (topic/fan-out semantics).
+*   **Backpressure strategies:**
+    *   Pluggable overflow/backpressure policies beyond Channel defaults.
 *   **Testing Strategy:**
     *   Developing comprehensive unit tests for core port and channel functionality.
     *   Creating integration tests to verify communication between connected ports.

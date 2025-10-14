@@ -31,6 +31,15 @@ The port system enables type-safe communication between actors:
 - **Protocol Adapters**: Enable communication between ports with different message types
 - **Conversion Rules**: Transform messages between different formats
 
+#### Port Roles (Input vs Output)
+Actors commonly use two roles for ports:
+- **Input ports** (created via `createPort(name, KClass, handler, ...)`): launch a consumer job to read from the port’s channel and invoke the provided `handler` while the actor is Running.
+- **Output ports** (created via `createOutputPort(name, KClass, ...)`): register a port for sending only; no consumer job is started by the actor. Use for producer/egress ports to avoid self-consuming the channel.
+
+#### Lifecycle Sequencing
+- `stop()` cancels and clears input-processing jobs but preserves registered ports. This enables clean reconnection/restart flows at the workflow level.
+- `start()` after `Stopped` restarts processing jobs only for input ports (auto-processed ports). First-time `start()` does not duplicate jobs.
+
 #### Actor State
 Actors can be in various states:
 - **Initialized**: Actor has been created but not started

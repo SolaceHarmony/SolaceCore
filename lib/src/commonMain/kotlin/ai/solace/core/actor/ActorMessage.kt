@@ -14,7 +14,10 @@ enum class MessagePriority {
     HIGH,
 
     /** Default priority level for messages */
-    NORMAL
+    NORMAL,
+
+    /** Low priority messages are processed last */
+    LOW
 }
 
 /**

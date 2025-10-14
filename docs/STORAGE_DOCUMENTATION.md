@@ -80,15 +80,30 @@ interface ActorStateStorage : Storage<String, Map<String, Any>> {
 
 ### StorageManager
 
-The `StorageManager` interface provides a unified interface for accessing different types of storage and managing the storage system as a whole. It implements the `Lifecycle` interface to ensure proper initialization and cleanup of storage resources.
+The `StorageManager` interface provides a unified interface for accessing different types of storage and managing the storage system as a whole. It implements the `Lifecycle` interface to ensure proper initialization and cleanup of storage resources. For multiplatform correctness, it uses `KClass` for type keys.
 
 ```kotlin
+import kotlin.reflect.KClass
+
 interface StorageManager : Lifecycle {
     fun getConfigurationStorage(): ConfigurationStorage
     fun getActorStateStorage(): ActorStateStorage
-    fun <K, V> getStorage(keyClass: Class<K>, valueClass: Class<V>, storageName: String = "default"): Storage<K, V>?
-    fun <K, V> registerStorage(keyClass: Class<K>, valueClass: Class<V>, storage: Storage<K, V>, storageName: String = "default"): Boolean
-    fun <K, V> unregisterStorage(keyClass: Class<K>, valueClass: Class<V>, storageName: String = "default"): Boolean
+    fun <K : Any, V : Any> getStorage(
+        keyClass: KClass<K>,
+        valueClass: KClass<V>,
+        storageName: String = "default"
+    ): Storage<K, V>?
+    fun <K : Any, V : Any> registerStorage(
+        keyClass: KClass<K>,
+        valueClass: KClass<V>,
+        storage: Storage<K, V>,
+        storageName: String = "default"
+    ): Boolean
+    fun <K : Any, V : Any> unregisterStorage(
+        keyClass: KClass<K>,
+        valueClass: KClass<V>,
+        storageName: String = "default"
+    ): Boolean
     suspend fun flushAll(): Boolean
     suspend fun clearAll(): Boolean
 }
@@ -716,3 +731,23 @@ storageManager.stop()
 // Dispose of the storage manager
 storageManager.dispose()
 ```
+### JSON Serialization/Deserialization Rules
+
+File-based storages and script metadata use kotlinx.serialization JSON with robust handling of nested structures:
+- Nested Map/List values are serialized recursively to `JsonObject`/`JsonArray`.
+- Number parsing prefers `Int` when possible, then `Long`, then `Double`.
+- Booleans parse from case-insensitive "true"/"false"; other primitives remain strings.
+
+### Compression and Encryption Wrappers
+
+#### CompressedStorage<K, V>
+Wraps a `Storage<K, V>` and compresses values larger than a configurable threshold. Metadata records:
+- `compressed = true` (when threshold met)
+- `originalSize = <bytes>` of the serialized (pre-compression) value
+
+On retrieval, values are decompressed and deserialized back to `V`.
+
+#### EncryptedStorage<K, V>
+Wraps a `Storage<K, V>` and encrypts values at rest using an `EncryptionStrategy` (e.g., AES). On retrieval, values are decrypted before deserialization.
+
+Note: Key management and rotation are deployment concerns and should be handled by the host application.

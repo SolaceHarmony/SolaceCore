@@ -68,3 +68,29 @@ The SolaceCore scripting module's interfaces work together to provide a complete
 3. **Storage**: The `ScriptStorage` interface provides persistence for scripts, allowing them to be saved, loaded, listed, and deleted.
 
 Implementations of these interfaces, such as the `FileScriptStorage` class, provide concrete functionality for script storage using specific backend technologies (e.g., file system).
+
+## JVM Script Engine (MainKts) Execution Details
+
+The JVM implementation (`JvmScriptEngine`) uses Kotlin’s experimental scripting APIs with `MainKtsScript`:
+
+- Classpath resolution: `dependenciesFromCurrentContext(wholeClasspath = true)` ensures project classes and dependencies are visible during evaluation.
+- Argument passing: `MainKtsScript` expects `args` via constructor; the engine sets `constructorArgs(emptyArray<String>())`. Script parameters are not passed via `providedProperties` for `MainKtsScript`.
+- Evaluation: `BasicJvmScriptingHost.eval(source, compilationConfiguration, evaluationConfiguration)` compiles and evaluates the script. Failures aggregate diagnostic reports and are surfaced via `ScriptExecutionException`.
+
+### Examples
+
+Compile/execute:
+```kotlin
+val engine = JvmScriptEngine()
+val compiled = engine.compile("val x = 2 + 3\nx", "sum")
+val result = engine.execute(compiled, emptyMap()) // 5
+```
+
+Eval in one step:
+```kotlin
+val engine = JvmScriptEngine()
+val out = engine.eval("""
+    val greeting = "Hello"
+    greeting + ", world!"
+""".trimIndent(), "hello", emptyMap()) // "Hello, world!"
+```

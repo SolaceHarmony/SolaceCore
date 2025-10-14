@@ -6,6 +6,8 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
 import kotlin.reflect.KClass
 import kotlin.uuid.ExperimentalUuidApi
 import kotlin.uuid.Uuid
@@ -209,6 +211,7 @@ interface Port<T : Any> : Disposable {
         val rules: List<ConversionRule<IN, OUT>>
     ) {
         private var routingJob: Job? = null
+        private val jobMutex = Mutex()
 
         /** Starts routing messages from the source port to the target port. */
         fun start(scope: CoroutineScope): Job {
@@ -234,17 +237,47 @@ interface Port<T : Any> : Disposable {
                     }
 
                     @Suppress("UNCHECKED_CAST")
-                    targetPort.send(out as OUT)
+                    try {
+                        targetPort.send(out as OUT)
+                    } catch (e: Exception) {
+                        // Target channel likely closed; stop routing gracefully
+                        return@launch
+                    }
                 }
             }
-            routingJob = job
+            // publish job in a synchronized manner
+            // (avoid races with stop/stopAndJoin)
+            kotlinx.coroutines.runBlocking {
+                jobMutex.withLock { routingJob = job }
+            }
             return job
         }
 
         /** Stops routing messages between the ports. */
         fun stop() {
-            routingJob?.cancel()
-            routingJob = null
+            // cancel under lock; non-blocking
+            kotlinx.coroutines.runBlocking {
+                jobMutex.withLock {
+                    routingJob?.cancel()
+                    routingJob = null
+                }
+            }
+        }
+
+        /**
+         * Cancels the routing coroutine and waits for it to finish.
+         * Use during workflow/actor shutdown to ensure no further sends are attempted
+         * into targets that may be closing their channels.
+         */
+        suspend fun stopAndJoin() {
+            // capture and null job under lock, then cancel/join outside
+            val job = jobMutex.withLock {
+                val j = routingJob
+                routingJob = null
+                j
+            }
+            job?.cancel()
+            job?.join()
         }
         /**
          * Validates the connection between the source and target ports.
@@ -330,7 +363,6 @@ interface Port<T : Any> : Disposable {
          *
          * @return A unique identifier string for a port in the form "port-[uuid]"
          */
-        fun generateId(): String = "port-${Uuid.random()}"
         fun generateId(): String = "port-${Uuid.random()}"
 
         /**

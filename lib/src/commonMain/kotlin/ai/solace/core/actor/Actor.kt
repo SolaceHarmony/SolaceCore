@@ -169,13 +169,16 @@ abstract class Actor(
      * @property handler The suspend function to handle incoming messages.
      * @property bufferSize The size of the buffer for message processing.
      * @property processingTimeout The duration after which message processing will timeout.
+     * @property autoProcess When true, a processing job is launched while the actor is Running (input port). When false,
+     * the actor does not start a consumer job (output/send-only port created via [createOutputPort]).
      */
     protected inner class TypedPort<T : Any>(
         val port: Port<T>,
         private val messageClass: KClass<T>,
         private val handler: suspend (T) -> Unit,
-        private val bufferSize: Int = Channel.BUFFERED,  // Remove @Suppress
-        private val processingTimeout: Duration = DEFAULT_PROCESSING_TIMEOUT
+        private val bufferSize: Int = Channel.BUFFERED,
+        private val processingTimeout: Duration = DEFAULT_PROCESSING_TIMEOUT,
+        val autoProcess: Boolean = true
     ) {
         init {
             require(port.type == messageClass) {
@@ -303,7 +306,8 @@ abstract class Actor(
             messageClass = messageClass,
             handler = handler,
             bufferSize = bufferSize,
-            processingTimeout = processingTimeout
+            processingTimeout = processingTimeout,
+            autoProcess = true
         )
         ports[name] = typedPort
 
@@ -312,6 +316,36 @@ abstract class Actor(
             jobs.add(processingJob)
         }
 
+        port
+    }
+
+    /**
+     * Creates an output port without starting a processing job.
+     * Use for ports intended only for sending; handlers are not launched to consume the channel.
+     */
+    suspend fun <T : Any> createOutputPort(
+        name: String,
+        messageClass: KClass<T>,
+        bufferSize: Int = Channel.BUFFERED
+    ): Port<T> = portsMutex.withLock {
+        if (ports.containsKey(name)) {
+            throw PortException.Validation("Port with name $name already exists")
+        }
+
+        val port = BidirectionalPort(
+            name = name,
+            type = messageClass,
+            bufferSize = bufferSize
+        )
+        val typedPort = TypedPort(
+            port = port,
+            messageClass = messageClass,
+            handler = { /* no-op for output port */ },
+            bufferSize = bufferSize,
+            processingTimeout = DEFAULT_PROCESSING_TIMEOUT,
+            autoProcess = false
+        )
+        ports[name] = typedPort
         port
     }
 
@@ -508,8 +542,20 @@ abstract class Actor(
      */
     override suspend fun start() {
         lifecycle.start()
-        if (state == ActorState.Initialized || state == ActorState.Stopped) {
+        val wasStopped = (state == ActorState.Stopped)
+        if (state == ActorState.Initialized || wasStopped) {
             _state.value = ActorState.Running
+            if (wasStopped) {
+                // Restart processing for auto-processed ports after a stop
+                jobsMutex.withLock {
+                    for ((_, tp) in ports) {
+                        if (tp.autoProcess) {
+                            val job = tp.startProcessing()
+                            jobs.add(job)
+                        }
+                    }
+                }
+            }
         }
     }
 
@@ -528,9 +574,6 @@ abstract class Actor(
         _state.value = ActorState.Stopped
         jobsMutex.withLock {
             jobs.forEach { it.cancel() }
-        }
-        portsMutex.withLock {
-            ports.values.forEach { it.port.dispose() }
         }
     }
 

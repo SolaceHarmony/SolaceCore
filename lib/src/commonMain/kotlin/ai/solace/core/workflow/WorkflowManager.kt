@@ -255,6 +255,10 @@ class WorkflowManager(
         }
     }
 
+    /**
+     * Starts the workflow: starts all actors, establishes validated connections, and
+     * launches routing between connected ports.
+     */
     override suspend fun start() {
         if (state !is WorkflowState.Initialized && state !is WorkflowState.Stopped) {
             throw IllegalStateException("Cannot start workflow while in state: $state")
@@ -282,18 +286,25 @@ class WorkflowManager(
     /**
      * Stops the workflow, transitioning its state to Stopped and stopping all actors.
      */
+    /**
+     * Stops the workflow in a safe order: first cancels and joins active port routing to
+     * prevent sends into closing targets, then stops all actors.
+     */
     override suspend fun stop() {
         try {
-            // Stop all actors
+            // Stop all active port connections first to avoid routing into closed channels
+            // Wait for routing jobs to fully finish before stopping actors
+            for (pc in activePortConnections.values) {
+                pc.stopAndJoin()
+            }
+            activePortConnections.clear()
+
+            // Then stop all actors (which may close their port channels)
             actorsMutex.withLock {
                 for (actor in actors.values) {
                     actor.stop()
                 }
             }
-
-            // Stop all active port connections
-            activePortConnections.values.forEach { it.stop() }
-            activePortConnections.clear()
 
             // Update state to Stopped
             _state = WorkflowState.Stopped
