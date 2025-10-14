@@ -217,10 +217,6 @@ class FileConfigurationStorage(
 
         // Path cannot contain invalid characters
         val invalidChars = setOf('$', '@', '#', '!', '%', '^', '&', '*', '(', ')', '+', '=', '{', '}', '[', ']', '|', '\\', ':', ';', '"', '\'', '<', '>', ',', '?', '/')
-        if (path.any { it in invalidChars }) {
-            return false
-        }
-
-        return true
+        return !path.any { it in invalidChars }
     }
 }

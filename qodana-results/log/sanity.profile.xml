@@ -1,9 +1,0 @@
-<component name="InspectionProjectProfileManager">
-  <profile version="1.0">
-    <option name="myName" value="qodana.sanity" />
-    <inspection_tool class="QodanaJavaSanity" enabled="true" level="ERROR" enabled_by_default="true" />
-    <inspection_tool class="QodanaKotlinSanity" enabled="true" level="ERROR" enabled_by_default="true">
-      <scope name="glob:**.kts" level="ERROR" enabled="false" />
-    </inspection_tool>
-  </profile>
-</component>

@@ -38,23 +38,14 @@ class InMemoryStorageManagerConcurrencyTest {
                         val storageName = "test$index"
 
                         // Register storage
-                        val registered = storageManager.registerStorage(
-                            String::class.java,
-                            String::class.java,
-                            storage,
-                            storageName
-                        )
+                        val registered = storageManager.registerStorage(String::class, String::class, storage, storageName)
                         assertTrue(registered)
 
                         // Small delay to increase chance of concurrent access
                         delay(10)
 
                         // Get storage
-                        val retrievedStorage = storageManager.getStorage(
-                            String::class.java,
-                            String::class.java,
-                            storageName
-                        )
+                        val retrievedStorage = storageManager.getStorage(String::class, String::class, storageName)
                         assertNotNull(retrievedStorage)
 
                         // Store and retrieve data
@@ -68,11 +59,7 @@ class InMemoryStorageManagerConcurrencyTest {
                         delay(10)
 
                         // Unregister storage
-                        val unregistered = storageManager.unregisterStorage(
-                            String::class.java,
-                            String::class.java,
-                            storageName
-                        )
+                        val unregistered = storageManager.unregisterStorage(String::class, String::class, storageName)
                         assertTrue(unregistered)
                     }
                 }
@@ -94,36 +81,18 @@ class InMemoryStorageManagerConcurrencyTest {
             withTimeout(5.seconds) {
                 // Register a storage implementation (acquires a lock)
                 val storage = InMemoryStorage<String, String>()
-                storageManager.registerStorage(
-                    String::class.java,
-                    String::class.java,
-                    storage,
-                    "test"
-                )
+                storageManager.registerStorage(String::class, String::class, storage, "test")
 
                 // Get the storage (acquires a lock)
-                val retrievedStorage = storageManager.getStorage(
-                    String::class.java,
-                    String::class.java,
-                    "test"
-                )
+                val retrievedStorage = storageManager.getStorage(String::class, String::class, "test")
                 assertNotNull(retrievedStorage)
 
                 // Unregister the storage (acquires a lock)
-                val unregistered = storageManager.unregisterStorage(
-                    String::class.java,
-                    String::class.java,
-                    "test"
-                )
+                val unregistered = storageManager.unregisterStorage(String::class, String::class, "test")
                 assertTrue(unregistered)
 
                 // If locks weren't properly released, this would deadlock
-                storageManager.registerStorage(
-                    String::class.java,
-                    String::class.java,
-                    storage,
-                    "test2"
-                )
+                storageManager.registerStorage(String::class, String::class, storage, "test2")
             }
         }
     }
@@ -141,12 +110,7 @@ class InMemoryStorageManagerConcurrencyTest {
                 // Register multiple storage implementations
                 for (i in 0 until 5) {
                     val storage = InMemoryStorage<String, String>()
-                    storageManager.registerStorage(
-                        String::class.java,
-                        String::class.java,
-                        storage,
-                        "test$i"
-                    )
+                    storageManager.registerStorage(String::class, String::class, storage, "test$i")
 
                     // Store some data
                     storage.store("key$i", "value$i")
@@ -159,11 +123,7 @@ class InMemoryStorageManagerConcurrencyTest {
 
                 // Verify that all data was cleared
                 for (i in 0 until 5) {
-                    val storage = storageManager.getStorage(
-                        String::class.java,
-                        String::class.java,
-                        "test$i"
-                    )
+                    val storage = storageManager.getStorage(String::class, String::class, "test$i")
                     assertNotNull(storage)
                     assertNull(storage.retrieve("key$i"))
                 }
@@ -188,19 +148,10 @@ class InMemoryStorageManagerConcurrencyTest {
                             val storageName = "test$index-$i"
 
                             // Register storage
-                            storageManager.registerStorage(
-                                String::class.java,
-                                String::class.java,
-                                storage,
-                                storageName
-                            )
+                            storageManager.registerStorage(String::class, String::class, storage, storageName)
 
                             // Get storage
-                            val retrievedStorage = storageManager.getStorage(
-                                String::class.java,
-                                String::class.java,
-                                storageName
-                            )
+                            val retrievedStorage = storageManager.getStorage(String::class, String::class, storageName)
 
                             if (retrievedStorage != null) {
                                 // Store and retrieve data
@@ -211,11 +162,7 @@ class InMemoryStorageManagerConcurrencyTest {
                             }
 
                             // Unregister storage
-                            storageManager.unregisterStorage(
-                                String::class.java,
-                                String::class.java,
-                                storageName
-                            )
+                            storageManager.unregisterStorage(String::class, String::class, storageName)
 
                             // Small delay to prevent CPU overload
                             delay(5)
@@ -267,15 +214,15 @@ class InMemoryStorageManagerConcurrencyTest {
 
                 // Register the exception-throwing storage
                 storageManager.registerStorage(
-                    String::class.java,
-                    String::class.java,
+                    String::class,
+                    String::class,
                     exceptionStorage,
                     "exception"
                 )
 
                 // Clear all storage implementations
                 // This should handle the exception and return false
-                val result = storageManager.clearAll()
+                storageManager.clearAll()
 
                 // The operation should complete without throwing an exception
                 // but might return false due to the exception
@@ -283,8 +230,8 @@ class InMemoryStorageManagerConcurrencyTest {
                 // Verify that we can still perform operations after the exception
                 val storage = InMemoryStorage<String, String>()
                 val registered = storageManager.registerStorage(
-                    String::class.java,
-                    String::class.java,
+                    String::class,
+                    String::class,
                     storage,
                     "test"
                 )

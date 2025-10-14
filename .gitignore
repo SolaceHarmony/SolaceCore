@@ -39,3 +39,12 @@ build
 .kotlin/
 .gitignore
 .DS_Store
+
+# Local build and debug outputs
+*.out
+.*.out
+/.kmeta*.out
+/.jvm-compile*.out
+/.build*.out
+/.meta*.out
+qodana-results/

@@ -4,7 +4,10 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
-import kotlinx.serialization.json.*
+import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.JsonObject
+import kotlinx.serialization.json.JsonPrimitive
+import kotlinx.serialization.json.jsonObject
 import java.nio.file.Files
 import java.nio.file.Path
 import java.nio.file.Paths
@@ -303,64 +306,57 @@ open class FileStorage<K, V>(
 
     /**
      * Creates a JSON string from a map.
-     * Supports nested maps and lists so test metadata round-trips correctly.
+     *
+     * @param map The map to convert to JSON.
+     * @return A JSON string representation of the map.
      */
     protected fun createJson(map: Map<String, Any>): String {
         val jsonObject = JsonObject(map.mapValues { (_, value) ->
-            createJsonValue(value)
+            when (value) {
+                is String -> JsonPrimitive(value)
+                is Number -> JsonPrimitive(value)
+                is Boolean -> JsonPrimitive(value)
+                is Map<*, *> -> {
+                    @Suppress("UNCHECKED_CAST")
+                    val nestedMap = value as Map<String, Any>
+                    json.parseToJsonElement(createJson(nestedMap))
+                }
+                is List<*> -> {
+                    // Convert list to string for now
+                    JsonPrimitive(value.toString())
+                }
+                else -> JsonPrimitive(value.toString())
+            }
         })
         return json.encodeToString(JsonObject.serializer(), jsonObject)
     }
 
     /**
-     * Recursively creates a JSON value from a Kotlin value.
-     */
-    private fun createJsonValue(value: Any): JsonElement {
-        return when (value) {
-            is String -> JsonPrimitive(value)
-            is Number -> JsonPrimitive(value)
-            is Boolean -> JsonPrimitive(value)
-            is Map<*, *> -> {
-                @Suppress("UNCHECKED_CAST")
-                val stringMap = value as Map<String, Any>
-                JsonObject(stringMap.mapValues { (_, nested) -> createJsonValue(nested) })
-            }
-            is List<*> -> {
-                JsonArray(value.map { elem -> createJsonValue(elem ?: "null") })
-            }
-            else -> JsonPrimitive(value.toString())
-        }
-    }
-
-    /**
      * Parses a JSON string into a map.
-     * Supports nested objects and arrays.
+     *
+     * @param jsonString The JSON string to parse.
+     * @return A map representation of the JSON.
      */
     protected fun parseJson(jsonString: String): Map<String, Any> {
         val jsonObject = json.parseToJsonElement(jsonString).jsonObject
         return jsonObject.mapValues { (_, value) ->
-            parseJsonValue(value)
-        }
-    }
-
-    /**
-     * Recursively parses a JSON value into the appropriate Kotlin type.
-     */
-    private fun parseJsonValue(value: JsonElement): Any {
-        return when (value) {
-            is JsonPrimitive -> {
-                when {
-                    value.isString -> value.content
-                    value.booleanOrNull != null -> value.boolean
-                    value.intOrNull != null -> value.int
-                    value.longOrNull != null -> value.long
-                    value.doubleOrNull != null -> value.double
-                    else -> value.content
+            when (value) {
+                is JsonPrimitive -> {
+                    when {
+                        value.isString -> value.content
+                        value.content == "true" || value.content == "false" -> value.content.toBoolean()
+                        value.content.toIntOrNull() != null -> value.content.toInt()
+                        value.content.toLongOrNull() != null -> value.content.toLong()
+                        value.content.toDoubleOrNull() != null -> value.content.toDouble()
+                        else -> value.content
+                    }
                 }
+                is JsonObject -> {
+                    // Recursively parse nested JSON objects
+                    parseJson(value.toString())
+                }
+                else -> value.toString()
             }
-            is JsonObject -> value.mapValues { (_, nested) -> parseJsonValue(nested) }
-            is JsonArray -> value.map { elem -> parseJsonValue(elem) }
-            else -> value.toString()
         }
     }
 }
