@@ -107,6 +107,7 @@ class JvmScriptEngine : ScriptEngine {
                 // Create an evaluation configuration with constructor args only
                 val evaluationConfiguration = ScriptEvaluationConfiguration {
                     val scriptArgs = emptyArray<String>()
+                    // MainKtsScript expects args via constructor, not providedProperties
                     constructorArgs(scriptArgs)
 
                     jvm {
