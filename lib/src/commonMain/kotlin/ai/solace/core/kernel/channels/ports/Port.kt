@@ -6,6 +6,8 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
 import kotlin.reflect.KClass
 import kotlin.uuid.ExperimentalUuidApi
 import kotlin.uuid.Uuid
@@ -209,6 +211,7 @@ interface Port<T : Any> : Disposable {
         val rules: List<ConversionRule<IN, OUT>>
     ) {
         private var routingJob: Job? = null
+        private val jobMutex = Mutex()
 
         /** Starts routing messages from the source port to the target port. */
         fun start(scope: CoroutineScope): Job {
@@ -242,14 +245,23 @@ interface Port<T : Any> : Disposable {
                     }
                 }
             }
-            routingJob = job
+            // publish job in a synchronized manner
+            // (avoid races with stop/stopAndJoin)
+            kotlinx.coroutines.runBlocking {
+                jobMutex.withLock { routingJob = job }
+            }
             return job
         }
 
         /** Stops routing messages between the ports. */
         fun stop() {
-            routingJob?.cancel()
-            routingJob = null
+            // cancel under lock; non-blocking
+            kotlinx.coroutines.runBlocking {
+                jobMutex.withLock {
+                    routingJob?.cancel()
+                    routingJob = null
+                }
+            }
         }
 
         /**
@@ -258,8 +270,12 @@ interface Port<T : Any> : Disposable {
          * into targets that may be closing their channels.
          */
         suspend fun stopAndJoin() {
-            val job = routingJob
-            routingJob = null
+            // capture and null job under lock, then cancel/join outside
+            val job = jobMutex.withLock {
+                val j = routingJob
+                routingJob = null
+                j
+            }
             job?.cancel()
             job?.join()
         }

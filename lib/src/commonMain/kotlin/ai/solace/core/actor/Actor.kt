@@ -574,7 +574,6 @@ abstract class Actor(
         _state.value = ActorState.Stopped
         jobsMutex.withLock {
             jobs.forEach { it.cancel() }
-            jobs.clear()
         }
     }
 
