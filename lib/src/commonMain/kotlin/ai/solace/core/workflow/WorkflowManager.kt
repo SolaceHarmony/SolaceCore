@@ -255,6 +255,10 @@ class WorkflowManager(
         }
     }
 
+    /**
+     * Starts the workflow: starts all actors, establishes validated connections, and
+     * launches routing between connected ports.
+     */
     override suspend fun start() {
         if (state !is WorkflowState.Initialized && state !is WorkflowState.Stopped) {
             throw IllegalStateException("Cannot start workflow while in state: $state")
@@ -281,6 +285,10 @@ class WorkflowManager(
 
     /**
      * Stops the workflow, transitioning its state to Stopped and stopping all actors.
+     */
+    /**
+     * Stops the workflow in a safe order: first cancels and joins active port routing to
+     * prevent sends into closing targets, then stops all actors.
      */
     override suspend fun stop() {
         try {

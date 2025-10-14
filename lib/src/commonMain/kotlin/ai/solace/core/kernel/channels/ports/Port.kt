@@ -252,7 +252,11 @@ interface Port<T : Any> : Disposable {
             routingJob = null
         }
 
-        /** Cancels and waits for the routing job to finish. */
+        /**
+         * Cancels the routing coroutine and waits for it to finish.
+         * Use during workflow/actor shutdown to ensure no further sends are attempted
+         * into targets that may be closing their channels.
+         */
         suspend fun stopAndJoin() {
             val job = routingJob
             routingJob = null

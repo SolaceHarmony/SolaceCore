@@ -169,6 +169,8 @@ abstract class Actor(
      * @property handler The suspend function to handle incoming messages.
      * @property bufferSize The size of the buffer for message processing.
      * @property processingTimeout The duration after which message processing will timeout.
+     * @property autoProcess When true, a processing job is launched while the actor is Running (input port). When false,
+     * the actor does not start a consumer job (output/send-only port created via [createOutputPort]).
      */
     protected inner class TypedPort<T : Any>(
         val port: Port<T>,
