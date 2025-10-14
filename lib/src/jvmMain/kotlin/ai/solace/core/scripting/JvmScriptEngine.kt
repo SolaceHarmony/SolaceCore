@@ -3,7 +3,6 @@ package ai.solace.core.scripting
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import org.jetbrains.kotlin.mainKts.MainKtsScript
-import org.jetbrains.kotlin.mainKts.MainKtsScriptDefinition
 import java.time.Instant
 import kotlin.script.experimental.api.*
 import kotlin.script.experimental.host.toScriptSource
@@ -75,45 +74,15 @@ class JvmScriptEngine : ScriptEngine {
             scriptCache[cacheKey]?.let { return@withContext it }
 
             try {
-                // Create a source code object from the script source
                 val source = scriptSource.toScriptSource(scriptName)
-
-                // Create a modified compilation configuration that includes implicit receivers
-                // This helps with parameter access in scripts
-                val modifiedCompilationConfiguration = compilationConfiguration.with {
-                    // Add implicit receivers to make parameters accessible without explicit casting
-                    implicitReceivers(Any::class)
-
-                    // Enable script annotations processing
-                    refineConfiguration {
-                        beforeCompiling { context ->
-                            context.compilationConfiguration.asSuccess()
-                        }
-                    }
-                }
-
-                // Compile the script with the modified configuration
-                val compilationResult = scriptingHost.compiler(source, modifiedCompilationConfiguration)
-
-                // Check for compilation errors
-                if (compilationResult is ResultWithDiagnostics.Failure) {
-                    val errors = compilationResult.reports.joinToString("\n") { it.message }
-                    throw ScriptCompilationException("Script compilation failed: $errors")
-                }
-
-                // Create a compiled script object
                 val compiledScript = KotlinCompiledScript(
                     name = scriptName,
                     compilationTimestamp = Instant.now().toEpochMilli(),
-                    compiledScript = (compilationResult as ResultWithDiagnostics.Success).value
+                    source = source
                 )
-
-                // Cache the compiled script using the combined key
                 scriptCache[cacheKey] = compiledScript
-
                 compiledScript
             } catch (e: Exception) {
-                if (e is ScriptCompilationException) throw e
                 throw ScriptCompilationException("Script compilation failed: ${e.message}")
             }
         }
@@ -163,9 +132,10 @@ class JvmScriptEngine : ScriptEngine {
                     }
                 }
 
-                // Execute the script
-                val evaluationResult = scriptingHost.evaluator(
-                    compiledScript.compiledScript,
+                // Execute the script (compilation happens under the hood)
+                val evaluationResult = scriptingHost.eval(
+                    (compiledScript as KotlinCompiledScript).source,
+                    compilationConfiguration,
                     evaluationConfiguration
                 )
 
@@ -247,7 +217,7 @@ class JvmScriptEngine : ScriptEngine {
     private class KotlinCompiledScript(
         override val name: String,
         override val compilationTimestamp: Long,
-        val compiledScript: kotlin.script.experimental.api.CompiledScript
+        val source: SourceCode
     ) : CompiledScript
 }
 

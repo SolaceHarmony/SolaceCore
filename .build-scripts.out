@@ -1,0 +1,231 @@
+Initialized native services in: /Users/sydneybach/.gradle/native
+Initialized jansi services in: /Users/sydneybach/.gradle/native
+Removing 0 daemon stop events from registry
+Starting a Gradle Daemon (subsequent builds will be faster)
+Starting process 'Gradle build daemon'. Working directory: /Users/sydneybach/.gradle/daemon/8.14 Command: /Library/Java/JavaVirtualMachines/temurin-21.jdk/Contents/Home/bin/java --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.lang.invoke=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.prefs/java.util.prefs=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.prefs/java.util.prefs=ALL-UNNAMED --add-opens=java.base/java.nio.charset=ALL-UNNAMED --add-opens=java.base/java.net=ALL-UNNAMED --add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED --add-opens=java.xml/javax.xml.namespace=ALL-UNNAMED -XX:MaxMetaspaceSize=384m -XX:+HeapDumpOnOutOfMemoryError -Xms256m -Xmx512m -Dfile.encoding=UTF-8 -Duser.country=US -Duser.language=en -Duser.variant -cp /Users/sydneybach/.gradle/wrapper/dists/gradle-8.14-bin/38aieal9i53h9rfe7vjup95b9/gradle-8.14/lib/gradle-daemon-main-8.14.jar -javaagent:/Users/sydneybach/.gradle/wrapper/dists/gradle-8.14-bin/38aieal9i53h9rfe7vjup95b9/gradle-8.14/lib/agents/gradle-instrumentation-agent-8.14.jar org.gradle.launcher.daemon.bootstrap.GradleDaemon 8.14
+Successfully started process 'Gradle build daemon'
+An attempt to start the daemon took 0.576 secs.
+The client will now receive all logging from the daemon (pid: 45103). The daemon log file: /Users/sydneybach/.gradle/daemon/8.14/daemon-45103.out.log
+Starting build in new daemon [memory: 512 MiB]
+Using 32 worker leases.
+Received JVM installation metadata from '/Library/Java/JavaVirtualMachines/temurin-21.jdk/Contents/Home': {JAVA_HOME=/Library/Java/JavaVirtualMachines/temurin-21.jdk/Contents/Home, JAVA_VERSION=21.0.3, JAVA_VENDOR=Eclipse Adoptium, RUNTIME_NAME=OpenJDK Runtime Environment, RUNTIME_VERSION=21.0.3+9-LTS, VM_NAME=OpenJDK 64-Bit Server VM, VM_VERSION=21.0.3+9-LTS, VM_VENDOR=Eclipse Adoptium, OS_ARCH=aarch64}
+Watching the file system is configured to be enabled if available
+Now considering [/Volumes/stuff/Projects/SolaceCore] as hierarchies to watch
+File system watching is active
+Starting Build
+Resolved plugin [id: 'org.gradle.toolchains.foojay-resolver-convention', version: '1.0.0']
+Settings evaluated using settings file '/Volumes/stuff/Projects/SolaceCore/settings.gradle.kts'.
+Using local directory build cache for the root build (location = /Users/sydneybach/.gradle/caches/build-cache-1, remove unused entries = after 7 days).
+Projects loaded. Root project using build file '/Volumes/stuff/Projects/SolaceCore/build.gradle.kts'.
+Included projects: [root project 'SolaceCore', project ':lib']
+
+> Configure project :
+Evaluating root project 'SolaceCore' using build file '/Volumes/stuff/Projects/SolaceCore/build.gradle.kts'.
+
+> Configure project :lib
+Evaluating project ':lib' using build file '/Volumes/stuff/Projects/SolaceCore/lib/build.gradle.kts'.
+Resolved plugin [id: 'org.jetbrains.kotlin.multiplatform', version: '2.2.20']
+Resolved plugin [id: 'org.jetbrains.kotlin.plugin.serialization', version: '2.2.20']
+Build e5f7e24b-0e10-41b3-9fa2-e2bfda599ede is started
+Using Kotlin Gradle Plugin gradle813 variant
+kotlin scripting plugin: created the scripting discovery configuration: kotlinScriptDef
+kotlin scripting plugin: created the scripting discovery configuration: testKotlinScriptDef
+All projects evaluated.
+Task name matched 'clean'
+Task name matched 'build'
+Selected primary task 'clean' from project :
+Selected primary task 'build' from project :
+Starting process 'command '/usr/libexec/java_home''. Working directory: /Users/sydneybach/.gradle/daemon/8.14 Command: /usr/libexec/java_home -V
+Successfully started process 'command '/usr/libexec/java_home''
+Starting process 'command '/Users/sydneybach/Library/Java/JavaVirtualMachines/semeru-11.0.20/Contents/Home/bin/java''. Working directory: /Users/sydneybach/.gradle/.tmp/tmp-jvm1863558283924170499probe Command: /Users/sydneybach/Library/Java/JavaVirtualMachines/semeru-11.0.20/Contents/Home/bin/java -Xmx32m -Xms32m -cp . JavaProbe
+Successfully started process 'command '/Users/sydneybach/Library/Java/JavaVirtualMachines/semeru-11.0.20/Contents/Home/bin/java''
+Received JVM installation metadata from '/Users/sydneybach/Library/Java/JavaVirtualMachines/semeru-11.0.20/Contents/Home': {JAVA_HOME=/Users/sydneybach/Library/Java/JavaVirtualMachines/semeru-11.0.20/Contents/Home, JAVA_VERSION=11.0.20, JAVA_VENDOR=IBM Corporation, RUNTIME_NAME=IBM Semeru Runtime Open Edition, RUNTIME_VERSION=11.0.20+5, VM_NAME=Eclipse OpenJ9 VM, VM_VERSION=v0.40.0-release-936ec5450, VM_VENDOR=Eclipse OpenJ9, OS_ARCH=aarch64}
+Starting process 'command '/Users/sydneybach/Library/Java/JavaVirtualMachines/graalvm-jdk-22.0.1/Contents/Home/bin/java''. Working directory: /Users/sydneybach/.gradle/.tmp/tmp-jvm16868614970934492870probe Command: /Users/sydneybach/Library/Java/JavaVirtualMachines/graalvm-jdk-22.0.1/Contents/Home/bin/java -Xmx32m -Xms32m -cp . JavaProbe
+Successfully started process 'command '/Users/sydneybach/Library/Java/JavaVirtualMachines/graalvm-jdk-22.0.1/Contents/Home/bin/java''
+Received JVM installation metadata from '/Users/sydneybach/Library/Java/JavaVirtualMachines/graalvm-jdk-22.0.1/Contents/Home': {JAVA_HOME=/Users/sydneybach/Library/Java/JavaVirtualMachines/graalvm-jdk-22.0.1/Contents/Home, JAVA_VERSION=22.0.1, JAVA_VENDOR=Oracle Corporation, RUNTIME_NAME=Java(TM) SE Runtime Environment, RUNTIME_VERSION=22.0.1+8-jvmci-b01, VM_NAME=Java HotSpot(TM) 64-Bit Server VM, VM_VERSION=22.0.1+8-jvmci-b01, VM_VENDOR=Oracle Corporation, OS_ARCH=aarch64}
+Starting process 'command '/Users/sydneybach/Library/Java/JavaVirtualMachines/semeru-11.0.20-1/Contents/Home/bin/java''. Working directory: /Users/sydneybach/.gradle/.tmp/tmp-jvm3918935433748937053probe Command: /Users/sydneybach/Library/Java/JavaVirtualMachines/semeru-11.0.20-1/Contents/Home/bin/java -Xmx32m -Xms32m -cp . JavaProbe
+Successfully started process 'command '/Users/sydneybach/Library/Java/JavaVirtualMachines/semeru-11.0.20-1/Contents/Home/bin/java''
+Received JVM installation metadata from '/Users/sydneybach/Library/Java/JavaVirtualMachines/semeru-11.0.20-1/Contents/Home': {JAVA_HOME=/Users/sydneybach/Library/Java/JavaVirtualMachines/semeru-11.0.20-1/Contents/Home, JAVA_VERSION=11.0.20, JAVA_VENDOR=IBM Corporation, RUNTIME_NAME=IBM Semeru Runtime Open Edition, RUNTIME_VERSION=11.0.20+8, VM_NAME=Eclipse OpenJ9 VM, VM_VERSION=openj9-0.40.0, VM_VENDOR=Eclipse OpenJ9, OS_ARCH=aarch64}
+Starting process 'command '/Users/sydneybach/Library/Java/JavaVirtualMachines/openjdk-23.0.1/Contents/Home/bin/java''. Working directory: /Users/sydneybach/.gradle/.tmp/tmp-jvm12824412808205008002probe Command: /Users/sydneybach/Library/Java/JavaVirtualMachines/openjdk-23.0.1/Contents/Home/bin/java -Xmx32m -Xms32m -cp . JavaProbe
+Successfully started process 'command '/Users/sydneybach/Library/Java/JavaVirtualMachines/openjdk-23.0.1/Contents/Home/bin/java''
+Received JVM installation metadata from '/Users/sydneybach/Library/Java/JavaVirtualMachines/openjdk-23.0.1/Contents/Home': {JAVA_HOME=/Users/sydneybach/Library/Java/JavaVirtualMachines/openjdk-23.0.1/Contents/Home, JAVA_VERSION=23.0.1, JAVA_VENDOR=Oracle Corporation, RUNTIME_NAME=OpenJDK Runtime Environment, RUNTIME_VERSION=23.0.1+11-39, VM_NAME=OpenJDK 64-Bit Server VM, VM_VERSION=23.0.1+11-39, VM_VENDOR=Oracle Corporation, OS_ARCH=aarch64}
+Starting process 'command '/Users/sydneybach/Library/Java/JavaVirtualMachines/graalvm-jdk-21.0.3/Contents/Home/bin/java''. Working directory: /Users/sydneybach/.gradle/.tmp/tmp-jvm6159419924359013094probe Command: /Users/sydneybach/Library/Java/JavaVirtualMachines/graalvm-jdk-21.0.3/Contents/Home/bin/java -Xmx32m -Xms32m -cp . JavaProbe
+Successfully started process 'command '/Users/sydneybach/Library/Java/JavaVirtualMachines/graalvm-jdk-21.0.3/Contents/Home/bin/java''
+Received JVM installation metadata from '/Users/sydneybach/Library/Java/JavaVirtualMachines/graalvm-jdk-21.0.3/Contents/Home': {JAVA_HOME=/Users/sydneybach/Library/Java/JavaVirtualMachines/graalvm-jdk-21.0.3/Contents/Home, JAVA_VERSION=21.0.3, JAVA_VENDOR=Oracle Corporation, RUNTIME_NAME=Java(TM) SE Runtime Environment, RUNTIME_VERSION=21.0.3+7-LTS-jvmci-23.1-b37, VM_NAME=Java HotSpot(TM) 64-Bit Server VM, VM_VERSION=21.0.3+7-LTS-jvmci-23.1-b37, VM_VENDOR=Oracle Corporation, OS_ARCH=aarch64}
+Starting process 'command '/Users/sydneybach/Library/Java/JavaVirtualMachines/temurin-17.0.8/Contents/Home/bin/java''. Working directory: /Users/sydneybach/.gradle/.tmp/tmp-jvm6248444099804414632probe Command: /Users/sydneybach/Library/Java/JavaVirtualMachines/temurin-17.0.8/Contents/Home/bin/java -Xmx32m -Xms32m -cp . JavaProbe
+Successfully started process 'command '/Users/sydneybach/Library/Java/JavaVirtualMachines/temurin-17.0.8/Contents/Home/bin/java''
+Received JVM installation metadata from '/Users/sydneybach/Library/Java/JavaVirtualMachines/temurin-17.0.8/Contents/Home': {JAVA_HOME=/Users/sydneybach/Library/Java/JavaVirtualMachines/temurin-17.0.8/Contents/Home, JAVA_VERSION=17.0.8, JAVA_VENDOR=Eclipse Adoptium, RUNTIME_NAME=OpenJDK Runtime Environment, RUNTIME_VERSION=17.0.8+7, VM_NAME=OpenJDK 64-Bit Server VM, VM_VERSION=17.0.8+7, VM_VENDOR=Eclipse Adoptium, OS_ARCH=aarch64}
+Starting process 'command '/Users/sydneybach/Library/Java/JavaVirtualMachines/graalvm-jdk-21.0.5/Contents/Home/bin/java''. Working directory: /Users/sydneybach/.gradle/.tmp/tmp-jvm15008688641634123362probe Command: /Users/sydneybach/Library/Java/JavaVirtualMachines/graalvm-jdk-21.0.5/Contents/Home/bin/java -Xmx32m -Xms32m -cp . JavaProbe
+Successfully started process 'command '/Users/sydneybach/Library/Java/JavaVirtualMachines/graalvm-jdk-21.0.5/Contents/Home/bin/java''
+Received JVM installation metadata from '/Users/sydneybach/Library/Java/JavaVirtualMachines/graalvm-jdk-21.0.5/Contents/Home': {JAVA_HOME=/Users/sydneybach/Library/Java/JavaVirtualMachines/graalvm-jdk-21.0.5/Contents/Home, JAVA_VERSION=21.0.5, JAVA_VENDOR=Oracle Corporation, RUNTIME_NAME=Java(TM) SE Runtime Environment, RUNTIME_VERSION=21.0.5+9-LTS-jvmci-23.1-b48, VM_NAME=Java HotSpot(TM) 64-Bit Server VM, VM_VERSION=21.0.5+9-LTS-jvmci-23.1-b48, VM_VENDOR=Oracle Corporation, OS_ARCH=aarch64}
+Starting process 'command '/Users/sydneybach/Library/Java/JavaVirtualMachines/temurin-21.0.5/Contents/Home/bin/java''. Working directory: /Users/sydneybach/.gradle/.tmp/tmp-jvm8794738605258022475probe Command: /Users/sydneybach/Library/Java/JavaVirtualMachines/temurin-21.0.5/Contents/Home/bin/java -Xmx32m -Xms32m -cp . JavaProbe
+Successfully started process 'command '/Users/sydneybach/Library/Java/JavaVirtualMachines/temurin-21.0.5/Contents/Home/bin/java''
+Received JVM installation metadata from '/Users/sydneybach/Library/Java/JavaVirtualMachines/temurin-21.0.5/Contents/Home': {JAVA_HOME=/Users/sydneybach/Library/Java/JavaVirtualMachines/temurin-21.0.5/Contents/Home, JAVA_VERSION=21.0.5, JAVA_VENDOR=Eclipse Adoptium, RUNTIME_NAME=OpenJDK Runtime Environment, RUNTIME_VERSION=21.0.5+11-LTS, VM_NAME=OpenJDK 64-Bit Server VM, VM_VERSION=21.0.5+11-LTS, VM_VENDOR=Eclipse Adoptium, OS_ARCH=aarch64}
+Starting process 'command '/Users/sydneybach/Library/Java/JavaVirtualMachines/temurin-20.0.2/Contents/Home/bin/java''. Working directory: /Users/sydneybach/.gradle/.tmp/tmp-jvm3178637161682604270probe Command: /Users/sydneybach/Library/Java/JavaVirtualMachines/temurin-20.0.2/Contents/Home/bin/java -Xmx32m -Xms32m -cp . JavaProbe
+Successfully started process 'command '/Users/sydneybach/Library/Java/JavaVirtualMachines/temurin-20.0.2/Contents/Home/bin/java''
+Received JVM installation metadata from '/Users/sydneybach/Library/Java/JavaVirtualMachines/temurin-20.0.2/Contents/Home': {JAVA_HOME=/Users/sydneybach/Library/Java/JavaVirtualMachines/temurin-20.0.2/Contents/Home, JAVA_VERSION=20.0.2, JAVA_VENDOR=Eclipse Adoptium, RUNTIME_NAME=OpenJDK Runtime Environment, RUNTIME_VERSION=20.0.2+9, VM_NAME=OpenJDK 64-Bit Server VM, VM_VERSION=20.0.2+9, VM_VENDOR=Eclipse Adoptium, OS_ARCH=aarch64}
+Starting process 'command '/Library/Java/JavaVirtualMachines/microsoft-11.jdk/Contents/Home/bin/java''. Working directory: /Users/sydneybach/.gradle/.tmp/tmp-jvm1241047417027459224probe Command: /Library/Java/JavaVirtualMachines/microsoft-11.jdk/Contents/Home/bin/java -Xmx32m -Xms32m -cp . JavaProbe
+Successfully started process 'command '/Library/Java/JavaVirtualMachines/microsoft-11.jdk/Contents/Home/bin/java''
+Received JVM installation metadata from '/Library/Java/JavaVirtualMachines/microsoft-11.jdk/Contents/Home': {JAVA_HOME=/Library/Java/JavaVirtualMachines/microsoft-11.jdk/Contents/Home, JAVA_VERSION=11.0.16.1, JAVA_VENDOR=Microsoft, RUNTIME_NAME=OpenJDK Runtime Environment, RUNTIME_VERSION=11.0.16.1+1-LTS, VM_NAME=OpenJDK 64-Bit Server VM, VM_VERSION=11.0.16.1+1-LTS, VM_VENDOR=Microsoft, OS_ARCH=aarch64}
+Starting process 'command '/Library/Java/JavaVirtualMachines/temurin-8.jdk/Contents/Home/bin/java''. Working directory: /Users/sydneybach/.gradle/.tmp/tmp-jvm15406858596280767265probe Command: /Library/Java/JavaVirtualMachines/temurin-8.jdk/Contents/Home/bin/java -Xmx32m -Xms32m -cp . JavaProbe
+Successfully started process 'command '/Library/Java/JavaVirtualMachines/temurin-8.jdk/Contents/Home/bin/java''
+Received JVM installation metadata from '/Library/Java/JavaVirtualMachines/temurin-8.jdk/Contents/Home': {JAVA_HOME=/Library/Java/JavaVirtualMachines/temurin-8.jdk/Contents/Home/jre, JAVA_VERSION=1.8.0_302, JAVA_VENDOR=Temurin, RUNTIME_NAME=OpenJDK Runtime Environment, RUNTIME_VERSION=1.8.0_302-b08, VM_NAME=OpenJDK 64-Bit Server VM, VM_VERSION=25.302-b08, VM_VENDOR=Temurin, OS_ARCH=x86_64}
+Starting process 'command '/Users/sydneybach/Library/Java/JavaVirtualMachines/azul-13.0.14/Contents/Home/bin/java''. Working directory: /Users/sydneybach/.gradle/.tmp/tmp-jvm15753747405149673182probe Command: /Users/sydneybach/Library/Java/JavaVirtualMachines/azul-13.0.14/Contents/Home/bin/java -Xmx32m -Xms32m -cp . JavaProbe
+Successfully started process 'command '/Users/sydneybach/Library/Java/JavaVirtualMachines/azul-13.0.14/Contents/Home/bin/java''
+Received JVM installation metadata from '/Users/sydneybach/Library/Java/JavaVirtualMachines/azul-13.0.14/Contents/Home': {JAVA_HOME=/Users/sydneybach/Library/Java/JavaVirtualMachines/azul-13.0.14/Contents/Home, JAVA_VERSION=13.0.14, JAVA_VENDOR=Azul Systems, Inc., RUNTIME_NAME=OpenJDK Runtime Environment, RUNTIME_VERSION=13.0.14+5-MTS, VM_NAME=OpenJDK 64-Bit Server VM, VM_VERSION=13.0.14+5-MTS, VM_VENDOR=Azul Systems, Inc., OS_ARCH=x86_64}
+Starting process 'command '/Users/sydneybach/Library/Java/JavaVirtualMachines/corretto-19.0.2/Contents/Home/bin/java''. Working directory: /Users/sydneybach/.gradle/.tmp/tmp-jvm128356555796789934probe Command: /Users/sydneybach/Library/Java/JavaVirtualMachines/corretto-19.0.2/Contents/Home/bin/java -Xmx32m -Xms32m -cp . JavaProbe
+Successfully started process 'command '/Users/sydneybach/Library/Java/JavaVirtualMachines/corretto-19.0.2/Contents/Home/bin/java''
+Received JVM installation metadata from '/Users/sydneybach/Library/Java/JavaVirtualMachines/corretto-19.0.2/Contents/Home': {JAVA_HOME=/Users/sydneybach/Library/Java/JavaVirtualMachines/corretto-19.0.2/Contents/Home, JAVA_VERSION=19.0.2, JAVA_VENDOR=Amazon.com Inc., RUNTIME_NAME=OpenJDK Runtime Environment, RUNTIME_VERSION=19.0.2+7-FR, VM_NAME=OpenJDK 64-Bit Server VM, VM_VERSION=19.0.2+7-FR, VM_VENDOR=Amazon.com Inc., OS_ARCH=aarch64}
+Starting process 'command '/Users/sydneybach/Library/Java/JavaVirtualMachines/temurin-21.0.3/Contents/Home/bin/java''. Working directory: /Users/sydneybach/.gradle/.tmp/tmp-jvm17626146118586076001probe Command: /Users/sydneybach/Library/Java/JavaVirtualMachines/temurin-21.0.3/Contents/Home/bin/java -Xmx32m -Xms32m -cp . JavaProbe
+Successfully started process 'command '/Users/sydneybach/Library/Java/JavaVirtualMachines/temurin-21.0.3/Contents/Home/bin/java''
+Received JVM installation metadata from '/Users/sydneybach/Library/Java/JavaVirtualMachines/temurin-21.0.3/Contents/Home': {JAVA_HOME=/Users/sydneybach/Library/Java/JavaVirtualMachines/temurin-21.0.3/Contents/Home, JAVA_VERSION=21.0.3, JAVA_VENDOR=Eclipse Adoptium, RUNTIME_NAME=OpenJDK Runtime Environment, RUNTIME_VERSION=21.0.3+9-LTS, VM_NAME=OpenJDK 64-Bit Server VM, VM_VERSION=21.0.3+9-LTS, VM_VENDOR=Eclipse Adoptium, OS_ARCH=aarch64}
+Starting process 'command '/Users/sydneybach/Library/Java/JavaVirtualMachines/temurin-21.0.4/Contents/Home/bin/java''. Working directory: /Users/sydneybach/.gradle/.tmp/tmp-jvm15182469139808770631probe Command: /Users/sydneybach/Library/Java/JavaVirtualMachines/temurin-21.0.4/Contents/Home/bin/java -Xmx32m -Xms32m -cp . JavaProbe
+Successfully started process 'command '/Users/sydneybach/Library/Java/JavaVirtualMachines/temurin-21.0.4/Contents/Home/bin/java''
+Received JVM installation metadata from '/Users/sydneybach/Library/Java/JavaVirtualMachines/temurin-21.0.4/Contents/Home': {JAVA_HOME=/Users/sydneybach/Library/Java/JavaVirtualMachines/temurin-21.0.4/Contents/Home, JAVA_VERSION=21.0.4, JAVA_VENDOR=Eclipse Adoptium, RUNTIME_NAME=OpenJDK Runtime Environment, RUNTIME_VERSION=21.0.4+7-LTS, VM_NAME=OpenJDK 64-Bit Server VM, VM_VERSION=21.0.4+7-LTS, VM_VENDOR=Eclipse Adoptium, OS_ARCH=aarch64}
+Starting process 'command '/Users/sydneybach/Library/Java/JavaVirtualMachines/semeru-11.0.23/Contents/Home/bin/java''. Working directory: /Users/sydneybach/.gradle/.tmp/tmp-jvm6775726219035236679probe Command: /Users/sydneybach/Library/Java/JavaVirtualMachines/semeru-11.0.23/Contents/Home/bin/java -Xmx32m -Xms32m -cp . JavaProbe
+Successfully started process 'command '/Users/sydneybach/Library/Java/JavaVirtualMachines/semeru-11.0.23/Contents/Home/bin/java''
+Received JVM installation metadata from '/Users/sydneybach/Library/Java/JavaVirtualMachines/semeru-11.0.23/Contents/Home': {JAVA_HOME=/Users/sydneybach/Library/Java/JavaVirtualMachines/semeru-11.0.23/Contents/Home, JAVA_VERSION=11.0.23, JAVA_VENDOR=IBM Corporation, RUNTIME_NAME=IBM Semeru Runtime Open Edition, RUNTIME_VERSION=11.0.23+9, VM_NAME=Eclipse OpenJ9 VM, VM_VERSION=openj9-0.44.0, VM_VENDOR=Eclipse OpenJ9, OS_ARCH=aarch64}
+Tasks to be executed: [task ':lib:cleanJvmTest', task ':lib:cleanMacosArm64Test', task ':lib:cleanAllTests', task ':lib:clean', task ':lib:kmpPartiallyResolvedDependenciesChecker', task ':lib:checkKotlinGradlePluginConfigurationErrors', task ':lib:transformCommonMainDependenciesMetadata', task ':lib:compileCommonMainKotlinMetadata', task ':lib:generateProjectStructureMetadata', task ':lib:metadataCommonMainProcessResources', task ':lib:metadataCommonMainClasses', task ':lib:allMetadataJar', task ':lib:compileKotlinMacosArm64', task ':lib:macosArm64ProcessResources', task ':lib:macosArm64MainKlibrary', task ':lib:compileTestKotlinMacosArm64', task ':lib:compileKotlinJvm', task ':lib:compileJvmMainJava', task ':lib:jvmProcessResources', task ':lib:processJvmMainResources', task ':lib:jvmMainClasses', task ':lib:jvmJar', task ':lib:macosArm64MetadataElements', task ':lib:assemble', task ':lib:compileTestKotlinJvm', task ':lib:compileJvmTestJava', task ':lib:jvmTestProcessResources', task ':lib:processJvmTestResources', task ':lib:jvmTestClasses', task ':lib:jvmTest', task ':lib:linkDebugTestMacosArm64', task ':lib:macosArm64Test', task ':lib:allTests', task ':lib:check', task ':lib:build']
+Tasks that were excluded: []
+Resolve mutations for :lib:cleanJvmTest (Thread[#195,Execution worker,5,main]) started.
+:lib:cleanJvmTest (Thread[#195,Execution worker,5,main]) started.
+
+> Task :lib:cleanJvmTest
+Caching disabled for task ':lib:cleanJvmTest' because:
+  Deletion cannot be cached
+Task ':lib:cleanJvmTest' is not up-to-date because:
+  Task has not declared any outputs despite executing actions.
+Resolve mutations for :lib:cleanMacosArm64Test (Thread[#195,Execution worker,5,main]) started.
+:lib:cleanMacosArm64Test (Thread[#195,Execution worker,5,main]) started.
+
+> Task :lib:cleanMacosArm64Test UP-TO-DATE
+Caching disabled for task ':lib:cleanMacosArm64Test' because:
+  Deletion cannot be cached
+Task ':lib:cleanMacosArm64Test' is not up-to-date because:
+  Task has not declared any outputs despite executing actions.
+Resolve mutations for :lib:cleanAllTests (Thread[#195,Execution worker,5,main]) started.
+:lib:cleanAllTests (Thread[#195,Execution worker,5,main]) started.
+
+> Task :lib:cleanAllTests
+Skipping task ':lib:cleanAllTests' as it has no actions.
+Resolve mutations for :lib:clean (Thread[#195,Execution worker,5,main]) started.
+:lib:clean (Thread[#195,Execution worker,5,main]) started.
+destroyer locations for task group 0 (Thread[#194,included builds,5,main]) started.
+
+> Task :lib:clean
+Caching disabled for task ':lib:clean' because:
+  Deletion cannot be cached
+Task ':lib:clean' is not up-to-date because:
+  Task has not declared any outputs despite executing actions.
+Resolve mutations for :lib:kmpPartiallyResolvedDependenciesChecker (Thread[#195,Execution worker,5,main]) started.
+:lib:kmpPartiallyResolvedDependenciesChecker (Thread[#195,Execution worker,5,main]) started.
+
+> Task :lib:kmpPartiallyResolvedDependenciesChecker
+Caching disabled for task ':lib:kmpPartiallyResolvedDependenciesChecker' because:
+  This task is not intended for execution
+Task ':lib:kmpPartiallyResolvedDependenciesChecker' is not up-to-date because:
+  Task has not declared any outputs despite executing actions.
+Execution stopped by some action with message: null
+Resolve mutations for :lib:checkKotlinGradlePluginConfigurationErrors (Thread[#195,Execution worker,5,main]) started.
+:lib:checkKotlinGradlePluginConfigurationErrors (Thread[#195,Execution worker,5,main]) started.
+
+> Task :lib:checkKotlinGradlePluginConfigurationErrors SKIPPED
+Skipping task ':lib:checkKotlinGradlePluginConfigurationErrors' as task onlyIf 'errorDiagnostics are present' is false.
+Resolve mutations for :lib:transformCommonMainDependenciesMetadata (Thread[#195,Execution worker,5,main]) started.
+:lib:transformCommonMainDependenciesMetadata (Thread[#195,Execution worker,5,main]) started.
+
+> Task :lib:transformCommonMainDependenciesMetadata
+Caching disabled for task ':lib:transformCommonMainDependenciesMetadata' because:
+  Metadata Dependency Transformation Task doesn't benefit from caching as it doesn't have heavy load
+Task ':lib:transformCommonMainDependenciesMetadata' is not up-to-date because:
+  Output property 'outputsDir$kotlin_gradle_plugin_common' file /Volumes/stuff/Projects/SolaceCore/lib/build/kotlinTransformedMetadataLibraries/commonMain has been removed.
+  Output property 'outputsDir$kotlin_gradle_plugin_common' file /Volumes/stuff/Projects/SolaceCore/lib/build/kotlinTransformedMetadataLibraries/commonMain/commonMain.json has been removed.
+  Output property 'outputsDir$kotlin_gradle_plugin_common' file /Volumes/stuff/Projects/SolaceCore/lib/build/kotlinTransformedMetadataLibraries/commonMain/org.jetbrains.kotlin-kotlin-stdlib-2.2.20-commonMain-Y8sbrw.klib has been removed.
+  and more...
+Resolve mutations for :lib:compileCommonMainKotlinMetadata (Thread[#195,Execution worker,5,main]) started.
+:lib:compileCommonMainKotlinMetadata (Thread[#195,Execution worker,5,main]) started.
+Resolve mutations for :lib:generateProjectStructureMetadata (Thread[#212,Execution worker Thread 18,5,main]) started.
+:lib:generateProjectStructureMetadata (Thread[#212,Execution worker Thread 18,5,main]) started.
+
+> Task :lib:generateProjectStructureMetadata
+Caching disabled for task ':lib:generateProjectStructureMetadata' because:
+  Caching has been disabled for the task
+Task ':lib:generateProjectStructureMetadata' is not up-to-date because:
+  No history is available.
+Resolve mutations for :lib:metadataCommonMainProcessResources (Thread[#212,Execution worker Thread 18,5,main]) started.
+:lib:metadataCommonMainProcessResources (Thread[#212,Execution worker Thread 18,5,main]) started.
+
+> Task :lib:metadataCommonMainProcessResources
+Caching disabled for task ':lib:metadataCommonMainProcessResources' because:
+  Not worth caching
+Task ':lib:metadataCommonMainProcessResources' is not up-to-date because:
+  No history is available.
+Resolve mutations for :lib:compileKotlinMacosArm64 (Thread[#212,Execution worker Thread 18,5,main]) started.
+:lib:compileKotlinMacosArm64 (Thread[#212,Execution worker Thread 18,5,main]) started.
+Not watching anything anymore
+
+> Task :lib:compileCommonMainKotlinMetadata
+Build cache key for task ':lib:compileCommonMainKotlinMetadata' is a38ac82ce9453c5efde5a96f4d6d2684
+Task ':lib:compileCommonMainKotlinMetadata' is not up-to-date because:
+  Task has failed previously.
+The input changes require a full rebuild for incremental task ':lib:compileCommonMainKotlinMetadata'.
+i: starting the daemon as: /Library/Java/JavaVirtualMachines/temurin-21.jdk/Contents/Home/bin/java -cp /Users/sydneybach/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-compiler-embeddable/2.2.20/bb8331b7585e36ea311825b01a1c06860c055fd1/kotlin-compiler-embeddable-2.2.20.jar:/Users/sydneybach/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib/2.2.20/5380b19fa1924399b62ce3a1faffebb2b4f82272/kotlin-stdlib-2.2.20.jar:/Users/sydneybach/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-script-runtime/2.2.20/4c679cbeac0bb583b75c3a080013da8eaf240807/kotlin-script-runtime-2.2.20.jar:/Users/sydneybach/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-reflect/1.6.10/1cbe9c92c12a94eea200d23c2bbaedaf3daf5132/kotlin-reflect-1.6.10.jar:/Users/sydneybach/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-daemon-embeddable/2.2.20/feff12d48d7f1eb628742b0a721395e16f8755bf/kotlin-daemon-embeddable-2.2.20.jar:/Users/sydneybach/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlinx/kotlinx-coroutines-core-jvm/1.8.0/ac1dc37a30a93150b704022f8d895ee1bd3a36b3/kotlinx-coroutines-core-jvm-1.8.0.jar:/Users/sydneybach/.gradle/caches/modules-2/files-2.1/org.jetbrains/annotations/13.0/919f0dfe192fb4e063e7dacadee7f8bb9a2672a9/annotations-13.0.jar -Djava.awt.headless=true -Djava.rmi.server.hostname=127.0.0.1 -Xmx512m -XX:MaxMetaspaceSize=384m -XX:ReservedCodeCacheSize=320m -Dkotlin.environment.keepalive -ea -XX:+UseCodeCacheFlushing -XX:+UseParallelGC -Dkotlin.daemon.initiator.marker.file=/var/folders/l7/sxmjmw9n7rlg4cwgzwxxs3nw0000gn/T/kotlin-compiler-in-olaceore-17027498861755553364.alive --add-exports java.base/sun.nio.ch=ALL-UNNAMED org.jetbrains.kotlin.daemon.KotlinCompileDaemon --daemon-runFilesPath /Users/sydneybach/Library/Application Support/kotlin/daemon --daemon-autoshutdownIdleSeconds=7200 --daemon-compilerClasspath /Users/sydneybach/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-compiler-embeddable/2.2.20/bb8331b7585e36ea311825b01a1c06860c055fd1/kotlin-compiler-embeddable-2.2.20.jar:/Users/sydneybach/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib/2.2.20/5380b19fa1924399b62ce3a1faffebb2b4f82272/kotlin-stdlib-2.2.20.jar:/Users/sydneybach/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-script-runtime/2.2.20/4c679cbeac0bb583b75c3a080013da8eaf240807/kotlin-script-runtime-2.2.20.jar:/Users/sydneybach/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-reflect/1.6.10/1cbe9c92c12a94eea200d23c2bbaedaf3daf5132/kotlin-reflect-1.6.10.jar:/Users/sydneybach/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-daemon-embeddable/2.2.20/feff12d48d7f1eb628742b0a721395e16f8755bf/kotlin-daemon-embeddable-2.2.20.jar:/Users/sydneybach/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlinx/kotlinx-coroutines-core-jvm/1.8.0/ac1dc37a30a93150b704022f8d895ee1bd3a36b3/kotlinx-coroutines-core-jvm-1.8.0.jar:/Users/sydneybach/.gradle/caches/modules-2/files-2.1/org.jetbrains/annotations/13.0/919f0dfe192fb4e063e7dacadee7f8bb9a2672a9/annotations-13.0.jar
+i: #1 retrying connecting to the daemon 
+Finished executing kotlin compiler using DAEMON strategy
+
+> Task :lib:compileCommonMainKotlinMetadata FAILED
+
+> Task :lib:compileKotlinMacosArm64
+Caching disabled for UnzipTransformationAction: /Users/sydneybach/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-native-prebuilt/2.2.20/e5d2f65c8bbce4dadef4b8da53a6cc62c9c8dd4e/kotlin-native-prebuilt-2.2.20-macos-aarch64.tar.gz because:
+  Caching not enabled.
+Kotlin Native Bundle: Acquire lock: /Users/sydneybach/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock ...
+Kotlin Native Bundle: Lock acquired: /Users/sydneybach/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock
+Kotlin Native Bundle: Lock released: /Users/sydneybach/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock
+Kotlin Native Bundle: Acquire lock: /Users/sydneybach/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock ...
+Kotlin Native Bundle: Lock acquired: /Users/sydneybach/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock
+Kotlin Native Bundle: Lock released: /Users/sydneybach/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock
+Kotlin Native Bundle: Acquire lock: /Users/sydneybach/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock ...
+Kotlin Native Bundle: Lock acquired: /Users/sydneybach/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock
+Kotlin Native Bundle: Lock released: /Users/sydneybach/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock
+Downloading https://repo.maven.apache.org/maven2/org/jetbrains/kotlinx/kotlinx-datetime-macosarm64/0.6.1/kotlinx-datetime-macosarm64-0.6.1.klib to /Users/sydneybach/.gradle/.tmp/gradle_download11713763509974784780bin
+Kotlin Native Bundle: Acquire lock: /Users/sydneybach/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock ...
+Kotlin Native Bundle: Lock acquired: /Users/sydneybach/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock
+Kotlin Native Bundle: Lock released: /Users/sydneybach/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock
+Kotlin Native Bundle: Acquire lock: /Users/sydneybach/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock ...
+Kotlin Native Bundle: Lock acquired: /Users/sydneybach/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock
+Kotlin Native Bundle: Lock released: /Users/sydneybach/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock
+Kotlin Native Bundle: Acquire lock: /Users/sydneybach/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock ...
+Kotlin Native Bundle: Lock acquired: /Users/sydneybach/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock
+Kotlin Native Bundle: Lock released: /Users/sydneybach/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock
+Kotlin Native Bundle: Acquire lock: /Users/sydneybach/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock ...
+Kotlin Native Bundle: Lock acquired: /Users/sydneybach/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock
+Kotlin Native Bundle: Lock released: /Users/sydneybach/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock
+Kotlin Native Bundle: Acquire lock: /Users/sydneybach/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock ...
+Kotlin Native Bundle: Lock acquired: /Users/sydneybach/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock
+Kotlin Native Bundle: Lock released: /Users/sydneybach/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock
+Build cache key for task ':lib:compileKotlinMacosArm64' is 22a4abd4e540dc93283014e71ad15174
+Task ':lib:compileKotlinMacosArm64' is not up-to-date because:
+  No history is available.
+Kotlin Native Bundle: Acquire lock: /Users/sydneybach/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock ...
+Kotlin Native Bundle: Lock acquired: /Users/sydneybach/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock
+Kotlin Native Bundle: Lock released: /Users/sydneybach/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock
+file or directory '/Volumes/stuff/Projects/SolaceCore/lib/src/macosArm64Main/kotlin', not found
+file or directory '/Volumes/stuff/Projects/SolaceCore/lib/src/macosMain/kotlin', not found
+file or directory '/Volumes/stuff/Projects/SolaceCore/lib/src/appleMain/kotlin', not found
+file or directory '/Volumes/stuff/Projects/SolaceCore/lib/src/nativeMain/kotlin', not found
+file or directory '/Volumes/stuff/Projects/SolaceCore/lib/src/macosArm64Main/kotlin', not found
+file or directory '/Volumes/stuff/Projects/SolaceCore/lib/src/macosMain/kotlin', not found
+file or directory '/Volumes/stuff/Projects/SolaceCore/lib/src/appleMain/kotlin', not found
+file or directory '/Volumes/stuff/Projects/SolaceCore/lib/src/nativeMain/kotlin', not found
+file or directory '/Volumes/stuff/Projects/SolaceCore/lib/src/macosArm64Main/kotlin', not found
+file or directory '/Volumes/stuff/Projects/SolaceCore/lib/src/macosMain/kotlin', not found
+file or directory '/Volumes/stuff/Projects/SolaceCore/lib/src/appleMain/kotlin', not found
+file or directory '/Volumes/stuff/Projects/SolaceCore/lib/src/nativeMain/kotlin', not found
+
+> Task :lib:compileKotlinMacosArm64 FAILED
+Build e5f7e24b-0e10-41b3-9fa2-e2bfda599ede is closed
+9 actionable tasks: 8 executed, 1 up-to-date
+Watched directory hierarchies: [/Volumes/stuff/Projects/SolaceCore]
+Build cache (/Users/sydneybach/.gradle/caches/build-cache-1) removing files not accessed on or after Tue Oct 07 07:15:10 PDT 2025.
+Build cache (/Users/sydneybach/.gradle/caches/build-cache-1) cleanup deleted 0 files/directories.
+Build cache (/Users/sydneybach/.gradle/caches/build-cache-1) cleaned up in 0.015 secs.

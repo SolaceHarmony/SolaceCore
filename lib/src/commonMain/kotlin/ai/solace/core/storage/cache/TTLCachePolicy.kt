@@ -73,18 +73,15 @@ class TTLCachePolicy<K, V>(
      * @return The cached value, or null if the key doesn't exist or the entry has expired.
      */
     override fun get(key: K): V? = runBlockingWithLock {
-            val creationTime = creationTimes[key] ?: return@read null
-            val currentTime = Clock.System.now().toEpochMilliseconds()
-
-            // Check if the entry has expired
-            if (currentTime - creationTime > ttl.inWholeMilliseconds) {
-                // Remove expired entry
-                cache.remove(key)
-                creationTimes.remove(key)
-                return@runBlockingWithLock null
-            }
-
+        val creationTime = creationTimes[key] ?: return@runBlockingWithLock null
+        val currentTime = Clock.System.now().toEpochMilliseconds()
+        if (currentTime - creationTime > ttl.inWholeMilliseconds) {
+            cache.remove(key)
+            creationTimes.remove(key)
+            null
+        } else {
             cache[key]
+        }
     }
 
     /**
@@ -106,18 +103,15 @@ class TTLCachePolicy<K, V>(
      * @return True if the key exists and the entry has not expired, false otherwise.
      */
     override fun contains(key: K): Boolean = runBlockingWithLock {
-            val creationTime = creationTimes[key] ?: return@read false
-            val currentTime = Clock.System.now().toEpochMilliseconds()
-
-            // Check if the entry has expired
-            if (currentTime - creationTime > ttl.inWholeMilliseconds) {
-                // Remove expired entry
-                cache.remove(key)
-                creationTimes.remove(key)
-                return@runBlockingWithLock false
-            }
-
+        val creationTime = creationTimes[key] ?: return@runBlockingWithLock false
+        val currentTime = Clock.System.now().toEpochMilliseconds()
+        if (currentTime - creationTime > ttl.inWholeMilliseconds) {
+            cache.remove(key)
+            creationTimes.remove(key)
+            false
+        } else {
             cache.containsKey(key)
+        }
     }
 
     /**
@@ -163,9 +157,9 @@ class TTLCachePolicy<K, V>(
                 creationTimes.remove(key)
             }
 
-            true
+            return true
     }
 
     // Helper to avoid exposing coroutines in interface
-    private inline fun <T> runBlockingWithLock(block: () -> T): T = kotlinx.coroutines.runBlocking { lock.withLock { block() } }
+    private fun <T> runBlockingWithLock(block: () -> T): T = kotlinx.coroutines.runBlocking { lock.withLock { block() } }
 }

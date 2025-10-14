@@ -1,0 +1,110 @@
+Initialized native services in: /Users/sydneybach/.gradle/native
+Initialized jansi services in: /Users/sydneybach/.gradle/native
+The client will now receive all logging from the daemon (pid: 45103). The daemon log file: /Users/sydneybach/.gradle/daemon/8.14/daemon-45103.out.log
+Starting 8th build in daemon [uptime: 1 hrs 35 mins 25.913 secs, performance: 99%, GC rate: 0.00/s, heap usage: 3% of 512 MiB, non-heap usage: 47% of 384 MiB]
+Using 32 worker leases.
+Invalidating in-memory cache of /Volumes/stuff/Projects/SolaceCore/.gradle/8.14/fileHashes/fileHashes.bin
+Invalidating in-memory cache of /Volumes/stuff/Projects/SolaceCore/.gradle/buildOutputCleanup/outputFiles.bin
+Invalidating in-memory cache of /Volumes/stuff/Projects/SolaceCore/.gradle/8.14/fileHashes/resourceHashesCache.bin
+Now considering [/Volumes/stuff/Projects/SolaceCore] as hierarchies to watch
+Watching the file system is configured to be enabled if available
+File system watching is active
+Starting Build
+Resolved plugin [id: 'org.gradle.toolchains.foojay-resolver-convention', version: '1.0.0']
+Invalidating in-memory cache of /Users/sydneybach/.gradle/caches/journal-1/file-access.bin
+Invalidating in-memory cache of /Users/sydneybach/.gradle/caches/8.14/fileHashes/fileHashes.bin
+Invalidating in-memory cache of /Users/sydneybach/.gradle/caches/8.14/fileHashes/resourceHashesCache.bin
+Settings evaluated using settings file '/Volumes/stuff/Projects/SolaceCore/settings.gradle.kts'.
+Using local directory build cache for the root build (location = /Users/sydneybach/.gradle/caches/build-cache-1, remove unused entries = after 7 days).
+Projects loaded. Root project using build file '/Volumes/stuff/Projects/SolaceCore/build.gradle.kts'.
+Included projects: [root project 'SolaceCore', project ':lib']
+
+> Configure project :
+Evaluating root project 'SolaceCore' using build file '/Volumes/stuff/Projects/SolaceCore/build.gradle.kts'.
+
+> Configure project :lib
+Evaluating project ':lib' using build file '/Volumes/stuff/Projects/SolaceCore/lib/build.gradle.kts'.
+Build cache key for Kotlin DSL script compilation (Project/TopLevel/stage1) is ab8f8969320e207ed173e4a599f34138
+Stored cache entry for Kotlin DSL script compilation (Project/TopLevel/stage1) with cache key ab8f8969320e207ed173e4a599f34138
+Resolved plugin [id: 'org.jetbrains.kotlin.multiplatform', version: '2.2.20']
+Resolved plugin [id: 'org.jetbrains.kotlin.plugin.serialization', version: '2.2.20']
+Build 77bedd02-25f5-4f00-85f8-830f5fc54ce0 is started
+Using Kotlin Gradle Plugin gradle813 variant
+Build cache key for Kotlin DSL script compilation (Project/TopLevel/stage2) is caf8986fd0de4b0d3d286d4b6e3324d0
+Stored cache entry for Kotlin DSL script compilation (Project/TopLevel/stage2) with cache key caf8986fd0de4b0d3d286d4b6e3324d0
+kotlin scripting plugin: created the scripting discovery configuration: kotlinScriptDef
+kotlin scripting plugin: created the scripting discovery configuration: testKotlinScriptDef
+All projects evaluated.
+Task path ':lib:compileKotlinJvm' matched project ':lib'
+Task name matched 'compileKotlinJvm'
+Selected primary task 'compileKotlinJvm' from project :lib
+Downloading https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-scripting-dependencies/2.2.20/kotlin-scripting-dependencies-2.2.20.pom to /Users/sydneybach/.gradle/.tmp/gradle_download4013104924916879827bin
+Downloading https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-scripting-jvm-host/2.2.20/kotlin-scripting-jvm-host-2.2.20.pom to /Users/sydneybach/.gradle/.tmp/gradle_download14795250449253334228bin
+Downloading https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-scripting-dependencies-maven/2.2.20/kotlin-scripting-dependencies-maven-2.2.20.pom to /Users/sydneybach/.gradle/.tmp/gradle_download17146050159120836421bin
+Downloading https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-main-kts/2.2.20/kotlin-main-kts-2.2.20.pom to /Users/sydneybach/.gradle/.tmp/gradle_download17757943792033043300bin
+Starting process 'command '/usr/libexec/java_home''. Working directory: /Users/sydneybach/.gradle/daemon/8.14 Command: /usr/libexec/java_home -V
+Successfully started process 'command '/usr/libexec/java_home''
+Tasks to be executed: [task ':lib:kmpPartiallyResolvedDependenciesChecker', task ':lib:checkKotlinGradlePluginConfigurationErrors', task ':lib:compileKotlinJvm']
+Tasks that were excluded: []
+Resolve mutations for :lib:kmpPartiallyResolvedDependenciesChecker (Thread[#1177,Execution worker,5,main]) started.
+:lib:kmpPartiallyResolvedDependenciesChecker (Thread[#1181,Execution worker Thread 5,5,main]) started.
+Invalidating in-memory cache of /Volumes/stuff/Projects/SolaceCore/.gradle/8.14/executionHistory/executionHistory.bin
+
+> Task :lib:kmpPartiallyResolvedDependenciesChecker
+Caching disabled for task ':lib:kmpPartiallyResolvedDependenciesChecker' because:
+  This task is not intended for execution
+Task ':lib:kmpPartiallyResolvedDependenciesChecker' is not up-to-date because:
+  Task has not declared any outputs despite executing actions.
+Execution stopped by some action with message: null
+Resolve mutations for :lib:checkKotlinGradlePluginConfigurationErrors (Thread[#1181,Execution worker Thread 5,5,main]) started.
+:lib:checkKotlinGradlePluginConfigurationErrors (Thread[#1181,Execution worker Thread 5,5,main]) started.
+
+> Task :lib:checkKotlinGradlePluginConfigurationErrors SKIPPED
+Skipping task ':lib:checkKotlinGradlePluginConfigurationErrors' as task onlyIf 'errorDiagnostics are present' is false.
+Resolve mutations for :lib:compileKotlinJvm (Thread[#1181,Execution worker Thread 5,5,main]) started.
+:lib:compileKotlinJvm (Thread[#1181,Execution worker Thread 5,5,main]) started.
+
+> Task :lib:compileKotlinJvm FAILED
+Downloading https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-scripting-dependencies-maven/2.2.20/kotlin-scripting-dependencies-maven-2.2.20.jar to /Users/sydneybach/.gradle/.tmp/gradle_download6989679263559962307bin
+Downloading https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-scripting-dependencies/2.2.20/kotlin-scripting-dependencies-2.2.20.jar to /Users/sydneybach/.gradle/.tmp/gradle_download2296492609532485258bin
+Downloading https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-main-kts/2.2.20/kotlin-main-kts-2.2.20.jar to /Users/sydneybach/.gradle/.tmp/gradle_download14954990323423000369bin
+Downloading https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-scripting-jvm-host/2.2.20/kotlin-scripting-jvm-host-2.2.20.jar to /Users/sydneybach/.gradle/.tmp/gradle_download9244958008132170456bin
+Build cache key for BuildToolsApiClasspathEntrySnapshotTransform: /Users/sydneybach/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-scripting-compiler-embeddable/2.2.20/d13136286cbdf06f0926ec858125acc09e76cd72/kotlin-scripting-compiler-embeddable-2.2.20.jar is c6c540c1fac24ddbc4e66ebe3bf6af2d
+Build cache key for BuildToolsApiClasspathEntrySnapshotTransform: /Users/sydneybach/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-scripting-jvm/2.2.20/785d5ffea49d9dc289b200d0ff3e0ce6e9ba2395/kotlin-scripting-jvm-2.2.20.jar is 5307222deb7cae6eb3d594fa10890f1f
+Build cache key for BuildToolsApiClasspathEntrySnapshotTransform: /Users/sydneybach/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-scripting-common/2.2.20/79e0c2cc15b84711ac1de87e6a257acd151cb999/kotlin-scripting-common-2.2.20.jar is edcd65da989f16f72f42ad88da0d30dd
+Build cache key for BuildToolsApiClasspathEntrySnapshotTransform: /Users/sydneybach/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-scripting-dependencies-maven/2.2.20/81fd809c5dd4cde89b67bd6130d88c1243177f17/kotlin-scripting-dependencies-maven-2.2.20.jar is 7ae9f8711ae39b4ae97dfd191fe5dddf
+Build cache key for BuildToolsApiClasspathEntrySnapshotTransform: /Users/sydneybach/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-scripting-dependencies/2.2.20/d45e16c1dcaa1b68a3227ee2f743163b1db3760a/kotlin-scripting-dependencies-2.2.20.jar is 34986ecef0ae1b7cf4af379401ff7857
+Build cache key for BuildToolsApiClasspathEntrySnapshotTransform: /Users/sydneybach/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-scripting-jvm-host/2.2.20/21b63f84f94a14cb512ce2875d3767a7b2e17b9c/kotlin-scripting-jvm-host-2.2.20.jar is f6401e3379c828f34853c60663551339
+Build cache key for BuildToolsApiClasspathEntrySnapshotTransform: /Users/sydneybach/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-script-runtime/2.2.20/4c679cbeac0bb583b75c3a080013da8eaf240807/kotlin-script-runtime-2.2.20.jar is 02236ed4ca6f8f3f91192e704c7b0c94
+Build cache key for BuildToolsApiClasspathEntrySnapshotTransform: /Users/sydneybach/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-scripting-compiler-impl-embeddable/2.2.20/816d67678440bd87bc8d1392f97195ec338fdaed/kotlin-scripting-compiler-impl-embeddable-2.2.20.jar is b417419bb3fb9d1333b25931aaa3ecec
+Stored cache entry for BuildToolsApiClasspathEntrySnapshotTransform: /Users/sydneybach/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-scripting-dependencies-maven/2.2.20/81fd809c5dd4cde89b67bd6130d88c1243177f17/kotlin-scripting-dependencies-maven-2.2.20.jar with cache key 7ae9f8711ae39b4ae97dfd191fe5dddf
+Build cache key for BuildToolsApiClasspathEntrySnapshotTransform: /Users/sydneybach/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-main-kts/2.2.20/ea8fdb93d420be6c27fc7fe97b15452678180135/kotlin-main-kts-2.2.20.jar is 5b0e99373001dee14bb46bd878ff4743
+Stored cache entry for BuildToolsApiClasspathEntrySnapshotTransform: /Users/sydneybach/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-scripting-dependencies/2.2.20/d45e16c1dcaa1b68a3227ee2f743163b1db3760a/kotlin-scripting-dependencies-2.2.20.jar with cache key 34986ecef0ae1b7cf4af379401ff7857
+Stored cache entry for BuildToolsApiClasspathEntrySnapshotTransform: /Users/sydneybach/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-script-runtime/2.2.20/4c679cbeac0bb583b75c3a080013da8eaf240807/kotlin-script-runtime-2.2.20.jar with cache key 02236ed4ca6f8f3f91192e704c7b0c94
+Stored cache entry for BuildToolsApiClasspathEntrySnapshotTransform: /Users/sydneybach/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-scripting-jvm-host/2.2.20/21b63f84f94a14cb512ce2875d3767a7b2e17b9c/kotlin-scripting-jvm-host-2.2.20.jar with cache key f6401e3379c828f34853c60663551339
+Stored cache entry for BuildToolsApiClasspathEntrySnapshotTransform: /Users/sydneybach/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-scripting-jvm/2.2.20/785d5ffea49d9dc289b200d0ff3e0ce6e9ba2395/kotlin-scripting-jvm-2.2.20.jar with cache key 5307222deb7cae6eb3d594fa10890f1f
+Stored cache entry for BuildToolsApiClasspathEntrySnapshotTransform: /Users/sydneybach/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-scripting-compiler-impl-embeddable/2.2.20/816d67678440bd87bc8d1392f97195ec338fdaed/kotlin-scripting-compiler-impl-embeddable-2.2.20.jar with cache key b417419bb3fb9d1333b25931aaa3ecec
+Stored cache entry for BuildToolsApiClasspathEntrySnapshotTransform: /Users/sydneybach/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-scripting-common/2.2.20/79e0c2cc15b84711ac1de87e6a257acd151cb999/kotlin-scripting-common-2.2.20.jar with cache key edcd65da989f16f72f42ad88da0d30dd
+Stored cache entry for BuildToolsApiClasspathEntrySnapshotTransform: /Users/sydneybach/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-scripting-compiler-embeddable/2.2.20/d13136286cbdf06f0926ec858125acc09e76cd72/kotlin-scripting-compiler-embeddable-2.2.20.jar with cache key c6c540c1fac24ddbc4e66ebe3bf6af2d
+Stored cache entry for BuildToolsApiClasspathEntrySnapshotTransform: /Users/sydneybach/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-main-kts/2.2.20/ea8fdb93d420be6c27fc7fe97b15452678180135/kotlin-main-kts-2.2.20.jar with cache key 5b0e99373001dee14bb46bd878ff4743
+Build cache key for task ':lib:compileKotlinJvm' is 0f05c60d28ab4b4a0147105e432202c5
+Task ':lib:compileKotlinJvm' is not up-to-date because:
+  Task has failed previously.
+The input changes require a full rebuild for incremental task ':lib:compileKotlinJvm'.
+file or directory '/Volumes/stuff/Projects/SolaceCore/lib/src/jvmMain/java', not found
+file or directory '/Volumes/stuff/Projects/SolaceCore/lib/src/jvmMain/java', not found
+file or directory '/Volumes/stuff/Projects/SolaceCore/lib/src/jvmMain/java', not found
+file or directory '/Volumes/stuff/Projects/SolaceCore/lib/src/jvmMain/java', not found
+file or directory '/Volumes/stuff/Projects/SolaceCore/lib/src/jvmMain/java', not found
+Kotlin source files: /Volumes/stuff/Projects/SolaceCore/lib/src/jvmMain/kotlin/ai/solace/core/scripting/JvmScriptEngine.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmMain/kotlin/ai/solace/core/scripting/FileScriptStorage.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmMain/kotlin/ai/solace/core/scripting/SimpleScriptValidator.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmMain/kotlin/ai/solace/core/scripting/FileScriptVersionManager.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmMain/kotlin/ai/solace/core/scripting/ScriptManager.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmMain/kotlin/ai/solace/core/util/LoggerProvider.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmMain/kotlin/ai/solace/core/storage/encryption/EncryptedStorage.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmMain/kotlin/ai/solace/core/storage/encryption/EncryptionStrategy.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmMain/kotlin/ai/solace/core/storage/encryption/AESEncryptionStrategy.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmMain/kotlin/ai/solace/core/storage/FileConfigurationStorage.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmMain/kotlin/ai/solace/core/storage/TransactionalFileStorage.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmMain/kotlin/ai/solace/core/storage/FileStorageManager.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmMain/kotlin/ai/solace/core/storage/serialization/SerializationWrapper.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmMain/kotlin/ai/solace/core/storage/compression/GZIPCompressionStrategy.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmMain/kotlin/ai/solace/core/storage/compression/CompressedStorage.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmMain/kotlin/ai/solace/core/storage/compression/CompressionStrategy.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmMain/kotlin/ai/solace/core/storage/FileActorStateStorage.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmMain/kotlin/ai/solace/core/storage/FileStorage.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/scripting/ScriptVersionManager.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/scripting/ScriptActor.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/scripting/CompiledScript.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/scripting/ScriptStorage.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/scripting/ScriptEngine.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/scripting/ScriptValidator.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/lifecycle/Lifecycle.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/lifecycle/Disposable.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/storage/cache/TTLCachePolicy.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/storage/cache/CachedStorage.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/storage/cache/LRUCachePolicy.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/storage/cache/CachePolicy.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/storage/StorageSerializer.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/storage/TransactionalInMemoryStorage.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/storage/Transaction.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/storage/recovery/ActorStateSnapshot.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/storage/recovery/RecoverableActorStateStorage.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/storage/recovery/ActorRecoveryManager.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/storage/Storage.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/storage/serialization/ActorStateEnumSerializer.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/storage/serialization/SerializableInMemoryActorStateStorage.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/storage/serialization/SerializableActorStateStorage.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/storage/serialization/ActorStateSerializer.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/storage/serialization/ActorStateSerializerRegistry.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/storage/InMemoryStorage.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/storage/ActorStateStorage.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/storage/ConfigurationStorage.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/storage/InMemoryActorStateStorage.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/storage/TransactionalStorage.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/storage/InMemoryStorageManager.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/storage/StorageManager.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/storage/InMemoryConfigurationStorage.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/workflow/WorkflowManager.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/actor/metrics/ActorMetrics.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/actor/ActorState.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/actor/Actor.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/actor/ActorMessage.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/actor/examples/TextProcessor.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/actor/examples/Filter.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/actor/builder/ActorBuilder.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/actor/supervisor/SupervisorActor.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/kernel/channels/ports/Port.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/kernel/channels/ports/PortException.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/kernel/channels/ports/MessageHandlers.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/kernel/channels/ports/BidirectionalPort.kt
+Java source files: 
+Script source files: 
+Script file extensions: 
+file or directory '/Volumes/stuff/Projects/SolaceCore/lib/src/jvmMain/java', not found
+Using Kotlin/JVM incremental compilation
+[KOTLIN] Kotlin compilation 'jdkHome' argument: /Users/sydneybach/Library/Java/JavaVirtualMachines/temurin-17.0.8/Contents/Home
+Options for KOTLIN DAEMON: IncrementalCompilationOptions(super=CompilationOptions(compilerMode=INCREMENTAL_COMPILER, targetPlatform=JVM, reportCategories=[0, 3], reportSeverity=2, requestedCompilationResults=[0], kotlinScriptExtensions=[]), sourceChanges=org.jetbrains.kotlin.buildtools.api.SourcesChanges$Unknown@b725373, classpathChanges=NotAvailableForNonIncrementalRun, workingDir=/Volumes/stuff/Projects/SolaceCore/lib/build/kotlin/compileKotlinJvm/cacheable, multiModuleICSettings=MultiModuleICSettings(buildHistoryFile=/Volumes/stuff/Projects/SolaceCore/lib/build/kotlin/compileKotlinJvm/local-state/build-history.bin, useModuleDetection=false), icFeatures=IncrementalCompilationFeatures(usePreciseJavaTracking=true, withAbiSnapshot=false, preciseCompilationResultsBackup=true, keepIncrementalCompilationCachesInMemory=true, enableUnsafeIncrementalCompilationForMultiplatform=false, enableMonotonousIncrementalCompileSetExpansion=true), outputFiles=[/Volumes/stuff/Projects/SolaceCore/lib/build/classes/kotlin/jvm/main, /Volumes/stuff/Projects/SolaceCore/lib/build/kotlin/compileKotlinJvm/cacheable, /Volumes/stuff/Projects/SolaceCore/lib/build/kotlin/compileKotlinJvm/local-state])
+Finished executing kotlin compiler using DAEMON strategy
+Build 77bedd02-25f5-4f00-85f8-830f5fc54ce0 is closed
+2 actionable tasks: 2 executed
+Watched directory hierarchies: [/Volumes/stuff/Projects/SolaceCore]

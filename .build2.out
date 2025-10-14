@@ -1,0 +1,321 @@
+Initialized native services in: /Users/sydneybach/.gradle/native
+Initialized jansi services in: /Users/sydneybach/.gradle/native
+The client will now receive all logging from the daemon (pid: 45103). The daemon log file: /Users/sydneybach/.gradle/daemon/8.14/daemon-45103.out.log
+Starting 6th build in daemon [uptime: 1 hrs 6 mins 6.762 secs, performance: 99%, GC rate: 0.00/s, heap usage: 3% of 512 MiB, non-heap usage: 40% of 384 MiB]
+Using 32 worker leases.
+Now considering [/Volumes/stuff/Projects/SolaceCore] as hierarchies to watch
+Watching the file system is configured to be enabled if available
+File system watching is active
+Starting Build
+Resolved plugin [id: 'org.gradle.toolchains.foojay-resolver-convention', version: '1.0.0']
+Settings evaluated using settings file '/Volumes/stuff/Projects/SolaceCore/settings.gradle.kts'.
+Using local directory build cache for the root build (location = /Users/sydneybach/.gradle/caches/build-cache-1, remove unused entries = after 7 days).
+Projects loaded. Root project using build file '/Volumes/stuff/Projects/SolaceCore/build.gradle.kts'.
+Included projects: [root project 'SolaceCore', project ':lib']
+
+> Configure project :
+Evaluating root project 'SolaceCore' using build file '/Volumes/stuff/Projects/SolaceCore/build.gradle.kts'.
+
+> Configure project :lib
+Evaluating project ':lib' using build file '/Volumes/stuff/Projects/SolaceCore/lib/build.gradle.kts'.
+Resolved plugin [id: 'org.jetbrains.kotlin.multiplatform', version: '2.2.20']
+Resolved plugin [id: 'org.jetbrains.kotlin.plugin.serialization', version: '2.2.20']
+Build ca0c6470-d230-4fc6-a77f-7e0bbe569206 is started
+Using Kotlin Gradle Plugin gradle813 variant
+kotlin scripting plugin: created the scripting discovery configuration: kotlinScriptDef
+kotlin scripting plugin: created the scripting discovery configuration: testKotlinScriptDef
+All projects evaluated.
+Task name matched 'clean'
+Task name matched 'build'
+Selected primary task 'clean' from project :
+Selected primary task 'build' from project :
+Starting process 'command '/usr/libexec/java_home''. Working directory: /Users/sydneybach/.gradle/daemon/8.14 Command: /usr/libexec/java_home -V
+Successfully started process 'command '/usr/libexec/java_home''
+Tasks to be executed: [task ':lib:cleanJvmTest', task ':lib:cleanMacosArm64Test', task ':lib:cleanAllTests', task ':lib:clean', task ':lib:kmpPartiallyResolvedDependenciesChecker', task ':lib:checkKotlinGradlePluginConfigurationErrors', task ':lib:transformCommonMainDependenciesMetadata', task ':lib:compileCommonMainKotlinMetadata', task ':lib:generateProjectStructureMetadata', task ':lib:metadataCommonMainProcessResources', task ':lib:metadataCommonMainClasses', task ':lib:allMetadataJar', task ':lib:compileKotlinMacosArm64', task ':lib:macosArm64ProcessResources', task ':lib:macosArm64MainKlibrary', task ':lib:compileTestKotlinMacosArm64', task ':lib:compileKotlinJvm', task ':lib:compileJvmMainJava', task ':lib:jvmProcessResources', task ':lib:processJvmMainResources', task ':lib:jvmMainClasses', task ':lib:jvmJar', task ':lib:macosArm64MetadataElements', task ':lib:assemble', task ':lib:compileTestKotlinJvm', task ':lib:compileJvmTestJava', task ':lib:jvmTestProcessResources', task ':lib:processJvmTestResources', task ':lib:jvmTestClasses', task ':lib:jvmTest', task ':lib:linkDebugTestMacosArm64', task ':lib:macosArm64Test', task ':lib:allTests', task ':lib:check', task ':lib:build']
+Tasks that were excluded: []
+Resolve mutations for :lib:cleanJvmTest (Thread[#848,Execution worker,5,main]) started.
+:lib:cleanJvmTest (Thread[#848,Execution worker,5,main]) started.
+
+> Task :lib:cleanJvmTest UP-TO-DATE
+Caching disabled for task ':lib:cleanJvmTest' because:
+  Deletion cannot be cached
+Task ':lib:cleanJvmTest' is not up-to-date because:
+  Task has not declared any outputs despite executing actions.
+Resolve mutations for :lib:cleanMacosArm64Test (Thread[#848,Execution worker,5,main]) started.
+:lib:cleanMacosArm64Test (Thread[#848,Execution worker,5,main]) started.
+
+> Task :lib:cleanMacosArm64Test UP-TO-DATE
+Caching disabled for task ':lib:cleanMacosArm64Test' because:
+  Deletion cannot be cached
+Task ':lib:cleanMacosArm64Test' is not up-to-date because:
+  Task has not declared any outputs despite executing actions.
+Resolve mutations for :lib:cleanAllTests (Thread[#848,Execution worker,5,main]) started.
+:lib:cleanAllTests (Thread[#848,Execution worker,5,main]) started.
+
+> Task :lib:cleanAllTests UP-TO-DATE
+Skipping task ':lib:cleanAllTests' as it has no actions.
+Resolve mutations for :lib:clean (Thread[#848,Execution worker,5,main]) started.
+:lib:clean (Thread[#874,Execution worker Thread 26,5,main]) started.
+destroyer locations for task group 0 (Thread[#873,Execution worker Thread 25,5,main]) started.
+
+> Task :lib:clean
+Caching disabled for task ':lib:clean' because:
+  Deletion cannot be cached
+Task ':lib:clean' is not up-to-date because:
+  Task has not declared any outputs despite executing actions.
+Resolve mutations for :lib:kmpPartiallyResolvedDependenciesChecker (Thread[#873,Execution worker Thread 25,5,main]) started.
+:lib:kmpPartiallyResolvedDependenciesChecker (Thread[#873,Execution worker Thread 25,5,main]) started.
+
+> Task :lib:kmpPartiallyResolvedDependenciesChecker
+Caching disabled for task ':lib:kmpPartiallyResolvedDependenciesChecker' because:
+  This task is not intended for execution
+Task ':lib:kmpPartiallyResolvedDependenciesChecker' is not up-to-date because:
+  Task has not declared any outputs despite executing actions.
+Execution stopped by some action with message: null
+Resolve mutations for :lib:checkKotlinGradlePluginConfigurationErrors (Thread[#858,Execution worker Thread 11,5,main]) started.
+:lib:checkKotlinGradlePluginConfigurationErrors (Thread[#858,Execution worker Thread 11,5,main]) started.
+
+> Task :lib:checkKotlinGradlePluginConfigurationErrors SKIPPED
+Skipping task ':lib:checkKotlinGradlePluginConfigurationErrors' as task onlyIf 'errorDiagnostics are present' is false.
+Resolve mutations for :lib:transformCommonMainDependenciesMetadata (Thread[#858,Execution worker Thread 11,5,main]) started.
+:lib:transformCommonMainDependenciesMetadata (Thread[#858,Execution worker Thread 11,5,main]) started.
+
+> Task :lib:transformCommonMainDependenciesMetadata
+Caching disabled for task ':lib:transformCommonMainDependenciesMetadata' because:
+  Metadata Dependency Transformation Task doesn't benefit from caching as it doesn't have heavy load
+Task ':lib:transformCommonMainDependenciesMetadata' is not up-to-date because:
+  Output property 'outputsDir$kotlin_gradle_plugin_common' file /Volumes/stuff/Projects/SolaceCore/lib/build/kotlinTransformedMetadataLibraries/commonMain has been removed.
+  Output property 'outputsDir$kotlin_gradle_plugin_common' file /Volumes/stuff/Projects/SolaceCore/lib/build/kotlinTransformedMetadataLibraries/commonMain/commonMain.json has been removed.
+  Output property 'outputsDir$kotlin_gradle_plugin_common' file /Volumes/stuff/Projects/SolaceCore/lib/build/kotlinTransformedMetadataLibraries/commonMain/org.jetbrains.kotlin-kotlin-stdlib-2.2.20-commonMain-Y8sbrw.klib has been removed.
+  and more...
+Resolve mutations for :lib:compileCommonMainKotlinMetadata (Thread[#858,Execution worker Thread 11,5,main]) started.
+:lib:compileCommonMainKotlinMetadata (Thread[#858,Execution worker Thread 11,5,main]) started.
+
+> Task :lib:compileCommonMainKotlinMetadata FROM-CACHE
+Build cache key for task ':lib:compileCommonMainKotlinMetadata' is 76d43c33147c26630001808abf0e615b
+Task ':lib:compileCommonMainKotlinMetadata' is not up-to-date because:
+  Output property 'destinationDirectory' file /Volumes/stuff/Projects/SolaceCore/lib/build/classes/kotlin/metadata/commonMain has been removed.
+  Output property 'destinationDirectory' file /Volumes/stuff/Projects/SolaceCore/lib/build/classes/kotlin/metadata/commonMain/default has been removed.
+  Output property 'destinationDirectory' file /Volumes/stuff/Projects/SolaceCore/lib/build/classes/kotlin/metadata/commonMain/default/linkdata has been removed.
+  and more...
+Loaded cache entry for task ':lib:compileCommonMainKotlinMetadata' with cache key 76d43c33147c26630001808abf0e615b
+Resolve mutations for :lib:generateProjectStructureMetadata (Thread[#858,Execution worker Thread 11,5,main]) started.
+:lib:generateProjectStructureMetadata (Thread[#858,Execution worker Thread 11,5,main]) started.
+
+> Task :lib:generateProjectStructureMetadata
+Caching disabled for task ':lib:generateProjectStructureMetadata' because:
+  Caching has been disabled for the task
+Task ':lib:generateProjectStructureMetadata' is not up-to-date because:
+  Output property 'resultFile' file /Volumes/stuff/Projects/SolaceCore/lib/build/kotlinProjectStructureMetadata/kotlin-project-structure-metadata.json has been removed.
+Resolve mutations for :lib:metadataCommonMainProcessResources (Thread[#858,Execution worker Thread 11,5,main]) started.
+:lib:metadataCommonMainProcessResources (Thread[#858,Execution worker Thread 11,5,main]) started.
+
+> Task :lib:metadataCommonMainProcessResources
+Caching disabled for task ':lib:metadataCommonMainProcessResources' because:
+  Not worth caching
+Task ':lib:metadataCommonMainProcessResources' is not up-to-date because:
+  Output property 'destinationDir' file /Volumes/stuff/Projects/SolaceCore/lib/build/processedResources/metadata/commonMain has been removed.
+  Output property 'destinationDir' file /Volumes/stuff/Projects/SolaceCore/lib/build/processedResources/metadata/commonMain/logback.xml has been removed.
+  Output property 'destinationDir' file /Volumes/stuff/Projects/SolaceCore/lib/build/processedResources/metadata/commonMain/openapi has been removed.
+  and more...
+Resolve mutations for :lib:metadataCommonMainClasses (Thread[#858,Execution worker Thread 11,5,main]) started.
+:lib:metadataCommonMainClasses (Thread[#858,Execution worker Thread 11,5,main]) started.
+
+> Task :lib:metadataCommonMainClasses
+Skipping task ':lib:metadataCommonMainClasses' as it has no actions.
+Resolve mutations for :lib:allMetadataJar (Thread[#853,Execution worker Thread 6,5,main]) started.
+:lib:allMetadataJar (Thread[#853,Execution worker Thread 6,5,main]) started.
+
+> Task :lib:allMetadataJar
+Caching disabled for task ':lib:allMetadataJar' because:
+  Not worth caching
+Task ':lib:allMetadataJar' is not up-to-date because:
+  No history is available.
+Resolve mutations for :lib:compileKotlinMacosArm64 (Thread[#853,Execution worker Thread 6,5,main]) started.
+:lib:compileKotlinMacosArm64 (Thread[#853,Execution worker Thread 6,5,main]) started.
+Not watching anything anymore
+
+> Task :lib:compileKotlinMacosArm64
+Kotlin Native Bundle: Acquire lock: /Users/sydneybach/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock ...
+Kotlin Native Bundle: Lock acquired: /Users/sydneybach/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock
+Kotlin Native Bundle: Lock released: /Users/sydneybach/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock
+Kotlin Native Bundle: Acquire lock: /Users/sydneybach/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock ...
+Kotlin Native Bundle: Lock acquired: /Users/sydneybach/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock
+Kotlin Native Bundle: Lock released: /Users/sydneybach/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock
+Kotlin Native Bundle: Acquire lock: /Users/sydneybach/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock ...
+Kotlin Native Bundle: Lock acquired: /Users/sydneybach/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock
+Kotlin Native Bundle: Lock released: /Users/sydneybach/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock
+Kotlin Native Bundle: Acquire lock: /Users/sydneybach/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock ...
+Kotlin Native Bundle: Lock acquired: /Users/sydneybach/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock
+Kotlin Native Bundle: Lock released: /Users/sydneybach/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock
+Kotlin Native Bundle: Acquire lock: /Users/sydneybach/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock ...
+Kotlin Native Bundle: Lock acquired: /Users/sydneybach/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock
+Kotlin Native Bundle: Lock released: /Users/sydneybach/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock
+Kotlin Native Bundle: Acquire lock: /Users/sydneybach/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock ...
+Kotlin Native Bundle: Lock acquired: /Users/sydneybach/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock
+Kotlin Native Bundle: Lock released: /Users/sydneybach/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock
+Kotlin Native Bundle: Acquire lock: /Users/sydneybach/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock ...
+Kotlin Native Bundle: Lock acquired: /Users/sydneybach/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock
+Kotlin Native Bundle: Lock released: /Users/sydneybach/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock
+Kotlin Native Bundle: Acquire lock: /Users/sydneybach/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock ...
+Kotlin Native Bundle: Lock acquired: /Users/sydneybach/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock
+Kotlin Native Bundle: Lock released: /Users/sydneybach/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock
+Build cache key for task ':lib:compileKotlinMacosArm64' is fa6ef3796c6406457f03f5c738618b99
+Task ':lib:compileKotlinMacosArm64' is not up-to-date because:
+  Task has failed previously.
+Kotlin Native Bundle: Acquire lock: /Users/sydneybach/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock ...
+Kotlin Native Bundle: Lock acquired: /Users/sydneybach/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock
+Kotlin Native Bundle: Lock released: /Users/sydneybach/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock
+file or directory '/Volumes/stuff/Projects/SolaceCore/lib/src/macosArm64Main/kotlin', not found
+file or directory '/Volumes/stuff/Projects/SolaceCore/lib/src/macosMain/kotlin', not found
+file or directory '/Volumes/stuff/Projects/SolaceCore/lib/src/appleMain/kotlin', not found
+file or directory '/Volumes/stuff/Projects/SolaceCore/lib/src/nativeMain/kotlin', not found
+file or directory '/Volumes/stuff/Projects/SolaceCore/lib/src/macosArm64Main/kotlin', not found
+file or directory '/Volumes/stuff/Projects/SolaceCore/lib/src/macosMain/kotlin', not found
+file or directory '/Volumes/stuff/Projects/SolaceCore/lib/src/appleMain/kotlin', not found
+file or directory '/Volumes/stuff/Projects/SolaceCore/lib/src/nativeMain/kotlin', not found
+file or directory '/Volumes/stuff/Projects/SolaceCore/lib/src/macosArm64Main/kotlin', not found
+file or directory '/Volumes/stuff/Projects/SolaceCore/lib/src/macosMain/kotlin', not found
+file or directory '/Volumes/stuff/Projects/SolaceCore/lib/src/appleMain/kotlin', not found
+file or directory '/Volumes/stuff/Projects/SolaceCore/lib/src/nativeMain/kotlin', not found
+Stored cache entry for task ':lib:compileKotlinMacosArm64' with cache key fa6ef3796c6406457f03f5c738618b99
+Resolve mutations for :lib:macosArm64ProcessResources (Thread[#853,Execution worker Thread 6,5,main]) started.
+:lib:macosArm64ProcessResources (Thread[#853,Execution worker Thread 6,5,main]) started.
+
+> Task :lib:macosArm64ProcessResources
+Caching disabled for task ':lib:macosArm64ProcessResources' because:
+  Not worth caching
+Task ':lib:macosArm64ProcessResources' is not up-to-date because:
+  No history is available.
+file or directory '/Volumes/stuff/Projects/SolaceCore/lib/src/macosArm64Main/resources', not found
+file or directory '/Volumes/stuff/Projects/SolaceCore/lib/src/macosMain/resources', not found
+file or directory '/Volumes/stuff/Projects/SolaceCore/lib/src/appleMain/resources', not found
+file or directory '/Volumes/stuff/Projects/SolaceCore/lib/src/nativeMain/resources', not found
+Resolve mutations for :lib:macosArm64MainKlibrary (Thread[#853,Execution worker Thread 6,5,main]) started.
+:lib:macosArm64MainKlibrary (Thread[#869,Execution worker Thread 21,5,main]) started.
+
+> Task :lib:macosArm64MainKlibrary
+Skipping task ':lib:macosArm64MainKlibrary' as it has no actions.
+Resolve mutations for :lib:compileTestKotlinMacosArm64 (Thread[#869,Execution worker Thread 21,5,main]) started.
+:lib:compileTestKotlinMacosArm64 (Thread[#869,Execution worker Thread 21,5,main]) started.
+
+> Task :lib:compileTestKotlinMacosArm64 NO-SOURCE
+Skipping task ':lib:compileTestKotlinMacosArm64' as it has no source files and no previous output files.
+Resolve mutations for :lib:compileKotlinJvm (Thread[#869,Execution worker Thread 21,5,main]) started.
+:lib:compileKotlinJvm (Thread[#869,Execution worker Thread 21,5,main]) started.
+Not watching anything anymore
+Resolve mutations for :lib:jvmProcessResources (Thread[#876,Execution worker Thread 28,5,main]) started.
+:lib:jvmProcessResources (Thread[#876,Execution worker Thread 28,5,main]) started.
+
+> Task :lib:jvmProcessResources
+Caching disabled for task ':lib:jvmProcessResources' because:
+  Not worth caching
+Task ':lib:jvmProcessResources' is not up-to-date because:
+  No history is available.
+file or directory '/Volumes/stuff/Projects/SolaceCore/lib/src/jvmMain/resources', not found
+file or directory '/Volumes/stuff/Projects/SolaceCore/lib/src/jvmMain/resources', not found
+Resolve mutations for :lib:processJvmMainResources (Thread[#876,Execution worker Thread 28,5,main]) started.
+:lib:processJvmMainResources (Thread[#876,Execution worker Thread 28,5,main]) started.
+
+> Task :lib:processJvmMainResources SKIPPED
+Skipping task ':lib:processJvmMainResources' as task onlyIf 'Task is enabled' is false.
+Resolve mutations for :lib:macosArm64MetadataElements (Thread[#876,Execution worker Thread 28,5,main]) started.
+:lib:macosArm64MetadataElements (Thread[#876,Execution worker Thread 28,5,main]) started.
+
+> Task :lib:macosArm64MetadataElements
+Caching disabled for task ':lib:macosArm64MetadataElements' because:
+  Not worth caching
+Task ':lib:macosArm64MetadataElements' is not up-to-date because:
+  No history is available.
+Resolve mutations for :lib:jvmTestProcessResources (Thread[#876,Execution worker Thread 28,5,main]) started.
+:lib:jvmTestProcessResources (Thread[#876,Execution worker Thread 28,5,main]) started.
+
+> Task :lib:jvmTestProcessResources NO-SOURCE
+Skipping task ':lib:jvmTestProcessResources' as it has no source files and no previous output files.
+Resolve mutations for :lib:processJvmTestResources (Thread[#876,Execution worker Thread 28,5,main]) started.
+:lib:processJvmTestResources (Thread[#876,Execution worker Thread 28,5,main]) started.
+
+> Task :lib:processJvmTestResources SKIPPED
+Skipping task ':lib:processJvmTestResources' as task onlyIf 'Task is enabled' is false.
+Resolve mutations for :lib:linkDebugTestMacosArm64 (Thread[#876,Execution worker Thread 28,5,main]) started.
+:lib:linkDebugTestMacosArm64 (Thread[#876,Execution worker Thread 28,5,main]) started.
+
+> Task :lib:linkDebugTestMacosArm64 NO-SOURCE
+Kotlin Native Bundle: Acquire lock: /Users/sydneybach/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock ...
+Kotlin Native Bundle: Lock acquired: /Users/sydneybach/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock
+Kotlin Native Bundle: Lock released: /Users/sydneybach/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock
+Skipping task ':lib:linkDebugTestMacosArm64' as it has no source files and no previous output files.
+Resolve mutations for :lib:macosArm64Test (Thread[#876,Execution worker Thread 28,5,main]) started.
+:lib:macosArm64Test (Thread[#876,Execution worker Thread 28,5,main]) started.
+
+> Task :lib:macosArm64Test SKIPPED
+Skipping task ':lib:macosArm64Test' as task onlyIf 'Task satisfies onlyIf spec' is false.
+
+> Task :lib:compileKotlinJvm
+Downloading https://repo.maven.apache.org/maven2/org/jetbrains/kotlinx/kotlinx-datetime-jvm/0.6.1/kotlinx-datetime-jvm-0.6.1.jar to /Users/sydneybach/.gradle/.tmp/gradle_download12585807352121628610bin
+Found locally available resource with matching checksum: [https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-scripting-jvm-host/2.0.21/kotlin-scripting-jvm-host-2.0.21.jar, /Users/sydneybach/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-scripting-jvm-host/2.0.21/aadc8c3c75d6f2297c55cc1082b91f1650494ce6/kotlin-scripting-jvm-host-2.0.21.jar]
+Downloading https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/2.0.13/slf4j-api-2.0.13.jar to /Users/sydneybach/.gradle/.tmp/gradle_download17727983078785272753bin
+Found locally available resource with matching checksum: [https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-scripting-dependencies/2.0.21/kotlin-scripting-dependencies-2.0.21.jar, /Users/sydneybach/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-scripting-dependencies/2.0.21/85eb1a350bcb580cbf0e449f04abb8cee88ec348/kotlin-scripting-dependencies-2.0.21.jar]
+Found locally available resource with matching checksum: [https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-scripting-dependencies-maven/2.0.21/kotlin-scripting-dependencies-maven-2.0.21.jar, /Users/sydneybach/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-scripting-dependencies-maven/2.0.21/7dfa3273b536a1348c19bea4f924cb057838da25/kotlin-scripting-dependencies-maven-2.0.21.jar]
+Found locally available resource with matching checksum: [https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-main-kts/2.0.21/kotlin-main-kts-2.0.21.jar, /Users/sydneybach/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-main-kts/2.0.21/69f8791a7383bdd019cdb883facb32b588fb9290/kotlin-main-kts-2.0.21.jar]
+Downloading https://repo.maven.apache.org/maven2/org/slf4j/slf4j-simple/2.0.13/slf4j-simple-2.0.13.jar to /Users/sydneybach/.gradle/.tmp/gradle_download5152066872666143332bin
+Downloading https://repo.maven.apache.org/maven2/org/jetbrains/kotlinx/atomicfu-jvm/0.24.0/atomicfu-jvm-0.24.0.jar to /Users/sydneybach/.gradle/.tmp/gradle_download16860395218907232684bin
+Build cache key for BuildToolsApiClasspathEntrySnapshotTransform: /Users/sydneybach/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlinx/kotlinx-coroutines-core-jvm/1.10.2/4a9f78ef49483748e2c129f3d124b8fa249dafbf/kotlinx-coroutines-core-jvm-1.10.2.jar is e800dc212dd2185d97fc0e23e7d625d7
+Build cache key for BuildToolsApiClasspathEntrySnapshotTransform: /Users/sydneybach/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-scripting-dependencies-maven/2.0.21/7dfa3273b536a1348c19bea4f924cb057838da25/kotlin-scripting-dependencies-maven-2.0.21.jar is 4bbcac01afec40fd59922eb82014a997
+Build cache key for BuildToolsApiClasspathEntrySnapshotTransform: /Users/sydneybach/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-scripting-dependencies/2.0.21/85eb1a350bcb580cbf0e449f04abb8cee88ec348/kotlin-scripting-dependencies-2.0.21.jar is a14da815a1cc7580507d9849cbd14a83
+Build cache key for BuildToolsApiClasspathEntrySnapshotTransform: /Users/sydneybach/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-scripting-jvm/2.0.21/939d8b644308f8d97c60317df76ee40299475831/kotlin-scripting-jvm-2.0.21.jar is 580881b65b9f3a6be73f4d21ad36f570
+Build cache key for BuildToolsApiClasspathEntrySnapshotTransform: /Users/sydneybach/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-scripting-common/2.0.21/2aeb50e2df2ef94f6b90b7ab2c56d5e18d3687c1/kotlin-scripting-common-2.0.21.jar is 40d910c8d9885473aac7f73cdc464868
+Build cache key for BuildToolsApiClasspathEntrySnapshotTransform: /Users/sydneybach/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib/2.2.20/5380b19fa1924399b62ce3a1faffebb2b4f82272/kotlin-stdlib-2.2.20.jar is d9b7dd5cb047b0e3afd77a2428067196
+Build cache key for BuildToolsApiClasspathEntrySnapshotTransform: /Users/sydneybach/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-scripting-jvm-host/2.0.21/aadc8c3c75d6f2297c55cc1082b91f1650494ce6/kotlin-scripting-jvm-host-2.0.21.jar is bf04e6292829c5a05994827d73613b88
+Build cache key for BuildToolsApiClasspathEntrySnapshotTransform: /Users/sydneybach/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlinx/kotlinx-serialization-json-jvm/1.9.0/aea6f7d49fe5c458f8963ee6d4bdaf4a459ab3e7/kotlinx-serialization-json-jvm-1.9.0.jar is f344e2c0fd90f5c98124326b856c4a48
+Build cache key for BuildToolsApiClasspathEntrySnapshotTransform: /Users/sydneybach/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlinx/kotlinx-serialization-core-jvm/1.9.0/91448df39c558f7c6147b8bd8db01debe16e0cc1/kotlinx-serialization-core-jvm-1.9.0.jar is b6e96d9dc9418d8edd4ae2ba0b288b0b
+Build cache key for BuildToolsApiClasspathEntrySnapshotTransform: /Users/sydneybach/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlinx/kotlinx-datetime-jvm/0.6.1/23d9f71268d3ffc31ce5a5d25622f20bffb3d639/kotlinx-datetime-jvm-0.6.1.jar is 62307fcfb0900420dce55fbca4557a38
+Build cache key for BuildToolsApiClasspathEntrySnapshotTransform: /Users/sydneybach/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-scripting-compiler-embeddable/2.0.21/ac0c290312174e309c3e65711ab29fed1442532a/kotlin-scripting-compiler-embeddable-2.0.21.jar is 37ecc4b20007f0988843b60fcf4aca88
+Build cache key for BuildToolsApiClasspathEntrySnapshotTransform: /Users/sydneybach/.gradle/caches/modules-2/files-2.1/org.slf4j/slf4j-simple/2.0.13/be11a3f05f7cf546524b07ad252719d840f4daed/slf4j-simple-2.0.13.jar is 66cc8a3c16617b2333beec367e173c74
+Build cache key for BuildToolsApiClasspathEntrySnapshotTransform: /Users/sydneybach/.gradle/caches/modules-2/files-2.1/org.jetbrains/annotations/23.0.0/8cc20c07506ec18e0834947b84a864bfc094484e/annotations-23.0.0.jar is 707d6d10fbfff052cb595445aad464f6
+Build cache key for BuildToolsApiClasspathEntrySnapshotTransform: /Users/sydneybach/.gradle/caches/modules-2/files-2.1/org.slf4j/slf4j-api/2.0.13/80229737f704b121a318bba5d5deacbcf395bc77/slf4j-api-2.0.13.jar is fa4d62daa71f263332b226534faf750f
+Build cache key for BuildToolsApiClasspathEntrySnapshotTransform: /Users/sydneybach/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlinx/atomicfu-jvm/0.24.0/a4601dc42dceb031a586058e8356ff778a57dea0/atomicfu-jvm-0.24.0.jar is 83d347ef29a8900cbad79a2c182d2d78
+Build cache key for BuildToolsApiClasspathEntrySnapshotTransform: /Users/sydneybach/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-script-runtime/2.0.21/c9b044380ad41f89aa89aa896c2d32a8c0b2129d/kotlin-script-runtime-2.0.21.jar is c897b768e180ae9eb00b617bf41aa092
+Stored cache entry for BuildToolsApiClasspathEntrySnapshotTransform: /Users/sydneybach/.gradle/caches/modules-2/files-2.1/org.slf4j/slf4j-simple/2.0.13/be11a3f05f7cf546524b07ad252719d840f4daed/slf4j-simple-2.0.13.jar with cache key 66cc8a3c16617b2333beec367e173c74
+Stored cache entry for BuildToolsApiClasspathEntrySnapshotTransform: /Users/sydneybach/.gradle/caches/modules-2/files-2.1/org.slf4j/slf4j-api/2.0.13/80229737f704b121a318bba5d5deacbcf395bc77/slf4j-api-2.0.13.jar with cache key fa4d62daa71f263332b226534faf750f
+Stored cache entry for BuildToolsApiClasspathEntrySnapshotTransform: /Users/sydneybach/.gradle/caches/modules-2/files-2.1/org.jetbrains/annotations/23.0.0/8cc20c07506ec18e0834947b84a864bfc094484e/annotations-23.0.0.jar with cache key 707d6d10fbfff052cb595445aad464f6
+Stored cache entry for BuildToolsApiClasspathEntrySnapshotTransform: /Users/sydneybach/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-scripting-dependencies-maven/2.0.21/7dfa3273b536a1348c19bea4f924cb057838da25/kotlin-scripting-dependencies-maven-2.0.21.jar with cache key 4bbcac01afec40fd59922eb82014a997
+Stored cache entry for BuildToolsApiClasspathEntrySnapshotTransform: /Users/sydneybach/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-scripting-dependencies/2.0.21/85eb1a350bcb580cbf0e449f04abb8cee88ec348/kotlin-scripting-dependencies-2.0.21.jar with cache key a14da815a1cc7580507d9849cbd14a83
+Stored cache entry for BuildToolsApiClasspathEntrySnapshotTransform: /Users/sydneybach/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-scripting-jvm-host/2.0.21/aadc8c3c75d6f2297c55cc1082b91f1650494ce6/kotlin-scripting-jvm-host-2.0.21.jar with cache key bf04e6292829c5a05994827d73613b88
+Stored cache entry for BuildToolsApiClasspathEntrySnapshotTransform: /Users/sydneybach/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-script-runtime/2.0.21/c9b044380ad41f89aa89aa896c2d32a8c0b2129d/kotlin-script-runtime-2.0.21.jar with cache key c897b768e180ae9eb00b617bf41aa092
+Stored cache entry for BuildToolsApiClasspathEntrySnapshotTransform: /Users/sydneybach/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlinx/atomicfu-jvm/0.24.0/a4601dc42dceb031a586058e8356ff778a57dea0/atomicfu-jvm-0.24.0.jar with cache key 83d347ef29a8900cbad79a2c182d2d78
+Stored cache entry for BuildToolsApiClasspathEntrySnapshotTransform: /Users/sydneybach/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-scripting-jvm/2.0.21/939d8b644308f8d97c60317df76ee40299475831/kotlin-scripting-jvm-2.0.21.jar with cache key 580881b65b9f3a6be73f4d21ad36f570
+Stored cache entry for BuildToolsApiClasspathEntrySnapshotTransform: /Users/sydneybach/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-scripting-common/2.0.21/2aeb50e2df2ef94f6b90b7ab2c56d5e18d3687c1/kotlin-scripting-common-2.0.21.jar with cache key 40d910c8d9885473aac7f73cdc464868
+Stored cache entry for BuildToolsApiClasspathEntrySnapshotTransform: /Users/sydneybach/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-scripting-compiler-embeddable/2.0.21/ac0c290312174e309c3e65711ab29fed1442532a/kotlin-scripting-compiler-embeddable-2.0.21.jar with cache key 37ecc4b20007f0988843b60fcf4aca88
+Stored cache entry for BuildToolsApiClasspathEntrySnapshotTransform: /Users/sydneybach/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlinx/kotlinx-serialization-json-jvm/1.9.0/aea6f7d49fe5c458f8963ee6d4bdaf4a459ab3e7/kotlinx-serialization-json-jvm-1.9.0.jar with cache key f344e2c0fd90f5c98124326b856c4a48
+Stored cache entry for BuildToolsApiClasspathEntrySnapshotTransform: /Users/sydneybach/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlinx/kotlinx-serialization-core-jvm/1.9.0/91448df39c558f7c6147b8bd8db01debe16e0cc1/kotlinx-serialization-core-jvm-1.9.0.jar with cache key b6e96d9dc9418d8edd4ae2ba0b288b0b
+Stored cache entry for BuildToolsApiClasspathEntrySnapshotTransform: /Users/sydneybach/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlinx/kotlinx-datetime-jvm/0.6.1/23d9f71268d3ffc31ce5a5d25622f20bffb3d639/kotlinx-datetime-jvm-0.6.1.jar with cache key 62307fcfb0900420dce55fbca4557a38
+Stored cache entry for BuildToolsApiClasspathEntrySnapshotTransform: /Users/sydneybach/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlinx/kotlinx-coroutines-core-jvm/1.10.2/4a9f78ef49483748e2c129f3d124b8fa249dafbf/kotlinx-coroutines-core-jvm-1.10.2.jar with cache key e800dc212dd2185d97fc0e23e7d625d7
+Build cache key for BuildToolsApiClasspathEntrySnapshotTransform: /Users/sydneybach/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-main-kts/2.0.21/69f8791a7383bdd019cdb883facb32b588fb9290/kotlin-main-kts-2.0.21.jar is 5cb169a45ee9932964c6480d708ca71f
+Stored cache entry for BuildToolsApiClasspathEntrySnapshotTransform: /Users/sydneybach/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib/2.2.20/5380b19fa1924399b62ce3a1faffebb2b4f82272/kotlin-stdlib-2.2.20.jar with cache key d9b7dd5cb047b0e3afd77a2428067196
+Stored cache entry for BuildToolsApiClasspathEntrySnapshotTransform: /Users/sydneybach/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-main-kts/2.0.21/69f8791a7383bdd019cdb883facb32b588fb9290/kotlin-main-kts-2.0.21.jar with cache key 5cb169a45ee9932964c6480d708ca71f
+Build cache key for task ':lib:compileKotlinJvm' is 52dc9b42152f78be49eeec8d6c1ae65f
+Task ':lib:compileKotlinJvm' is not up-to-date because:
+  No history is available.
+The input changes require a full rebuild for incremental task ':lib:compileKotlinJvm'.
+file or directory '/Volumes/stuff/Projects/SolaceCore/lib/src/jvmMain/java', not found
+file or directory '/Volumes/stuff/Projects/SolaceCore/lib/src/jvmMain/java', not found
+file or directory '/Volumes/stuff/Projects/SolaceCore/lib/src/jvmMain/java', not found
+file or directory '/Volumes/stuff/Projects/SolaceCore/lib/src/jvmMain/java', not found
+file or directory '/Volumes/stuff/Projects/SolaceCore/lib/src/jvmMain/java', not found
+Kotlin source files: /Volumes/stuff/Projects/SolaceCore/lib/src/jvmMain/kotlin/ai/solace/core/scripting/JvmScriptEngine.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmMain/kotlin/ai/solace/core/scripting/FileScriptStorage.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmMain/kotlin/ai/solace/core/scripting/SimpleScriptValidator.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmMain/kotlin/ai/solace/core/scripting/FileScriptVersionManager.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmMain/kotlin/ai/solace/core/scripting/ScriptManager.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmMain/kotlin/ai/solace/core/util/LoggerProvider.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmMain/kotlin/ai/solace/core/storage/encryption/EncryptedStorage.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmMain/kotlin/ai/solace/core/storage/encryption/EncryptionStrategy.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmMain/kotlin/ai/solace/core/storage/encryption/AESEncryptionStrategy.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmMain/kotlin/ai/solace/core/storage/FileConfigurationStorage.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmMain/kotlin/ai/solace/core/storage/TransactionalFileStorage.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmMain/kotlin/ai/solace/core/storage/FileStorageManager.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmMain/kotlin/ai/solace/core/storage/serialization/SerializationWrapper.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmMain/kotlin/ai/solace/core/storage/compression/GZIPCompressionStrategy.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmMain/kotlin/ai/solace/core/storage/compression/CompressedStorage.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmMain/kotlin/ai/solace/core/storage/compression/CompressionStrategy.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmMain/kotlin/ai/solace/core/storage/FileActorStateStorage.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmMain/kotlin/ai/solace/core/storage/FileStorage.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/scripting/ScriptVersionManager.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/scripting/ScriptActor.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/scripting/CompiledScript.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/scripting/ScriptStorage.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/scripting/ScriptEngine.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/scripting/ScriptValidator.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/lifecycle/Lifecycle.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/lifecycle/Disposable.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/storage/cache/TTLCachePolicy.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/storage/cache/CachedStorage.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/storage/cache/LRUCachePolicy.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/storage/cache/CachePolicy.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/storage/StorageSerializer.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/storage/TransactionalInMemoryStorage.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/storage/Transaction.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/storage/recovery/ActorStateSnapshot.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/storage/recovery/RecoverableActorStateStorage.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/storage/recovery/ActorRecoveryManager.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/storage/Storage.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/storage/serialization/ActorStateEnumSerializer.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/storage/serialization/SerializableInMemoryActorStateStorage.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/storage/serialization/SerializableActorStateStorage.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/storage/serialization/ActorStateSerializer.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/storage/serialization/ActorStateSerializerRegistry.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/storage/InMemoryStorage.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/storage/ActorStateStorage.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/storage/ConfigurationStorage.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/storage/InMemoryActorStateStorage.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/storage/TransactionalStorage.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/storage/InMemoryStorageManager.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/storage/StorageManager.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/storage/InMemoryConfigurationStorage.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/workflow/WorkflowManager.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/actor/metrics/ActorMetrics.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/actor/ActorState.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/actor/Actor.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/actor/ActorMessage.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/actor/examples/TextProcessor.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/actor/examples/Filter.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/actor/builder/ActorBuilder.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/actor/supervisor/SupervisorActor.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/kernel/channels/ports/Port.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/kernel/channels/ports/PortException.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/kernel/channels/ports/MessageHandlers.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/kernel/channels/ports/BidirectionalPort.kt
+Java source files: 
+Script source files: 
+Script file extensions: 
+file or directory '/Volumes/stuff/Projects/SolaceCore/lib/src/jvmMain/java', not found
+Using Kotlin/JVM incremental compilation
+[KOTLIN] Kotlin compilation 'jdkHome' argument: /Users/sydneybach/Library/Java/JavaVirtualMachines/temurin-17.0.8/Contents/Home
+Options for KOTLIN DAEMON: IncrementalCompilationOptions(super=CompilationOptions(compilerMode=INCREMENTAL_COMPILER, targetPlatform=JVM, reportCategories=[0, 3], reportSeverity=2, requestedCompilationResults=[0], kotlinScriptExtensions=[]), sourceChanges=org.jetbrains.kotlin.buildtools.api.SourcesChanges$Unknown@b725373, classpathChanges=NotAvailableForNonIncrementalRun, workingDir=/Volumes/stuff/Projects/SolaceCore/lib/build/kotlin/compileKotlinJvm/cacheable, multiModuleICSettings=MultiModuleICSettings(buildHistoryFile=/Volumes/stuff/Projects/SolaceCore/lib/build/kotlin/compileKotlinJvm/local-state/build-history.bin, useModuleDetection=false), icFeatures=IncrementalCompilationFeatures(usePreciseJavaTracking=true, withAbiSnapshot=false, preciseCompilationResultsBackup=true, keepIncrementalCompilationCachesInMemory=true, enableUnsafeIncrementalCompilationForMultiplatform=false, enableMonotonousIncrementalCompileSetExpansion=true), outputFiles=[/Volumes/stuff/Projects/SolaceCore/lib/build/classes/kotlin/jvm/main, /Volumes/stuff/Projects/SolaceCore/lib/build/kotlin/compileKotlinJvm/cacheable, /Volumes/stuff/Projects/SolaceCore/lib/build/kotlin/compileKotlinJvm/local-state])
+
+Not watching anything anymore
+
+> Task :lib:compileKotlinJvm FAILED
+Finished executing kotlin compiler using DAEMON strategy
+Build ca0c6470-d230-4fc6-a77f-7e0bbe569206 is closed
+14 actionable tasks: 11 executed, 1 from cache, 2 up-to-date
+Watched directory hierarchies: [/Volumes/stuff/Projects/SolaceCore]

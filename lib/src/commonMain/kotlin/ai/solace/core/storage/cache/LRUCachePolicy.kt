@@ -120,5 +120,5 @@ class LRUCachePolicy<K, V>(private val maxSize: Int) : CachePolicy<K, V> {
     override fun maintenance(): Boolean = true
 
     // Helper to avoid adding kotlinx-coroutines in signatures of CachePolicy
-    private inline fun <T> runBlockingWithLock(block: () -> T): T = kotlinx.coroutines.runBlocking { lock.withLock { block() } }
+    private fun <T> runBlockingWithLock(block: () -> T): T = kotlinx.coroutines.runBlocking { lock.withLock { block() } }
 }
