@@ -84,6 +84,14 @@ class ActorBuilder {
         targetActor: Actor,
         targetPort: String
     ): ActorBuilder {
+        // Validate that both actors are in the builder
+        if (!actors.containsKey(sourceActor.id)) {
+            throw IllegalArgumentException("Actor not found in builder: ${sourceActor.id}")
+        }
+        if (!actors.containsKey(targetActor.id)) {
+            throw IllegalArgumentException("Actor not found in builder: ${targetActor.id}")
+        }
+
         // Validate port types if available
         val sourceType = portTypes[Pair(sourceActor.id, sourcePort)]
         val targetType = portTypes[Pair(targetActor.id, targetPort)]

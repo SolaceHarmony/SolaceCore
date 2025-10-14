@@ -104,19 +104,9 @@ class JvmScriptEngine : ScriptEngine {
 
         return withContext(Dispatchers.IO) {
             try {
-                // Create an evaluation configuration with the provided parameters
+                // Create an evaluation configuration with constructor args only
                 val evaluationConfiguration = ScriptEvaluationConfiguration {
-                    // MainKtsScript expects specific arguments
-                    // We'll provide only the essential ones to avoid argument count issues
-
-                    // MainKtsScript expects exactly 2 arguments:
-                    // 1. "args" - an array of strings
-                    // 2. A configuration map
-
-                    // Create a new map with only these two required parameters
-                    // This ensures we don't pass any extra parameters that could cause argument count issues
                     val scriptArgs = emptyArray<String>()
-                    // MainKtsScript expects args via constructor, not providedProperties
                     constructorArgs(scriptArgs)
 
                     jvm {
@@ -138,37 +128,42 @@ class JvmScriptEngine : ScriptEngine {
                 }
 
                 // Return the result of the script execution
-                val resultValue = (evaluationResult as ResultWithDiagnostics.Success).value.returnValue
+                extractResultValue((evaluationResult as ResultWithDiagnostics.Success).value.returnValue)
 
-                // Extract the actual value from the ResultValue object
-                when (resultValue) {
-                    is ResultValue.Value -> {
-                        // Extract the actual value from the ResultValue.Value object
-                        val valueString = resultValue.toString()
-                        if (valueString.contains("=")) {
-                            // Extract the value after the equals sign
-                            val extractedValue = valueString.substringAfter("=").trim()
-
-                            // Try to convert numeric strings to their appropriate types
-                            when {
-                                // Check if it's an integer
-                                extractedValue.toIntOrNull() != null -> extractedValue.toInt()
-                                // Check if it's a double
-                                extractedValue.toDoubleOrNull() != null -> extractedValue.toDouble()
-                                // Otherwise, return as string
-                                else -> extractedValue
-                            }
-                        } else {
-                            // If there's no equals sign, return the value as is
-                            resultValue.value
-                        }
-                    }
-                    else -> resultValue
-                }
             } catch (e: Exception) {
                 if (e is ScriptExecutionException) throw e
                 throw ScriptExecutionException("Script execution failed: ${e.message}")
             }
+        }
+    }
+
+    /**
+     * Extract the actual result value from a ResultValue.
+     */
+    private fun extractResultValue(resultValue: ResultValue): Any? {
+        return when (resultValue) {
+            is ResultValue.Value -> {
+                // Extract the actual value from the ResultValue.Value object
+                val valueString = resultValue.toString()
+                if (valueString.contains("=")) {
+                    // Extract the value after the equals sign
+                    val extractedValue = valueString.substringAfter("=").trim()
+
+                    // Try to convert numeric strings to their appropriate types
+                    when {
+                        // Check if it's an integer
+                        extractedValue.toIntOrNull() != null -> extractedValue.toInt()
+                        // Check if it's a double
+                        extractedValue.toDoubleOrNull() != null -> extractedValue.toDouble()
+                        // Otherwise, return as string
+                        else -> extractedValue
+                    }
+                } else {
+                    // If there's no equals sign, return the value as is
+                    resultValue.value
+                }
+            }
+            else -> resultValue
         }
     }
 
@@ -225,3 +220,4 @@ class ScriptCompilationException(message: String) : Exception(message)
  * Exception thrown when script execution fails.
  */
 class ScriptExecutionException(message: String) : Exception(message)
+

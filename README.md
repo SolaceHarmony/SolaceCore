@@ -59,7 +59,8 @@ SolaceCore consists of several key components organized in a layered architectur
 - **Applications**: Domain-specific implementations built on the framework
 - **Data Storage**: Persistence layer using graph and relational databases
 
-For more detailed information about the architecture, see the [Architectural Deep Dive](docs/Architectural_Deepdive.md) and [Core Architecture](docs/CORE_ARCHITECTURE.md) documentation.
+For more detailed information about the architecture, see the [Architectural Document](docs/Architectural_Document_Solace_Core_Framework.md) and [System Architecture](docs/components/kernel/system_architecture.md) documentation.
+
 
 ## Installation
 
@@ -90,6 +91,12 @@ dependencies {
 git clone https://github.com/yourusername/SolaceCore.git
 cd SolaceCore
 ./gradlew build
+```
+### Docker
+To build and run the project in a container:
+```bash
+docker build -t solacecore .
+docker run --rm solacecore
 ```
 
 ## Usage
@@ -129,7 +136,9 @@ Comprehensive documentation is available in the `docs/` directory:
 
 - [Architectural Document: Solace Core Framework](docs/Architectural_Document_Solace_Core_Framework.md) - Detailed overview of the framework's architecture and design principles
 - [Architectural Deep Dive](docs/Architectural_Deepdive.md) - Exhaustive exploration of the project's architecture and implementation
-- [Core Architecture](docs/CORE_ARCHITECTURE.md) - Concise overview of the system architecture and components
+- [System Architecture](docs/components/kernel/system_architecture.md) - Concise overview of the system architecture and components
+- [Advanced Workflow Example](docs/examples/advanced_workflow_example.md) - Demonstrates chaining multiple actors with dynamic ports
+
 
 ## Roadmap
 
@@ -144,9 +153,15 @@ Comprehensive documentation is available in the `docs/` directory:
 
 Contributions are welcome! Please feel free to submit a Pull Request.
 
+### Actor Template Generator
+A helper script is available in `tools/generate_actor.sh` to scaffold new actors:
+```bash
+./tools/generate_actor.sh MyActor
+```
+
 ## License
 
-This project is licensed under the Apache 2.0 License.
+This project is licensed under the Apache License 2.0. See the [LICENSE](LICENSE) file for details.
 
 ## Acknowledgements
 

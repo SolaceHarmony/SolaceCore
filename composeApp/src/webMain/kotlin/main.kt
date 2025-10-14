@@ -1,0 +1,11 @@
+package org.solace.composeapp
+
+import androidx.compose.ui.ExperimentalComposeUiApi
+import androidx.compose.ui.window.CanvasBasedWindow
+
+@OptIn(ExperimentalComposeUiApi::class)
+fun main() {
+    CanvasBasedWindow(title = "SolaceCore Monitor") {
+        App()
+    }
+}

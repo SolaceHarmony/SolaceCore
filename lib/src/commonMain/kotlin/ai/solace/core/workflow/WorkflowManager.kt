@@ -99,6 +99,11 @@ class WorkflowManager(
     private val connections = mutableListOf<Connection>()
 
     /**
+     * Active port connections with their routing jobs.
+     */
+    private val activePortConnections = mutableMapOf<Connection, Port.PortConnection<*, *>>()
+
+    /**
      * Represents a connection between two actors' ports.
      *
      * @property sourceActorId ID of the source actor.
@@ -174,6 +179,27 @@ class WorkflowManager(
     }
 
     /**
+     * Disconnects two actors' ports and stops any active routing between them.
+     */
+    suspend fun disconnectActors(
+        sourceActor: Actor,
+        sourcePortName: String,
+        targetActor: Actor,
+        targetPortName: String
+    ): Boolean = connectionsMutex.withLock {
+        val existing = connections.firstOrNull {
+            it.sourceActorId == sourceActor.id &&
+                    it.sourcePortName == sourcePortName &&
+                    it.targetActorId == targetActor.id &&
+                    it.targetPortName == targetPortName
+        } ?: return@withLock false
+
+        activePortConnections.remove(existing)?.stop()
+        connections.remove(existing)
+        true
+    }
+
+    /**
      * Starts the workflow, transitioning its state to Running and starting all actors.
      *
      * @throws IllegalStateException if the workflow is not in the Initialized or Stopped state.
@@ -202,7 +228,9 @@ class WorkflowManager(
                 if (sourceStringPort != null && targetStringPort != null) {
                     // Connect the String ports
                     try {
-                        Port.connect(sourceStringPort, targetStringPort)
+                        val pc = Port.connect(sourceStringPort, targetStringPort)
+                        pc.start(scope)
+                        activePortConnections[connection] = pc
                     } catch (e: Exception) {
                         throw IllegalArgumentException("Failed to connect String ports: ${e.message}", e)
                     }
@@ -216,7 +244,9 @@ class WorkflowManager(
 
                     // Connect the Any ports
                     try {
-                        Port.connect(sourceAnyPort, targetAnyPort)
+                        val pc = Port.connect(sourceAnyPort, targetAnyPort)
+                        pc.start(scope)
+                        activePortConnections[connection] = pc
                     } catch (e: Exception) {
                         throw IllegalArgumentException("Failed to connect Any ports: ${e.message}", e)
                     }
@@ -260,6 +290,10 @@ class WorkflowManager(
                     actor.stop()
                 }
             }
+
+            // Stop all active port connections
+            activePortConnections.values.forEach { it.stop() }
+            activePortConnections.clear()
 
             // Update state to Stopped
             _state = WorkflowState.Stopped
@@ -351,6 +385,7 @@ class WorkflowManager(
             // Clear collections
             actors.clear()
             connections.clear()
+            activePortConnections.clear()
         } catch (e: Exception) {
             _state = WorkflowState.Error("Failed to dispose workflow: ${e.message}")
             throw e

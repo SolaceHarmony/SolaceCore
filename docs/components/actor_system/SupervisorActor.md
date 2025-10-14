@@ -6,6 +6,7 @@ The SupervisorActor is a specialized actor responsible for managing the lifecycl
 ## Features
 - **Dynamic Actor Registration**: Register and unregister actors at runtime
 - **Hot-Swapping**: Replace actors with new instances of the same type while preserving their connections
+- **Actor Factory Registration**: Register factories to create actors on demand and enable factory-based hot-swapping
 - **Type-Safe Actor Management**: Ensure that actors are only replaced with compatible types
 - **Thread-Safe Operations**: All operations are synchronized using a mutex to prevent race conditions
 - **Lifecycle Management**: Start and stop all managed actors as a group
@@ -54,6 +55,18 @@ if (swapped) {
 } else {
     println("Failed to hot-swap actor (not found or incompatible type)")
 }
+```
+
+### Registering Actor Factories and Hot-Swapping Automatically
+```kotlin
+// Register a factory for MyActor
+supervisor.registerActorFactory(MyActor::class) { MyActor() }
+
+// Create and register an actor using the factory
+val actor = supervisor.createAndRegisterActor(MyActor::class)
+
+// Hot-swap the actor using the registered factory
+val swapped = supervisor.hotSwapActor(actor.id)
 ```
 
 ### Managing Actor Lifecycles

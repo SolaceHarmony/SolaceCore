@@ -199,25 +199,26 @@ class FileStorageManager(
                     }
                 }
 
-                // Add the configurationStorage and actorStateStorage
-                if (configurationStorage is FileStorage<*, *>) {
-                    storagesToClear.add(configurationStorage as FileStorage<*, *>)
-                }
-                if (actorStateStorage is FileStorage<*, *>) {
-                    storagesToClear.add(actorStateStorage as FileStorage<*, *>)
-                }
+                // Add the dedicated storage instances
+                storagesToClear.add(configurationStorage)
+                storagesToClear.add(actorStateStorage)
 
                 // Now clear all storage implementations outside the lock
-                storagesToClear.forEach { storage ->
+                for (storage in storagesToClear) {
                     storage.clearCache()
                 }
 
                 // Delete all files in the storage directories
                 val storageDir = Paths.get(baseDirectory, "storage")
                 if (Files.exists(storageDir)) {
-                    Files.walk(storageDir)
-                        .sorted(Comparator.reverseOrder())
-                        .forEach { Files.deleteIfExists(it) }
+                    try {
+                        Files.walk(storageDir)
+                            .sorted(Comparator.reverseOrder())
+                            .forEach { Files.deleteIfExists(it) }
+                    } catch (e: Exception) {
+                        println("Error deleting files in storage directory: ${e.message}")
+                        throw e
+                    }
                 }
 
                 // Recreate the storage directory

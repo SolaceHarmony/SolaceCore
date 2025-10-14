@@ -1,9 +1,14 @@
+@file:OptIn(ExperimentalUuidApi::class)
 package ai.solace.core.kernel.channels.ports
 
 import ai.solace.core.lifecycle.Disposable
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.launch
 import kotlin.reflect.KClass
-import kotlin.random.Random
+import kotlin.uuid.ExperimentalUuidApi
+import kotlin.uuid.Uuid
 
 /**
  * Represents a communication port that can send and receive messages of type T.
@@ -203,6 +208,44 @@ interface Port<T : Any> : Disposable {
         val protocolAdapter: ProtocolAdapter<*, @UnsafeVariance OUT>?,
         val rules: List<ConversionRule<IN, OUT>>
     ) {
+        private var routingJob: Job? = null
+
+        /** Starts routing messages from the source port to the target port. */
+        fun start(scope: CoroutineScope): Job {
+            val job = scope.launch {
+                for (msg in sourcePort.asChannel()) {
+                    var intermediate: Any = msg
+                    @Suppress("UNCHECKED_CAST")
+                    for (handler in handlers as List<MessageHandler<Any, Any>>) {
+                        intermediate = handler.handle(intermediate)
+                    }
+
+                    @Suppress("UNCHECKED_CAST")
+                    var out: Any = if (protocolAdapter != null) {
+                        (protocolAdapter as ProtocolAdapter<Any, Any>).encode(intermediate)
+                    } else {
+                        intermediate
+                    }
+
+                    if (rules.isNotEmpty()) {
+                        for (rule in rules as List<ConversionRule<Any, Any>>) {
+                            out = rule.convert(out)
+                        }
+                    }
+
+                    @Suppress("UNCHECKED_CAST")
+                    targetPort.send(out as OUT)
+                }
+            }
+            routingJob = job
+            return job
+        }
+
+        /** Stops routing messages between the ports. */
+        fun stop() {
+            routingJob?.cancel()
+            routingJob = null
+        }
         /**
          * Validates the connection between the source and target ports.
          *
@@ -283,14 +326,12 @@ interface Port<T : Any> : Disposable {
     companion object {
         /**
          * Generates a unique identifier for a port.
-         * The ID is formatted as "port-" followed by a random 16-character hexadecimal string.
+         * The ID is formatted as "port-" followed by a UUID to ensure uniqueness.
          *
-         * @return A unique identifier string for a port in the form "port-[random-hex-string]"
+         * @return A unique identifier string for a port in the form "port-[uuid]"
          */
-        fun generateId(): String = buildString {
-            append("port-")
-            append(Random.nextBytes(8).joinToString("") { b -> b.toUByte().toString(16).padStart(2, '0') })
-        }
+        fun generateId(): String = "port-${Uuid.random()}"
+        fun generateId(): String = "port-${Uuid.random()}"
 
         /**
          * Establishes a connection between the source port and the target port.
