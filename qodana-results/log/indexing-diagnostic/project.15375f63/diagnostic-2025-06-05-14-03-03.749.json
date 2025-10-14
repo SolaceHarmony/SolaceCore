@@ -1,0 +1,51 @@
+{
+  "appInfo" : {
+    "build" : "251.25775",
+    "buildDate" : "2025-06-05T14:02:41.995Z[Etc/UTC]",
+    "productCode" : "QDJVMC",
+    "generated" : "2025-06-05T14:03:03.750317083Z",
+    "os" : "Linux 6.10.14-linuxkit",
+    "runtime" : "JetBrains s.r.o. 21.0.7 21.0.7+9-b895.115"
+  },
+  "runtimeInfo" : {
+    "maxMemory" : 5754585088,
+    "numberOfProcessors" : 24,
+    "maxNumberOfIndexingThreads" : 24,
+    "maxSizeOfFileForIntelliSense" : 2560000,
+    "maxSizeOfFileForContentLoading" : 20971520
+  },
+  "type" : "DumbIndexing",
+  "projectIndexingActivityHistory" : {
+    "projectName" : "SolaceCore",
+    "times" : {
+      "scanningIds" : [ ],
+      "contentLoadingVisibleTime" : 0,
+      "retrievingChangedDuringIndexingFilesTime" : 21708,
+      "separateApplyingIndexesVisibleTime" : 0,
+      "updatingStart" : "2025-06-05T14:03:03.661138792Z",
+      "updatingEnd" : "2025-06-05T14:03:03.661468375Z",
+      "totalWallTimeWithPauses" : 329583,
+      "wallTimeOnPause" : 0,
+      "isCancelled" : false,
+      "dumbModeStart" : "2025-06-05T14:03:03.661138792Z",
+      "dumbWallTimeWithPauses" : 329583,
+      "dumbWallTimeWithoutPauses" : 329583,
+      "totalWallTimeWithoutPauses" : 329583
+    },
+    "fileCount" : {
+      "numberOfChangedDuringIndexingFiles" : 0,
+      "numberOfFilesIndexedByInfrastructureExtensionsDuringIndexingStage" : 0,
+      "numberOfFilesIndexedWithLoadingContent" : 0,
+      "numberOfNothingToWriteFiles" : 0
+    },
+    "totalStatsPerFileType" : [ ],
+    "totalStatsPerBaseLanguage" : [ ],
+    "totalStatsPerIndexer" : [ ],
+    "statisticsOfChangedDuringIndexingFiles" : {
+      "numberOfFiles" : 0,
+      "retrievingTime" : 21708
+    },
+    "fileProviderStatistics" : [ ],
+    "visibleTimeToAllThreadTimeRatio" : 0.0
+  }
+}

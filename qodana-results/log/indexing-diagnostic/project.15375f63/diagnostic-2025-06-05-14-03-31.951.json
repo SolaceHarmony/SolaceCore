@@ -1,0 +1,79 @@
+{
+  "appInfo" : {
+    "build" : "251.25775",
+    "buildDate" : "2025-06-05T14:02:41.995Z[Etc/UTC]",
+    "productCode" : "QDJVMC",
+    "generated" : "2025-06-05T14:03:31.95228768Z",
+    "os" : "Linux 6.10.14-linuxkit",
+    "runtime" : "JetBrains s.r.o. 21.0.7 21.0.7+9-b895.115"
+  },
+  "runtimeInfo" : {
+    "maxMemory" : 5754585088,
+    "numberOfProcessors" : 24,
+    "maxNumberOfIndexingThreads" : 24,
+    "maxSizeOfFileForIntelliSense" : 2560000,
+    "maxSizeOfFileForContentLoading" : 20971520
+  },
+  "type" : "Scanning",
+  "projectIndexingActivityHistory" : {
+    "projectName" : "SolaceCore",
+    "times" : {
+      "scanningReason" : "changes in: \"Module 'SolaceCore.lib' (all roots)\", \"JDK 19 /root/.jdks/corretto-19.0.2\"",
+      "scanningType" : "PARTIAL",
+      "scanningId" : 2,
+      "creatingIteratorsTime" : 0,
+      "concurrentHandlingWallTimeWithoutPauses" : 0,
+      "concurrentHandlingWallTimeWithPauses" : 0,
+      "concurrentHandlingSumOfThreadTimesWithPauses" : 300325542,
+      "concurrentIterationAndScannersApplicationSumOfThreadTimesWithPauses" : 56259334,
+      "concurrentFileCheckSumOfThreadTimesWithPauses" : 243750209,
+      "delayedPushPropertiesStageTime" : 0,
+      "indexExtensionsTime" : 0,
+      "dumbWallTimeWithPauses" : 0,
+      "dumbWallTimeWithoutPauses" : 0,
+      "updatingStart" : "2025-06-05T14:03:31.657155097Z",
+      "updatingEnd" : "2025-06-05T14:03:31.950928847Z",
+      "totalWallTimeWithPauses" : 293773750,
+      "wallTimeOnPause" : 565792,
+      "isCancelled" : false,
+      "totalWallTimeWithoutPauses" : 293207958
+    },
+    "fileCount" : {
+      "numberOfFileProviders" : 2,
+      "numberOfScannedFiles" : 42788,
+      "numberOfFilesIndexedByInfrastructureExtensionsDuringScan" : 0,
+      "numberOfFilesScheduledForIndexingAfterScan" : 0
+    },
+    "scanningStatistics" : [ {
+      "providerName" : "JDK 19 /root/.jdks/corretto-19.0.2",
+      "numberOfScannedFiles" : 42668,
+      "numberOfSkippedFiles" : 70,
+      "numberOfFilesForIndexing" : 0,
+      "numberOfFilesFullyIndexedByInfrastructureExtensions" : 0,
+      "filesFullyIndexedByInfrastructureExtensions" : [ ],
+      "statusTime" : 215799055,
+      "totalOneThreadTimeWithPauses" : 290733583,
+      "iterationAndScannersApplicationTime" : 52988500,
+      "filesCheckTime" : 237628917,
+      "timeProcessingUpToDateFiles" : 0,
+      "timeUpdatingContentLessIndexes" : 0,
+      "timeIndexingWithoutContentViaInfrastructureExtension" : 0,
+      "roots" : [ ]
+    }, {
+      "providerName" : "Module 'SolaceCore.lib' (all roots)",
+      "numberOfScannedFiles" : 120,
+      "numberOfSkippedFiles" : 0,
+      "numberOfFilesForIndexing" : 0,
+      "numberOfFilesFullyIndexedByInfrastructureExtensions" : 0,
+      "filesFullyIndexedByInfrastructureExtensions" : [ ],
+      "statusTime" : 4441996,
+      "totalOneThreadTimeWithPauses" : 9591959,
+      "iterationAndScannersApplicationTime" : 3270834,
+      "filesCheckTime" : 6121292,
+      "timeProcessingUpToDateFiles" : 0,
+      "timeUpdatingContentLessIndexes" : 0,
+      "timeIndexingWithoutContentViaInfrastructureExtension" : 0,
+      "roots" : [ ]
+    } ]
+  }
+}

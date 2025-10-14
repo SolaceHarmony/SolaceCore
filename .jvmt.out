@@ -1,0 +1,369 @@
+Initialized native services in: /Users/sydneybach/.gradle/native
+Initialized jansi services in: /Users/sydneybach/.gradle/native
+Received JVM installation metadata from '/Library/Java/JavaVirtualMachines/temurin-21.jdk/Contents/Home': {JAVA_HOME=/Library/Java/JavaVirtualMachines/temurin-21.jdk/Contents/Home, JAVA_VERSION=21.0.3, JAVA_VENDOR=Eclipse Adoptium, RUNTIME_NAME=OpenJDK Runtime Environment, RUNTIME_VERSION=21.0.3+9-LTS, VM_NAME=OpenJDK 64-Bit Server VM, VM_VERSION=21.0.3+9-LTS, VM_VENDOR=Eclipse Adoptium, OS_ARCH=aarch64}
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.7/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Starting process 'Gradle build daemon'. Working directory: /Users/sydneybach/.gradle/daemon/8.7 Command: /Library/Java/JavaVirtualMachines/temurin-21.jdk/Contents/Home/bin/java --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.lang.invoke=ALL-UNNAMED --add-opens=java.prefs/java.util.prefs=ALL-UNNAMED --add-opens=java.base/java.nio.charset=ALL-UNNAMED --add-opens=java.base/java.net=ALL-UNNAMED --add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED -XX:MaxMetaspaceSize=384m -XX:+HeapDumpOnOutOfMemoryError -Xms256m -Xmx512m -Dfile.encoding=UTF-8 -Duser.country=US -Duser.language=en -Duser.variant -cp /Users/sydneybach/.gradle/wrapper/dists/gradle-8.7-bin/bhs2wmbdwecv87pi65oeuq5iu/gradle-8.7/lib/gradle-launcher-8.7.jar -javaagent:/Users/sydneybach/.gradle/wrapper/dists/gradle-8.7-bin/bhs2wmbdwecv87pi65oeuq5iu/gradle-8.7/lib/agents/gradle-instrumentation-agent-8.7.jar org.gradle.launcher.daemon.bootstrap.GradleDaemon 8.7
+Successfully started process 'Gradle build daemon'
+An attempt to start the daemon took 0.425 secs.
+The client will now receive all logging from the daemon (pid: 8403). The daemon log file: /Users/sydneybach/.gradle/daemon/8.7/daemon-8403.out.log
+Closing daemon's stdin at end of input.
+The daemon will no longer process any standard input.
+Daemon will be stopped at the end of the build 
+Using 32 worker leases.
+Received JVM installation metadata from '/Library/Java/JavaVirtualMachines/temurin-21.jdk/Contents/Home': {JAVA_HOME=/Library/Java/JavaVirtualMachines/temurin-21.jdk/Contents/Home, JAVA_VERSION=21.0.3, JAVA_VENDOR=Eclipse Adoptium, RUNTIME_NAME=OpenJDK Runtime Environment, RUNTIME_VERSION=21.0.3+9-LTS, VM_NAME=OpenJDK 64-Bit Server VM, VM_VERSION=21.0.3+9-LTS, VM_VENDOR=Eclipse Adoptium, OS_ARCH=aarch64}
+Watching the file system is configured to be enabled if available
+Now considering [/Volumes/stuff/Projects/SolaceCore] as hierarchies to watch
+File system watching is active
+Starting Build
+Transforming foojay-resolver-0.8.0.jar (org.gradle.toolchains:foojay-resolver:0.8.0) with ExternalDependencyInstrumentingArtifactTransform
+Transforming gson-2.10.1.jar (com.google.code.gson:gson:2.10.1) with ExternalDependencyInstrumentingArtifactTransform
+Settings evaluated using settings file '/Volumes/stuff/Projects/SolaceCore/settings.gradle.kts'.
+Using local directory build cache for the root build (location = /Users/sydneybach/.gradle/caches/build-cache-1, removeUnusedEntriesAfter = 7 days).
+Projects loaded. Root project using build file '/Volumes/stuff/Projects/SolaceCore/build.gradle.kts'.
+Included projects: [root project 'SolaceCore', project ':lib']
+
+> Configure project :
+Evaluating root project 'SolaceCore' using build file '/Volumes/stuff/Projects/SolaceCore/build.gradle.kts'.
+
+> Configure project :lib
+Evaluating project ':lib' using build file '/Volumes/stuff/Projects/SolaceCore/lib/build.gradle.kts'.
+Transforming kotlin-serialization-2.0.21-gradle85.jar (org.jetbrains.kotlin:kotlin-serialization:2.0.21) with ExternalDependencyInstrumentingArtifactTransform
+Transforming kotlin-gradle-plugin-model-2.0.21.jar (org.jetbrains.kotlin:kotlin-gradle-plugin-model:2.0.21) with ExternalDependencyInstrumentingArtifactTransform
+Transforming kotlin-gradle-plugin-api-2.0.21.jar (org.jetbrains.kotlin:kotlin-gradle-plugin-api:2.0.21) with ExternalDependencyInstrumentingArtifactTransform
+Transforming kotlin-gradle-plugin-api-2.0.21-gradle85.jar (org.jetbrains.kotlin:kotlin-gradle-plugin-api:2.0.21) with ExternalDependencyInstrumentingArtifactTransform
+Transforming kotlin-gradle-plugin-2.0.21-gradle85.jar (org.jetbrains.kotlin:kotlin-gradle-plugin:2.0.21) with ExternalDependencyInstrumentingArtifactTransform
+Transforming kotlin-gradle-plugin-idea-proto-2.0.21.jar (org.jetbrains.kotlin:kotlin-gradle-plugin-idea-proto:2.0.21) with ExternalDependencyInstrumentingArtifactTransform
+Transforming kotlin-gradle-plugin-idea-2.0.21.jar (org.jetbrains.kotlin:kotlin-gradle-plugin-idea:2.0.21) with ExternalDependencyInstrumentingArtifactTransform
+Transforming kotlin-klib-commonizer-api-2.0.21.jar (org.jetbrains.kotlin:kotlin-klib-commonizer-api:2.0.21) with ExternalDependencyInstrumentingArtifactTransform
+Transforming kotlin-build-statistics-2.0.21.jar (org.jetbrains.kotlin:kotlin-build-statistics:2.0.21) with ExternalDependencyInstrumentingArtifactTransform
+Transforming kotlin-build-tools-api-2.0.21.jar (org.jetbrains.kotlin:kotlin-build-tools-api:2.0.21) with ExternalDependencyInstrumentingArtifactTransform
+Transforming kotlin-compiler-runner-2.0.21.jar (org.jetbrains.kotlin:kotlin-compiler-runner:2.0.21) with ExternalDependencyInstrumentingArtifactTransform
+Transforming kotlin-native-utils-2.0.21.jar (org.jetbrains.kotlin:kotlin-native-utils:2.0.21) with ExternalDependencyInstrumentingArtifactTransform
+Transforming kotlin-util-klib-2.0.21.jar (org.jetbrains.kotlin:kotlin-util-klib:2.0.21) with ExternalDependencyInstrumentingArtifactTransform
+Transforming kotlin-compiler-embeddable-2.0.21.jar (org.jetbrains.kotlin:kotlin-compiler-embeddable:2.0.21) with ExternalDependencyInstrumentingArtifactTransform
+Transforming kotlin-gradle-plugin-annotations-2.0.21.jar (org.jetbrains.kotlin:kotlin-gradle-plugin-annotations:2.0.21) with ExternalDependencyInstrumentingArtifactTransform
+Transforming kotlin-tooling-core-2.0.21.jar (org.jetbrains.kotlin:kotlin-tooling-core:2.0.21) with ExternalDependencyInstrumentingArtifactTransform
+Transforming gson-2.8.9.jar (com.google.code.gson:gson:2.8.9) with ExternalDependencyInstrumentingArtifactTransform
+Transforming kotlin-daemon-client-2.0.21.jar (org.jetbrains.kotlin:kotlin-daemon-client:2.0.21) with ExternalDependencyInstrumentingArtifactTransform
+Transforming kotlinx-coroutines-core-jvm-1.6.4.jar (org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.6.4) with ExternalDependencyInstrumentingArtifactTransform
+Transforming kotlin-util-io-2.0.21.jar (org.jetbrains.kotlin:kotlin-util-io:2.0.21) with ExternalDependencyInstrumentingArtifactTransform
+Transforming kotlin-daemon-embeddable-2.0.21.jar (org.jetbrains.kotlin:kotlin-daemon-embeddable:2.0.21) with ExternalDependencyInstrumentingArtifactTransform
+Transforming trove4j-1.0.20200330.jar (org.jetbrains.intellij.deps:trove4j:1.0.20200330) with ExternalDependencyInstrumentingArtifactTransform
+Using Kotlin Gradle Plugin gradle85 variant
+kotlin scripting plugin: created the scripting discovery configuration: kotlinScriptDef
+kotlin scripting plugin: created the scripting discovery configuration: testKotlinScriptDef
+All projects evaluated.
+Task path ':lib:jvmTest' matched project ':lib'
+Task name matched 'jvmTest'
+Selected primary task 'jvmTest' from project :lib
+Starting process 'command '/usr/libexec/java_home''. Working directory: /Users/sydneybach/.gradle/daemon/8.7 Command: /usr/libexec/java_home -V
+Successfully started process 'command '/usr/libexec/java_home''
+Starting process 'command '/Users/sydneybach/Library/Java/JavaVirtualMachines/semeru-11.0.20-1/Contents/Home/bin/java''. Working directory: /Users/sydneybach/.gradle/.tmp/tmp-jvm6048266487680855498probe Command: /Users/sydneybach/Library/Java/JavaVirtualMachines/semeru-11.0.20-1/Contents/Home/bin/java -Xmx32m -Xms32m -cp . JavaProbe
+Successfully started process 'command '/Users/sydneybach/Library/Java/JavaVirtualMachines/semeru-11.0.20-1/Contents/Home/bin/java''
+Received JVM installation metadata from '/Users/sydneybach/Library/Java/JavaVirtualMachines/semeru-11.0.20-1/Contents/Home': {JAVA_HOME=/Users/sydneybach/Library/Java/JavaVirtualMachines/semeru-11.0.20-1/Contents/Home, JAVA_VERSION=11.0.20, JAVA_VENDOR=IBM Corporation, RUNTIME_NAME=IBM Semeru Runtime Open Edition, RUNTIME_VERSION=11.0.20+8, VM_NAME=Eclipse OpenJ9 VM, VM_VERSION=openj9-0.40.0, VM_VENDOR=Eclipse OpenJ9, OS_ARCH=aarch64}
+Starting process 'command '/Users/sydneybach/Library/Java/JavaVirtualMachines/temurin-21.0.3/Contents/Home/bin/java''. Working directory: /Users/sydneybach/.gradle/.tmp/tmp-jvm7088757117450908885probe Command: /Users/sydneybach/Library/Java/JavaVirtualMachines/temurin-21.0.3/Contents/Home/bin/java -Xmx32m -Xms32m -cp . JavaProbe
+Successfully started process 'command '/Users/sydneybach/Library/Java/JavaVirtualMachines/temurin-21.0.3/Contents/Home/bin/java''
+Received JVM installation metadata from '/Users/sydneybach/Library/Java/JavaVirtualMachines/temurin-21.0.3/Contents/Home': {JAVA_HOME=/Users/sydneybach/Library/Java/JavaVirtualMachines/temurin-21.0.3/Contents/Home, JAVA_VERSION=21.0.3, JAVA_VENDOR=Eclipse Adoptium, RUNTIME_NAME=OpenJDK Runtime Environment, RUNTIME_VERSION=21.0.3+9-LTS, VM_NAME=OpenJDK 64-Bit Server VM, VM_VERSION=21.0.3+9-LTS, VM_VENDOR=Eclipse Adoptium, OS_ARCH=aarch64}
+Starting process 'command '/Users/sydneybach/Library/Java/JavaVirtualMachines/temurin-17.0.8/Contents/Home/bin/java''. Working directory: /Users/sydneybach/.gradle/.tmp/tmp-jvm9467334400953919300probe Command: /Users/sydneybach/Library/Java/JavaVirtualMachines/temurin-17.0.8/Contents/Home/bin/java -Xmx32m -Xms32m -cp . JavaProbe
+Successfully started process 'command '/Users/sydneybach/Library/Java/JavaVirtualMachines/temurin-17.0.8/Contents/Home/bin/java''
+Received JVM installation metadata from '/Users/sydneybach/Library/Java/JavaVirtualMachines/temurin-17.0.8/Contents/Home': {JAVA_HOME=/Users/sydneybach/Library/Java/JavaVirtualMachines/temurin-17.0.8/Contents/Home, JAVA_VERSION=17.0.8, JAVA_VENDOR=Eclipse Adoptium, RUNTIME_NAME=OpenJDK Runtime Environment, RUNTIME_VERSION=17.0.8+7, VM_NAME=OpenJDK 64-Bit Server VM, VM_VERSION=17.0.8+7, VM_VENDOR=Eclipse Adoptium, OS_ARCH=aarch64}
+Starting process 'command '/Users/sydneybach/Library/Java/JavaVirtualMachines/openjdk-23.0.1/Contents/Home/bin/java''. Working directory: /Users/sydneybach/.gradle/.tmp/tmp-jvm17716339741894914353probe Command: /Users/sydneybach/Library/Java/JavaVirtualMachines/openjdk-23.0.1/Contents/Home/bin/java -Xmx32m -Xms32m -cp . JavaProbe
+Successfully started process 'command '/Users/sydneybach/Library/Java/JavaVirtualMachines/openjdk-23.0.1/Contents/Home/bin/java''
+Received JVM installation metadata from '/Users/sydneybach/Library/Java/JavaVirtualMachines/openjdk-23.0.1/Contents/Home': {JAVA_HOME=/Users/sydneybach/Library/Java/JavaVirtualMachines/openjdk-23.0.1/Contents/Home, JAVA_VERSION=23.0.1, JAVA_VENDOR=Oracle Corporation, RUNTIME_NAME=OpenJDK Runtime Environment, RUNTIME_VERSION=23.0.1+11-39, VM_NAME=OpenJDK 64-Bit Server VM, VM_VERSION=23.0.1+11-39, VM_VENDOR=Oracle Corporation, OS_ARCH=aarch64}
+Starting process 'command '/Users/sydneybach/Library/Java/JavaVirtualMachines/graalvm-jdk-21.0.3/Contents/Home/bin/java''. Working directory: /Users/sydneybach/.gradle/.tmp/tmp-jvm11735360719439175880probe Command: /Users/sydneybach/Library/Java/JavaVirtualMachines/graalvm-jdk-21.0.3/Contents/Home/bin/java -Xmx32m -Xms32m -cp . JavaProbe
+Successfully started process 'command '/Users/sydneybach/Library/Java/JavaVirtualMachines/graalvm-jdk-21.0.3/Contents/Home/bin/java''
+Received JVM installation metadata from '/Users/sydneybach/Library/Java/JavaVirtualMachines/graalvm-jdk-21.0.3/Contents/Home': {JAVA_HOME=/Users/sydneybach/Library/Java/JavaVirtualMachines/graalvm-jdk-21.0.3/Contents/Home, JAVA_VERSION=21.0.3, JAVA_VENDOR=Oracle Corporation, RUNTIME_NAME=Java(TM) SE Runtime Environment, RUNTIME_VERSION=21.0.3+7-LTS-jvmci-23.1-b37, VM_NAME=Java HotSpot(TM) 64-Bit Server VM, VM_VERSION=21.0.3+7-LTS-jvmci-23.1-b37, VM_VENDOR=Oracle Corporation, OS_ARCH=aarch64}
+Starting process 'command '/Users/sydneybach/Library/Java/JavaVirtualMachines/graalvm-jdk-21.0.5/Contents/Home/bin/java''. Working directory: /Users/sydneybach/.gradle/.tmp/tmp-jvm8272505110487324182probe Command: /Users/sydneybach/Library/Java/JavaVirtualMachines/graalvm-jdk-21.0.5/Contents/Home/bin/java -Xmx32m -Xms32m -cp . JavaProbe
+Successfully started process 'command '/Users/sydneybach/Library/Java/JavaVirtualMachines/graalvm-jdk-21.0.5/Contents/Home/bin/java''
+Received JVM installation metadata from '/Users/sydneybach/Library/Java/JavaVirtualMachines/graalvm-jdk-21.0.5/Contents/Home': {JAVA_HOME=/Users/sydneybach/Library/Java/JavaVirtualMachines/graalvm-jdk-21.0.5/Contents/Home, JAVA_VERSION=21.0.5, JAVA_VENDOR=Oracle Corporation, RUNTIME_NAME=Java(TM) SE Runtime Environment, RUNTIME_VERSION=21.0.5+9-LTS-jvmci-23.1-b48, VM_NAME=Java HotSpot(TM) 64-Bit Server VM, VM_VERSION=21.0.5+9-LTS-jvmci-23.1-b48, VM_VENDOR=Oracle Corporation, OS_ARCH=aarch64}
+Starting process 'command '/Users/sydneybach/Library/Java/JavaVirtualMachines/corretto-19.0.2/Contents/Home/bin/java''. Working directory: /Users/sydneybach/.gradle/.tmp/tmp-jvm11754821279355131971probe Command: /Users/sydneybach/Library/Java/JavaVirtualMachines/corretto-19.0.2/Contents/Home/bin/java -Xmx32m -Xms32m -cp . JavaProbe
+Successfully started process 'command '/Users/sydneybach/Library/Java/JavaVirtualMachines/corretto-19.0.2/Contents/Home/bin/java''
+Received JVM installation metadata from '/Users/sydneybach/Library/Java/JavaVirtualMachines/corretto-19.0.2/Contents/Home': {JAVA_HOME=/Users/sydneybach/Library/Java/JavaVirtualMachines/corretto-19.0.2/Contents/Home, JAVA_VERSION=19.0.2, JAVA_VENDOR=Amazon.com Inc., RUNTIME_NAME=OpenJDK Runtime Environment, RUNTIME_VERSION=19.0.2+7-FR, VM_NAME=OpenJDK 64-Bit Server VM, VM_VERSION=19.0.2+7-FR, VM_VENDOR=Amazon.com Inc., OS_ARCH=aarch64}
+Starting process 'command '/Users/sydneybach/Library/Java/JavaVirtualMachines/graalvm-jdk-22.0.1/Contents/Home/bin/java''. Working directory: /Users/sydneybach/.gradle/.tmp/tmp-jvm5174040017516105864probe Command: /Users/sydneybach/Library/Java/JavaVirtualMachines/graalvm-jdk-22.0.1/Contents/Home/bin/java -Xmx32m -Xms32m -cp . JavaProbe
+Successfully started process 'command '/Users/sydneybach/Library/Java/JavaVirtualMachines/graalvm-jdk-22.0.1/Contents/Home/bin/java''
+Received JVM installation metadata from '/Users/sydneybach/Library/Java/JavaVirtualMachines/graalvm-jdk-22.0.1/Contents/Home': {JAVA_HOME=/Users/sydneybach/Library/Java/JavaVirtualMachines/graalvm-jdk-22.0.1/Contents/Home, JAVA_VERSION=22.0.1, JAVA_VENDOR=Oracle Corporation, RUNTIME_NAME=Java(TM) SE Runtime Environment, RUNTIME_VERSION=22.0.1+8-jvmci-b01, VM_NAME=Java HotSpot(TM) 64-Bit Server VM, VM_VERSION=22.0.1+8-jvmci-b01, VM_VENDOR=Oracle Corporation, OS_ARCH=aarch64}
+Starting process 'command '/Users/sydneybach/Library/Java/JavaVirtualMachines/semeru-11.0.23/Contents/Home/bin/java''. Working directory: /Users/sydneybach/.gradle/.tmp/tmp-jvm15652095619162561792probe Command: /Users/sydneybach/Library/Java/JavaVirtualMachines/semeru-11.0.23/Contents/Home/bin/java -Xmx32m -Xms32m -cp . JavaProbe
+Successfully started process 'command '/Users/sydneybach/Library/Java/JavaVirtualMachines/semeru-11.0.23/Contents/Home/bin/java''
+Received JVM installation metadata from '/Users/sydneybach/Library/Java/JavaVirtualMachines/semeru-11.0.23/Contents/Home': {JAVA_HOME=/Users/sydneybach/Library/Java/JavaVirtualMachines/semeru-11.0.23/Contents/Home, JAVA_VERSION=11.0.23, JAVA_VENDOR=IBM Corporation, RUNTIME_NAME=IBM Semeru Runtime Open Edition, RUNTIME_VERSION=11.0.23+9, VM_NAME=Eclipse OpenJ9 VM, VM_VERSION=openj9-0.44.0, VM_VENDOR=Eclipse OpenJ9, OS_ARCH=aarch64}
+Starting process 'command '/Users/sydneybach/Library/Java/JavaVirtualMachines/azul-13.0.14/Contents/Home/bin/java''. Working directory: /Users/sydneybach/.gradle/.tmp/tmp-jvm15700069053079699407probe Command: /Users/sydneybach/Library/Java/JavaVirtualMachines/azul-13.0.14/Contents/Home/bin/java -Xmx32m -Xms32m -cp . JavaProbe
+Successfully started process 'command '/Users/sydneybach/Library/Java/JavaVirtualMachines/azul-13.0.14/Contents/Home/bin/java''
+Received JVM installation metadata from '/Users/sydneybach/Library/Java/JavaVirtualMachines/azul-13.0.14/Contents/Home': {JAVA_HOME=/Users/sydneybach/Library/Java/JavaVirtualMachines/azul-13.0.14/Contents/Home, JAVA_VERSION=13.0.14, JAVA_VENDOR=Azul Systems, Inc., RUNTIME_NAME=OpenJDK Runtime Environment, RUNTIME_VERSION=13.0.14+5-MTS, VM_NAME=OpenJDK 64-Bit Server VM, VM_VERSION=13.0.14+5-MTS, VM_VENDOR=Azul Systems, Inc., OS_ARCH=x86_64}
+Starting process 'command '/Users/sydneybach/Library/Java/JavaVirtualMachines/temurin-21.0.5/Contents/Home/bin/java''. Working directory: /Users/sydneybach/.gradle/.tmp/tmp-jvm8685207235778128015probe Command: /Users/sydneybach/Library/Java/JavaVirtualMachines/temurin-21.0.5/Contents/Home/bin/java -Xmx32m -Xms32m -cp . JavaProbe
+Successfully started process 'command '/Users/sydneybach/Library/Java/JavaVirtualMachines/temurin-21.0.5/Contents/Home/bin/java''
+Received JVM installation metadata from '/Users/sydneybach/Library/Java/JavaVirtualMachines/temurin-21.0.5/Contents/Home': {JAVA_HOME=/Users/sydneybach/Library/Java/JavaVirtualMachines/temurin-21.0.5/Contents/Home, JAVA_VERSION=21.0.5, JAVA_VENDOR=Eclipse Adoptium, RUNTIME_NAME=OpenJDK Runtime Environment, RUNTIME_VERSION=21.0.5+11-LTS, VM_NAME=OpenJDK 64-Bit Server VM, VM_VERSION=21.0.5+11-LTS, VM_VENDOR=Eclipse Adoptium, OS_ARCH=aarch64}
+Starting process 'command '/Users/sydneybach/Library/Java/JavaVirtualMachines/semeru-11.0.20/Contents/Home/bin/java''. Working directory: /Users/sydneybach/.gradle/.tmp/tmp-jvm10043042132225297910probe Command: /Users/sydneybach/Library/Java/JavaVirtualMachines/semeru-11.0.20/Contents/Home/bin/java -Xmx32m -Xms32m -cp . JavaProbe
+Successfully started process 'command '/Users/sydneybach/Library/Java/JavaVirtualMachines/semeru-11.0.20/Contents/Home/bin/java''
+Received JVM installation metadata from '/Users/sydneybach/Library/Java/JavaVirtualMachines/semeru-11.0.20/Contents/Home': {JAVA_HOME=/Users/sydneybach/Library/Java/JavaVirtualMachines/semeru-11.0.20/Contents/Home, JAVA_VERSION=11.0.20, JAVA_VENDOR=IBM Corporation, RUNTIME_NAME=IBM Semeru Runtime Open Edition, RUNTIME_VERSION=11.0.20+5, VM_NAME=Eclipse OpenJ9 VM, VM_VERSION=v0.40.0-release-936ec5450, VM_VENDOR=Eclipse OpenJ9, OS_ARCH=aarch64}
+Starting process 'command '/Library/Java/JavaVirtualMachines/temurin-8.jdk/Contents/Home/bin/java''. Working directory: /Users/sydneybach/.gradle/.tmp/tmp-jvm963788488067221617probe Command: /Library/Java/JavaVirtualMachines/temurin-8.jdk/Contents/Home/bin/java -Xmx32m -Xms32m -cp . JavaProbe
+Successfully started process 'command '/Library/Java/JavaVirtualMachines/temurin-8.jdk/Contents/Home/bin/java''
+Received JVM installation metadata from '/Library/Java/JavaVirtualMachines/temurin-8.jdk/Contents/Home': {JAVA_HOME=/Library/Java/JavaVirtualMachines/temurin-8.jdk/Contents/Home/jre, JAVA_VERSION=1.8.0_302, JAVA_VENDOR=Temurin, RUNTIME_NAME=OpenJDK Runtime Environment, RUNTIME_VERSION=1.8.0_302-b08, VM_NAME=OpenJDK 64-Bit Server VM, VM_VERSION=25.302-b08, VM_VENDOR=Temurin, OS_ARCH=x86_64}
+Starting process 'command '/Users/sydneybach/Library/Java/JavaVirtualMachines/temurin-20.0.2/Contents/Home/bin/java''. Working directory: /Users/sydneybach/.gradle/.tmp/tmp-jvm16112919909480494376probe Command: /Users/sydneybach/Library/Java/JavaVirtualMachines/temurin-20.0.2/Contents/Home/bin/java -Xmx32m -Xms32m -cp . JavaProbe
+Successfully started process 'command '/Users/sydneybach/Library/Java/JavaVirtualMachines/temurin-20.0.2/Contents/Home/bin/java''
+Received JVM installation metadata from '/Users/sydneybach/Library/Java/JavaVirtualMachines/temurin-20.0.2/Contents/Home': {JAVA_HOME=/Users/sydneybach/Library/Java/JavaVirtualMachines/temurin-20.0.2/Contents/Home, JAVA_VERSION=20.0.2, JAVA_VENDOR=Eclipse Adoptium, RUNTIME_NAME=OpenJDK Runtime Environment, RUNTIME_VERSION=20.0.2+9, VM_NAME=OpenJDK 64-Bit Server VM, VM_VERSION=20.0.2+9, VM_VENDOR=Eclipse Adoptium, OS_ARCH=aarch64}
+Starting process 'command '/Library/Java/JavaVirtualMachines/microsoft-11.jdk/Contents/Home/bin/java''. Working directory: /Users/sydneybach/.gradle/.tmp/tmp-jvm9116347425571061599probe Command: /Library/Java/JavaVirtualMachines/microsoft-11.jdk/Contents/Home/bin/java -Xmx32m -Xms32m -cp . JavaProbe
+Successfully started process 'command '/Library/Java/JavaVirtualMachines/microsoft-11.jdk/Contents/Home/bin/java''
+Received JVM installation metadata from '/Library/Java/JavaVirtualMachines/microsoft-11.jdk/Contents/Home': {JAVA_HOME=/Library/Java/JavaVirtualMachines/microsoft-11.jdk/Contents/Home, JAVA_VERSION=11.0.16.1, JAVA_VENDOR=Microsoft, RUNTIME_NAME=OpenJDK Runtime Environment, RUNTIME_VERSION=11.0.16.1+1-LTS, VM_NAME=OpenJDK 64-Bit Server VM, VM_VERSION=11.0.16.1+1-LTS, VM_VENDOR=Microsoft, OS_ARCH=aarch64}
+Starting process 'command '/Users/sydneybach/Library/Java/JavaVirtualMachines/temurin-21.0.4/Contents/Home/bin/java''. Working directory: /Users/sydneybach/.gradle/.tmp/tmp-jvm5118894155252703692probe Command: /Users/sydneybach/Library/Java/JavaVirtualMachines/temurin-21.0.4/Contents/Home/bin/java -Xmx32m -Xms32m -cp . JavaProbe
+Successfully started process 'command '/Users/sydneybach/Library/Java/JavaVirtualMachines/temurin-21.0.4/Contents/Home/bin/java''
+Received JVM installation metadata from '/Users/sydneybach/Library/Java/JavaVirtualMachines/temurin-21.0.4/Contents/Home': {JAVA_HOME=/Users/sydneybach/Library/Java/JavaVirtualMachines/temurin-21.0.4/Contents/Home, JAVA_VERSION=21.0.4, JAVA_VENDOR=Eclipse Adoptium, RUNTIME_NAME=OpenJDK Runtime Environment, RUNTIME_VERSION=21.0.4+7-LTS, VM_NAME=OpenJDK 64-Bit Server VM, VM_VERSION=21.0.4+7-LTS, VM_VENDOR=Eclipse Adoptium, OS_ARCH=aarch64}
+Tasks to be executed: [task ':lib:checkKotlinGradlePluginConfigurationErrors', task ':lib:compileKotlinJvm', task ':lib:jvmProcessResources', task ':lib:jvmMainClasses', task ':lib:jvmJar', task ':lib:compileTestKotlinJvm', task ':lib:jvmTestProcessResources', task ':lib:jvmTestClasses', task ':lib:jvmTest']
+Tasks that were excluded: []
+Resolve mutations for :lib:checkKotlinGradlePluginConfigurationErrors (Thread[#168,Execution worker,5,main]) started.
+:lib:checkKotlinGradlePluginConfigurationErrors (Thread[#168,Execution worker,5,main]) started.
+
+> Task :lib:checkKotlinGradlePluginConfigurationErrors SKIPPED
+Skipping task ':lib:checkKotlinGradlePluginConfigurationErrors' as task onlyIf 'errorDiagnostics are present' is false.
+Resolve mutations for :lib:compileKotlinJvm (Thread[#168,Execution worker,5,main]) started.
+:lib:compileKotlinJvm (Thread[#168,Execution worker,5,main]) started.
+Resolve mutations for :lib:jvmProcessResources (Thread[#174,Execution worker Thread 7,5,main]) started.
+:lib:jvmProcessResources (Thread[#174,Execution worker Thread 7,5,main]) started.
+
+> Task :lib:jvmProcessResources
+Caching disabled for task ':lib:jvmProcessResources' because:
+  Not worth caching
+Task ':lib:jvmProcessResources' is not up-to-date because:
+  No history is available.
+file or directory '/Volumes/stuff/Projects/SolaceCore/lib/src/jvmMain/resources', not found
+Resolve mutations for :lib:jvmTestProcessResources (Thread[#174,Execution worker Thread 7,5,main]) started.
+:lib:jvmTestProcessResources (Thread[#174,Execution worker Thread 7,5,main]) started.
+
+> Task :lib:jvmTestProcessResources NO-SOURCE
+Skipping task ':lib:jvmTestProcessResources' as it has no source files and no previous output files.
+
+> Task :lib:compileKotlinJvm
+Transforming kotlinx-coroutines-core-jvm-1.9.0.jar with BuildToolsApiClasspathEntrySnapshotTransform
+Transforming kotlin-scripting-jvm-2.0.21.jar with BuildToolsApiClasspathEntrySnapshotTransform
+Transforming kotlin-scripting-dependencies-maven-2.0.21.jar with BuildToolsApiClasspathEntrySnapshotTransform
+Transforming kotlin-scripting-dependencies-2.0.21.jar with BuildToolsApiClasspathEntrySnapshotTransform
+Transforming kotlin-scripting-common-2.0.21.jar with BuildToolsApiClasspathEntrySnapshotTransform
+Transforming kotlinx-serialization-core-jvm-1.7.3.jar with BuildToolsApiClasspathEntrySnapshotTransform
+Transforming kotlinx-serialization-json-jvm-1.7.3.jar with BuildToolsApiClasspathEntrySnapshotTransform
+Transforming kotlin-stdlib-2.0.21.jar with BuildToolsApiClasspathEntrySnapshotTransform
+Transforming kotlin-scripting-jvm-host-2.0.21.jar with BuildToolsApiClasspathEntrySnapshotTransform
+Transforming kotlin-scripting-compiler-embeddable-2.0.21.jar with BuildToolsApiClasspathEntrySnapshotTransform
+Transforming kotlin-main-kts-2.0.21.jar with BuildToolsApiClasspathEntrySnapshotTransform
+Transforming slf4j-simple-2.0.9.jar with BuildToolsApiClasspathEntrySnapshotTransform
+Transforming slf4j-api-2.0.9.jar with BuildToolsApiClasspathEntrySnapshotTransform
+Transforming annotations-23.0.0.jar with BuildToolsApiClasspathEntrySnapshotTransform
+Transforming atomicfu-jvm-0.21.0.jar with BuildToolsApiClasspathEntrySnapshotTransform
+Transforming kotlin-script-runtime-2.0.21.jar with BuildToolsApiClasspathEntrySnapshotTransform
+Build cache key for task ':lib:compileKotlinJvm' is cae0eaa10ae8046b5651e16c0b1bbd88
+Task ':lib:compileKotlinJvm' is not up-to-date because:
+  No history is available.
+The input changes require a full rebuild for incremental task ':lib:compileKotlinJvm'.
+Kotlin source files: /Volumes/stuff/Projects/SolaceCore/lib/src/jvmMain/kotlin/ai/solace/core/scripting/JvmScriptEngine.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmMain/kotlin/ai/solace/core/scripting/FileScriptStorage.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmMain/kotlin/ai/solace/core/scripting/SimpleScriptValidator.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmMain/kotlin/ai/solace/core/scripting/FileScriptVersionManager.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmMain/kotlin/ai/solace/core/scripting/ScriptManager.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmMain/kotlin/ai/solace/core/util/LoggerProvider.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmMain/kotlin/ai/solace/core/storage/encryption/EncryptedStorage.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmMain/kotlin/ai/solace/core/storage/encryption/EncryptionStrategy.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmMain/kotlin/ai/solace/core/storage/encryption/AESEncryptionStrategy.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmMain/kotlin/ai/solace/core/storage/FileConfigurationStorage.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmMain/kotlin/ai/solace/core/storage/TransactionalFileStorage.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmMain/kotlin/ai/solace/core/storage/FileStorageManager.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmMain/kotlin/ai/solace/core/storage/serialization/SerializationWrapper.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmMain/kotlin/ai/solace/core/storage/compression/GZIPCompressionStrategy.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmMain/kotlin/ai/solace/core/storage/compression/CompressedStorage.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmMain/kotlin/ai/solace/core/storage/compression/CompressionStrategy.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmMain/kotlin/ai/solace/core/storage/FileActorStateStorage.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmMain/kotlin/ai/solace/core/storage/FileStorage.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/scripting/ScriptVersionManager.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/scripting/ScriptActor.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/scripting/CompiledScript.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/scripting/ScriptStorage.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/scripting/ScriptEngine.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/scripting/ScriptValidator.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/util/Id.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/lifecycle/Lifecycle.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/lifecycle/Disposable.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/storage/cache/TTLCachePolicy.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/storage/cache/CachedStorage.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/storage/cache/LRUCachePolicy.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/storage/cache/CachePolicy.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/storage/StorageSerializer.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/storage/TransactionalInMemoryStorage.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/storage/Transaction.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/storage/recovery/ActorStateSnapshot.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/storage/recovery/RecoverableActorStateStorage.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/storage/recovery/ActorRecoveryManager.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/storage/Storage.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/storage/serialization/ActorStateEnumSerializer.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/storage/serialization/SerializableInMemoryActorStateStorage.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/storage/serialization/SerializableActorStateStorage.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/storage/serialization/ActorStateSerializer.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/storage/serialization/ActorStateSerializerRegistry.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/storage/InMemoryStorage.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/storage/ActorStateStorage.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/storage/ConfigurationStorage.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/storage/InMemoryActorStateStorage.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/storage/TransactionalStorage.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/storage/InMemoryStorageManager.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/storage/StorageManager.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/storage/InMemoryConfigurationStorage.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/workflow/WorkflowManager.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/actor/metrics/ActorMetrics.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/actor/ActorState.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/actor/Actor.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/actor/ActorMessage.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/actor/examples/TextProcessor.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/actor/examples/Filter.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/actor/builder/ActorBuilder.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/actor/supervisor/SupervisorActor.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/kernel/channels/ports/Port.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/kernel/channels/ports/PortException.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/kernel/channels/ports/MessageHandlers.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/kernel/channels/ports/BidirectionalPort.kt
+Java source files: 
+Script source files: 
+Script file extensions: 
+Using Kotlin/JVM incremental compilation
+[KOTLIN] Kotlin compilation 'jdkHome' argument: /Users/sydneybach/Library/Java/JavaVirtualMachines/temurin-17.0.8/Contents/Home
+Options for KOTLIN DAEMON: IncrementalCompilationOptions(super=CompilationOptions(compilerMode=INCREMENTAL_COMPILER, targetPlatform=JVM, reportCategories=[0, 3], reportSeverity=2, requestedCompilationResults=[0], kotlinScriptExtensions=[]), areFileChangesKnown=false, modifiedFiles=null, deletedFiles=null, classpathChanges=NotAvailableForNonIncrementalRun, workingDir=/Volumes/stuff/Projects/SolaceCore/lib/build/kotlin/compileKotlinJvm/cacheable, multiModuleICSettings=MultiModuleICSettings(buildHistoryFile=/Volumes/stuff/Projects/SolaceCore/lib/build/kotlin/compileKotlinJvm/local-state/build-history.bin, useModuleDetection=false), usePreciseJavaTracking=true, icFeatures=IncrementalCompilationFeatures(withAbiSnapshot=false, preciseCompilationResultsBackup=true, keepIncrementalCompilationCachesInMemory=true, enableUnsafeIncrementalCompilationForMultiplatform=false), outputFiles=[/Volumes/stuff/Projects/SolaceCore/lib/build/classes/kotlin/jvm/main, /Volumes/stuff/Projects/SolaceCore/lib/build/kotlin/compileKotlinJvm/cacheable, /Volumes/stuff/Projects/SolaceCore/lib/build/kotlin/compileKotlinJvm/local-state])
+w: file:///Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/storage/InMemoryActorStateStorage.kt:21:44 Unchecked cast of 'kotlin.Any?' to 'kotlin.collections.Map<kotlin.String, kotlin.Any>'.
+w: file:///Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/storage/recovery/ActorRecoveryManager.kt:81:21 Check for instance is always 'true'.
+w: file:///Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/storage/serialization/SerializableActorStateStorage.kt:41:52 Unchecked cast of 'kotlin.Any?' to 'kotlin.collections.MutableMap<kotlin.String, kotlin.Any>'.
+w: file:///Volumes/stuff/Projects/SolaceCore/lib/src/commonMain/kotlin/ai/solace/core/storage/serialization/SerializableActorStateStorage.kt:65:52 Unchecked cast of 'kotlin.Any?' to 'kotlin.collections.Map<kotlin.String, kotlin.Any>'.
+w: file:///Volumes/stuff/Projects/SolaceCore/lib/src/jvmMain/kotlin/ai/solace/core/storage/FileActorStateStorage.kt:29:44 Unchecked cast of 'kotlin.Any?' to 'kotlin.collections.Map<kotlin.String, kotlin.Any>'.
+Finished executing kotlin compiler using DAEMON strategy
+Stored cache entry for task ':lib:compileKotlinJvm' with cache key cae0eaa10ae8046b5651e16c0b1bbd88
+Resolve mutations for :lib:jvmMainClasses (Thread[#168,Execution worker,5,main]) started.
+:lib:jvmMainClasses (Thread[#168,Execution worker,5,main]) started.
+
+> Task :lib:jvmMainClasses
+Skipping task ':lib:jvmMainClasses' as it has no actions.
+Resolve mutations for :lib:jvmJar (Thread[#168,Execution worker,5,main]) started.
+:lib:jvmJar (Thread[#168,Execution worker,5,main]) started.
+
+> Task :lib:jvmJar
+Caching disabled for task ':lib:jvmJar' because:
+  Not worth caching
+Task ':lib:jvmJar' is not up-to-date because:
+  No history is available.
+Resolve mutations for :lib:compileTestKotlinJvm (Thread[#168,Execution worker,5,main]) started.
+:lib:compileTestKotlinJvm (Thread[#168,Execution worker,5,main]) started.
+
+> Task :lib:compileTestKotlinJvm
+Transforming main with BuildToolsApiClasspathEntrySnapshotTransform
+Transforming kotlin-test-junit-2.0.21.jar with BuildToolsApiClasspathEntrySnapshotTransform
+Transforming kotlin-test-2.0.21.jar with BuildToolsApiClasspathEntrySnapshotTransform
+Transforming kotlinx-coroutines-test-jvm-1.9.0.jar with BuildToolsApiClasspathEntrySnapshotTransform
+Transforming kotlinx-coroutines-core-jvm-1.9.0.jar with BuildToolsApiClasspathEntrySnapshotTransform
+Transforming kotlin-scripting-jvm-2.0.21.jar with BuildToolsApiClasspathEntrySnapshotTransform
+Transforming kotlin-scripting-dependencies-maven-2.0.21.jar with BuildToolsApiClasspathEntrySnapshotTransform
+Transforming kotlin-scripting-dependencies-2.0.21.jar with BuildToolsApiClasspathEntrySnapshotTransform
+Transforming kotlin-scripting-common-2.0.21.jar with BuildToolsApiClasspathEntrySnapshotTransform
+Transforming kotlinx-serialization-core-jvm-1.7.3.jar with BuildToolsApiClasspathEntrySnapshotTransform
+Transforming kotlinx-serialization-json-jvm-1.7.3.jar with BuildToolsApiClasspathEntrySnapshotTransform
+Transforming kotlin-stdlib-2.0.21.jar with BuildToolsApiClasspathEntrySnapshotTransform
+Transforming kotlin-scripting-jvm-host-2.0.21.jar with BuildToolsApiClasspathEntrySnapshotTransform
+Transforming kotlin-scripting-compiler-embeddable-2.0.21.jar with BuildToolsApiClasspathEntrySnapshotTransform
+Transforming kotlin-main-kts-2.0.21.jar with BuildToolsApiClasspathEntrySnapshotTransform
+Transforming slf4j-simple-2.0.9.jar with BuildToolsApiClasspathEntrySnapshotTransform
+Transforming slf4j-api-2.0.9.jar with BuildToolsApiClasspathEntrySnapshotTransform
+Transforming annotations-23.0.0.jar with BuildToolsApiClasspathEntrySnapshotTransform
+Transforming atomicfu-jvm-0.21.0.jar with BuildToolsApiClasspathEntrySnapshotTransform
+Transforming kotlin-script-runtime-2.0.21.jar with BuildToolsApiClasspathEntrySnapshotTransform
+Transforming junit-4.13.2.jar with BuildToolsApiClasspathEntrySnapshotTransform
+Build cache key for BuildToolsApiClasspathEntrySnapshotTransform: /Volumes/stuff/Projects/SolaceCore/lib/build/classes/kotlin/jvm/main is f04337ce6ccb442cb4e7928b1f4234a2
+Transforming hamcrest-core-1.3.jar with BuildToolsApiClasspathEntrySnapshotTransform
+Stored cache entry for BuildToolsApiClasspathEntrySnapshotTransform: /Volumes/stuff/Projects/SolaceCore/lib/build/classes/kotlin/jvm/main with cache key f04337ce6ccb442cb4e7928b1f4234a2
+Build cache key for task ':lib:compileTestKotlinJvm' is 84f3bce19d45aedeb98148f1b498b135
+Task ':lib:compileTestKotlinJvm' is not up-to-date because:
+  No history is available.
+The input changes require a full rebuild for incremental task ':lib:compileTestKotlinJvm'.
+file or directory '/Volumes/stuff/Projects/SolaceCore/lib/src/commonTest/kotlin', not found
+file or directory '/Volumes/stuff/Projects/SolaceCore/lib/src/commonTest/kotlin', not found
+file or directory '/Volumes/stuff/Projects/SolaceCore/lib/src/commonTest/kotlin', not found
+file or directory '/Volumes/stuff/Projects/SolaceCore/lib/src/commonTest/kotlin', not found
+file or directory '/Volumes/stuff/Projects/SolaceCore/lib/src/commonTest/kotlin', not found
+Kotlin source files: /Volumes/stuff/Projects/SolaceCore/lib/src/jvmTest/kotlin/ai/solace/core/scripting/JvmScriptEngineTest.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmTest/kotlin/ai/solace/core/scripting/FileScriptStorageTest.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmTest/kotlin/ai/solace/core/scripting/AdvancedJvmScriptEngineTest.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmTest/kotlin/ai/solace/core/scripting/ScriptManagerTest.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmTest/kotlin/ai/solace/core/scripting/FileScriptVersionManagerTest.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmTest/kotlin/ai/solace/core/scripting/ScriptActorTest.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmTest/kotlin/ai/solace/core/scripting/CompiledScriptTest.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmTest/kotlin/ai/solace/core/scripting/SimpleScriptValidatorTest.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmTest/kotlin/ai/solace/core/scripting/DependencyScriptEngineTest.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmTest/kotlin/ai/solace/core/util/LoggerProviderTest.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmTest/kotlin/ai/solace/core/lifecycle/LifecycleTest.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmTest/kotlin/ai/solace/core/lifecycle/DisposableTest.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmTest/kotlin/ai/solace/core/storage/encryption/EncryptedStorageTest.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmTest/kotlin/ai/solace/core/storage/encryption/AESEncryptionStrategyTest.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmTest/kotlin/ai/solace/core/storage/StorageSerializerRegistryTest.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmTest/kotlin/ai/solace/core/storage/cache/TTLCachePolicyTest.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmTest/kotlin/ai/solace/core/storage/cache/LRUCachePolicyTest.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmTest/kotlin/ai/solace/core/storage/cache/CachedStorageTest.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmTest/kotlin/ai/solace/core/storage/FileConfigurationStorageTest.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmTest/kotlin/ai/solace/core/storage/FileStorageTest.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmTest/kotlin/ai/solace/core/storage/FileStorageManagerConcurrencyTest.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmTest/kotlin/ai/solace/core/storage/FileStorageManagerTest.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmTest/kotlin/ai/solace/core/storage/InMemoryStorageTest.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmTest/kotlin/ai/solace/core/storage/recovery/ActorRecoveryManagerTest.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmTest/kotlin/ai/solace/core/storage/serialization/DelegatingSerializableActorStateStorageTest.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmTest/kotlin/ai/solace/core/storage/serialization/ActorStateSerializerRegistryTest.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmTest/kotlin/ai/solace/core/storage/serialization/SerializationWrapperTest.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmTest/kotlin/ai/solace/core/storage/TransactionalFileStorageTest.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmTest/kotlin/ai/solace/core/storage/TransactionalInMemoryStorageTest.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmTest/kotlin/ai/solace/core/storage/compression/CompressedStorageTest.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmTest/kotlin/ai/solace/core/storage/compression/GZIPCompressionStrategyTest.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmTest/kotlin/ai/solace/core/storage/InMemoryActorStateStorageTest.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmTest/kotlin/ai/solace/core/storage/FileActorStateStorageTest.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmTest/kotlin/ai/solace/core/storage/InMemoryConfigurationStorageTest.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmTest/kotlin/ai/solace/core/storage/InMemoryStorageManagerConcurrencyTest.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmTest/kotlin/ai/solace/core/storage/InMemoryStorageManagerTest.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmTest/kotlin/ai/solace/core/workflow/WorkflowManagerTest.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmTest/kotlin/ai/solace/core/workflow/WorkflowExample.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmTest/kotlin/ai/solace/core/actor/metrics/ActorMetricsTest.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmTest/kotlin/ai/solace/core/actor/ActorTest.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmTest/kotlin/ai/solace/core/actor/ActorStateTest.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmTest/kotlin/ai/solace/core/actor/examples/TextProcessorTest.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmTest/kotlin/ai/solace/core/actor/examples/FilterTest.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmTest/kotlin/ai/solace/core/actor/builder/ActorBuilderTest.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmTest/kotlin/ai/solace/core/actor/supervisor/SupervisorActorTest.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmTest/kotlin/ai/solace/core/actor/ActorMessageTest.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmTest/kotlin/ai/solace/core/kernel/channels/ports/PortConnectionTest.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmTest/kotlin/ai/solace/core/kernel/channels/ports/BidirectionalPortTest.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmTest/kotlin/ai/solace/core/kernel/channels/ports/MessageHandlersTest.kt, /Volumes/stuff/Projects/SolaceCore/lib/src/jvmTest/kotlin/ai/solace/core/kernel/channels/ports/PortExceptionTest.kt
+Java source files: 
+Script source files: 
+Script file extensions: 
+Using Kotlin/JVM incremental compilation
+[KOTLIN] Kotlin compilation 'jdkHome' argument: /Users/sydneybach/Library/Java/JavaVirtualMachines/temurin-17.0.8/Contents/Home
+Options for KOTLIN DAEMON: IncrementalCompilationOptions(super=CompilationOptions(compilerMode=INCREMENTAL_COMPILER, targetPlatform=JVM, reportCategories=[0, 3], reportSeverity=2, requestedCompilationResults=[0], kotlinScriptExtensions=[]), areFileChangesKnown=false, modifiedFiles=null, deletedFiles=null, classpathChanges=NotAvailableForNonIncrementalRun, workingDir=/Volumes/stuff/Projects/SolaceCore/lib/build/kotlin/compileTestKotlinJvm/cacheable, multiModuleICSettings=MultiModuleICSettings(buildHistoryFile=/Volumes/stuff/Projects/SolaceCore/lib/build/kotlin/compileTestKotlinJvm/local-state/build-history.bin, useModuleDetection=false), usePreciseJavaTracking=true, icFeatures=IncrementalCompilationFeatures(withAbiSnapshot=false, preciseCompilationResultsBackup=true, keepIncrementalCompilationCachesInMemory=true, enableUnsafeIncrementalCompilationForMultiplatform=false), outputFiles=[/Volumes/stuff/Projects/SolaceCore/lib/build/classes/kotlin/jvm/test, /Volumes/stuff/Projects/SolaceCore/lib/build/kotlin/compileTestKotlinJvm/cacheable, /Volumes/stuff/Projects/SolaceCore/lib/build/kotlin/compileTestKotlinJvm/local-state])
+w: file:///Volumes/stuff/Projects/SolaceCore/lib/src/jvmTest/kotlin/ai/solace/core/actor/builder/ActorBuilderTest.kt:27:20 Check for instance is always 'true'.
+w: file:///Volumes/stuff/Projects/SolaceCore/lib/src/jvmTest/kotlin/ai/solace/core/actor/builder/ActorBuilderTest.kt:44:20 Check for instance is always 'true'.
+w: file:///Volumes/stuff/Projects/SolaceCore/lib/src/jvmTest/kotlin/ai/solace/core/storage/recovery/ActorRecoveryManagerTest.kt:302:47 Unchecked cast of 'kotlin.Any?' to 'kotlin.collections.Map<kotlin.String, kotlin.collections.Map<kotlin.String, kotlin.Any>>'.
+w: file:///Volumes/stuff/Projects/SolaceCore/lib/src/jvmTest/kotlin/ai/solace/core/storage/recovery/ActorRecoveryManagerTest.kt:303:51 Unchecked cast of 'kotlin.Any?' to 'kotlin.collections.Map<kotlin.String, kotlin.Any>'.
+w: file:///Volumes/stuff/Projects/SolaceCore/lib/src/jvmTest/kotlin/ai/solace/core/storage/recovery/ActorRecoveryManagerTest.kt:304:59 Unchecked cast of 'kotlin.Any?' to 'kotlin.collections.Map<kotlin.String, kotlin.Any>'.
+w: file:///Volumes/stuff/Projects/SolaceCore/lib/src/jvmTest/kotlin/ai/solace/core/storage/recovery/ActorRecoveryManagerTest.kt:352:53 Unchecked cast of 'kotlin.Any?' to 'kotlin.collections.Map<kotlin.String, kotlin.collections.Map<kotlin.String, kotlin.Any>>'.
+w: file:///Volumes/stuff/Projects/SolaceCore/lib/src/jvmTest/kotlin/ai/solace/core/storage/recovery/ActorRecoveryManagerTest.kt:362:55 Unchecked cast of 'kotlin.Any?' to 'kotlin.collections.Map<kotlin.String, kotlin.Any>'.
+w: file:///Volumes/stuff/Projects/SolaceCore/lib/src/jvmTest/kotlin/ai/solace/core/storage/recovery/ActorRecoveryManagerTest.kt:372:59 Unchecked cast of 'kotlin.Any?' to 'kotlin.collections.Map<kotlin.String, kotlin.Any>'.
+w: file:///Volumes/stuff/Projects/SolaceCore/lib/src/jvmTest/kotlin/ai/solace/core/workflow/WorkflowExample.kt:48:24 'fun buildActorNetwork(): ActorBuilder' is deprecated. Use buildActorNetworkAsync in a coroutine context to avoid blocking threads.
+Finished executing kotlin compiler using DAEMON strategy
+Stored cache entry for task ':lib:compileTestKotlinJvm' with cache key 84f3bce19d45aedeb98148f1b498b135
+Resolve mutations for :lib:jvmTestClasses (Thread[#168,Execution worker,5,main]) started.
+:lib:jvmTestClasses (Thread[#168,Execution worker,5,main]) started.
+
+> Task :lib:jvmTestClasses
+Skipping task ':lib:jvmTestClasses' as it has no actions.
+Resolve mutations for :lib:jvmTest (Thread[#175,Execution worker Thread 8,5,main]) started.
+:lib:jvmTest (Thread[#175,Execution worker Thread 8,5,main]) started.
+Gradle Test Executor 1 started executing tests.
+
+> Task :lib:jvmTest
+Build cache key for task ':lib:jvmTest' is 47a94a204a11f2de20231b645e58501e
+Task ':lib:jvmTest' is not up-to-date because:
+  No history is available.
+Starting process 'Gradle Test Executor 1'. Working directory: /Volumes/stuff/Projects/SolaceCore/lib Command: /Users/sydneybach/Library/Java/JavaVirtualMachines/temurin-17.0.8/Contents/Home/bin/java -Dorg.gradle.internal.worker.tmpdir=/Volumes/stuff/Projects/SolaceCore/lib/build/tmp/jvmTest/work -Dorg.gradle.native=false @/Users/sydneybach/.gradle/.tmp/gradle-worker-classpath4619748247563684213txt -Xmx512m -Dfile.encoding=UTF-8 -Duser.country=US -Duser.language=en -Duser.variant -ea worker.org.gradle.process.internal.worker.GradleWorkerMain 'Gradle Test Executor 1'
+Successfully started process 'Gradle Test Executor 1'
+
+ai.solace.core.actor.supervisor.SupervisorActorTest[jvm] > testHotSwapActor[jvm] STANDARD_OUT
+    [DEBUG_LOG] Old actor state before hot-swap: Running
+
+ai.solace.core.scripting.AdvancedJvmScriptEngineTest[jvm] > testDataClassScript[jvm] STANDARD_OUT
+    [DEBUG_LOG] Data class result: 'Name: Alice, Age: 30', type: class java.lang.String
+
+ai.solace.core.scripting.AdvancedJvmScriptEngineTest[jvm] > testLambdaScript[jvm] STANDARD_OUT
+    [DEBUG_LOG] Lambda result: '30', type: class java.lang.Integer
+
+ai.solace.core.scripting.CompiledScriptTest[jvm] > testCompiledScriptWithParameters[jvm] FAILED
+    ai.solace.core.scripting.ScriptCompilationException: Script compilation failed: Using JDK home inferred from java.home: /Users/sydneybach/Library/Java/JavaVirtualMachines/temurin-17.0.8/Contents/Home
+    Using JVM IR backend
+    Loading modules: [java.se, jdk.accessibility, jdk.attach, jdk.compiler, jdk.dynalink, jdk.httpserver, jdk.incubator.foreign, jdk.incubator.vector, jdk.jartool, jdk.javadoc, jdk.jconsole, jdk.jdi, jdk.jfr, jdk.jshell, jdk.jsobject, jdk.management, jdk.management.jfr, jdk.net, jdk.nio.mapmode, jdk.sctp, jdk.security.auth, jdk.security.jgss, jdk.unsupported, jdk.unsupported.desktop, jdk.xml.dom, kotlin.stdlib, kotlin.script.runtime, kotlin.reflect, java.base, java.compiler, java.datatransfer, java.desktop, java.xml, java.instrument, java.logging, java.management, java.management.rmi, java.rmi, java.naming, java.net.http, java.prefs, java.scripting, java.security.jgss, java.security.sasl, java.sql, java.transaction.xa, java.sql.rowset, java.xml.crypto, jdk.internal.jvmstat, jdk.management.agent, jdk.jdwp.agent, jdk.internal.ed, jdk.internal.le, jdk.internal.opt]
+    Loading modules: [java.se, jdk.accessibility, jdk.attach, jdk.compiler, jdk.dynalink, jdk.httpserver, jdk.incubator.foreign, jdk.incubator.vector, jdk.jartool, jdk.javadoc, jdk.jconsole, jdk.jdi, jdk.jfr, jdk.jshell, jdk.jsobject, jdk.management, jdk.management.jfr, jdk.net, jdk.nio.mapmode, jdk.sctp, jdk.security.auth, jdk.security.jgss, jdk.unsupported, jdk.unsupported.desktop, jdk.xml.dom, kotlin.stdlib, kotlin.script.runtime, kotlin.reflect, java.base, java.compiler, java.datatransfer, java.desktop, java.xml, java.instrument, java.logging, java.management, java.management.rmi, java.rmi, java.naming, java.net.http, java.prefs, java.scripting, java.security.jgss, java.security.sasl, java.sql, java.transaction.xa, java.sql.rowset, java.xml.crypto, jdk.internal.jvmstat, jdk.management.agent, jdk.jdwp.agent, jdk.internal.ed, jdk.internal.le, jdk.internal.opt]
+    Type checking has run into a recursive problem. Easiest workaround: specify the types of your declarations explicitly.
+    Type checking has run into a recursive problem. Easiest workaround: specify the types of your declarations explicitly.
+        at app//ai.solace.core.scripting.JvmScriptEngine$compile$2.invokeSuspend(JvmScriptEngine.kt:84)
+        at _COROUTINE._BOUNDARY._(CoroutineDebugging.kt:42)
+        at ai.solace.core.scripting.CompiledScriptTest$testCompiledScriptWithParameters$1.invokeSuspend(CompiledScriptTest.kt:67)
+
+        Caused by:
+        ai.solace.core.scripting.ScriptCompilationException: Script compilation failed: Using JDK home inferred from java.home: /Users/sydneybach/Library/Java/JavaVirtualMachines/temurin-17.0.8/Contents/Home
+        Using JVM IR backend
+        Loading modules: [java.se, jdk.accessibility, jdk.attach, jdk.compiler, jdk.dynalink, jdk.httpserver, jdk.incubator.foreign, jdk.incubator.vector, jdk.jartool, jdk.javadoc, jdk.jconsole, jdk.jdi, jdk.jfr, jdk.jshell, jdk.jsobject, jdk.management, jdk.management.jfr, jdk.net, jdk.nio.mapmode, jdk.sctp, jdk.security.auth, jdk.security.jgss, jdk.unsupported, jdk.unsupported.desktop, jdk.xml.dom, kotlin.stdlib, kotlin.script.runtime, kotlin.reflect, java.base, java.compiler, java.datatransfer, java.desktop, java.xml, java.instrument, java.logging, java.management, java.management.rmi, java.rmi, java.naming, java.net.http, java.prefs, java.scripting, java.security.jgss, java.security.sasl, java.sql, java.transaction.xa, java.sql.rowset, java.xml.crypto, jdk.internal.jvmstat, jdk.management.agent, jdk.jdwp.agent, jdk.internal.ed, jdk.internal.le, jdk.internal.opt]
+        Loading modules: [java.se, jdk.accessibility, jdk.attach, jdk.compiler, jdk.dynalink, jdk.httpserver, jdk.incubator.foreign, jdk.incubator.vector, jdk.jartool, jdk.javadoc, jdk.jconsole, jdk.jdi, jdk.jfr, jdk.jshell, jdk.jsobject, jdk.management, jdk.management.jfr, jdk.net, jdk.nio.mapmode, jdk.sctp, jdk.security.auth, jdk.security.jgss, jdk.unsupported, jdk.unsupported.desktop, jdk.xml.dom, kotlin.stdlib, kotlin.script.runtime, kotlin.reflect, java.base, java.compiler, java.datatransfer, java.desktop, java.xml, java.instrument, java.logging, java.management, java.management.rmi, java.rmi, java.naming, java.net.http, java.prefs, java.scripting, java.security.jgss, java.security.sasl, java.sql, java.transaction.xa, java.sql.rowset, java.xml.crypto, jdk.internal.jvmstat, jdk.management.agent, jdk.jdwp.agent, jdk.internal.ed, jdk.internal.le, jdk.internal.opt]
+        Type checking has run into a recursive problem. Easiest workaround: specify the types of your declarations explicitly.
+        Type checking has run into a recursive problem. Easiest workaround: specify the types of your declarations explicitly.
+            at app//ai.solace.core.scripting.JvmScriptEngine$compile$2.invokeSuspend(JvmScriptEngine.kt:84)
+            at app//kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+            at app//kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:101)
+            at app//kotlinx.coroutines.internal.LimitedDispatcher$Worker.run(LimitedDispatcher.kt:113)
+            at app//kotlinx.coroutines.scheduling.TaskImpl.run(Tasks.kt:89)
+            at app//kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:589)
+            at app//kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:823)
+            at app//kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:720)
+            at app//kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:707)
+
+ai.solace.core.scripting.CompiledScriptTest[jvm] > testCompiledScriptReuse[jvm] FAILED
+    ai.solace.core.scripting.ScriptCompilationException: Script compilation failed: Using JDK home inferred from java.home: /Users/sydneybach/Library/Java/JavaVirtualMachines/temurin-17.0.8/Contents/Home
+    Using JVM IR backend
+    Loading modules: [java.se, jdk.accessibility, jdk.attach, jdk.compiler, jdk.dynalink, jdk.httpserver, jdk.incubator.foreign, jdk.incubator.vector, jdk.jartool, jdk.javadoc, jdk.jconsole, jdk.jdi, jdk.jfr, jdk.jshell, jdk.jsobject, jdk.management, jdk.management.jfr, jdk.net, jdk.nio.mapmode, jdk.sctp, jdk.security.auth, jdk.security.jgss, jdk.unsupported, jdk.unsupported.desktop, jdk.xml.dom, kotlin.stdlib, kotlin.script.runtime, kotlin.reflect, java.base, java.compiler, java.datatransfer, java.desktop, java.xml, java.instrument, java.logging, java.management, java.management.rmi, java.rmi, java.naming, java.net.http, java.prefs, java.scripting, java.security.jgss, java.security.sasl, java.sql, java.transaction.xa, java.sql.rowset, java.xml.crypto, jdk.internal.jvmstat, jdk.management.agent, jdk.jdwp.agent, jdk.internal.ed, jdk.internal.le, jdk.internal.opt]
+    Loading modules: [java.se, jdk.accessibility, jdk.attach, jdk.compiler, jdk.dynalink, jdk.httpserver, jdk.incubator.foreign, jdk.incubator.vector, jdk.jartool, jdk.javadoc, jdk.jconsole, jdk.jdi, jdk.jfr, jdk.jshell, jdk.jsobject, jdk.management, jdk.management.jfr, jdk.net, jdk.nio.mapmode, jdk.sctp, jdk.security.auth, jdk.security.jgss, jdk.unsupported, jdk.unsupported.desktop, jdk.xml.dom, kotlin.stdlib, kotlin.script.runtime, kotlin.reflect, java.base, java.compiler, java.datatransfer, java.desktop, java.xml, java.instrument, java.logging, java.management, java.management.rmi, java.rmi, java.naming, java.net.http, java.prefs, java.scripting, java.security.jgss, java.security.sasl, java.sql, java.transaction.xa, java.sql.rowset, java.xml.crypto, jdk.internal.jvmstat, jdk.management.agent, jdk.jdwp.agent, jdk.internal.ed, jdk.internal.le, jdk.internal.opt]
+    Type checking has run into a recursive problem. Easiest workaround: specify the types of your declarations explicitly.
+        at app//ai.solace.core.scripting.JvmScriptEngine$compile$2.invokeSuspend(JvmScriptEngine.kt:84)
+        at _COROUTINE._BOUNDARY._(CoroutineDebugging.kt:42)
+        at ai.solace.core.scripting.CompiledScriptTest$testCompiledScriptReuse$1.invokeSuspend(CompiledScriptTest.kt:90)
+
+        Caused by:
+        ai.solace.core.scripting.ScriptCompilationException: Script compilation failed: Using JDK home inferred from java.home: /Users/sydneybach/Library/Java/JavaVirtualMachines/temurin-17.0.8/Contents/Home
+        Using JVM IR backend
+        Loading modules: [java.se, jdk.accessibility, jdk.attach, jdk.compiler, jdk.dynalink, jdk.httpserver, jdk.incubator.foreign, jdk.incubator.vector, jdk.jartool, jdk.javadoc, jdk.jconsole, jdk.jdi, jdk.jfr, jdk.jshell, jdk.jsobject, jdk.management, jdk.management.jfr, jdk.net, jdk.nio.mapmode, jdk.sctp, jdk.security.auth, jdk.security.jgss, jdk.unsupported, jdk.unsupported.desktop, jdk.xml.dom, kotlin.stdlib, kotlin.script.runtime, kotlin.reflect, java.base, java.compiler, java.datatransfer, java.desktop, java.xml, java.instrument, java.logging, java.management, java.management.rmi, java.rmi, java.naming, java.net.http, java.prefs, java.scripting, java.security.jgss, java.security.sasl, java.sql, java.transaction.xa, java.sql.rowset, java.xml.crypto, jdk.internal.jvmstat, jdk.management.agent, jdk.jdwp.agent, jdk.internal.ed, jdk.internal.le, jdk.internal.opt]
+        Loading modules: [java.se, jdk.accessibility, jdk.attach, jdk.compiler, jdk.dynalink, jdk.httpserver, jdk.incubator.foreign, jdk.incubator.vector, jdk.jartool, jdk.javadoc, jdk.jconsole, jdk.jdi, jdk.jfr, jdk.jshell, jdk.jsobject, jdk.management, jdk.management.jfr, jdk.net, jdk.nio.mapmode, jdk.sctp, jdk.security.auth, jdk.security.jgss, jdk.unsupported, jdk.unsupported.desktop, jdk.xml.dom, kotlin.stdlib, kotlin.script.runtime, kotlin.reflect, java.base, java.compiler, java.datatransfer, java.desktop, java.xml, java.instrument, java.logging, java.management, java.management.rmi, java.rmi, java.naming, java.net.http, java.prefs, java.scripting, java.security.jgss, java.security.sasl, java.sql, java.transaction.xa, java.sql.rowset, java.xml.crypto, jdk.internal.jvmstat, jdk.management.agent, jdk.jdwp.agent, jdk.internal.ed, jdk.internal.le, jdk.internal.opt]
+        Type checking has run into a recursive problem. Easiest workaround: specify the types of your declarations explicitly.
+            at app//ai.solace.core.scripting.JvmScriptEngine$compile$2.invokeSuspend(JvmScriptEngine.kt:84)
+            at app//kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+            at app//kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:101)
+            at app//kotlinx.coroutines.internal.LimitedDispatcher$Worker.run(LimitedDispatcher.kt:113)
+            at app//kotlinx.coroutines.scheduling.TaskImpl.run(Tasks.kt:89)
+            at app//kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:589)
+            at app//kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:823)
+            at app//kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:720)
+            at app//kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:707)
+
+ai.solace.core.scripting.DependencyScriptEngineTest[jvm] > testBasicMathScript[jvm] STANDARD_OUT
+    [DEBUG_LOG] Math result: 'Sum: 30, Product: 200'
+
+ai.solace.core.scripting.DependencyScriptEngineTest[jvm] > testDataClassScript[jvm] STANDARD_OUT
+    [DEBUG_LOG] Data class result: 'Name: Alice, Age: 30'
+
+ai.solace.core.scripting.DependencyScriptEngineTest[jvm] > testCollectionScript[jvm] STANDARD_OUT
+    [DEBUG_LOG] Collection result: 'Doubled: [2, 4, 6, 8, 10], Sum: 30'
+
+ai.solace.core.scripting.ScriptManagerTest[jvm] > testRollback[jvm] STANDARD_OUT
+    [DEBUG_LOG] Compiling and saving version 1
+    [DEBUG_LOG] Compiled script 1: ai.solace.core.scripting.JvmScriptEngine$KotlinCompiledScript@3e850122
+    [DEBUG_LOG] Result version 1: 'Version 1'
+    [DEBUG_LOG] Compiling and saving version 2
+    [DEBUG_LOG] Compiled script 2: ai.solace.core.scripting.JvmScriptEngine$KotlinCompiledScript@27fde870
+    [DEBUG_LOG] Result version 2: 'Version 2'
+    [DEBUG_LOG] Rolling back to version 1
+    [DEBUG_LOG] Rolled back script: ai.solace.core.scripting.JvmScriptEngine$KotlinCompiledScript@3e850122
+    [DEBUG_LOG] Result after rollback: 'Version 1'
+
+ai.solace.core.storage.compression.CompressedStorageTest[jvm] > test store and retrieve large data (with compression)[jvm] FAILED
+    java.lang.AssertionError: Expected value to be true.
+        at org.junit.Assert.fail(Assert.java:89)
+        at kotlin.test.junit.JUnitAsserter.fail(JUnitSupport.kt:56)
+        at kotlin.test.Asserter$DefaultImpls.assertTrue(Assertions.kt:694)
+        at kotlin.test.junit.JUnitAsserter.assertTrue(JUnitSupport.kt:30)
+        at kotlin.test.Asserter$DefaultImpls.assertTrue(Assertions.kt:704)
+        at kotlin.test.junit.JUnitAsserter.assertTrue(JUnitSupport.kt:30)
+        at kotlin.test.AssertionsKt__AssertionsKt.assertTrue(Assertions.kt:44)
+        at kotlin.test.AssertionsKt.assertTrue(Unknown Source)
+        at kotlin.test.AssertionsKt__AssertionsKt.assertTrue$default(Assertions.kt:42)
+        at kotlin.test.AssertionsKt.assertTrue$default(Unknown Source)
+        at ai.solace.core.storage.compression.CompressedStorageTest$test store and retrieve large data (with compression)$1.invokeSuspend(CompressedStorageTest.kt:63)
+        at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+        at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:101)
+        at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+        at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:95)
+        at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:69)
+        at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source)
+        at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:47)
+        at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source)
+        at ai.solace.core.storage.compression.CompressedStorageTest.test store and retrieve large data (with compression)(CompressedStorageTest.kt:49)
+
+ai.solace.core.storage.compression.GZIPCompressionStrategyTest[jvm] > test compress and decompress[jvm] STANDARD_OUT
+    [DEBUG_LOG] Original size: 404
+    [DEBUG_LOG] Compressed size: 172
+
+Gradle Test Executor 1 finished executing tests.
+
+> Task :lib:jvmTest FAILED
+Finished generating test XML results (0.017 secs) into: /Volumes/stuff/Projects/SolaceCore/lib/build/test-results/jvmTest
+Generating HTML test report...
+Finished generating test html results (0.025 secs) into: /Volumes/stuff/Projects/SolaceCore/lib/build/reports/tests/jvmTest
+5 actionable tasks: 5 executed
+Watched directory hierarchies: [/Volumes/stuff/Projects/SolaceCore]

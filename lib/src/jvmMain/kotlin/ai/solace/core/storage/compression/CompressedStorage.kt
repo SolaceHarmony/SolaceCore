@@ -56,24 +56,27 @@ class CompressedStorage<K, V>(
                 // Create a mutable copy of the metadata
                 val mutableMetadata = metadata.toMutableMap()
 
-                // Check if the value should be compressed
+                // Check if the value should be compressed based on threshold
                 val shouldCompress = shouldCompress(value)
-                mutableMetadata[compressedKey] = shouldCompress
 
                 if (shouldCompress) {
                     // Serialize and compress the value
                     @Suppress("UNCHECKED_CAST")
                     val serialized = compressionStrategy.serialize(value as Any)
                     val originalSize = serialized.size
-                    mutableMetadata[originalSizeKey] = originalSize
-
                     val compressed = compressionStrategy.compress(serialized)
 
-                    // Store the compressed value
+                    // Determine if compression actually helped
+                    val actuallyCompressed = compressed.size < serialized.size
+                    mutableMetadata[compressedKey] = actuallyCompressed
+                    mutableMetadata[originalSizeKey] = originalSize
+
+                    // Store the compressed bytes (may be original bytes if not smaller)
                     @Suppress("UNCHECKED_CAST")
                     storage.store(key, compressed as V, mutableMetadata)
                 } else {
                     // Store the value without compression
+                    mutableMetadata[compressedKey] = false
                     storage.store(key, value, mutableMetadata)
                 }
             }

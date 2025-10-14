@@ -1,3 +1,4 @@
+@file:OptIn(kotlin.uuid.ExperimentalUuidApi::class)
 package ai.solace.core.scripting
 
 import ai.solace.core.actor.Actor
@@ -6,7 +7,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlin.reflect.KClass
 import kotlin.uuid.Uuid
-import kotlin.uuid.ExperimentalUuidApi
 
 /**
  * An actor that uses a script for its behavior.
@@ -21,7 +21,6 @@ import kotlin.uuid.ExperimentalUuidApi
  * @param scriptName The name of the script.
  * @param scope Coroutine scope used by the actor, defaults to a new scope with default dispatcher and supervisor job.
  */
-@OptIn(ExperimentalUuidApi::class)
 class ScriptActor(
     id: String = Uuid.random().toString(),
     name: String = "ScriptActor",

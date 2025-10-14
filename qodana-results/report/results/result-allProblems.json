@@ -1,0 +1,91 @@
+{
+  "version": "3",
+  "listProblem": [
+    {
+      "tool": "Code Inspection",
+      "category": "Probable bugs",
+      "categoryPath": [
+        {
+          "id": "Kotlin",
+          "name": "Kotlin"
+        },
+        {
+          "id": "Kotlin/Probable bugs",
+          "name": "Probable bugs"
+        }
+      ],
+      "type": "Unresolved reference in KDoc",
+      "tags": [
+        "kotlin"
+      ],
+      "severity": "High",
+      "comment": "Cannot resolve symbol 'value'",
+      "detailsInfo": "Reports unresolved references in KDoc comments.\n\n**Example:**\n\n\n      /**\n       * [unresolvedLink]\n       */\n      fun foo() {}\n\nTo fix the problem make the link valid.",
+      "sources": [
+        {
+          "type": "file",
+          "path": "lib/src/commonMain/kotlin/ai/solace/core/storage/InMemoryConfigurationStorage.kt",
+          "language": "kotlin",
+          "line": 147,
+          "offset": 15,
+          "length": 5,
+          "code": {
+            "startLine": 145,
+            "length": 5,
+            "offset": 146,
+            "surroundingCode": "     * @param map The map to set the value in.\n     * @param path The path to the value, using dot notation (e.g., \"database.url\").\n     * @param value The value to set.\n     * @return True if the value was set successfully, false otherwise.\n     */"
+          }
+        }
+      ],
+      "attributes": {
+        "module": "SolaceCore.commonMain",
+        "inspectionName": "KDocUnresolvedReference"
+      },
+      "hash": "a94148278e38a33cee4200e5b2c4d961a92511ea34887c09ae89eb0adc17e2c9",
+      "problemType": "REGULAR"
+    },
+    {
+      "tool": "Code Inspection",
+      "category": "Probable bugs",
+      "categoryPath": [
+        {
+          "id": "Kotlin",
+          "name": "Kotlin"
+        },
+        {
+          "id": "Kotlin/Probable bugs",
+          "name": "Probable bugs"
+        }
+      ],
+      "type": "Unresolved reference in KDoc",
+      "tags": [
+        "kotlin"
+      ],
+      "severity": "High",
+      "comment": "Cannot resolve symbol 'path'",
+      "detailsInfo": "Reports unresolved references in KDoc comments.\n\n**Example:**\n\n\n      /**\n       * [unresolvedLink]\n       */\n      fun foo() {}\n\nTo fix the problem make the link valid.",
+      "sources": [
+        {
+          "type": "file",
+          "path": "lib/src/commonMain/kotlin/ai/solace/core/storage/InMemoryConfigurationStorage.kt",
+          "language": "kotlin",
+          "line": 146,
+          "offset": 15,
+          "length": 4,
+          "code": {
+            "startLine": 144,
+            "length": 4,
+            "offset": 68,
+            "surroundingCode": "     *\n     * @param map The map to set the value in.\n     * @param path The path to the value, using dot notation (e.g., \"database.url\").\n     * @param value The value to set.\n     * @return True if the value was set successfully, false otherwise."
+          }
+        }
+      ],
+      "attributes": {
+        "module": "SolaceCore.commonMain",
+        "inspectionName": "KDocUnresolvedReference"
+      },
+      "hash": "d4027e8c68a25ff9036dbefb1616023f142e8ef1d07ebdb522255892a01a75e6",
+      "problemType": "REGULAR"
+    }
+  ]
+}

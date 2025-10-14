@@ -1,0 +1,65 @@
+Initialized native services in: /Users/sydneybach/.gradle/native
+Initialized jansi services in: /Users/sydneybach/.gradle/native
+The client will now receive all logging from the daemon (pid: 17005). The daemon log file: /Users/sydneybach/.gradle/daemon/8.14/daemon-17005.out.log
+Starting 4th build in daemon [uptime: 10 mins 5.903 secs, performance: 99%, GC rate: 0.00/s, heap usage: 3% of 512 MiB, non-heap usage: 47% of 384 MiB]
+Using 32 worker leases.
+Now considering [/Volumes/stuff/Projects/SolaceCore] as hierarchies to watch
+Watching the file system is configured to be enabled if available
+File system watching is active
+Starting Build
+Resolved plugin [id: 'org.gradle.toolchains.foojay-resolver-convention', version: '1.0.0']
+Settings evaluated using settings file '/Volumes/stuff/Projects/SolaceCore/settings.gradle.kts'.
+Using local directory build cache for the root build (location = /Users/sydneybach/.gradle/caches/build-cache-1, remove unused entries = after 7 days).
+Projects loaded. Root project using build file '/Volumes/stuff/Projects/SolaceCore/build.gradle.kts'.
+Included projects: [root project 'SolaceCore', project ':lib']
+
+> Configure project :
+Evaluating root project 'SolaceCore' using build file '/Volumes/stuff/Projects/SolaceCore/build.gradle.kts'.
+
+> Configure project :lib
+Evaluating project ':lib' using build file '/Volumes/stuff/Projects/SolaceCore/lib/build.gradle.kts'.
+Resolved plugin [id: 'org.jetbrains.kotlin.multiplatform', version: '2.2.20']
+Resolved plugin [id: 'org.jetbrains.kotlin.plugin.serialization', version: '2.2.20']
+Build 41770c3d-5da8-4c68-89ce-2142975de06c is started
+Using Kotlin Gradle Plugin gradle813 variant
+kotlin scripting plugin: created the scripting discovery configuration: kotlinScriptDef
+kotlin scripting plugin: created the scripting discovery configuration: testKotlinScriptDef
+All projects evaluated.
+Task path ':lib:compileCommonMainKotlinMetadata' matched project ':lib'
+Task name matched 'compileCommonMainKotlinMetadata'
+Selected primary task 'compileCommonMainKotlinMetadata' from project :lib
+Tasks to be executed: [task ':lib:kmpPartiallyResolvedDependenciesChecker', task ':lib:checkKotlinGradlePluginConfigurationErrors', task ':lib:transformCommonMainDependenciesMetadata', task ':lib:compileCommonMainKotlinMetadata']
+Tasks that were excluded: []
+Resolve mutations for :lib:kmpPartiallyResolvedDependenciesChecker (Thread[#511,Execution worker,5,main]) started.
+:lib:kmpPartiallyResolvedDependenciesChecker (Thread[#514,Execution worker Thread 4,5,main]) started.
+
+> Task :lib:kmpPartiallyResolvedDependenciesChecker
+Caching disabled for task ':lib:kmpPartiallyResolvedDependenciesChecker' because:
+  This task is not intended for execution
+Task ':lib:kmpPartiallyResolvedDependenciesChecker' is not up-to-date because:
+  Task has not declared any outputs despite executing actions.
+Execution stopped by some action with message: null
+Resolve mutations for :lib:checkKotlinGradlePluginConfigurationErrors (Thread[#514,Execution worker Thread 4,5,main]) started.
+:lib:checkKotlinGradlePluginConfigurationErrors (Thread[#514,Execution worker Thread 4,5,main]) started.
+
+> Task :lib:checkKotlinGradlePluginConfigurationErrors SKIPPED
+Skipping task ':lib:checkKotlinGradlePluginConfigurationErrors' as task onlyIf 'errorDiagnostics are present' is false.
+Resolve mutations for :lib:transformCommonMainDependenciesMetadata (Thread[#514,Execution worker Thread 4,5,main]) started.
+:lib:transformCommonMainDependenciesMetadata (Thread[#514,Execution worker Thread 4,5,main]) started.
+
+> Task :lib:transformCommonMainDependenciesMetadata UP-TO-DATE
+Caching disabled for task ':lib:transformCommonMainDependenciesMetadata' because:
+  Metadata Dependency Transformation Task doesn't benefit from caching as it doesn't have heavy load
+Skipping task ':lib:transformCommonMainDependenciesMetadata' as it is up-to-date.
+Resolve mutations for :lib:compileCommonMainKotlinMetadata (Thread[#514,Execution worker Thread 4,5,main]) started.
+:lib:compileCommonMainKotlinMetadata (Thread[#514,Execution worker Thread 4,5,main]) started.
+
+> Task :lib:compileCommonMainKotlinMetadata FAILED
+Build cache key for task ':lib:compileCommonMainKotlinMetadata' is 0d2ff0e00fcacd93e40fefc58abe568c
+Task ':lib:compileCommonMainKotlinMetadata' is not up-to-date because:
+  Task has failed previously.
+The input changes require a full rebuild for incremental task ':lib:compileCommonMainKotlinMetadata'.
+Finished executing kotlin compiler using DAEMON strategy
+Build 41770c3d-5da8-4c68-89ce-2142975de06c is closed
+3 actionable tasks: 2 executed, 1 up-to-date
+Watched directory hierarchies: [/Volumes/stuff/Projects/SolaceCore]

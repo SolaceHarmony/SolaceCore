@@ -1,0 +1,48 @@
+{
+  "version": "3",
+  "listProblem": [
+    {
+      "tool": "Code Inspection",
+      "category": "Redundant constructs",
+      "categoryPath": [
+        {
+          "id": "Kotlin",
+          "name": "Kotlin"
+        },
+        {
+          "id": "Kotlin/Redundant constructs",
+          "name": "Redundant constructs"
+        }
+      ],
+      "type": "Unused symbol",
+      "tags": [
+        "kotlin"
+      ],
+      "severity": "High",
+      "comment": "Class \"LOW\" is never used",
+      "detailsInfo": "Reports symbols that are not used or not reachable from entry points.",
+      "sources": [
+        {
+          "type": "file",
+          "path": "lib/src/commonMain/kotlin/ai/solace/core/actor/ActorMessage.kt",
+          "language": "kotlin",
+          "line": 19,
+          "offset": 5,
+          "length": 3,
+          "code": {
+            "startLine": 17,
+            "length": 3,
+            "offset": 81,
+            "surroundingCode": "\n    /** Low priority messages are processed when resources are available */\n    LOW\n}\n"
+          }
+        }
+      ],
+      "attributes": {
+        "module": "SolaceCore.commonMain",
+        "inspectionName": "UnusedSymbol"
+      },
+      "hash": "b096835158f35fe90006716b04da767adaca9d788eab164e0092d289808856c0",
+      "problemType": "REGULAR"
+    }
+  ]
+}

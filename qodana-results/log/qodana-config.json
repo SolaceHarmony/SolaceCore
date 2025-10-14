@@ -1,0 +1,6 @@
+{
+  "local": {
+    "filename": "qodana.yaml",
+    "content": "#-------------------------------------------------------------------------------#\n#               Qodana analysis is configured by qodana.yaml file               #\n#             https://www.jetbrains.com/help/qodana/qodana-yaml.html            #\n#-------------------------------------------------------------------------------#\nversion: \"1.0\"\n\n#Specify inspection profile for code analysis\nprofile:\n  name: qodana.starter\n\n#Enable inspections\n#include:\n#  - name: <SomeEnabledInspectionId>\n\n#Disable inspections\n#exclude:\n#  - name: <SomeDisabledInspectionId>\n#    paths:\n#      - <path/where/not/run/inspection>\n\nprojectJDK: 19 #(Applied in CI/CD pipeline)\n\n#Execute shell command before Qodana execution (Applied in CI/CD pipeline)\n#bootstrap: sh ./prepare-qodana.sh\n\n#Install IDE plugins before Qodana execution (Applied in CI/CD pipeline)\n#plugins:\n#  - id: <plugin.id> #(plugin id can be found at https://plugins.jetbrains.com)\n\n#Specify Qodana linter for analysis (Applied in CI/CD pipeline)\nlinter: jetbrains/qodana-jvm:latest\n"
+  }
+}

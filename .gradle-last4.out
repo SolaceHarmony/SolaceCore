@@ -1,0 +1,176 @@
+Initialized native services in: /Users/sydneybach/.gradle/native
+Initialized jansi services in: /Users/sydneybach/.gradle/native
+Received JVM installation metadata from '/Library/Java/JavaVirtualMachines/temurin-21.jdk/Contents/Home': {JAVA_HOME=/Library/Java/JavaVirtualMachines/temurin-21.jdk/Contents/Home, JAVA_VERSION=21.0.3, JAVA_VENDOR=Eclipse Adoptium, RUNTIME_NAME=OpenJDK Runtime Environment, RUNTIME_VERSION=21.0.3+9-LTS, VM_NAME=OpenJDK 64-Bit Server VM, VM_VERSION=21.0.3+9-LTS, VM_VENDOR=Eclipse Adoptium, OS_ARCH=aarch64}
+The client will now receive all logging from the daemon (pid: 3109). The daemon log file: /Users/sydneybach/.gradle/daemon/8.7/daemon-3109.out.log
+Starting 11th build in daemon [uptime: 1 hrs 8 mins 43.027 secs, performance: 99%, GC rate: 0.00/s, heap usage: 3% of 512 MiB, non-heap usage: 58% of 384 MiB]
+Using 32 worker leases.
+Closing daemon's stdin at end of input.
+The daemon will no longer process any standard input.
+Now considering [/Volumes/stuff/Projects/SolaceCore] as hierarchies to watch
+Watching the file system is configured to be enabled if available
+File system watching is active
+Starting Build
+Transforming foojay-resolver-0.8.0.jar (org.gradle.toolchains:foojay-resolver:0.8.0) with ExternalDependencyInstrumentingArtifactTransform
+Transforming gson-2.10.1.jar (com.google.code.gson:gson:2.10.1) with ExternalDependencyInstrumentingArtifactTransform
+Settings evaluated using settings file '/Volumes/stuff/Projects/SolaceCore/settings.gradle.kts'.
+Using local directory build cache for the root build (location = /Users/sydneybach/.gradle/caches/build-cache-1, removeUnusedEntriesAfter = 7 days).
+Projects loaded. Root project using build file '/Volumes/stuff/Projects/SolaceCore/build.gradle.kts'.
+Included projects: [root project 'SolaceCore', project ':lib']
+
+> Configure project :
+Evaluating root project 'SolaceCore' using build file '/Volumes/stuff/Projects/SolaceCore/build.gradle.kts'.
+Build cache key for Kotlin DSL script compilation (Project/TopLevel/stage1) is 843c283704436916a82669eb7ba2de29
+Stored cache entry for Kotlin DSL script compilation (Project/TopLevel/stage1) with cache key 843c283704436916a82669eb7ba2de29
+Build cache key for Kotlin DSL accessors for root project 'SolaceCore' is cb63c7fc53acfba18b195b8ea09bf655
+Stored cache entry for Kotlin DSL accessors for root project 'SolaceCore' with cache key cb63c7fc53acfba18b195b8ea09bf655
+Build cache key for Kotlin DSL script compilation (Project/TopLevel/stage2) is 92ef71b939e3ba97684e22a09363eaaf
+Stored cache entry for Kotlin DSL script compilation (Project/TopLevel/stage2) with cache key 92ef71b939e3ba97684e22a09363eaaf
+
+> Configure project :lib
+Evaluating project ':lib' using build file '/Volumes/stuff/Projects/SolaceCore/lib/build.gradle.kts'.
+Build cache key for Kotlin DSL script compilation (Project/TopLevel/stage1) is da8d215299a477ded992dfa1fcc897c8
+Stored cache entry for Kotlin DSL script compilation (Project/TopLevel/stage1) with cache key da8d215299a477ded992dfa1fcc897c8
+Transforming kotlin-serialization-2.0.21-gradle85.jar (org.jetbrains.kotlin:kotlin-serialization:2.0.21) with ExternalDependencyInstrumentingArtifactTransform
+Transforming kotlin-gradle-plugin-model-2.0.21.jar (org.jetbrains.kotlin:kotlin-gradle-plugin-model:2.0.21) with ExternalDependencyInstrumentingArtifactTransform
+Transforming kotlin-gradle-plugin-api-2.0.21.jar (org.jetbrains.kotlin:kotlin-gradle-plugin-api:2.0.21) with ExternalDependencyInstrumentingArtifactTransform
+Transforming kotlin-gradle-plugin-api-2.0.21-gradle85.jar (org.jetbrains.kotlin:kotlin-gradle-plugin-api:2.0.21) with ExternalDependencyInstrumentingArtifactTransform
+Transforming kotlin-gradle-plugin-2.0.21-gradle85.jar (org.jetbrains.kotlin:kotlin-gradle-plugin:2.0.21) with ExternalDependencyInstrumentingArtifactTransform
+Transforming kotlin-gradle-plugin-idea-proto-2.0.21.jar (org.jetbrains.kotlin:kotlin-gradle-plugin-idea-proto:2.0.21) with ExternalDependencyInstrumentingArtifactTransform
+Transforming kotlin-gradle-plugin-idea-2.0.21.jar (org.jetbrains.kotlin:kotlin-gradle-plugin-idea:2.0.21) with ExternalDependencyInstrumentingArtifactTransform
+Transforming kotlin-klib-commonizer-api-2.0.21.jar (org.jetbrains.kotlin:kotlin-klib-commonizer-api:2.0.21) with ExternalDependencyInstrumentingArtifactTransform
+Transforming kotlin-build-statistics-2.0.21.jar (org.jetbrains.kotlin:kotlin-build-statistics:2.0.21) with ExternalDependencyInstrumentingArtifactTransform
+Transforming kotlin-build-tools-api-2.0.21.jar (org.jetbrains.kotlin:kotlin-build-tools-api:2.0.21) with ExternalDependencyInstrumentingArtifactTransform
+Transforming kotlin-compiler-runner-2.0.21.jar (org.jetbrains.kotlin:kotlin-compiler-runner:2.0.21) with ExternalDependencyInstrumentingArtifactTransform
+Transforming kotlin-native-utils-2.0.21.jar (org.jetbrains.kotlin:kotlin-native-utils:2.0.21) with ExternalDependencyInstrumentingArtifactTransform
+Transforming kotlin-util-klib-2.0.21.jar (org.jetbrains.kotlin:kotlin-util-klib:2.0.21) with ExternalDependencyInstrumentingArtifactTransform
+Transforming kotlin-compiler-embeddable-2.0.21.jar (org.jetbrains.kotlin:kotlin-compiler-embeddable:2.0.21) with ExternalDependencyInstrumentingArtifactTransform
+Transforming kotlin-gradle-plugin-annotations-2.0.21.jar (org.jetbrains.kotlin:kotlin-gradle-plugin-annotations:2.0.21) with ExternalDependencyInstrumentingArtifactTransform
+Transforming kotlin-tooling-core-2.0.21.jar (org.jetbrains.kotlin:kotlin-tooling-core:2.0.21) with ExternalDependencyInstrumentingArtifactTransform
+Transforming gson-2.8.9.jar (com.google.code.gson:gson:2.8.9) with ExternalDependencyInstrumentingArtifactTransform
+Transforming kotlin-daemon-client-2.0.21.jar (org.jetbrains.kotlin:kotlin-daemon-client:2.0.21) with ExternalDependencyInstrumentingArtifactTransform
+Transforming kotlinx-coroutines-core-jvm-1.6.4.jar (org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.6.4) with ExternalDependencyInstrumentingArtifactTransform
+Transforming kotlin-util-io-2.0.21.jar (org.jetbrains.kotlin:kotlin-util-io:2.0.21) with ExternalDependencyInstrumentingArtifactTransform
+Transforming kotlin-daemon-embeddable-2.0.21.jar (org.jetbrains.kotlin:kotlin-daemon-embeddable:2.0.21) with ExternalDependencyInstrumentingArtifactTransform
+Transforming trove4j-1.0.20200330.jar (org.jetbrains.intellij.deps:trove4j:1.0.20200330) with ExternalDependencyInstrumentingArtifactTransform
+Using Kotlin Gradle Plugin gradle85 variant
+Build cache key for Kotlin DSL accessors for project ':lib' is ebb8fd784eca25f27f60f5e9d9883e16
+Stored cache entry for Kotlin DSL accessors for project ':lib' with cache key ebb8fd784eca25f27f60f5e9d9883e16
+Build cache key for Kotlin DSL script compilation (Project/TopLevel/stage2) is 4373243b481c0da0b6d4cb2508ea6183
+Stored cache entry for Kotlin DSL script compilation (Project/TopLevel/stage2) with cache key 4373243b481c0da0b6d4cb2508ea6183
+kotlin scripting plugin: created the scripting discovery configuration: kotlinScriptDef
+kotlin scripting plugin: created the scripting discovery configuration: testKotlinScriptDef
+All projects evaluated.
+Task name matched 'clean'
+Task name matched 'build'
+Selected primary task 'clean' from project :
+Selected primary task 'build' from project :
+Starting process 'command '/usr/libexec/java_home''. Working directory: /Users/sydneybach/.gradle/daemon/8.7 Command: /usr/libexec/java_home -V
+Successfully started process 'command '/usr/libexec/java_home''
+Tasks to be executed: [task ':lib:cleanJvmTest', task ':lib:cleanMacosArm64Test', task ':lib:cleanAllTests', task ':lib:clean', task ':lib:checkKotlinGradlePluginConfigurationErrors', task ':lib:transformCommonMainDependenciesMetadata', task ':lib:compileCommonMainKotlinMetadata', task ':lib:generateProjectStructureMetadata', task ':lib:metadataCommonMainProcessResources', task ':lib:metadataCommonMainClasses', task ':lib:allMetadataJar', task ':lib:compileKotlinMacosArm64', task ':lib:macosArm64ProcessResources', task ':lib:macosArm64MainKlibrary', task ':lib:compileTestKotlinMacosArm64', task ':lib:compileKotlinJvm', task ':lib:jvmProcessResources', task ':lib:jvmMainClasses', task ':lib:jvmJar', task ':lib:macosArm64MetadataElements', task ':lib:assemble', task ':lib:compileTestKotlinJvm', task ':lib:jvmTestProcessResources', task ':lib:jvmTestClasses', task ':lib:jvmTest', task ':lib:xcodeVersion', task ':lib:linkDebugTestMacosArm64', task ':lib:macosArm64Test', task ':lib:allTests', task ':lib:check', task ':lib:build']
+Tasks that were excluded: []
+Resolve mutations for :lib:cleanJvmTest (Thread[#1422,Execution worker,5,main]) started.
+:lib:cleanJvmTest (Thread[#1422,Execution worker,5,main]) started.
+
+> Task :lib:cleanJvmTest UP-TO-DATE
+Caching disabled for task ':lib:cleanJvmTest' because:
+  Deletion cannot be cached
+Task ':lib:cleanJvmTest' is not up-to-date because:
+  Task has not declared any outputs despite executing actions.
+Resolve mutations for :lib:cleanMacosArm64Test (Thread[#1422,Execution worker,5,main]) started.
+:lib:cleanMacosArm64Test (Thread[#1448,Execution worker Thread 26,5,main]) started.
+
+> Task :lib:cleanMacosArm64Test UP-TO-DATE
+Caching disabled for task ':lib:cleanMacosArm64Test' because:
+  Deletion cannot be cached
+Task ':lib:cleanMacosArm64Test' is not up-to-date because:
+  Task has not declared any outputs despite executing actions.
+Resolve mutations for :lib:cleanAllTests (Thread[#1448,Execution worker Thread 26,5,main]) started.
+:lib:cleanAllTests (Thread[#1448,Execution worker Thread 26,5,main]) started.
+
+> Task :lib:cleanAllTests UP-TO-DATE
+Skipping task ':lib:cleanAllTests' as it has no actions.
+Resolve mutations for :lib:clean (Thread[#1448,Execution worker Thread 26,5,main]) started.
+:lib:clean (Thread[#1440,Execution worker Thread 19,5,main]) started.
+destroyer locations for task group 0 (Thread[#1439,Execution worker Thread 18,5,main]) started.
+
+> Task :lib:clean UP-TO-DATE
+Caching disabled for task ':lib:clean' because:
+  Deletion cannot be cached
+Task ':lib:clean' is not up-to-date because:
+  Task has not declared any outputs despite executing actions.
+Resolve mutations for :lib:checkKotlinGradlePluginConfigurationErrors (Thread[#1440,Execution worker Thread 19,5,main]) started.
+:lib:checkKotlinGradlePluginConfigurationErrors (Thread[#1440,Execution worker Thread 19,5,main]) started.
+
+> Task :lib:checkKotlinGradlePluginConfigurationErrors SKIPPED
+Skipping task ':lib:checkKotlinGradlePluginConfigurationErrors' as task onlyIf 'errorDiagnostics are present' is false.
+Resolve mutations for :lib:transformCommonMainDependenciesMetadata (Thread[#1440,Execution worker Thread 19,5,main]) started.
+:lib:transformCommonMainDependenciesMetadata (Thread[#1440,Execution worker Thread 19,5,main]) started.
+
+> Task :lib:transformCommonMainDependenciesMetadata
+Caching disabled for task ':lib:transformCommonMainDependenciesMetadata' because:
+  Metadata Dependency Transformation Task doesn't benefit from caching as it doesn't have heavy load
+Task ':lib:transformCommonMainDependenciesMetadata' is not up-to-date because:
+  No history is available.
+Resolve mutations for :lib:compileCommonMainKotlinMetadata (Thread[#1440,Execution worker Thread 19,5,main]) started.
+:lib:compileCommonMainKotlinMetadata (Thread[#1440,Execution worker Thread 19,5,main]) started.
+Resolve mutations for :lib:generateProjectStructureMetadata (Thread[#1433,Execution worker Thread 12,5,main]) started.
+:lib:generateProjectStructureMetadata (Thread[#1433,Execution worker Thread 12,5,main]) started.
+
+> Task :lib:generateProjectStructureMetadata
+Caching disabled for task ':lib:generateProjectStructureMetadata' because:
+  Caching has been disabled for the task
+Task ':lib:generateProjectStructureMetadata' is not up-to-date because:
+  No history is available.
+Resolve mutations for :lib:metadataCommonMainProcessResources (Thread[#1433,Execution worker Thread 12,5,main]) started.
+:lib:metadataCommonMainProcessResources (Thread[#1433,Execution worker Thread 12,5,main]) started.
+
+> Task :lib:metadataCommonMainProcessResources
+Caching disabled for task ':lib:metadataCommonMainProcessResources' because:
+  Not worth caching
+Task ':lib:metadataCommonMainProcessResources' is not up-to-date because:
+  No history is available.
+Resolve mutations for :lib:compileKotlinMacosArm64 (Thread[#1433,Execution worker Thread 12,5,main]) started.
+:lib:compileKotlinMacosArm64 (Thread[#1433,Execution worker Thread 12,5,main]) started.
+
+> Task :lib:compileCommonMainKotlinMetadata FAILED
+Build cache key for task ':lib:compileCommonMainKotlinMetadata' is 7402580094da76048c0519740293f939
+Task ':lib:compileCommonMainKotlinMetadata' is not up-to-date because:
+  No history is available.
+The input changes require a full rebuild for incremental task ':lib:compileCommonMainKotlinMetadata'.
+Finished executing kotlin compiler using DAEMON strategy
+
+> Task :lib:compileKotlinMacosArm64
+Kotlin Native Bundle: Acquire lock: /Users/sydneybach/.konan/kotlin-native-prebuilt-macos-aarch64-2.0.21/.lock ...
+Kotlin Native Bundle: Lock acquired: /Users/sydneybach/.konan/kotlin-native-prebuilt-macos-aarch64-2.0.21/.lock
+Kotlin Native Bundle: Lock released: /Users/sydneybach/.konan/kotlin-native-prebuilt-macos-aarch64-2.0.21/.lock
+Kotlin Native Bundle: Acquire lock: /Users/sydneybach/.konan/kotlin-native-prebuilt-macos-aarch64-2.0.21/.lock ...
+Kotlin Native Bundle: Lock acquired: /Users/sydneybach/.konan/kotlin-native-prebuilt-macos-aarch64-2.0.21/.lock
+Kotlin Native Bundle: Lock released: /Users/sydneybach/.konan/kotlin-native-prebuilt-macos-aarch64-2.0.21/.lock
+Kotlin Native Bundle: Acquire lock: /Users/sydneybach/.konan/kotlin-native-prebuilt-macos-aarch64-2.0.21/.lock ...
+Kotlin Native Bundle: Lock acquired: /Users/sydneybach/.konan/kotlin-native-prebuilt-macos-aarch64-2.0.21/.lock
+Kotlin Native Bundle: Lock released: /Users/sydneybach/.konan/kotlin-native-prebuilt-macos-aarch64-2.0.21/.lock
+Kotlin Native Bundle: Acquire lock: /Users/sydneybach/.konan/kotlin-native-prebuilt-macos-aarch64-2.0.21/.lock ...
+Kotlin Native Bundle: Lock acquired: /Users/sydneybach/.konan/kotlin-native-prebuilt-macos-aarch64-2.0.21/.lock
+Kotlin Native Bundle: Lock released: /Users/sydneybach/.konan/kotlin-native-prebuilt-macos-aarch64-2.0.21/.lock
+Kotlin Native Bundle: Acquire lock: /Users/sydneybach/.konan/kotlin-native-prebuilt-macos-aarch64-2.0.21/.lock ...
+Kotlin Native Bundle: Lock acquired: /Users/sydneybach/.konan/kotlin-native-prebuilt-macos-aarch64-2.0.21/.lock
+Kotlin Native Bundle: Lock released: /Users/sydneybach/.konan/kotlin-native-prebuilt-macos-aarch64-2.0.21/.lock
+Build cache key for task ':lib:compileKotlinMacosArm64' is d4de90db7ab960ed50235d8ea1355372
+Task ':lib:compileKotlinMacosArm64' is not up-to-date because:
+  No history is available.
+file or directory '/Volumes/stuff/Projects/SolaceCore/lib/src/macosArm64Main/kotlin', not found
+file or directory '/Volumes/stuff/Projects/SolaceCore/lib/src/macosMain/kotlin', not found
+file or directory '/Volumes/stuff/Projects/SolaceCore/lib/src/appleMain/kotlin', not found
+file or directory '/Volumes/stuff/Projects/SolaceCore/lib/src/nativeMain/kotlin', not found
+file or directory '/Volumes/stuff/Projects/SolaceCore/lib/src/macosArm64Main/kotlin', not found
+file or directory '/Volumes/stuff/Projects/SolaceCore/lib/src/macosMain/kotlin', not found
+file or directory '/Volumes/stuff/Projects/SolaceCore/lib/src/appleMain/kotlin', not found
+file or directory '/Volumes/stuff/Projects/SolaceCore/lib/src/nativeMain/kotlin', not found
+file or directory '/Volumes/stuff/Projects/SolaceCore/lib/src/macosArm64Main/kotlin', not found
+file or directory '/Volumes/stuff/Projects/SolaceCore/lib/src/macosMain/kotlin', not found
+file or directory '/Volumes/stuff/Projects/SolaceCore/lib/src/appleMain/kotlin', not found
+file or directory '/Volumes/stuff/Projects/SolaceCore/lib/src/nativeMain/kotlin', not found
+
+> Task :lib:compileKotlinMacosArm64 FAILED
+8 actionable tasks: 5 executed, 3 up-to-date
+Watched directory hierarchies: [/Volumes/stuff/Projects/SolaceCore]

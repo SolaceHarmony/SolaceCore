@@ -1,0 +1,21 @@
+{
+  "version": "1.0",
+  "total": 2,
+  "tools inspection": {
+    "Code Inspection": 2
+  },
+  "linter": "QDJVMC",
+  "attributes": {
+    "deviceId": "200820300000000-c6a2-b717-fd61-7a9c23298166",
+    "jobUrl": "",
+    "vcs": {
+      "sarifIdea": {
+        "repositoryUri": "https://github.com/SolaceHarmony/SolaceCore",
+        "revisionId": "de5bdd15422fbbab1662314ff1707eaf04d8c298",
+        "branch": "continuing-development"
+      }
+    },
+    "repoUrl": "https://github.com/SolaceHarmony/SolaceCore"
+  },
+  "linterVersion": "251.25775"
+}

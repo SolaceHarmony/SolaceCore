@@ -1,0 +1,94 @@
+{
+  "appInfo" : {
+    "build" : "251.25775",
+    "buildDate" : "2025-06-05T14:02:41.995Z[Etc/UTC]",
+    "productCode" : "QDJVMC",
+    "generated" : "2025-06-05T14:03:55.947736886Z",
+    "os" : "Linux 6.10.14-linuxkit",
+    "runtime" : "JetBrains s.r.o. 21.0.7 21.0.7+9-b895.115"
+  },
+  "runtimeInfo" : {
+    "maxMemory" : 5754585088,
+    "numberOfProcessors" : 24,
+    "maxNumberOfIndexingThreads" : 24,
+    "maxSizeOfFileForIntelliSense" : 2560000,
+    "maxSizeOfFileForContentLoading" : 20971520
+  },
+  "type" : "Scanning",
+  "projectIndexingActivityHistory" : {
+    "projectName" : "SolaceCore",
+    "times" : {
+      "scanningReason" : "changes in: \"Module 'kotlin.scripts.Default Kotlin Script.lib:src:commonMain:resources:scripts:HelloWorldActor.kts' (all roots)\", \"JDK 19 /root/.jdks/corretto-19.0.2\", \"Library .kts definition dependencies (#3 class roots, #1 source roots)\"",
+      "scanningType" : "PARTIAL",
+      "scanningId" : 5,
+      "creatingIteratorsTime" : 0,
+      "concurrentHandlingWallTimeWithoutPauses" : 0,
+      "concurrentHandlingWallTimeWithPauses" : 0,
+      "concurrentHandlingSumOfThreadTimesWithPauses" : 232547750,
+      "concurrentIterationAndScannersApplicationSumOfThreadTimesWithPauses" : 38130166,
+      "concurrentFileCheckSumOfThreadTimesWithPauses" : 194100458,
+      "delayedPushPropertiesStageTime" : 0,
+      "indexExtensionsTime" : 468856,
+      "dumbWallTimeWithPauses" : 0,
+      "dumbWallTimeWithoutPauses" : 0,
+      "updatingStart" : "2025-06-05T14:03:55.754543927Z",
+      "updatingEnd" : "2025-06-05T14:03:55.94688601Z",
+      "totalWallTimeWithPauses" : 192342083,
+      "wallTimeOnPause" : 224417,
+      "isCancelled" : false,
+      "totalWallTimeWithoutPauses" : 192117666
+    },
+    "fileCount" : {
+      "numberOfFileProviders" : 3,
+      "numberOfScannedFiles" : 46017,
+      "numberOfFilesIndexedByInfrastructureExtensionsDuringScan" : 0,
+      "numberOfFilesScheduledForIndexingAfterScan" : 3349
+    },
+    "scanningStatistics" : [ {
+      "providerName" : "JDK 19 /root/.jdks/corretto-19.0.2",
+      "numberOfScannedFiles" : 42668,
+      "numberOfSkippedFiles" : 70,
+      "numberOfFilesForIndexing" : 0,
+      "numberOfFilesFullyIndexedByInfrastructureExtensions" : 0,
+      "filesFullyIndexedByInfrastructureExtensions" : [ ],
+      "statusTime" : 152068619,
+      "totalOneThreadTimeWithPauses" : 189624375,
+      "iterationAndScannersApplicationTime" : 28413000,
+      "filesCheckTime" : 161151750,
+      "timeProcessingUpToDateFiles" : 0,
+      "timeUpdatingContentLessIndexes" : 0,
+      "timeIndexingWithoutContentViaInfrastructureExtension" : 0,
+      "roots" : [ ]
+    }, {
+      "providerName" : "Library .kts definition dependencies (#3 class roots, #1 source roots)",
+      "numberOfScannedFiles" : 3349,
+      "numberOfSkippedFiles" : 0,
+      "numberOfFilesForIndexing" : 3349,
+      "numberOfFilesFullyIndexedByInfrastructureExtensions" : 0,
+      "filesFullyIndexedByInfrastructureExtensions" : [ ],
+      "statusTime" : 25966307,
+      "totalOneThreadTimeWithPauses" : 42067750,
+      "iterationAndScannersApplicationTime" : 9191125,
+      "filesCheckTime" : 32786917,
+      "timeProcessingUpToDateFiles" : 0,
+      "timeUpdatingContentLessIndexes" : 7543172,
+      "timeIndexingWithoutContentViaInfrastructureExtension" : 468856,
+      "roots" : [ ]
+    }, {
+      "providerName" : "Module 'kotlin.scripts.Default Kotlin Script.lib:src:commonMain:resources:scripts:HelloWorldActor.kts' (all roots)",
+      "numberOfScannedFiles" : 0,
+      "numberOfSkippedFiles" : 0,
+      "numberOfFilesForIndexing" : 0,
+      "numberOfFilesFullyIndexedByInfrastructureExtensions" : 0,
+      "filesFullyIndexedByInfrastructureExtensions" : [ ],
+      "statusTime" : 0,
+      "totalOneThreadTimeWithPauses" : 855625,
+      "iterationAndScannersApplicationTime" : 526041,
+      "filesCheckTime" : 161791,
+      "timeProcessingUpToDateFiles" : 0,
+      "timeUpdatingContentLessIndexes" : 0,
+      "timeIndexingWithoutContentViaInfrastructureExtension" : 0,
+      "roots" : [ ]
+    } ]
+  }
+}

@@ -289,7 +289,7 @@ interface Port<T : Any> : Disposable {
          */
         fun generateId(): String = buildString {
             append("port-")
-            append(Random.nextBytes(8).joinToString("") { "%02x".format(it) })
+            append(Random.nextBytes(8).joinToString("") { b -> b.toUByte().toString(16).padStart(2, '0') })
         }
 
         /**

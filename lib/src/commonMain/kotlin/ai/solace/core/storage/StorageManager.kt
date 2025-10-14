@@ -1,6 +1,7 @@
 package ai.solace.core.storage
 
 import ai.solace.core.lifecycle.Lifecycle
+import kotlin.reflect.KClass
 
 /**
  * Interface for managing storage operations.
@@ -32,7 +33,7 @@ interface StorageManager : Lifecycle {
      * @param storageName The name of the storage implementation to get.
      * @return The storage implementation, or null if no implementation is available for the specified types.
      */
-    fun <K, V> getStorage(keyClass: Class<K>, valueClass: Class<V>, storageName: String = "default"): Storage<K, V>?
+    fun <K : Any, V : Any> getStorage(keyClass: KClass<K>, valueClass: KClass<V>, storageName: String = "default"): Storage<K, V>?
 
     /**
      * Registers a storage implementation for the specified key and value types.
@@ -43,7 +44,7 @@ interface StorageManager : Lifecycle {
      * @param storageName The name to register the storage implementation under.
      * @return True if the storage implementation was registered successfully, false otherwise.
      */
-    fun <K, V> registerStorage(keyClass: Class<K>, valueClass: Class<V>, storage: Storage<K, V>, storageName: String = "default"): Boolean
+    fun <K : Any, V : Any> registerStorage(keyClass: KClass<K>, valueClass: KClass<V>, storage: Storage<K, V>, storageName: String = "default"): Boolean
 
     /**
      * Unregisters a storage implementation for the specified key and value types.
@@ -53,7 +54,7 @@ interface StorageManager : Lifecycle {
      * @param storageName The name of the storage implementation to unregister.
      * @return True if the storage implementation was unregistered successfully, false otherwise.
      */
-    fun <K, V> unregisterStorage(keyClass: Class<K>, valueClass: Class<V>, storageName: String = "default"): Boolean
+    fun <K : Any, V : Any> unregisterStorage(keyClass: KClass<K>, valueClass: KClass<V>, storageName: String = "default"): Boolean
 
     /**
      * Flushes all pending changes to persistent storage.

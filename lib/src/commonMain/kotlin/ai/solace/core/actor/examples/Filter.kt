@@ -1,3 +1,4 @@
+@file:OptIn(kotlin.uuid.ExperimentalUuidApi::class)
 package ai.solace.core.actor.examples
 
 import ai.solace.core.actor.Actor
@@ -5,7 +6,6 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlin.uuid.Uuid
-import kotlin.uuid.ExperimentalUuidApi
 
 /**
  * An actor that filters messages based on a predicate.
@@ -22,7 +22,6 @@ import kotlin.uuid.ExperimentalUuidApi
  * @param predicate The function used to determine if a message passes the filter.
  * @param includeRejectedPort Whether to create a port for rejected messages.
  */
-@OptIn(ExperimentalUuidApi::class)
 class Filter<T : Any>(
     id: String = Uuid.random().toString(),
     name: String = "Filter",

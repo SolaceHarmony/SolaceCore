@@ -1,0 +1,87 @@
+Initialized native services in: /Users/sydneybach/.gradle/native
+Initialized jansi services in: /Users/sydneybach/.gradle/native
+Received JVM installation metadata from '/Library/Java/JavaVirtualMachines/temurin-21.jdk/Contents/Home': {JAVA_HOME=/Library/Java/JavaVirtualMachines/temurin-21.jdk/Contents/Home, JAVA_VERSION=21.0.3, JAVA_VENDOR=Eclipse Adoptium, RUNTIME_NAME=OpenJDK Runtime Environment, RUNTIME_VERSION=21.0.3+9-LTS, VM_NAME=OpenJDK 64-Bit Server VM, VM_VERSION=21.0.3+9-LTS, VM_VENDOR=Eclipse Adoptium, OS_ARCH=aarch64}
+The client will now receive all logging from the daemon (pid: 3109). The daemon log file: /Users/sydneybach/.gradle/daemon/8.7/daemon-3109.out.log
+Starting 9th build in daemon [uptime: 53 mins 8.776 secs, performance: 99%, GC rate: 0.00/s, heap usage: 3% of 512 MiB, non-heap usage: 57% of 384 MiB]
+Using 32 worker leases.
+Closing daemon's stdin at end of input.
+The daemon will no longer process any standard input.
+Now considering [/Volumes/stuff/Projects/SolaceCore] as hierarchies to watch
+Watching the file system is configured to be enabled if available
+File system watching is active
+Starting Build
+Transforming foojay-resolver-0.8.0.jar (org.gradle.toolchains:foojay-resolver:0.8.0) with ExternalDependencyInstrumentingArtifactTransform
+Transforming gson-2.10.1.jar (com.google.code.gson:gson:2.10.1) with ExternalDependencyInstrumentingArtifactTransform
+Settings evaluated using settings file '/Volumes/stuff/Projects/SolaceCore/settings.gradle.kts'.
+Using local directory build cache for the root build (location = /Users/sydneybach/.gradle/caches/build-cache-1, removeUnusedEntriesAfter = 7 days).
+Projects loaded. Root project using build file '/Volumes/stuff/Projects/SolaceCore/build.gradle.kts'.
+Included projects: [root project 'SolaceCore', project ':lib']
+
+> Configure project :
+Evaluating root project 'SolaceCore' using build file '/Volumes/stuff/Projects/SolaceCore/build.gradle.kts'.
+Build cache key for Kotlin DSL script compilation (Project/TopLevel/stage1) is 12489b44add33c28db57cbcf3a3b1c77
+Stored cache entry for Kotlin DSL script compilation (Project/TopLevel/stage1) with cache key 12489b44add33c28db57cbcf3a3b1c77
+Transforming kotlin-serialization-2.0.21-gradle85.jar (org.jetbrains.kotlin:kotlin-serialization:2.0.21) with ExternalDependencyInstrumentingArtifactTransform
+Transforming kotlin-gradle-plugin-model-2.0.21.jar (org.jetbrains.kotlin:kotlin-gradle-plugin-model:2.0.21) with ExternalDependencyInstrumentingArtifactTransform
+Transforming kotlin-gradle-plugin-api-2.0.21.jar (org.jetbrains.kotlin:kotlin-gradle-plugin-api:2.0.21) with ExternalDependencyInstrumentingArtifactTransform
+Transforming kotlin-gradle-plugin-api-2.0.21-gradle85.jar (org.jetbrains.kotlin:kotlin-gradle-plugin-api:2.0.21) with ExternalDependencyInstrumentingArtifactTransform
+Transforming kotlin-gradle-plugin-2.0.21-gradle85.jar (org.jetbrains.kotlin:kotlin-gradle-plugin:2.0.21) with ExternalDependencyInstrumentingArtifactTransform
+Transforming kotlin-gradle-plugin-idea-proto-2.0.21.jar (org.jetbrains.kotlin:kotlin-gradle-plugin-idea-proto:2.0.21) with ExternalDependencyInstrumentingArtifactTransform
+Transforming kotlin-gradle-plugin-idea-2.0.21.jar (org.jetbrains.kotlin:kotlin-gradle-plugin-idea:2.0.21) with ExternalDependencyInstrumentingArtifactTransform
+Transforming kotlin-klib-commonizer-api-2.0.21.jar (org.jetbrains.kotlin:kotlin-klib-commonizer-api:2.0.21) with ExternalDependencyInstrumentingArtifactTransform
+Transforming kotlin-build-statistics-2.0.21.jar (org.jetbrains.kotlin:kotlin-build-statistics:2.0.21) with ExternalDependencyInstrumentingArtifactTransform
+Transforming kotlin-build-tools-api-2.0.21.jar (org.jetbrains.kotlin:kotlin-build-tools-api:2.0.21) with ExternalDependencyInstrumentingArtifactTransform
+Transforming kotlin-compiler-runner-2.0.21.jar (org.jetbrains.kotlin:kotlin-compiler-runner:2.0.21) with ExternalDependencyInstrumentingArtifactTransform
+Transforming kotlin-native-utils-2.0.21.jar (org.jetbrains.kotlin:kotlin-native-utils:2.0.21) with ExternalDependencyInstrumentingArtifactTransform
+Transforming kotlin-util-klib-2.0.21.jar (org.jetbrains.kotlin:kotlin-util-klib:2.0.21) with ExternalDependencyInstrumentingArtifactTransform
+Transforming kotlin-compiler-embeddable-2.0.21.jar (org.jetbrains.kotlin:kotlin-compiler-embeddable:2.0.21) with ExternalDependencyInstrumentingArtifactTransform
+Transforming kotlin-gradle-plugin-annotations-2.0.21.jar (org.jetbrains.kotlin:kotlin-gradle-plugin-annotations:2.0.21) with ExternalDependencyInstrumentingArtifactTransform
+Transforming kotlin-tooling-core-2.0.21.jar (org.jetbrains.kotlin:kotlin-tooling-core:2.0.21) with ExternalDependencyInstrumentingArtifactTransform
+Transforming gson-2.8.9.jar (com.google.code.gson:gson:2.8.9) with ExternalDependencyInstrumentingArtifactTransform
+Transforming kotlin-daemon-client-2.0.21.jar (org.jetbrains.kotlin:kotlin-daemon-client:2.0.21) with ExternalDependencyInstrumentingArtifactTransform
+Transforming kotlinx-coroutines-core-jvm-1.6.4.jar (org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.6.4) with ExternalDependencyInstrumentingArtifactTransform
+Transforming kotlin-util-io-2.0.21.jar (org.jetbrains.kotlin:kotlin-util-io:2.0.21) with ExternalDependencyInstrumentingArtifactTransform
+Transforming kotlin-daemon-embeddable-2.0.21.jar (org.jetbrains.kotlin:kotlin-daemon-embeddable:2.0.21) with ExternalDependencyInstrumentingArtifactTransform
+Transforming trove4j-1.0.20200330.jar (org.jetbrains.intellij.deps:trove4j:1.0.20200330) with ExternalDependencyInstrumentingArtifactTransform
+Using Kotlin Gradle Plugin gradle85 variant
+Build cache key for Kotlin DSL script compilation (Project/TopLevel/stage2) is f2dac602d576ae9a27923ae688f3fbce
+Stored cache entry for Kotlin DSL script compilation (Project/TopLevel/stage2) with cache key f2dac602d576ae9a27923ae688f3fbce
+kotlin scripting plugin: created the scripting discovery configuration: kotlinScriptDef
+kotlin scripting plugin: created the scripting discovery configuration: testKotlinScriptDef
+
+> Configure project :lib
+Evaluating project ':lib' using build file '/Volumes/stuff/Projects/SolaceCore/lib/build.gradle'.
+All projects evaluated.
+Task path ':compileCommonMainKotlinMetadata' matched project ':'
+Task name matched 'compileCommonMainKotlinMetadata'
+Selected primary task 'compileCommonMainKotlinMetadata' from project :
+Tasks to be executed: [task ':checkKotlinGradlePluginConfigurationErrors', task ':transformCommonMainDependenciesMetadata', task ':compileCommonMainKotlinMetadata']
+Tasks that were excluded: []
+Resolve mutations for :checkKotlinGradlePluginConfigurationErrors (Thread[#1203,Execution worker,5,main]) started.
+:checkKotlinGradlePluginConfigurationErrors (Thread[#1209,Execution worker Thread 7,5,main]) started.
+
+> Task :checkKotlinGradlePluginConfigurationErrors SKIPPED
+Skipping task ':checkKotlinGradlePluginConfigurationErrors' as task onlyIf 'errorDiagnostics are present' is false.
+Resolve mutations for :transformCommonMainDependenciesMetadata (Thread[#1209,Execution worker Thread 7,5,main]) started.
+:transformCommonMainDependenciesMetadata (Thread[#1209,Execution worker Thread 7,5,main]) started.
+
+> Task :transformCommonMainDependenciesMetadata
+Caching disabled for task ':transformCommonMainDependenciesMetadata' because:
+  Metadata Dependency Transformation Task doesn't benefit from caching as it doesn't have heavy load
+Task ':transformCommonMainDependenciesMetadata' is not up-to-date because:
+  Value of input property 'taskInputs$kotlin_gradle_plugin_common.inputCompilationDependencies' has changed for task ':transformCommonMainDependenciesMetadata'
+Resolve mutations for :compileCommonMainKotlinMetadata (Thread[#1209,Execution worker Thread 7,5,main]) started.
+:compileCommonMainKotlinMetadata (Thread[#1209,Execution worker Thread 7,5,main]) started.
+
+> Task :compileCommonMainKotlinMetadata FAILED
+Build cache key for task ':compileCommonMainKotlinMetadata' is 5a3d8c583468b92a0fa5dc1b342eaea3
+Task ':compileCommonMainKotlinMetadata' is not up-to-date because:
+  Task has failed previously.
+The input changes require a full rebuild for incremental task ':compileCommonMainKotlinMetadata'.
+file or directory '/Volumes/stuff/Projects/SolaceCore/src/commonMain/kotlin', not found
+file or directory '/Volumes/stuff/Projects/SolaceCore/src/commonMain/kotlin', not found
+file or directory '/Volumes/stuff/Projects/SolaceCore/src/commonMain/kotlin', not found
+file or directory '/Volumes/stuff/Projects/SolaceCore/src/commonMain/kotlin', not found
+Finished executing kotlin compiler using DAEMON strategy
+2 actionable tasks: 2 executed
+Watched directory hierarchies: [/Volumes/stuff/Projects/SolaceCore]
