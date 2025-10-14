@@ -51,4 +51,4 @@ kotlin-js-store/
 qodana-results/
 *.log
 docs/codex-vendored/
-.DS_Store
+docs/codex-vendored/
