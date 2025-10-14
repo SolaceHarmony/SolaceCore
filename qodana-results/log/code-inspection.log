@@ -1,5 +1,0 @@
-[2025-06-05 14:04:04,603]   INFO -    org.jetbrains.analysis.Main:33 - Generating final reports...
-[2025-06-05 14:04:04,604]   INFO -               internal.message:34 - Code Inspection version: 0.10.70
-[2025-06-05 14:04:04,634]   INFO - ana.sarif.CodeInspectionReader:29 - Reading sarif without results: /data/results/qodana.sarif.json
-[2025-06-05 14:04:04,838]   WARN - na.sarif.QodanaReportConverter:110 - Directory '/data/results/coverage' does not exist
-[2025-06-05 14:04:04,847]   INFO -    org.jetbrains.analysis.Main:51 - Done
