@@ -279,6 +279,14 @@ interface Port<T : Any> : Disposable {
             job?.cancel()
             job?.join()
         }
+
+        /** Cancels and waits for the routing job to finish. */
+        suspend fun stopAndJoin() {
+            val job = routingJob
+            routingJob = null
+            job?.cancel()
+            job?.join()
+        }
         /**
          * Validates the connection between the source and target ports.
          *
