@@ -61,23 +61,14 @@ class FileStorageManagerConcurrencyTest {
                         val storageName = "test$index"
                         
                         // Register storage
-                        val registered = storageManager.registerStorage(
-                            String::class.java,
-                            String::class.java,
-                            storage,
-                            storageName
-                        )
+                        val registered = storageManager.registerStorage(String::class, String::class, storage, storageName)
                         assertTrue(registered)
                         
                         // Small delay to increase chance of concurrent access
                         delay(10)
                         
                         // Get storage
-                        val retrievedStorage = storageManager.getStorage(
-                            String::class.java,
-                            String::class.java,
-                            storageName
-                        )
+                        val retrievedStorage = storageManager.getStorage(String::class, String::class, storageName)
                         assertNotNull(retrievedStorage)
                         
                         // Store and retrieve data
@@ -91,11 +82,7 @@ class FileStorageManagerConcurrencyTest {
                         delay(10)
                         
                         // Unregister storage
-                        val unregistered = storageManager.unregisterStorage(
-                            String::class.java,
-                            String::class.java,
-                            storageName
-                        )
+                        val unregistered = storageManager.unregisterStorage(String::class, String::class, storageName)
                         assertTrue(unregistered)
                     }
                 }
@@ -122,33 +109,20 @@ class FileStorageManagerConcurrencyTest {
                     valueSerializer = { mapOf("value" to it) },
                     valueDeserializer = { it["value"] as String }
                 )
-                storageManager.registerStorage(
-                    String::class.java,
-                    String::class.java,
-                    storage,
-                    "test"
-                )
+                storageManager.registerStorage(String::class, String::class, storage, "test")
                 
                 // Get the storage (acquires a lock)
-                val retrievedStorage = storageManager.getStorage(
-                    String::class.java,
-                    String::class.java,
-                    "test"
-                )
+                val retrievedStorage = storageManager.getStorage(String::class, String::class, "test")
                 assertNotNull(retrievedStorage)
                 
                 // Unregister the storage (acquires a lock)
-                val unregistered = storageManager.unregisterStorage(
-                    String::class.java,
-                    String::class.java,
-                    "test"
-                )
+                val unregistered = storageManager.unregisterStorage(String::class, String::class, "test")
                 assertTrue(unregistered)
                 
                 // If locks weren't properly released, this would deadlock
                 storageManager.registerStorage(
-                    String::class.java,
-                    String::class.java,
+                    String::class,
+                    String::class,
                     storage,
                     "test2"
                 )
@@ -174,12 +148,7 @@ class FileStorageManagerConcurrencyTest {
                         valueSerializer = { mapOf("value" to it) },
                         valueDeserializer = { it["value"] as String }
                     )
-                    storageManager.registerStorage(
-                        String::class.java,
-                        String::class.java,
-                        storage,
-                        "test$i"
-                    )
+                storageManager.registerStorage(String::class, String::class, storage, "test$i")
                     
                     // Store some data
                     storage.store("key$i", "value$i")
@@ -192,11 +161,7 @@ class FileStorageManagerConcurrencyTest {
                 
                 // Verify that all data was cleared
                 for (i in 0 until 5) {
-                    val storage = storageManager.getStorage(
-                        String::class.java,
-                        String::class.java,
-                        "test$i"
-                    )
+                    val storage = storageManager.getStorage(String::class, String::class, "test$i")
                     assertNotNull(storage)
                     assertNull(storage.retrieve("key$i"))
                 }
@@ -226,19 +191,10 @@ class FileStorageManagerConcurrencyTest {
                             val storageName = "test$index-$i"
                             
                             // Register storage
-                            storageManager.registerStorage(
-                                String::class.java,
-                                String::class.java,
-                                storage,
-                                storageName
-                            )
+                            storageManager.registerStorage(String::class, String::class, storage, storageName)
                             
                             // Get storage
-                            val retrievedStorage = storageManager.getStorage(
-                                String::class.java,
-                                String::class.java,
-                                storageName
-                            )
+                            val retrievedStorage = storageManager.getStorage(String::class, String::class, storageName)
                             
                             if (retrievedStorage != null) {
                                 // Store and retrieve data
@@ -249,11 +205,7 @@ class FileStorageManagerConcurrencyTest {
                             }
                             
                             // Unregister storage
-                            storageManager.unregisterStorage(
-                                String::class.java,
-                                String::class.java,
-                                storageName
-                            )
+                            storageManager.unregisterStorage(String::class, String::class, storageName)
                             
                             // Small delay to prevent CPU overload
                             delay(5)
@@ -305,8 +257,8 @@ class FileStorageManagerConcurrencyTest {
                 
                 // Register the exception-throwing storage
                 storageManager.registerStorage(
-                    String::class.java,
-                    String::class.java,
+                    String::class,
+                    String::class,
                     exceptionStorage,
                     "exception"
                 )
@@ -326,8 +278,8 @@ class FileStorageManagerConcurrencyTest {
                     valueDeserializer = { it["value"] as String }
                 )
                 val registered = storageManager.registerStorage(
-                    String::class.java,
-                    String::class.java,
+                    String::class,
+                    String::class,
                     storage,
                     "test"
                 )

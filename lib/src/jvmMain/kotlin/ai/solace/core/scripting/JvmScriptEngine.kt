@@ -116,16 +116,8 @@ class JvmScriptEngine : ScriptEngine {
                     // Create a new map with only these two required parameters
                     // This ensures we don't pass any extra parameters that could cause argument count issues
                     val scriptArgs = emptyArray<String>()
-                    val scriptConfig = mapOf<String, Any>()
-
-                    // Create a map with just the two required parameters
-                    val requiredParameters = mapOf(
-                        "args" to scriptArgs,
-                        "scriptConfiguration" to scriptConfig
-                    )
-
-                    // Provide only the required parameters to the script
-                    providedProperties(requiredParameters)
+                    // MainKtsScript expects args via constructor, not providedProperties
+                    constructorArgs(scriptArgs)
 
                     jvm {
                         baseClassLoader(JvmScriptEngine::class.java.classLoader)

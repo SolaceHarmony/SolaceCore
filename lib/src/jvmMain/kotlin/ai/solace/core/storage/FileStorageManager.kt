@@ -84,8 +84,16 @@ class FileStorageManager(
      * @return The storage implementation, or null if no implementation is available for the specified types.
      */
     @Suppress("UNCHECKED_CAST")
-    override fun <K, V> getStorage(keyClass: Class<K>, valueClass: Class<V>, storageName: String): Storage<K, V>? {
-        val key = Triple(keyClass.name, valueClass.name, storageName)
+    override fun <K : Any, V : Any> getStorage(
+        keyClass: kotlin.reflect.KClass<K>,
+        valueClass: kotlin.reflect.KClass<V>,
+        storageName: String
+    ): Storage<K, V>? {
+        val key = Triple(
+            keyClass.qualifiedName ?: keyClass.toString(),
+            valueClass.qualifiedName ?: valueClass.toString(),
+            storageName
+        )
         // Use runBlocking to make this synchronous method thread-safe
         return kotlinx.coroutines.runBlocking {
             mutex.withLock {
@@ -105,8 +113,17 @@ class FileStorageManager(
      * @param storageName The name to register the storage implementation under.
      * @return True if the storage implementation was registered successfully, false otherwise.
      */
-    override fun <K, V> registerStorage(keyClass: Class<K>, valueClass: Class<V>, storage: Storage<K, V>, storageName: String): Boolean {
-        val key = Triple(keyClass.name, valueClass.name, storageName)
+    override fun <K : Any, V : Any> registerStorage(
+        keyClass: kotlin.reflect.KClass<K>,
+        valueClass: kotlin.reflect.KClass<V>,
+        storage: Storage<K, V>,
+        storageName: String
+    ): Boolean {
+        val key = Triple(
+            keyClass.qualifiedName ?: keyClass.toString(),
+            valueClass.qualifiedName ?: valueClass.toString(),
+            storageName
+        )
         // Use runBlocking to make this synchronous method thread-safe
         return kotlinx.coroutines.runBlocking {
             mutex.withLock {
@@ -126,8 +143,16 @@ class FileStorageManager(
      * @param storageName The name of the storage implementation to unregister.
      * @return True if the storage implementation was unregistered successfully, false otherwise.
      */
-    override fun <K, V> unregisterStorage(keyClass: Class<K>, valueClass: Class<V>, storageName: String): Boolean {
-        val key = Triple(keyClass.name, valueClass.name, storageName)
+    override fun <K : Any, V : Any> unregisterStorage(
+        keyClass: kotlin.reflect.KClass<K>,
+        valueClass: kotlin.reflect.KClass<V>,
+        storageName: String
+    ): Boolean {
+        val key = Triple(
+            keyClass.qualifiedName ?: keyClass.toString(),
+            valueClass.qualifiedName ?: valueClass.toString(),
+            storageName
+        )
         // Use runBlocking to make this synchronous method thread-safe
         return kotlinx.coroutines.runBlocking {
             mutex.withLock {

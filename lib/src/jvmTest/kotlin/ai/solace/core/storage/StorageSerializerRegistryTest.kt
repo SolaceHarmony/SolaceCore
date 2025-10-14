@@ -35,10 +35,10 @@ class StorageSerializerRegistryTest {
     fun testRegisterAndGetSerializer() {
         // Register a serializer
         val serializer = TestDataSerializer()
-        StorageSerializerRegistry.registerSerializer(TestData::class.java, serializer)
+        StorageSerializerRegistry.registerSerializer(TestData::class, serializer)
         
         // Get the serializer
-        val retrievedSerializer = StorageSerializerRegistry.getSerializer(TestData::class.java)
+        val retrievedSerializer = StorageSerializerRegistry.getSerializer(TestData::class)
         assertNotNull(retrievedSerializer)
         assertTrue(retrievedSerializer is TestDataSerializer)
     }
@@ -47,7 +47,7 @@ class StorageSerializerRegistryTest {
     fun testSerializeAndDeserialize() {
         // Register a serializer
         val serializer = TestDataSerializer()
-        StorageSerializerRegistry.registerSerializer(TestData::class.java, serializer)
+        StorageSerializerRegistry.registerSerializer(TestData::class, serializer)
         
         // Create a test object
         val testData = TestData("test", 42)
@@ -59,7 +59,7 @@ class StorageSerializerRegistryTest {
         assertEquals(42, serialized["value"])
         
         // Deserialize the map
-        val deserialized = StorageSerializerRegistry.deserialize(serialized, TestData::class.java)
+        val deserialized = StorageSerializerRegistry.deserialize(serialized, TestData::class)
         assertNotNull(deserialized)
         assertEquals(testData, deserialized)
     }
@@ -82,7 +82,7 @@ class StorageSerializerRegistryTest {
         
         // Try to deserialize it to an unregistered type
         class UnregisteredType(val data: String)
-        val deserialized = StorageSerializerRegistry.deserialize(map, UnregisteredType::class.java)
+        val deserialized = StorageSerializerRegistry.deserialize(map, UnregisteredType::class)
         assertNull(deserialized)
     }
     
@@ -108,8 +108,8 @@ class StorageSerializerRegistryTest {
         }
         
         // Register both serializers
-        StorageSerializerRegistry.registerSerializer(TestData::class.java, TestDataSerializer())
-        StorageSerializerRegistry.registerSerializer(AnotherTestData::class.java, AnotherTestDataSerializer())
+        StorageSerializerRegistry.registerSerializer(TestData::class, TestDataSerializer())
+        StorageSerializerRegistry.registerSerializer(AnotherTestData::class, AnotherTestDataSerializer())
         
         // Create test objects
         val testData = TestData("test", 42)
@@ -123,8 +123,8 @@ class StorageSerializerRegistryTest {
         assertNotNull(serialized2)
         
         // Deserialize both maps
-        val deserialized1 = StorageSerializerRegistry.deserialize(serialized1, TestData::class.java)
-        val deserialized2 = StorageSerializerRegistry.deserialize(serialized2, AnotherTestData::class.java)
+        val deserialized1 = StorageSerializerRegistry.deserialize(serialized1, TestData::class)
+        val deserialized2 = StorageSerializerRegistry.deserialize(serialized2, AnotherTestData::class)
         
         assertNotNull(deserialized1)
         assertNotNull(deserialized2)
@@ -137,7 +137,7 @@ class StorageSerializerRegistryTest {
     fun testOverwriteSerializer() {
         // Register a serializer
         val serializer1 = TestDataSerializer()
-        StorageSerializerRegistry.registerSerializer(TestData::class.java, serializer1)
+        StorageSerializerRegistry.registerSerializer(TestData::class, serializer1)
         
         // Create a different serializer that adds a prefix to the name
         class PrefixedTestDataSerializer : StorageSerializer<TestData> {
@@ -156,7 +156,7 @@ class StorageSerializerRegistryTest {
         
         // Register the new serializer, overwriting the old one
         val serializer2 = PrefixedTestDataSerializer()
-        StorageSerializerRegistry.registerSerializer(TestData::class.java, serializer2)
+        StorageSerializerRegistry.registerSerializer(TestData::class, serializer2)
         
         // Create a test object
         val testData = TestData("test", 42)
@@ -167,7 +167,7 @@ class StorageSerializerRegistryTest {
         assertEquals("prefix_test", serialized["name"])
         
         // Deserialize using the new serializer
-        val deserialized = StorageSerializerRegistry.deserialize(serialized, TestData::class.java)
+        val deserialized = StorageSerializerRegistry.deserialize(serialized, TestData::class)
         assertNotNull(deserialized)
         assertEquals(testData, deserialized)
     }
