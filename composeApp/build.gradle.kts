@@ -1,12 +1,12 @@
 plugins {
-    kotlin("multiplatform") version "2.2.20"
-    kotlin("plugin.compose") version "2.2.20"
-    id("org.jetbrains.compose") version "1.9.0"
+    kotlin("multiplatform")
+    kotlin("plugin.compose")
+    id("org.jetbrains.compose")
 }
 
 kotlin {
     jvm("desktop")
-    js("web", IR) {
+    js(IR) {
         browser()
         binaries.executable()
     }
@@ -29,7 +29,7 @@ kotlin {
                 implementation(project(":lib"))
             }
         }
-        val webMain by getting {
+        val jsMain by getting {
             dependencies {
                 implementation(compose.html.core)
             }
