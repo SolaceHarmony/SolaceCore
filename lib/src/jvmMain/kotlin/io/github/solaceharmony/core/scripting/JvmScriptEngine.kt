@@ -3,6 +3,7 @@ package io.github.solaceharmony.core.scripting
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import org.jetbrains.kotlin.mainKts.MainKtsScript
+import org.jetbrains.kotlin.mainKts.MainKtsScriptDefinition
 import java.time.Instant
 import kotlin.script.experimental.api.*
 import kotlin.script.experimental.host.toScriptSource

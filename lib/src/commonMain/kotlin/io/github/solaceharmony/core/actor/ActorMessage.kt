@@ -36,7 +36,7 @@ data class ActorMessage<out T : Any>(
     val correlationId: String = Uuid.random().toString(),
     val payload: T,
     val sender: String? = null,
-    val timestamp: Long = Clock.System.now().toEpochMilliseconds(),
+    val timestamp: Long = System.currentTimeMillis(),
     val priority: MessagePriority = MessagePriority.NORMAL,
     val metadata: Map<String, Any> = emptyMap()
 ) {
