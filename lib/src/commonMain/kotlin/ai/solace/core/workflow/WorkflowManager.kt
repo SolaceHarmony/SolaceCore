@@ -1,3 +1,4 @@
+@file:OptIn(ExperimentalUuidApi::class)
 package ai.solace.core.workflow
 
 import ai.solace.core.actor.Actor
@@ -10,8 +11,8 @@ import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
 import kotlinx.coroutines.NonCancellable
-import kotlin.uuid.Uuid
 import kotlin.uuid.ExperimentalUuidApi
+import kotlin.uuid.Uuid
 
 /**
  * Represents the state of a workflow.
@@ -60,7 +61,6 @@ sealed class WorkflowState {
  * @param name Name of the workflow, defaults to "Workflow".
  * @param scope Coroutine scope used by the workflow, defaults to a new scope with default dispatcher and supervisor job.
  */
-@OptIn(ExperimentalUuidApi::class)
 class WorkflowManager(
     val id: String = Uuid.random().toString(),
     var name: String = "Workflow",

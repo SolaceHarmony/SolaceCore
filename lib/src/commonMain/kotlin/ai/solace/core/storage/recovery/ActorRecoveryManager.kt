@@ -1,6 +1,7 @@
 package ai.solace.core.storage.recovery
 
 import ai.solace.core.actor.Actor
+import kotlinx.datetime.Clock
 import ai.solace.core.actor.ActorState
 
 /**
@@ -42,7 +43,7 @@ class ActorRecoveryManager(
             .withMetrics(metrics)
             .withCustomState(customState)
             .withVersion(version)
-            .withTimestamp(System.currentTimeMillis())
+            .withTimestamp(Clock.System.now().toEpochMilliseconds())
             .build()
         
         // Store the snapshot

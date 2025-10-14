@@ -127,14 +127,20 @@ class FileScriptStorage(
      * @return A JSON string representation of the metadata.
      */
     private fun createMetadataJson(metadata: Map<String, Any>): String {
-        val jsonObject = JsonObject(metadata.mapValues { (_, value) ->
-            when (value) {
-                is String -> JsonPrimitive(value)
-                is Number -> JsonPrimitive(value)
-                is Boolean -> JsonPrimitive(value)
-                else -> JsonPrimitive(value.toString())
+        fun toJsonElement(v: Any?): kotlinx.serialization.json.JsonElement = when (v) {
+            null -> JsonPrimitive("null")
+            is String -> JsonPrimitive(v)
+            is Number -> JsonPrimitive(v)
+            is Boolean -> JsonPrimitive(v)
+            is Map<*, *> -> {
+                @Suppress("UNCHECKED_CAST")
+                val m = v as Map<String, Any?>
+                JsonObject(m.mapValues { (_, vv) -> toJsonElement(vv) })
             }
-        })
+            is List<*> -> kotlinx.serialization.json.JsonArray(v.map { toJsonElement(it) })
+            else -> JsonPrimitive(v.toString())
+        }
+        val jsonObject = JsonObject(metadata.mapValues { (_, value) -> toJsonElement(value) })
         return json.encodeToString(JsonObject.serializer(), jsonObject)
     }
 
@@ -145,21 +151,23 @@ class FileScriptStorage(
      * @return A map of metadata.
      */
     private fun parseMetadataJson(jsonString: String): Map<String, Any> {
-        val jsonObject = json.parseToJsonElement(jsonString).jsonObject
-        return jsonObject.mapValues { (_, value) ->
-            when (value) {
-                is JsonPrimitive -> {
-                    when {
-                        value.isString -> value.content
-                        value.content == "true" || value.content == "false" -> value.content.toBoolean()
-                        value.content.toIntOrNull() != null -> value.content.toInt()
-                        value.content.toLongOrNull() != null -> value.content.toLong()
-                        value.content.toDoubleOrNull() != null -> value.content.toDouble()
-                        else -> value.content
-                    }
+        fun fromJsonElement(el: kotlinx.serialization.json.JsonElement): Any = when (el) {
+            is JsonPrimitive -> {
+                val content = el.content
+                when {
+                    el.isString -> content
+                    content.equals("true", ignoreCase = true) || content.equals("false", ignoreCase = true) -> content.toBoolean()
+                    content.toIntOrNull() != null -> content.toInt()
+                    content.toLongOrNull() != null -> content.toLong()
+                    content.toDoubleOrNull() != null -> content.toDouble()
+                    else -> content
                 }
-                else -> value.toString()
             }
+            is kotlinx.serialization.json.JsonArray -> el.map { fromJsonElement(it) }
+            is JsonObject -> el.mapValues { (_, v) -> fromJsonElement(v) }
+            else -> el.toString()
         }
+        val jsonObject = json.parseToJsonElement(jsonString).jsonObject
+        return jsonObject.mapValues { (_, v) -> fromJsonElement(v) }
     }
 }

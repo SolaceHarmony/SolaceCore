@@ -1,10 +1,9 @@
 package ai.solace.core.storage.cache
 
-import java.util.concurrent.ConcurrentHashMap
-import java.util.concurrent.locks.ReentrantReadWriteLock
-import kotlin.concurrent.read
-import kotlin.concurrent.write
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
 import kotlin.time.Duration
+import kotlinx.datetime.Clock
 
 /**
  * Implementation of the CachePolicy interface using the Time To Live (TTL) eviction strategy.
@@ -24,17 +23,17 @@ class TTLCachePolicy<K, V>(
     /**
      * The cache data structure.
      */
-    private val cache = ConcurrentHashMap<K, V>()
+    private val cache = mutableMapOf<K, V>()
 
     /**
      * Map of entry creation times.
      */
-    private val creationTimes = ConcurrentHashMap<K, Long>()
+    private val creationTimes = mutableMapOf<K, Long>()
 
     /**
      * Lock for thread-safe access to the cache.
      */
-    private val lock = ReentrantReadWriteLock()
+    private val lock = Mutex()
 
     /**
      * Adds an entry to the cache.
@@ -43,11 +42,10 @@ class TTLCachePolicy<K, V>(
      * @param value The value to cache.
      * @return True if the entry was added successfully, false otherwise.
      */
-    override fun add(key: K, value: V): Boolean {
-        return lock.write {
+    override fun add(key: K, value: V): Boolean = runBlockingWithLock {
             // If the cache is at capacity and this is a new entry, perform maintenance
             if (maxSize > 0 && cache.size >= maxSize && !cache.containsKey(key)) {
-                maintenance()
+                maintenanceInternal()
 
                 // If still at capacity after maintenance, evict the oldest entry
                 if (cache.size >= maxSize) {
@@ -64,9 +62,8 @@ class TTLCachePolicy<K, V>(
 
             // Add the new entry
             cache[key] = value
-            creationTimes[key] = System.currentTimeMillis()
+            creationTimes[key] = Clock.System.now().toEpochMilliseconds()
             true
-        }
     }
 
     /**
@@ -75,21 +72,14 @@ class TTLCachePolicy<K, V>(
      * @param key The key to identify the value.
      * @return The cached value, or null if the key doesn't exist or the entry has expired.
      */
-    override fun get(key: K): V? {
-        return lock.read {
-            val creationTime = creationTimes[key] ?: return@read null
-            val currentTime = System.currentTimeMillis()
-
-            // Check if the entry has expired
-            if (currentTime - creationTime > ttl.inWholeMilliseconds) {
-                // Remove expired entry
-                lock.write {
-                    cache.remove(key)
-                    creationTimes.remove(key)
-                }
-                return@read null
-            }
-
+    override fun get(key: K): V? = runBlockingWithLock {
+        val creationTime = creationTimes[key] ?: return@runBlockingWithLock null
+        val currentTime = Clock.System.now().toEpochMilliseconds()
+        if (currentTime - creationTime > ttl.inWholeMilliseconds) {
+            cache.remove(key)
+            creationTimes.remove(key)
+            null
+        } else {
             cache[key]
         }
     }
@@ -100,12 +90,10 @@ class TTLCachePolicy<K, V>(
      * @param key The key to identify the value.
      * @return True if the entry was removed successfully, false otherwise.
      */
-    override fun remove(key: K): Boolean {
-        return lock.write {
+    override fun remove(key: K): Boolean = runBlockingWithLock {
             val removed = cache.remove(key)
             creationTimes.remove(key)
             removed != null
-        }
     }
 
     /**
@@ -114,21 +102,14 @@ class TTLCachePolicy<K, V>(
      * @param key The key to check.
      * @return True if the key exists and the entry has not expired, false otherwise.
      */
-    override fun contains(key: K): Boolean {
-        return lock.read {
-            val creationTime = creationTimes[key] ?: return@read false
-            val currentTime = System.currentTimeMillis()
-
-            // Check if the entry has expired
-            if (currentTime - creationTime > ttl.inWholeMilliseconds) {
-                // Remove expired entry
-                lock.write {
-                    cache.remove(key)
-                    creationTimes.remove(key)
-                }
-                return@read false
-            }
-
+    override fun contains(key: K): Boolean = runBlockingWithLock {
+        val creationTime = creationTimes[key] ?: return@runBlockingWithLock false
+        val currentTime = Clock.System.now().toEpochMilliseconds()
+        if (currentTime - creationTime > ttl.inWholeMilliseconds) {
+            cache.remove(key)
+            creationTimes.remove(key)
+            false
+        } else {
             cache.containsKey(key)
         }
     }
@@ -138,12 +119,10 @@ class TTLCachePolicy<K, V>(
      *
      * @return True if all entries were cleared successfully, false otherwise.
      */
-    override fun clear(): Boolean {
-        return lock.write {
+    override fun clear(): Boolean = runBlockingWithLock {
             cache.clear()
             creationTimes.clear()
             true
-        }
     }
 
     /**
@@ -151,29 +130,24 @@ class TTLCachePolicy<K, V>(
      *
      * @return The number of entries in the cache.
      */
-    override fun size(): Int {
-        return lock.read {
-            cache.size
-        }
-    }
+    override fun size(): Int = runBlockingWithLock { cache.size }
 
     /**
      * Gets the maximum size of the cache.
      *
      * @return The maximum number of entries the cache can hold, or -1 if there is no limit.
      */
-    override fun maxSize(): Int {
-        return maxSize
-    }
+    override fun maxSize(): Int = maxSize
 
     /**
      * Performs maintenance on the cache by removing expired entries.
      *
      * @return True if maintenance was performed successfully, false otherwise.
      */
-    override fun maintenance(): Boolean {
-        return lock.write {
-            val currentTime = System.currentTimeMillis()
+    override fun maintenance(): Boolean = runBlockingWithLock { maintenanceInternal() }
+
+    private fun maintenanceInternal(): Boolean {
+            val currentTime = Clock.System.now().toEpochMilliseconds()
             val expiredKeys = creationTimes.entries
                 .filter { currentTime - it.value > ttl.inWholeMilliseconds }
                 .map { it.key }
@@ -183,7 +157,9 @@ class TTLCachePolicy<K, V>(
                 creationTimes.remove(key)
             }
 
-            true
-        }
+            return true
     }
+
+    // Helper to avoid exposing coroutines in interface
+    private fun <T> runBlockingWithLock(block: () -> T): T = kotlinx.coroutines.runBlocking { lock.withLock { block() } }
 }

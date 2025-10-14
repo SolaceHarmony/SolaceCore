@@ -406,7 +406,7 @@ abstract class Actor(
         }
 
         // Check if the port exists and has the correct type
-        val existingPort = getPort(name, messageClass) ?: return null
+        getPort(name, messageClass) ?: return null
 
         // Remove the existing port
         val removed = removePort(name)
@@ -440,7 +440,7 @@ abstract class Actor(
         }
 
         // Check if the port exists and has the correct type
-        val existingPort = getPort(name, messageClass) ?: return null
+        getPort(name, messageClass) ?: return null
 
         // Remove the existing port
         val removed = removePort(name)

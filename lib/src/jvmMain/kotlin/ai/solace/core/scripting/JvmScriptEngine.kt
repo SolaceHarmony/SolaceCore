@@ -11,6 +11,8 @@ import kotlin.script.experimental.jvm.dependenciesFromCurrentContext
 import kotlin.script.experimental.jvm.jvm
 import kotlin.script.experimental.jvmhost.BasicJvmScriptingHost
 import kotlin.script.experimental.jvmhost.createJvmCompilationConfigurationFromTemplate
+import kotlin.script.experimental.dependencies.DependsOn
+import kotlin.script.experimental.dependencies.Repository
 
 /**
  * JVM implementation of the ScriptEngine interface using Kotlin's scripting APIs.
@@ -72,34 +74,15 @@ class JvmScriptEngine : ScriptEngine {
             scriptCache[cacheKey]?.let { return@withContext it }
 
             try {
-                // For scripts that might have parameters, we'll store the source and compile later
-                // Try to compile first - if it fails due to undefined variables, we'll handle it during execution
                 val source = scriptSource.toScriptSource(scriptName)
-                val compilationResult = scriptingHost.compiler(source, compilationConfiguration)
-
-                val compiledScriptResult = if (compilationResult is ResultWithDiagnostics.Success) {
-                    // Successfully compiled without parameters
-                    compilationResult.value
-                } else {
-                    // Compilation failed - this might be due to undefined variables for parameters
-                    // We'll store null and handle compilation during execution
-                    null
-                }
-
-                // Create a compiled script object that stores both the result and original source
                 val compiledScript = KotlinCompiledScript(
                     name = scriptName,
                     compilationTimestamp = Instant.now().toEpochMilli(),
-                    compiledScript = compiledScriptResult,
-                    originalSource = scriptSource  // Always store the original source
+                    source = source
                 )
-
-                // Cache the compiled script using the combined key
                 scriptCache[cacheKey] = compiledScript
-
                 compiledScript
             } catch (e: Exception) {
-                if (e is ScriptCompilationException) throw e
                 throw ScriptCompilationException("Script compilation failed: ${e.message}")
             }
         }
@@ -121,32 +104,20 @@ class JvmScriptEngine : ScriptEngine {
 
         return withContext(Dispatchers.IO) {
             try {
-                // If we have parameters and original source, or if the script didn't compile initially, create a parameterized script
-                if ((parameters.isNotEmpty() && compiledScript.originalSource != null) || compiledScript.compiledScript == null) {
-                    if (compiledScript.originalSource == null) {
-                        throw ScriptExecutionException("Cannot execute script with parameters: original source not available")
-                    }
-                    return@withContext executeParameterizedScript(compiledScript.originalSource, parameters, compiledScript.name)
-                }
-
-                // Otherwise, execute the compiled script normally
+                // Create an evaluation configuration with constructor args only
                 val evaluationConfiguration = ScriptEvaluationConfiguration {
-                    // MainKtsScript expects an "args" parameter, so we provide an empty array if not present
-                    val updatedParameters = if (!parameters.containsKey("args")) {
-                        parameters + ("args" to emptyArray<String>())
-                    } else {
-                        parameters
-                    }
+                    val scriptArgs = emptyArray<String>()
+                    constructorArgs(scriptArgs)
 
-                    providedProperties(updatedParameters)
                     jvm {
                         baseClassLoader(JvmScriptEngine::class.java.classLoader)
                     }
                 }
 
-                // Execute the script
-                val evaluationResult = scriptingHost.evaluator(
-                    compiledScript.compiledScript!!,
+                // Execute the script (compilation happens under the hood)
+                val evaluationResult = scriptingHost.eval(
+                    (compiledScript as KotlinCompiledScript).source,
+                    compilationConfiguration,
                     evaluationConfiguration
                 )
 
@@ -164,54 +135,6 @@ class JvmScriptEngine : ScriptEngine {
                 throw ScriptExecutionException("Script execution failed: ${e.message}")
             }
         }
-    }
-
-    /**
-     * Execute a script with parameters by injecting them as variable declarations.
-     */
-    private suspend fun executeParameterizedScript(originalSource: String, parameters: Map<String, Any?>, scriptName: String): Any? {
-        // Create parameter declarations
-        val parameterDeclarations = parameters.entries.joinToString("\n") { (key, value) ->
-            when (value) {
-                is String -> "val $key = \"${value.replace("\"", "\\\"")}\""
-                is Number -> "val $key = $value"
-                is Boolean -> "val $key = $value"
-                null -> "val $key = null"
-                else -> "val $key = \"$value\""
-            }
-        }
-
-        // Combine parameter declarations with the original script
-        val parameterizedScript = "$parameterDeclarations\n\n$originalSource"
-
-        // Create and execute the parameterized script
-        val source = parameterizedScript.toScriptSource("${scriptName}-parameterized")
-        val compilationResult = scriptingHost.compiler(source, compilationConfiguration)
-
-        if (compilationResult is ResultWithDiagnostics.Failure) {
-            val errors = compilationResult.reports.joinToString("\n") { it.message }
-            throw ScriptCompilationException("Parameterized script compilation failed: $errors")
-        }
-
-        val evaluationConfiguration = ScriptEvaluationConfiguration {
-            // Provide an empty args array for MainKtsScript
-            providedProperties(mapOf("args" to emptyArray<String>()))
-            jvm {
-                baseClassLoader(JvmScriptEngine::class.java.classLoader)
-            }
-        }
-
-        val evaluationResult = scriptingHost.evaluator(
-            (compilationResult as ResultWithDiagnostics.Success).value,
-            evaluationConfiguration
-        )
-
-        if (evaluationResult is ResultWithDiagnostics.Failure) {
-            val errors = evaluationResult.reports.joinToString("\n") { it.message }
-            throw ScriptExecutionException("Parameterized script execution failed: $errors")
-        }
-
-        return extractResultValue((evaluationResult as ResultWithDiagnostics.Success).value.returnValue)
     }
 
     /**
@@ -281,9 +204,8 @@ class JvmScriptEngine : ScriptEngine {
     private class KotlinCompiledScript(
         override val name: String,
         override val compilationTimestamp: Long,
-        val compiledScript: kotlin.script.experimental.api.CompiledScript?,  // Can be null if deferred compilation
-        val originalSource: String? = null  // Store original source for parameter injection
-    ) : ai.solace.core.scripting.CompiledScript
+        val source: SourceCode
+    ) : CompiledScript
 }
 
 // We're using MainKtsScript from kotlin-main-kts, which already has built-in support
@@ -298,3 +220,4 @@ class ScriptCompilationException(message: String) : Exception(message)
  * Exception thrown when script execution fails.
  */
 class ScriptExecutionException(message: String) : Exception(message)
+

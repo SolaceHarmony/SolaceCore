@@ -81,11 +81,11 @@ class FileStorageManagerTest {
             )
             
             // Register the storage
-            val registered = storageManager.registerStorage(Int::class.java, String::class.java, storage)
+            val registered = storageManager.registerStorage(Int::class, String::class, storage)
             assertTrue(registered)
             
             // Get the storage
-            val retrievedStorage = storageManager.getStorage(Int::class.java, String::class.java)
+            val retrievedStorage = storageManager.getStorage(Int::class, String::class)
             assertNotNull(retrievedStorage)
             
             // Test basic functionality
@@ -111,17 +111,17 @@ class FileStorageManagerTest {
             )
             
             // Register the storage
-            storageManager.registerStorage(Int::class.java, String::class.java, storage)
+            storageManager.registerStorage(Int::class, String::class, storage)
             
             // Verify that the storage is registered
-            assertNotNull(storageManager.getStorage(Int::class.java, String::class.java))
+            assertNotNull(storageManager.getStorage(Int::class, String::class))
             
             // Unregister the storage
-            val unregistered = storageManager.unregisterStorage(Int::class.java, String::class.java)
+            val unregistered = storageManager.unregisterStorage(Int::class, String::class)
             assertTrue(unregistered)
             
             // Verify that the storage is no longer registered
-            assertNull(storageManager.getStorage(Int::class.java, String::class.java))
+            assertNull(storageManager.getStorage(Int::class, String::class))
         }
     }
 

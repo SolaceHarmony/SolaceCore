@@ -308,9 +308,7 @@ open class FileStorage<K, V>(
      * @return A JSON string representation of the map.
      */
     protected fun createJson(map: Map<String, Any>): String {
-        val jsonObject = JsonObject(map.mapValues { (_, value) ->
-            createJsonValue(value)
-        })
+        val jsonObject = JsonObject(map.mapValues { (_, value) -> createJsonValue(value) })
         return json.encodeToString(JsonObject.serializer(), jsonObject)
     }
     

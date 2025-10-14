@@ -1,6 +1,7 @@
 package ai.solace.core.storage.recovery
 
 import ai.solace.core.actor.ActorState
+import kotlinx.datetime.Clock
 
 /**
  * Represents a snapshot of an actor's state.
@@ -59,7 +60,7 @@ class ActorStateSnapshotBuilder(private val actorId: String) {
     private var metrics: Map<String, Any> = emptyMap()
     private var customState: Map<String, Any> = emptyMap()
     private var version: Int = 1
-    private var timestamp: Long = System.currentTimeMillis()
+    private var timestamp: Long = Clock.System.now().toEpochMilliseconds()
 
     /**
      * Sets the name of the actor.

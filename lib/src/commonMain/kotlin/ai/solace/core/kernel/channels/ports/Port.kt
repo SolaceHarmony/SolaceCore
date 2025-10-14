@@ -331,6 +331,7 @@ interface Port<T : Any> : Disposable {
          * @return A unique identifier string for a port in the form "port-[uuid]"
          */
         fun generateId(): String = "port-${Uuid.random()}"
+        fun generateId(): String = "port-${Uuid.random()}"
 
         /**
          * Establishes a connection between the source port and the target port.

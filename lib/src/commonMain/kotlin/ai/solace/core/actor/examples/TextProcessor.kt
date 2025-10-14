@@ -1,3 +1,4 @@
+@file:OptIn(kotlin.uuid.ExperimentalUuidApi::class)
 package ai.solace.core.actor.examples
 
 import ai.solace.core.actor.Actor
@@ -5,7 +6,6 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlin.uuid.Uuid
-import kotlin.uuid.ExperimentalUuidApi
 
 /**
  * An actor that processes text input by applying various transformations.
@@ -18,7 +18,6 @@ import kotlin.uuid.ExperimentalUuidApi
  * @param name Name of the actor, defaults to "TextProcessor".
  * @param scope Coroutine scope used by the actor, defaults to a new scope with default dispatcher and supervisor job.
  */
-@OptIn(ExperimentalUuidApi::class)
 class TextProcessor(
     id: String = Uuid.random().toString(),
     name: String = "TextProcessor",

@@ -37,13 +37,9 @@ class GZIPCompressionStrategy : CompressionStrategy {
         }
         val compressed = outputStream.toByteArray()
 
-        // Return the compressed data only if it's actually smaller
-        return if (compressed.size < data.size) {
-            compressed
-        } else {
-            // If compression doesn't help, return the original data
-            data
-        }
+        // Always return the compressed data, even if it's larger
+        // This ensures that the decompress method will always work correctly
+        return compressed
     }
 
     /**

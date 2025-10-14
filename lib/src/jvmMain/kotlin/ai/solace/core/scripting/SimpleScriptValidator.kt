@@ -57,7 +57,7 @@ class SimpleScriptValidator : ScriptValidator {
         val functionRegex = """fun\s+\w+\s*\([^)]*\{""".toRegex()
         val functionMatch = functionRegex.find(scriptSource)
         if (functionMatch != null) {
-            val matchText = functionMatch.value
+            functionMatch.value
             val lineIndex = scriptSource.substring(0, functionMatch.range.first).count { it == '\n' }
             val charIndex = functionMatch.range.first - scriptSource.lastIndexOf('\n', functionMatch.range.first)
             errors.add(ValidationError("Unbalanced parenthesis in function declaration", lineIndex + 1, charIndex))

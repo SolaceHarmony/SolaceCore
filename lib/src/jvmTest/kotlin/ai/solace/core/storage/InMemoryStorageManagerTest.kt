@@ -72,19 +72,15 @@ class InMemoryStorageManagerTest {
         
         // Register the storage
         val registerResult = storageManager.registerStorage(
-            Int::class.java,
-            String::class.java,
+            Int::class,
+            String::class,
             customStorage,
             "custom"
         )
         assertTrue(registerResult)
         
         // Get the storage
-        val retrievedStorage = storageManager.getStorage(
-            Int::class.java,
-            String::class.java,
-            "custom"
-        )
+        val retrievedStorage = storageManager.getStorage(Int::class, String::class, "custom")
         assertNotNull(retrievedStorage)
         assertTrue(retrievedStorage is InMemoryStorage<*, *>)
         
@@ -101,26 +97,17 @@ class InMemoryStorageManagerTest {
     fun testUnregisterStorage() = runBlocking {
         // Create and register a custom storage implementation
         val customStorage = InMemoryStorage<Int, String>()
-        storageManager.registerStorage(
-            Int::class.java,
-            String::class.java,
-            customStorage,
-            "custom"
-        )
+        storageManager.registerStorage(Int::class, String::class, customStorage, "custom")
         
         // Verify it's registered
-        assertNotNull(storageManager.getStorage(Int::class.java, String::class.java, "custom"))
+        assertNotNull(storageManager.getStorage(Int::class, String::class, "custom"))
         
         // Unregister the storage
-        val unregisterResult = storageManager.unregisterStorage(
-            Int::class.java,
-            String::class.java,
-            "custom"
-        )
+        val unregisterResult = storageManager.unregisterStorage(Int::class, String::class, "custom")
         assertTrue(unregisterResult)
         
         // Verify it's no longer registered
-        assertNull(storageManager.getStorage(Int::class.java, String::class.java, "custom"))
+        assertNull(storageManager.getStorage(Int::class, String::class, "custom"))
     }
     
     @Test
@@ -135,7 +122,7 @@ class InMemoryStorageManagerTest {
         
         // Register a custom storage and add data
         val customStorage = InMemoryStorage<String, Int>()
-        storageManager.registerStorage(String::class.java, Int::class.java, customStorage)
+        storageManager.registerStorage(String::class, Int::class, customStorage)
         customStorage.store("test", 42)
         
         // Clear all data
@@ -158,19 +145,11 @@ class InMemoryStorageManagerTest {
     @Test
     fun testNonExistentStorage() = runBlocking {
         // Try to get a non-existent storage
-        val storage = storageManager.getStorage(
-            Long::class.java,
-            Boolean::class.java,
-            "non-existent"
-        )
+        val storage = storageManager.getStorage(Long::class, Boolean::class, "non-existent")
         assertNull(storage)
         
         // Try to unregister a non-existent storage
-        val unregisterResult = storageManager.unregisterStorage(
-            Long::class.java,
-            Boolean::class.java,
-            "non-existent"
-        )
+        val unregisterResult = storageManager.unregisterStorage(Long::class, Boolean::class, "non-existent")
         assertFalse(unregisterResult)
     }
 }

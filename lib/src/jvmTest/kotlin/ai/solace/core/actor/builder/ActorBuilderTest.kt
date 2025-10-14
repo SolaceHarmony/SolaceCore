@@ -59,7 +59,7 @@ class ActorBuilderTest {
         assertEquals(builder, result)
 
         // Build the workflow manager
-        val workflowManager = builder.build()
+        builder.build()
 
         // Verify the actor was added to the workflow manager
         // Note: This assumes the WorkflowManager has a way to check if an actor was added
@@ -82,7 +82,7 @@ class ActorBuilderTest {
         assertEquals(builder, result)
 
         // Build the workflow manager
-        val workflowManager = builder.build()
+        builder.build()
 
         // Verify the actor was added to the workflow manager
         // Note: This assumes the WorkflowManager has a way to check if an actor was added
@@ -109,7 +109,7 @@ class ActorBuilderTest {
         assertEquals(builder, result)
 
         // Build the workflow manager
-        val workflowManager = builder.build()
+        builder.build()
 
         // Verify the actors are connected in the workflow manager
         // Note: This assumes the WorkflowManager has a way to check if actors are connected
@@ -137,7 +137,7 @@ class ActorBuilderTest {
         assertEquals(builder, result)
 
         // Build the workflow manager
-        val workflowManager = builder.build()
+        builder.build()
 
         // Verify the actors are connected in the workflow manager
         // Note: This assumes the WorkflowManager has a way to check if actors are connected

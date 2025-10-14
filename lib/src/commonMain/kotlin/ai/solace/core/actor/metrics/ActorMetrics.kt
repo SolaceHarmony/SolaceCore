@@ -3,7 +3,6 @@ package ai.solace.core.actor.metrics
 import kotlinx.atomicfu.atomic
 import kotlinx.atomicfu.AtomicLong
 import kotlin.time.Duration
-import java.util.concurrent.ConcurrentHashMap
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 
@@ -17,9 +16,9 @@ class ActorMetrics {
     private val messagesFailed: AtomicLong = atomic(0L)
 
     // Protocol-specific counters
-    private val protocolMessagesReceived = ConcurrentHashMap<String, AtomicLong>()
-    private val protocolMessagesProcessed = ConcurrentHashMap<String, AtomicLong>()
-    private val protocolMessagesFailed = ConcurrentHashMap<String, AtomicLong>()
+    private val protocolMessagesReceived = mutableMapOf<String, AtomicLong>()
+    private val protocolMessagesProcessed = mutableMapOf<String, AtomicLong>()
+    private val protocolMessagesFailed = mutableMapOf<String, AtomicLong>()
 
     // Processing time tracking
     private val processingTimes = ArrayList<Long>()
@@ -27,10 +26,13 @@ class ActorMetrics {
     private val processingTimeMutex = Mutex()
 
     // Priority-based metrics
-    private val priorityMessageCounts = ConcurrentHashMap<String, AtomicLong>()
+    private val priorityMessageCounts = mutableMapOf<String, AtomicLong>()
 
     // Port metrics
-    private val portMessageCounts = ConcurrentHashMap<String, AtomicLong>()
+    private val portMessageCounts = mutableMapOf<String, AtomicLong>()
+
+    // Note: Maps below are not strictly synchronized across all platforms.
+    // For metrics collection, eventual consistency is acceptable.
 
     /**
      * Records a received message
@@ -38,9 +40,7 @@ class ActorMetrics {
      */
     fun recordMessageReceived(protocol: String? = null) {
         messagesReceived.incrementAndGet()
-        protocol?.let {
-            protocolMessagesReceived.computeIfAbsent(it) { atomic(0L) }.incrementAndGet()
-        }
+        protocol?.let { protocolMessagesReceived.getOrPut(it) { atomic(0L) }.incrementAndGet() }
     }
 
     /**
@@ -49,9 +49,7 @@ class ActorMetrics {
      */
     fun recordMessageProcessed(protocol: String? = null) {
         messagesProcessed.incrementAndGet()
-        protocol?.let {
-            protocolMessagesProcessed.computeIfAbsent(it) { atomic(0L) }.incrementAndGet()
-        }
+        protocol?.let { protocolMessagesProcessed.getOrPut(it) { atomic(0L) }.incrementAndGet() }
     }
 
     /**
@@ -60,9 +58,7 @@ class ActorMetrics {
      */
     fun recordError(protocol: String? = null) {
         messagesFailed.incrementAndGet()
-        protocol?.let {
-            protocolMessagesFailed.computeIfAbsent(it) { atomic(0L) }.incrementAndGet()
-        }
+        protocol?.let { protocolMessagesFailed.getOrPut(it) { atomic(0L) }.incrementAndGet() }
     }
 
     /**
@@ -78,9 +74,7 @@ class ActorMetrics {
                 processingTimes.removeFirst()
             }
         }
-        port?.let {
-            portMessageCounts.computeIfAbsent(it) { atomic(0L) }.incrementAndGet()
-        }
+        port?.let { portMessageCounts.getOrPut(it) { atomic(0L) }.incrementAndGet() }
     }
 
     /**
@@ -88,7 +82,7 @@ class ActorMetrics {
      * @param priority The priority level of the message
      */
     fun recordPriorityMessage(priority: String) {
-        priorityMessageCounts.computeIfAbsent(priority) { atomic(0L) }.incrementAndGet()
+        priorityMessageCounts.getOrPut(priority) { atomic(0L) }.incrementAndGet()
     }
 
     /**

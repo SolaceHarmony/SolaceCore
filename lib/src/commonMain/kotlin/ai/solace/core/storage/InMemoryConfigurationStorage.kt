@@ -172,11 +172,7 @@ class InMemoryConfigurationStorage : InMemoryStorage<String, Map<String, Any>>()
 
         // Path cannot contain invalid characters
         val invalidChars = setOf('$', '@', '#', '!', '%', '^', '&', '*', '(', ')', '+', '=', '{', '}', '[', ']', '|', '\\', ':', ';', '"', '\'', '<', '>', ',', '?', '/')
-        if (path.any { it in invalidChars }) {
-            return false
-        }
-
-        return true
+        return !path.any { it in invalidChars }
     }
 
     private fun setValueAtPath(map: MutableMap<String, Any>, path: String, value: Any): Boolean {

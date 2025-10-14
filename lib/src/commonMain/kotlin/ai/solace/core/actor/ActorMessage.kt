@@ -4,6 +4,7 @@ package ai.solace.core.actor
 import kotlin.uuid.ExperimentalUuidApi
 import kotlin.uuid.Uuid
 import ai.solace.core.kernel.channels.ports.Port
+import kotlinx.datetime.Clock
 /**
  * Message priority levels for the actor system.
  * Priority affects how messages are processed in the system.
@@ -13,10 +14,7 @@ enum class MessagePriority {
     HIGH,
 
     /** Default priority level for messages */
-    NORMAL,
-
-    /** Low priority messages are processed when resources are available */
-    LOW
+    NORMAL
 }
 
 /**
@@ -35,7 +33,7 @@ data class ActorMessage<out T : Any>(
     val correlationId: String = Uuid.random().toString(),
     val payload: T,
     val sender: String? = null,
-    val timestamp: Long = System.currentTimeMillis(),
+    val timestamp: Long = Clock.System.now().toEpochMilliseconds(),
     val priority: MessagePriority = MessagePriority.NORMAL,
     val metadata: Map<String, Any> = emptyMap()
 ) {

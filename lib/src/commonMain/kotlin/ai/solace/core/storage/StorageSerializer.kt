@@ -1,5 +1,7 @@
 package ai.solace.core.storage
 
+import kotlin.reflect.KClass
+
 /**
  * Interface for serializing and deserializing objects for storage.
  *
@@ -44,8 +46,9 @@ object StorageSerializerRegistry {
      * @param clazz The class of the type to register the serializer for.
      * @param serializer The serializer to register.
      */
-    fun <T : Any> registerSerializer(clazz: Class<T>, serializer: StorageSerializer<T>) {
-        serializers[clazz.name] = serializer
+    fun <T : Any> registerSerializer(clazz: KClass<T>, serializer: StorageSerializer<T>) {
+        val key = clazz.qualifiedName ?: clazz.toString()
+        serializers[key] = serializer
     }
 
     /**
@@ -55,8 +58,9 @@ object StorageSerializerRegistry {
      * @return The serializer for the specified type, or null if no serializer is registered.
      */
     @Suppress("UNCHECKED_CAST")
-    fun <T : Any> getSerializer(clazz: Class<T>): StorageSerializer<T>? {
-        return serializers[clazz.name] as? StorageSerializer<T>
+    fun <T : Any> getSerializer(clazz: KClass<T>): StorageSerializer<T>? {
+        val key = clazz.qualifiedName ?: clazz.toString()
+        return serializers[key] as? StorageSerializer<T>
     }
 
     /**
@@ -66,9 +70,8 @@ object StorageSerializerRegistry {
      * @return A map representation of the object, or null if no serializer is registered for the object's type.
      */
     fun serialize(obj: Any): Map<String, Any>? {
-        val clazz = obj::class.java
         @Suppress("UNCHECKED_CAST")
-        val serializer = getSerializer(clazz as Class<Any>) ?: return null
+        val serializer = getSerializer(obj::class as KClass<Any>) ?: return null
         return serializer.serialize(obj)
     }
 
@@ -79,7 +82,7 @@ object StorageSerializerRegistry {
      * @param clazz The class of the type to deserialize to.
      * @return The deserialized object, or null if no serializer is registered for the specified type.
      */
-    fun <T : Any> deserialize(map: Map<String, Any>, clazz: Class<T>): T? {
+    fun <T : Any> deserialize(map: Map<String, Any>, clazz: KClass<T>): T? {
         val serializer = getSerializer(clazz) ?: return null
         return serializer.deserialize(map)
     }

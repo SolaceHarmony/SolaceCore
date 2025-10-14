@@ -100,7 +100,7 @@ class SupervisorActor : Actor() {
             throw IllegalStateException("Cannot unregister actor while supervisor is in state: $state")
         }
 
-        val actor = actorRegistry.remove(actorId) ?: return false
+        actorRegistry.remove(actorId) ?: return false
         actorTypeRegistry.remove(actorId)
 
         return true
