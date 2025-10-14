@@ -151,24 +151,6 @@ fun SolaceRealTimeUI() {
                     // Workflow visualization
                     WorkflowVisualizationView(workflow = selectedWorkflow)
 
-                    // Quick action buttons
-                    QuickActionButtons(
-                        onStartAll = {
-                            actors.forEach { actor ->
-                                actorService.startActor(actor.id)
-                            }
-                        },
-                        onStopAll = {
-                            actors.forEach { actor ->
-                                actorService.stopActor(actor.id)
-                            }
-                        },
-                        onPauseAll = {
-                            actors.forEach { actor ->
-                                actorService.pauseActor(actor.id)
-                            }
-                        }
-                    )
                 }
             }
             

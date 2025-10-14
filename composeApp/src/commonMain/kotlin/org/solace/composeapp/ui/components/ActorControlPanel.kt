@@ -65,6 +65,15 @@ fun ActorControlPanel(
                     },
                     modifier = Modifier.weight(1f)
                 ) { Text("Stop All") }
+
+                OutlinedButton(
+                    onClick = {
+                        // Pause all running actors
+                        actors.filter { it.state is ActorState.Running }
+                            .forEach { actor -> actorService.pauseActor(actor.id) }
+                    },
+                    modifier = Modifier.weight(1f)
+                ) { Text("Pause All") }
             }
 
             Spacer(modifier = Modifier.height(16.dp))
@@ -173,45 +182,6 @@ private fun ActorRow(
                 Icon(imageVector = Icons.Default.Delete, contentDescription = "Delete")
                 Spacer(modifier = Modifier.width(8.dp))
                 Text("Delete Actor")
-            }
-        }
-    }
-}
-
-/** Quick action buttons used by the parent layout. */
-@Composable
-fun QuickActionButtons(
-    onStartAll: () -> Unit,
-    onStopAll: () -> Unit,
-    onPauseAll: () -> Unit,
-    modifier: Modifier = Modifier
-) {
-    Card(modifier = modifier.fillMaxWidth()) {
-        Column(modifier = Modifier.padding(16.dp)) {
-            Text(text = "Quick Actions", style = MaterialTheme.typography.titleMedium)
-
-            Spacer(modifier = Modifier.height(12.dp))
-
-            Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                Button(
-                    onClick = onStartAll,
-                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF4CAF50)),
-                    modifier = Modifier.weight(1f)
-                ) {
-                    Icon(imageVector = Icons.Default.PlayArrow, contentDescription = "Start All")
-                    Spacer(modifier = Modifier.width(4.dp))
-                    Text("Start All")
-                }
-                Button(
-                    onClick = onPauseAll,
-                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFFF9800)),
-                    modifier = Modifier.weight(1f)
-                ) { Text("Pause All") }
-                Button(
-                    onClick = onStopAll,
-                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFF44336)),
-                    modifier = Modifier.weight(1f)
-                ) { Text("Stop All") }
             }
         }
     }
