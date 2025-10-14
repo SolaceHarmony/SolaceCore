@@ -111,7 +111,7 @@ class ScriptManager(
 
             // Load the script
             val scriptData = scriptStorage.loadScript(scriptName) ?: return@withContext null
-            val (scriptSource, metadata) = scriptData
+            val (scriptSource, _) = scriptData
 
             // Compile the script
             val compiledScript = scriptEngine.compile(scriptSource, scriptName)
@@ -156,7 +156,7 @@ class ScriptManager(
 
             // Load the script from storage
             val scriptData = scriptStorage.loadScript(scriptName) ?: return@withContext null
-            val (scriptSource, metadata) = scriptData
+            val (scriptSource, _) = scriptData
 
             // Compile the script
             val compiledScript = scriptEngine.compile(scriptSource, scriptName)

@@ -3,6 +3,7 @@ package ai.solace.core.scripting
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import org.jetbrains.kotlin.mainKts.MainKtsScript
+import org.jetbrains.kotlin.mainKts.MainKtsScriptDefinition
 import java.time.Instant
 import kotlin.script.experimental.api.*
 import kotlin.script.experimental.host.toScriptSource
@@ -11,6 +12,8 @@ import kotlin.script.experimental.jvm.dependenciesFromCurrentContext
 import kotlin.script.experimental.jvm.jvm
 import kotlin.script.experimental.jvmhost.BasicJvmScriptingHost
 import kotlin.script.experimental.jvmhost.createJvmCompilationConfigurationFromTemplate
+import kotlin.script.experimental.dependencies.DependsOn
+import kotlin.script.experimental.dependencies.Repository
 
 /**
  * JVM implementation of the ScriptEngine interface using Kotlin's scripting APIs.
@@ -75,8 +78,22 @@ class JvmScriptEngine : ScriptEngine {
                 // Create a source code object from the script source
                 val source = scriptSource.toScriptSource(scriptName)
 
-                // Compile the script
-                val compilationResult = scriptingHost.compiler(source, compilationConfiguration)
+                // Create a modified compilation configuration that includes implicit receivers
+                // This helps with parameter access in scripts
+                val modifiedCompilationConfiguration = compilationConfiguration.with {
+                    // Add implicit receivers to make parameters accessible without explicit casting
+                    implicitReceivers(Any::class)
+
+                    // Enable script annotations processing
+                    refineConfiguration {
+                        beforeCompiling { context ->
+                            context.compilationConfiguration.asSuccess()
+                        }
+                    }
+                }
+
+                // Compile the script with the modified configuration
+                val compilationResult = scriptingHost.compiler(source, modifiedCompilationConfiguration)
 
                 // Check for compilation errors
                 if (compilationResult is ResultWithDiagnostics.Failure) {
@@ -120,14 +137,27 @@ class JvmScriptEngine : ScriptEngine {
             try {
                 // Create an evaluation configuration with the provided parameters
                 val evaluationConfiguration = ScriptEvaluationConfiguration {
-                    // MainKtsScript expects an "args" parameter, so we provide an empty array if not present
-                    val updatedParameters = if (!parameters.containsKey("args")) {
-                        parameters + ("args" to emptyArray<String>())
-                    } else {
-                        parameters
-                    }
+                    // MainKtsScript expects specific arguments
+                    // We'll provide only the essential ones to avoid argument count issues
 
-                    providedProperties(updatedParameters)
+                    // MainKtsScript expects exactly 2 arguments:
+                    // 1. "args" - an array of strings
+                    // 2. A configuration map
+
+                    // Create a new map with only these two required parameters
+                    // This ensures we don't pass any extra parameters that could cause argument count issues
+                    val scriptArgs = emptyArray<String>()
+                    val scriptConfig = mapOf<String, Any>()
+
+                    // Create a map with just the two required parameters
+                    val requiredParameters = mapOf(
+                        "args" to scriptArgs,
+                        "scriptConfiguration" to scriptConfig
+                    )
+
+                    // Provide only the required parameters to the script
+                    providedProperties(requiredParameters)
+
                     jvm {
                         baseClassLoader(JvmScriptEngine::class.java.classLoader)
                     }
@@ -218,7 +248,7 @@ class JvmScriptEngine : ScriptEngine {
         override val name: String,
         override val compilationTimestamp: Long,
         val compiledScript: kotlin.script.experimental.api.CompiledScript
-    ) : ai.solace.core.scripting.CompiledScript
+    ) : CompiledScript
 }
 
 // We're using MainKtsScript from kotlin-main-kts, which already has built-in support

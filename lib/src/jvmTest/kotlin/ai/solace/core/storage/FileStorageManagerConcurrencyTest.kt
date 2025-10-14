@@ -313,7 +313,7 @@ class FileStorageManagerConcurrencyTest {
                 
                 // Clear all storage implementations
                 // This should handle the exception and return false
-                val result = storageManager.clearAll()
+                storageManager.clearAll()
                 
                 // The operation should complete without throwing an exception
                 // but might return false due to the exception

@@ -5,8 +5,6 @@ import ai.solace.core.kernel.channels.ports.*
 import ai.solace.core.actor.metrics.ActorMetrics
 import ai.solace.core.lifecycle.Lifecycle
 import ai.solace.core.lifecycle.Disposable
-import kotlin.uuid.ExperimentalUuidApi
-import kotlin.uuid.Uuid
 import kotlinx.atomicfu.atomic
 import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.Channel
@@ -15,6 +13,8 @@ import kotlinx.coroutines.sync.withLock
 import kotlin.time.ExperimentalTime
 import kotlin.time.measureTime
 import kotlin.time.Duration
+import kotlin.uuid.ExperimentalUuidApi
+import kotlin.uuid.Uuid
 import kotlin.reflect.KClass
 
 /**
@@ -406,7 +406,7 @@ abstract class Actor(
         }
 
         // Check if the port exists and has the correct type
-        val existingPort = getPort(name, messageClass) ?: return null
+        getPort(name, messageClass) ?: return null
 
         // Remove the existing port
         val removed = removePort(name)
@@ -440,7 +440,7 @@ abstract class Actor(
         }
 
         // Check if the port exists and has the correct type
-        val existingPort = getPort(name, messageClass) ?: return null
+        getPort(name, messageClass) ?: return null
 
         // Remove the existing port
         val removed = removePort(name)
