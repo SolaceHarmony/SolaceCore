@@ -22,10 +22,9 @@ class PortCommunicationIntegrationTest {
         private var outputPort: ai.solace.core.kernel.channels.ports.Port<String>? = null
         
         suspend fun createOutputPort() {
-            outputPort = createPort(
+            outputPort = createOutputPort(
                 name = "output",
                 messageClass = String::class,
-                handler = { /* No-op for output port */ },
                 bufferSize = 10
             )
         }
@@ -81,10 +80,9 @@ class PortCommunicationIntegrationTest {
                 bufferSize = 10
             )
             
-            outputPort = createPort(
-                name = "output", 
+            outputPort = createOutputPort(
+                name = "output",
                 messageClass = String::class,
-                handler = { /* No-op for output port */ },
                 bufferSize = 10
             )
         }
@@ -232,11 +230,12 @@ class PortCommunicationIntegrationTest {
         delay(50)
         
         producer.sendMessage("final")
-        delay(100)
-        
-        // Verify all messages were received across cycles
-        val receivedMessages = consumer.getReceivedMessages()
-        assertTrue(receivedMessages.contains("final"))
+        // Wait until the final message is observed to avoid timing flakiness
+        withTimeout(2000) {
+            while (!consumer.getReceivedMessages().contains("final")) {
+                delay(10)
+            }
+        }
         
         // Clean up
         workflow.stop()

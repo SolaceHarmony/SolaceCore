@@ -234,7 +234,12 @@ interface Port<T : Any> : Disposable {
                     }
 
                     @Suppress("UNCHECKED_CAST")
-                    targetPort.send(out as OUT)
+                    try {
+                        targetPort.send(out as OUT)
+                    } catch (e: Exception) {
+                        // Target channel likely closed; stop routing gracefully
+                        return@launch
+                    }
                 }
             }
             routingJob = job
@@ -245,6 +250,14 @@ interface Port<T : Any> : Disposable {
         fun stop() {
             routingJob?.cancel()
             routingJob = null
+        }
+
+        /** Cancels and waits for the routing job to finish. */
+        suspend fun stopAndJoin() {
+            val job = routingJob
+            routingJob = null
+            job?.cancel()
+            job?.join()
         }
         /**
          * Validates the connection between the source and target ports.

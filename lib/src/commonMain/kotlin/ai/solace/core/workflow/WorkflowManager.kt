@@ -284,16 +284,19 @@ class WorkflowManager(
      */
     override suspend fun stop() {
         try {
-            // Stop all actors
+            // Stop all active port connections first to avoid routing into closed channels
+            // Wait for routing jobs to fully finish before stopping actors
+            for (pc in activePortConnections.values) {
+                pc.stopAndJoin()
+            }
+            activePortConnections.clear()
+
+            // Then stop all actors (which may close their port channels)
             actorsMutex.withLock {
                 for (actor in actors.values) {
                     actor.stop()
                 }
             }
-
-            // Stop all active port connections
-            activePortConnections.values.forEach { it.stop() }
-            activePortConnections.clear()
 
             // Update state to Stopped
             _state = WorkflowState.Stopped
