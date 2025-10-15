@@ -44,6 +44,7 @@ class RealTimeActorService(
     private var monitoringJob: Job? = null
     // Preserve user-created/deleted actors and state between ticks
     private val actorStore: MutableMap<String, ActorDisplayData> = mutableMapOf()
+    private var monitoringStartMs: Long? = null
     
     /**
      * Start real-time monitoring of the actor system
@@ -55,6 +56,7 @@ class RealTimeActorService(
         // Seed once, then keep state persistent
         if (actorStore.isEmpty()) seedDemoActors()
         _actors.value = actorStore.values.toList()
+        if (monitoringStartMs == null) monitoringStartMs = Clock.System.now().toEpochMilliseconds()
         monitoringJob = scope.launch {
             while (_isMonitoring.value) {
                 updateActorMetrics()
@@ -377,6 +379,9 @@ class RealTimeActorService(
             currentActors.map { it.metrics.averageProcessingTime }.average()
         } else 0.0
         
+        val uptimeMs = monitoringStartMs?.let { start ->
+            (Clock.System.now().toEpochMilliseconds() - start).coerceAtLeast(0)
+        } ?: 0L
         _systemMetrics.value = SystemMetricsData(
             totalActors = currentActors.size,
             runningActors = runningCount,
@@ -385,7 +390,7 @@ class RealTimeActorService(
             pausedActors = pausedCount,
             totalMessages = totalMessages,
             averageResponseTime = avgResponseTime,
-            systemUptime = Clock.System.now().toEpochMilliseconds()
+            systemUptime = uptimeMs
         )
     }
     
