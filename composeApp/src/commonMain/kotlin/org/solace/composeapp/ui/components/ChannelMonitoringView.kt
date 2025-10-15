@@ -5,6 +5,9 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.CheckCircle
+import androidx.compose.material.icons.filled.Error
+import androidx.compose.material.icons.filled.HighlightOff
+import androidx.compose.material.icons.filled.Sync
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -104,9 +107,9 @@ fun ChannelStatusBadge(
 ) {
     val (color, text, icon) = when (state) {
         is ChannelConnectionState.Connected -> Triple(Color(0xFF4CAF50), "Connected", Icons.Default.CheckCircle)
-        is ChannelConnectionState.Disconnected -> Triple(Color(0xFF9E9E9E), "Disconnected", Icons.Default.CheckCircle)
-        is ChannelConnectionState.Connecting -> Triple(Color(0xFFFF9800), "Connecting", Icons.Default.CheckCircle)
-        is ChannelConnectionState.Error -> Triple(Color(0xFFF44336), "Error", Icons.Default.CheckCircle)
+        is ChannelConnectionState.Disconnected -> Triple(Color(0xFF9E9E9E), "Disconnected", Icons.Default.HighlightOff)
+        is ChannelConnectionState.Connecting -> Triple(Color(0xFFFF9800), "Connecting", Icons.Default.Sync)
+        is ChannelConnectionState.Error -> Triple(Color(0xFFF44336), "Error", Icons.Default.Error)
     }
     
     Surface(

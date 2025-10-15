@@ -49,3 +49,4 @@ kotlin-js-store/
 /.build*.out
 /.meta*.out
 qodana-results/
+*.log
