@@ -37,6 +37,13 @@ kotlin {
     }
 }
 
+compose.desktop {
+    application {
+        // Entry point defined in composeApp/src/desktopMain/kotlin/main.kt
+        mainClass = "org.solace.composeapp.MainKt"
+    }
+}
+
 repositories {
     mavenCentral()
     google()

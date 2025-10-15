@@ -91,8 +91,7 @@ fun SolaceRealTimeUI() {
             modifier = Modifier
                 .padding(paddingValues)
                 .padding(16.dp)
-                .fillMaxSize()
-                .verticalScroll(rememberScrollState()),
+                .fillMaxSize(),
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             // System metrics dashboard
