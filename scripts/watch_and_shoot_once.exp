@@ -1,0 +1,26 @@
+#!/usr/bin/expect -f
+# One-shot watcher: runs the app and takes exactly one screenshot
+# when the given regex pattern appears in stdout, then exits.
+# Usage: scripts/watch_and_shoot_once.exp {regex-pattern}
+
+set timeout -1
+if {$argc < 1} {
+  puts "Usage: $argv0 {regex-pattern}"
+  exit 1
+}
+set pattern [lindex $argv 0]
+
+# Use the Compose Desktop run task
+spawn ./gradlew :composeApp:run
+
+expect {
+  -re $pattern {
+    puts "\n>>> trigger matched: $expect_out(0,string)\n"
+    # Fire one screenshot to stdout (no files)
+    exec sh -c {python gpt5_screenshot.py tail 1 1}
+    # Let the app continue running; we exit the watcher
+    exit 0
+  }
+  eof { exit 1 }
+}
+
