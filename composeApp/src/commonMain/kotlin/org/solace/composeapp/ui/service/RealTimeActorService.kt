@@ -42,6 +42,8 @@ class RealTimeActorService(
     val isMonitoring: StateFlow<Boolean> = _isMonitoring.asStateFlow()
     
     private var monitoringJob: Job? = null
+    // Preserve user-created/deleted actors and state between ticks
+    private val actorStore: MutableMap<String, ActorDisplayData> = mutableMapOf()
     
     /**
      * Start real-time monitoring of the actor system
@@ -50,11 +52,14 @@ class RealTimeActorService(
         if (_isMonitoring.value) return
         
         _isMonitoring.value = true
+        // Seed once, then keep state persistent
+        if (actorStore.isEmpty()) seedDemoActors()
+        _actors.value = actorStore.values.toList()
         monitoringJob = scope.launch {
             while (_isMonitoring.value) {
-                updateActorData()
-                updateChannelData()
-                updateWorkflowData()
+                updateActorMetrics()
+                updateChannelsFromActors()
+                updateWorkflowFromState()
                 updateSystemMetrics()
                 delay(UPDATE_INTERVAL_MS)
             }
@@ -68,6 +73,119 @@ class RealTimeActorService(
         _isMonitoring.value = false
         monitoringJob?.cancel()
         monitoringJob = null
+    }
+
+    /** Update only metrics for existing actors; keep user edits persistent. */
+    private suspend fun updateActorMetrics() {
+        val now = Clock.System.now()
+        if (actorStore.isEmpty() && _actors.value.isNotEmpty()) {
+            _actors.value.forEach { actorStore[it.id] = it }
+        }
+        actorStore.replaceAll { _, a ->
+            val received = (200..1500).random().toLong()
+            val processed = (received * (70..100).random() / 100.0).toLong()
+            val failed = (0..(received/10).toInt()).random().toLong()
+            val success = if (received > 0) (100.0 * (processed - failed).coerceAtLeast(0) / received).coerceIn(0.0, 100.0) else a.metrics.successRate
+            a.copy(
+                lastUpdate = now,
+                metrics = a.metrics.copy(
+                    messagesReceived = received,
+                    messagesProcessed = processed,
+                    messagesFailed = failed,
+                    successRate = success,
+                    averageProcessingTime = (10..120).random().toDouble(),
+                    lastProcessingTime = (5..60).random().toLong()
+                )
+            )
+        }
+        _actors.value = actorStore.values.toList()
+    }
+
+    /** Build demo channels from current actors instead of fixed IDs. */
+    private suspend fun updateChannelsFromActors() {
+        val now = Clock.System.now()
+        val list = _actors.value
+        if (list.size < 2) { _channels.value = emptyList(); return }
+        val chans = mutableListOf<ChannelDisplayData>()
+        for (i in 0 until list.size - 1) {
+            val src = list[i]; val dst = list[i+1]
+            val id = "chan-${src.id.take(6)}-${dst.id.take(6)}"
+            val state = when ((0..100).random()) {
+                in 0..5 -> ChannelConnectionState.Error("Simulated error")
+                in 6..20 -> ChannelConnectionState.Connecting
+                in 21..25 -> ChannelConnectionState.Disconnected
+                else -> ChannelConnectionState.Connected
+            }
+            chans += ChannelDisplayData(
+                id = id,
+                name = "${src.name} → ${dst.name}",
+                type = "Message",
+                sourceActorId = src.id,
+                targetActorId = dst.id,
+                connectionState = state,
+                lastActivity = now,
+                metrics = ChannelMetricsData(
+                    messagesSent = (50..600).random().toLong(),
+                    messagesReceived = (40..590).random().toLong(),
+                    messagesDropped = (0..10).random().toLong(),
+                    averageLatency = (2..25).random().toDouble(),
+                    throughputPerSecond = (5..60).random().toDouble(),
+                    errorRate = (0..5).random().toDouble()
+                )
+            )
+        }
+        _channels.value = chans
+    }
+
+    /** Keep workflow selection in sync with current actors/channels. */
+    private suspend fun updateWorkflowFromState() {
+        val currentTime = Clock.System.now()
+        val currentActors = _actors.value
+        val currentChannels = _channels.value
+        val wf = WorkflowDisplayData(
+            id = "workflow-1",
+            name = "Message Processing Pipeline",
+            state = WorkflowState.Running,
+            actors = currentActors,
+            channels = currentChannels,
+            lastUpdate = currentTime
+        )
+        _workflows.value = listOf(wf)
+        if (_selectedWorkflow.value == null) _selectedWorkflow.value = wf
+    }
+
+    private fun seedDemoActors() {
+        val now = Clock.System.now()
+        listOf(
+            ActorDisplayData(
+                id = DEMO_ACTOR_MESSAGE_PROCESSOR,
+                name = "Message Processor",
+                state = ActorState.Running,
+                lastUpdate = now,
+                metrics = ActorMetricsData(0,0,0,95.0,20.0,10)
+            ),
+            ActorDisplayData(
+                id = DEMO_ACTOR_DATA_TRANSFORMER,
+                name = "Data Transformer",
+                state = ActorState.Running,
+                lastUpdate = now,
+                metrics = ActorMetricsData(0,0,0,97.0,25.0,12)
+            ),
+            ActorDisplayData(
+                id = DEMO_ACTOR_RESULT_AGGREGATOR,
+                name = "Result Aggregator",
+                state = ActorState.Running,
+                lastUpdate = now,
+                metrics = ActorMetricsData(0,0,0,92.0,35.0,18)
+            ),
+            ActorDisplayData(
+                id = DEMO_ACTOR_LOGGER_SERVICE,
+                name = "Logger Service",
+                state = ActorState.Running,
+                lastUpdate = now,
+                metrics = ActorMetricsData(0,0,0,99.0,8.0,4)
+            )
+        ).forEach { actorStore[it.id] = it }
     }
     
     /**
@@ -297,8 +415,8 @@ class RealTimeActorService(
                 lastProcessingTime = 0
             )
         )
-        
-        _actors.value = _actors.value + newActor
+        actorStore[newActorId] = newActor
+        _actors.value = actorStore.values.toList()
         println("Created new actor: $newActorId")
     }
     
@@ -311,7 +429,8 @@ class RealTimeActorService(
         val actorExists = currentActors.any { it.id == actorId }
         
         if (actorExists) {
-            _actors.value = currentActors.filter { it.id != actorId }
+            actorStore.remove(actorId)
+            _actors.value = actorStore.values.toList()
             println("Deleted actor: $actorId")
         } else {
             println("Actor not found for deletion: $actorId")
@@ -378,19 +497,14 @@ class RealTimeActorService(
         newState: ActorState, 
         onSuccess: (ActorDisplayData) -> Unit
     ) {
-        val currentActors = _actors.value
-        val actorIndex = currentActors.indexOfFirst { it.id == actorId }
-        
-        if (actorIndex != -1) {
-            val updatedActor = currentActors[actorIndex].copy(
+        val current = actorStore[actorId]
+        if (current != null) {
+            val updatedActor = current.copy(
                 state = newState,
                 lastUpdate = Clock.System.now()
             )
-            
-            val updatedActors = currentActors.toMutableList()
-            updatedActors[actorIndex] = updatedActor
-            _actors.value = updatedActors
-            
+            actorStore[actorId] = updatedActor
+            _actors.value = actorStore.values.toList()
             onSuccess(updatedActor)
         } else {
             println("Actor not found for state update: $actorId")
