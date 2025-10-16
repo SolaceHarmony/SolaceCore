@@ -83,7 +83,8 @@ class RealTimeActorService(
         if (actorStore.isEmpty() && _actors.value.isNotEmpty()) {
             _actors.value.forEach { actorStore[it.id] = it }
         }
-        actorStore.replaceAll { _, a ->
+        // Update metrics for each actor
+        val updatedStore = actorStore.mapValues { (_, a) ->
             val received = (200..1500).random().toLong()
             val processed = (received * (70..100).random() / 100.0).toLong()
             val failed = (0..(received/10).toInt()).random().toLong()
@@ -100,6 +101,8 @@ class RealTimeActorService(
                 )
             )
         }
+        actorStore.clear()
+        actorStore.putAll(updatedStore)
         _actors.value = actorStore.values.toList()
     }
 
