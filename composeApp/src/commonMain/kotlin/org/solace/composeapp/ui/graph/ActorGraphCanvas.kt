@@ -173,10 +173,14 @@ fun ActorGraphNode(
     BoxWithConstraints(modifier = modifier) {
         val canvasWidth = maxWidth.value
         val canvasHeight = maxHeight.value
-        
-        val nodeX = position.x * canvasWidth * scale + offsetX
-        val nodeY = position.y * canvasHeight * scale + offsetY
-        
+
+        val (nodeX, nodeY) = remember(
+            position, canvasWidth, canvasHeight, scale, offsetX, offsetY
+        ) {
+            val x = position.x * canvasWidth * scale + offsetX
+            val y = position.y * canvasHeight * scale + offsetY
+            x to y
+        }
         Column(
             modifier = Modifier
                 .offset(x = nodeX.dp, y = nodeY.dp)
