@@ -11,6 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.unit.dp
 import org.solace.composeapp.ui.components.*
+import org.solace.composeapp.ui.graph.ActorGraphView
 import org.solace.composeapp.ui.service.RealTimeActorService
 import org.solace.composeapp.ui.theme.SolaceTheme
 
@@ -113,6 +114,13 @@ fun SolaceRealTimeUI() {
                     actorService.startMonitoring()
                 }
             )
+            // Interactive Actor Graph View
+            ActorGraphView(
+                actors = actors,
+                channels = channels,
+                actorService = actorService
+            )
+            
             // Two-column layout for better organization
             Row(
                 modifier = Modifier.fillMaxWidth(),
