@@ -43,8 +43,11 @@ fun ActorGraphCanvas(
     var offsetX by remember { mutableStateOf(0f) }
     var offsetY by remember { mutableStateOf(0f) }
     
-    // Calculate layout when actors or channels change
-    val nodePositions by remember(actors, channels) {
+    // Calculate layout when graph topology changes (actor IDs or channel connections)
+    val nodePositions by remember(
+        actors.map { it.id },
+        channels.map { it.sourceActorId to it.targetActorId }
+    ) {
         derivedStateOf {
             val layout = ForceDirectedLayout(
                 width = 800f,
