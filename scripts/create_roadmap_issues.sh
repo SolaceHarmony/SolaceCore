@@ -1,11 +1,11 @@
 #!/bin/bash
-# Script to create GitHub issues from roadmap_issues.json
+# Script to create GitHub issues from docs/status/roadmap_issues.json
 # Usage: ./scripts/create_roadmap_issues.sh
 
 set -e
 
 REPO="SolaceHarmony/SolaceCore"
-ISSUES_FILE="roadmap_issues.json"
+ISSUES_FILE="docs/status/roadmap_issues.json"
 
 if [ ! -f "$ISSUES_FILE" ]; then
     echo "Error: $ISSUES_FILE not found"
