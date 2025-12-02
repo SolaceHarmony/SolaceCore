@@ -111,22 +111,22 @@ This directory contains comprehensive documentation analyzing the current state 
 ## 📚 Related Documentation
 
 ### Design Documents
-- [`docs/Architectural_Document_Solace_Core_Framework.md`](docs/Architectural_Document_Solace_Core_Framework.md)
-- [`docs/Architectural_Deepdive.md`](docs/Architectural_Deepdive.md)
-- [`docs/MASTER_CHECKLIST.md`](docs/MASTER_CHECKLIST.md)
-- [`docs/STORAGE_CHECKLIST.md`](docs/STORAGE_CHECKLIST.md)
+- [`../Architectural_Document_Solace_Core_Framework.md`](../Architectural_Document_Solace_Core_Framework.md)
+- [`../Architectural_Deepdive.md`](../Architectural_Deepdive.md)
+- [`../MASTER_CHECKLIST.md`](../MASTER_CHECKLIST.md)
+- [`../STORAGE_CHECKLIST.md`](../STORAGE_CHECKLIST.md)
 
 ### Task Status
-- [`task1.md`](task1.md) - Core Tests ✅ COMPLETED
-- [`task2.md`](task2.md) - Connection Wiring ✅ COMPLETED
-- [`task3.md`](task3.md) - Concurrency Issues ⚠️ MOSTLY COMPLETED
-- [`task4.md`](task4.md) - Dynamic Registration ✅ COMPLETED
-- [`task5.md`](task5.md) - Integration Tests 🔄 HIGH PRIORITY
-- [`task6.md`](task6.md) - Deadlock Detection 🔄 HIGH PRIORITY
+- [`../tasks/task1.md`](../tasks/task1.md) - Core Tests ✅ COMPLETED
+- [`../tasks/task2.md`](../tasks/task2.md) - Connection Wiring ✅ COMPLETED
+- [`../tasks/task3.md`](../tasks/task3.md) - Concurrency Issues ⚠️ MOSTLY COMPLETED
+- [`../tasks/task4.md`](../tasks/task4.md) - Dynamic Registration ✅ COMPLETED
+- [`../tasks/task5.md`](../tasks/task5.md) - Integration Tests 🔄 HIGH PRIORITY
+- [`../tasks/task6.md`](../tasks/task6.md) - Deadlock Detection 🔄 HIGH PRIORITY
 
 ### Project Documentation
-- [`README.md`](README.md) - Project overview
-- [`COMPOSE_APP_FEATURES.md`](COMPOSE_APP_FEATURES.md) - UI features
+- [`../../README.md`](../../README.md) - Project overview
+- [`../COMPOSE_APP_FEATURES.md`](../COMPOSE_APP_FEATURES.md) - UI features
 
 ---
 

@@ -14,14 +14,14 @@ fi
 if command -v stdbuf >/dev/null 2>&1; then
   stdbuf -oL ./gradlew :composeApp:run |
   awk -v pat="$pattern" '
-    $0 ~ pat { system("python gpt5_screenshot.py tail 1 1"); print; next }
+    $0 ~ pat { system("python tools/gpt5_screenshot.py tail 1 1"); print; next }
     { print }
   '
 else
   # Fallback without stdbuf; output may be block-buffered
   ./gradlew :composeApp:run |
   awk -v pat="$pattern" '
-    $0 ~ pat { system("python gpt5_screenshot.py tail 1 1"); print; next }
+    $0 ~ pat { system("python tools/gpt5_screenshot.py tail 1 1"); print; next }
     { print }
   '
 fi

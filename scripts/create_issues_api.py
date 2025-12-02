@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Create GitHub issues from roadmap_issues.json using GitHub API.
+Create GitHub issues from docs/status/roadmap_issues.json using GitHub API.
 Requires: pip install PyGithub
 Usage: GITHUB_TOKEN=<your-token> python3 scripts/create_issues_api.py
 """
@@ -25,7 +25,7 @@ def create_issues():
         sys.exit(1)
     
     # Load issues from JSON
-    with open('roadmap_issues.json', 'r') as f:
+    with open('docs/status/roadmap_issues.json', 'r') as f:
         issues_data = json.load(f)
     
     # Connect to GitHub
