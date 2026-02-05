@@ -22,9 +22,10 @@ class PortCommunicationIntegrationTest {
         private var outputPort: ai.solace.core.kernel.channels.ports.Port<String>? = null
         
         suspend fun createOutputPort() {
-            outputPort = createOutputPort(
+            outputPort = createPort(
                 name = "output",
                 messageClass = String::class,
+                handler = { /* Output port - no incoming handling needed */ },
                 bufferSize = 10
             )
         }
@@ -80,9 +81,10 @@ class PortCommunicationIntegrationTest {
                 bufferSize = 10
             )
             
-            outputPort = createOutputPort(
+            outputPort = createPort(
                 name = "output",
                 messageClass = String::class,
+                handler = { /* Output port - no incoming handling needed */ },
                 bufferSize = 10
             )
         }
