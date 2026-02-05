@@ -6,7 +6,7 @@
 | **Document ID** | SRAF‑25‑06‑04                                                        |
 | --------------- | -------------------------------------------------------------------- |
 | **Version**     | 1.1                                                                  |
-| **Author**      | Assistant (compiled from prior architectural dialogue)               |
+| **Author**      | Sydney Renee          |
 | **Audience**    | Staff machine‑learning engineers, AI architects, research scientists |
 | **Status**      | Draft for internal review                                            |
 
