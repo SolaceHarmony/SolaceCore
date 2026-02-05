@@ -39,6 +39,7 @@ build
 .kotlin/
 .gitignore
 .DS_Store
+kotlin-js-store/
 
 # Local build and debug outputs
 *.out
@@ -48,3 +49,6 @@ build
 /.build*.out
 /.meta*.out
 qodana-results/
+*.log
+*.log
+docs/codex-vendored/
