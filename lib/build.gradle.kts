@@ -1,6 +1,6 @@
 plugins {
-    kotlin("multiplatform") version "2.2.20"
-    kotlin("plugin.serialization") version "2.2.20"
+    kotlin("multiplatform")
+    kotlin("plugin.serialization")
 }
 
 repositories {
@@ -11,8 +11,7 @@ kotlin {
     jvm()
     macosArm64()
 
-    // Consistent JDK locally and in CI
-    jvmToolchain(17)
+    jvmToolchain(21)
 
     sourceSets {
         val commonMain by getting {
@@ -34,13 +33,13 @@ kotlin {
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.10.2")
 
                 // Kotlin scripting deps (JVM-only)
-                implementation("org.jetbrains.kotlin:kotlin-scripting-common:2.2.20")
-                implementation("org.jetbrains.kotlin:kotlin-scripting-jvm:2.2.20")
-                implementation("org.jetbrains.kotlin:kotlin-scripting-jvm-host:2.2.20")
-                implementation("org.jetbrains.kotlin:kotlin-scripting-compiler-embeddable:2.2.20")
-                implementation("org.jetbrains.kotlin:kotlin-main-kts:2.2.20")
-                implementation("org.jetbrains.kotlin:kotlin-scripting-dependencies:2.2.20")
-                implementation("org.jetbrains.kotlin:kotlin-scripting-dependencies-maven:2.2.20")
+                implementation("org.jetbrains.kotlin:kotlin-scripting-common:2.3.0")
+                implementation("org.jetbrains.kotlin:kotlin-scripting-jvm:2.3.0")
+                implementation("org.jetbrains.kotlin:kotlin-scripting-jvm-host:2.3.0")
+                implementation("org.jetbrains.kotlin:kotlin-scripting-compiler-embeddable:2.3.0")
+                implementation("org.jetbrains.kotlin:kotlin-main-kts:2.3.0")
+                implementation("org.jetbrains.kotlin:kotlin-scripting-dependencies:2.3.0")
+                implementation("org.jetbrains.kotlin:kotlin-scripting-dependencies-maven:2.3.0")
 
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.9.0")
 

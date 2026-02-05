@@ -11,6 +11,8 @@ kotlin {
         binaries.executable()
     }
 
+    jvmToolchain(21)
+
     sourceSets {
         val commonMain by getting {
             dependencies {
@@ -19,7 +21,7 @@ kotlin {
                 implementation(compose.material3)
                 implementation(compose.ui)
                 implementation(compose.materialIconsExtended)
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.9.0")
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2")
                 implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.6.1")
             }
         }
@@ -44,7 +46,6 @@ kotlin {
 
 compose.desktop {
     application {
-        // Entry point defined in composeApp/src/desktopMain/kotlin/main.kt
         mainClass = "org.solace.composeapp.MainKt"
     }
 }
