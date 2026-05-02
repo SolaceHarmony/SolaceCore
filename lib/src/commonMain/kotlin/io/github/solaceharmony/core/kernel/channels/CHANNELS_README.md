@@ -1,12 +1,12 @@
 # Channels module — `io.github.solaceharmony.core.kernel.channels.ports`
 
-Type-safe, resource-managed message passing between actors. Built on `kotlinx.coroutines.channels.Channel` and the [`Disposable`](../../../lifecycle/) contract.
+Type-safe, resource-managed message passing between actors. Built on `kotlinx.coroutines.channels.Channel` and the [`Disposable`](../../lifecycle/) contract.
 
 ## Public surface
 
 | Type | Role |
 |---|---|
-| `Port<T : Any>` | The single port abstraction. Implements [`Disposable`](../../../lifecycle/). Carries `id`, `name`, `type: KClass<out T>`, `asChannel(): Channel<T>`, and `suspend fun send(message: T)`. Hosts nested types and a companion `connect(...)` factory. |
+| `Port<T : Any>` | The single port abstraction. Implements [`Disposable`](../../lifecycle/). Carries `id`, `name`, `type: KClass<out T>`, `asChannel(): Channel<T>`, and `suspend fun send(message: T)`. Hosts nested types and a companion `connect(...)` factory. |
 | `BidirectionalPort<T>` | The concrete implementation. One Kotlin coroutines `Channel<T>` underneath. |
 | `Port.MessageHandler<IN, OUT>` | Per-connection async transformer. `suspend fun handle(message: IN): OUT`. |
 | `Port.ProtocolAdapter<SOURCE, TARGET>` | Encodes from a source protocol to a target protocol; `canHandle(KClass, KClass)` for capability checking. |
@@ -85,5 +85,5 @@ If you need to forbid sending into a port that an actor uses only for output (or
 ## See also
 
 - [`../../actor/`](../../actor/) — the actor runtime that calls into this module.
-- [`docs/components/kernel/`](../../../../../../../../docs/components/kernel/) — design-level docs for the kernel.
-- [`docs/components/kernel/channel_system.md`](../../../../../../../../docs/components/kernel/channel_system.md) — channel-system design.
+- [`docs/components/kernel/`](../../../../../../../../../../docs/components/kernel/) — design-level docs for the kernel.
+- [`docs/components/kernel/channel_system.md`](../../../../../../../../../../docs/components/kernel/channel_system.md) — channel-system design.

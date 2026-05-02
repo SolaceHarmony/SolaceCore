@@ -61,9 +61,9 @@ class FrustrationDetector : Actor(name = "frustrationDetector") {
     private suspend fun emit(original: ActorMessage<String>, tone: String) {
         getPort("tone", ActorMessage::class)?.send(
             ActorMessage(
+                correlationId = original.correlationId,
                 payload = tone,
                 sender = name,
-                metadata = mapOf("correlationId" to original.correlationId),
             )
         )
     }
@@ -101,6 +101,6 @@ Patterns used in `lib/src/jvmTest/kotlin/io/github/solaceharmony/core/actor/`:
 
 ## See also
 
-- [`docs/components/actor_system/`](../../../../../../../../docs/components/actor_system/) — design-level docs (architecture, supervisor, sequence diagrams).
+- [`docs/components/actor_system/`](../../../../../../../../../docs/components/actor_system/) — design-level docs (architecture, supervisor, sequence diagrams).
 - [`../kernel/channels/`](../kernel/channels/) — the port runtime that actors use for message passing.
 - [`../lifecycle/`](../lifecycle/) — the `Lifecycle` / `Disposable` contract this module implements.
