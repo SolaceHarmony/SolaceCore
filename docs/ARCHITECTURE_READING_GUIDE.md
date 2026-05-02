@@ -62,7 +62,6 @@ If you want the “Solace AI” vision/requirements framing, read the Solace AI 
 When you explicitly want a gap view (without rewriting the design to match code), use:
 - [status/DESIGN_VS_IMPLEMENTATION.md](status/DESIGN_VS_IMPLEMENTATION.md)
 - [status/QUICK_STATUS.md](status/QUICK_STATUS.md)
-- [kotlin-aligned-docs/IMPLEMENTATION_STATUS.md](kotlin-aligned-docs/IMPLEMENTATION_STATUS.md)
 
 ## UI / real-time interaction (Compose app work)
 
