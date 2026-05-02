@@ -104,7 +104,7 @@ The `ProjectPlan_v2` (Sec 3) describes a high-level component architecture for t
 The `kernel` module, as currently documented below, forms the foundational layer of SolaceCore's common library, providing core abstractions and services primarily focused on its robust channels and ports system.
 The `kernel` module forms the foundational layer of SolaceCore's common library, providing core abstractions and services.
 
-### 1.1. Channel System (`ai.solace.core.kernel.channels`)
+### 1.1. Channel System (`io.github.solaceharmony.core.kernel.channels`)
 
 The Channel System, located within the `kernel` module, is responsible for enabling type-safe, resource-managed, and distributed message passing between various components of the SolaceCore framework. It is designed with platform independence as a key consideration.
 
@@ -239,7 +239,7 @@ This workflow highlights the interplay between user interaction, memory systems,
 *   **Distributed Operation:** Designed to function effectively in distributed environments with minimal shared state and low-overhead message passing.
 *   **Platform Independence:** Core channel logic is intended to be common across all supported platforms.
 
-#### 1.1.2. Core Abstractions and Interfaces (from `ai.solace.core.kernel.channels.ports.Port.kt`)
+#### 1.1.2. Core Abstractions and Interfaces (from `io.github.solaceharmony.core.kernel.channels.ports.Port.kt`)
 ### 0.5. Solace AI: Guiding Architectural Principles (from ProjectPlan_v2)
 
 Several guiding architectural principles and future directions for the overall Solace AI system are evident from the `ProjectPlan_v2` (particularly Sec 5, 6, and 9):
@@ -271,7 +271,7 @@ Several guiding architectural principles and future directions for the overall S
 
 These principles underscore a commitment to a flexible, scalable, intelligent, and resilient architecture for the Solace AI, where SolaceCore provides many of the essential building blocks.
 
-The foundation of the Channel System is the `Port.kt` file, which defines the primary `Port<T>` interface and several crucial nested interfaces and classes for message handling, protocol adaptation, type conversion, and connection management. It leverages `kotlinx.coroutines.channels.Channel` for its underlying asynchronous communication and `ai.solace.core.lifecycle.Disposable` for resource management.
+The foundation of the Channel System is the `Port.kt` file, which defines the primary `Port<T>` interface and several crucial nested interfaces and classes for message handling, protocol adaptation, type conversion, and connection management. It leverages `kotlinx.coroutines.channels.Channel` for its underlying asynchronous communication and `io.github.solaceharmony.core.lifecycle.Disposable` for resource management.
 
 ##### 1.1.2.1. `Port<T : Any>` Interface
 
@@ -284,7 +284,7 @@ Drawing from the `Interface_and_Port_System_Design.md`, the port system is a cor
 The design emphasizes dynamic connection capabilities between compatible output and input ports, leveraging Kotlin's `KClass` for type safety. This dynamism is vital for constructing adaptable and reconfigurable actor-based systems. The design document also noted that dynamic port creation and disconnection were areas of ongoing development, aiming to further enhance this flexibility.
 This is the central interface for any communication endpoint in the system.
 
-*   **Inheritance:** Implements `ai.solace.core.lifecycle.Disposable`.
+*   **Inheritance:** Implements `io.github.solaceharmony.core.lifecycle.Disposable`.
 *   **Key Properties:**
     *   `id: String`: A unique identifier for the port, automatically generatable.
     *   `name: String`: A human-readable name for the port.
@@ -347,13 +347,13 @@ The relationships between these core abstractions can be visualized as follows:
 classDiagram
     direction LR
 
-    package "ai.solace.core.lifecycle" {
+    package "io.github.solaceharmony.core.lifecycle" {
         interface Disposable {
             +dispose()
         }
     }
 
-    package "ai.solace.core.kernel.channels.ports" {
+    package "io.github.solaceharmony.core.kernel.channels.ports" {
         interface Port<T> {
             <<Interface>>
             +id: String
@@ -405,7 +405,7 @@ classDiagram
 
 #### 1.1.3. Concrete Implementations and Utilities
 
-The `ai.solace.core.kernel.channels.ports` package also provides concrete implementations and utilities.
+The `io.github.solaceharmony.core.kernel.channels.ports` package also provides concrete implementations and utilities.
 
 ##### 1.1.3.1. `BidirectionalPort<T : Any>` Class (from `BidirectionalPort.kt`)
 
@@ -473,8 +473,8 @@ The architecture of the Channel System adheres to the following core principles 
 The following example illustrates how ports might be created using the `BidirectionalPort` implementation and connected using `Port.connect`:
 
 ```kotlin
-// import ai.solace.core.kernel.channels.ports.BidirectionalPort
-// import ai.solace.core.kernel.channels.ports.Port // For Port.connect
+// import io.github.solaceharmony.core.kernel.channels.ports.BidirectionalPort
+// import io.github.solaceharmony.core.kernel.channels.ports.Port // For Port.connect
 
 suspend fun main() { // Example, typically run in a coroutine scope
     // Create ports using BidirectionalPort concrete implementation
@@ -572,7 +572,7 @@ A robust and comprehensive testing strategy is paramount for the Kernel module, 
     *   The target is to achieve high unit and integration test coverage for all critical paths and functionalities within the Kernel module. This ensures that regressions are caught early and that the foundational communication layer remains stable and reliable.
 
 This detailed testing strategy, once implemented, will provide strong assurances about the correctness and stability of the SolaceCore Kernel.
-## 2. Lifecycle Module (`ai.solace.core.lifecycle`)
+## 2. Lifecycle Module (`io.github.solaceharmony.core.lifecycle`)
 
 ### 2.0. Lifecycle Design Principles, States, and Overview (from README)
 
@@ -601,7 +601,7 @@ The `Disposable` interface is a core contract for any object that holds resource
 *   **Purpose:** To provide a standardized way to release resources (e.g., memory, file handles, network connections) when an object is no longer needed, preventing resource leaks.
 *   **Definition:**
     ```kotlin
-    package ai.solace.core.lifecycle
+    package io.github.solaceharmony.core.lifecycle
 
     interface Disposable {
         suspend fun dispose()
@@ -622,7 +622,7 @@ The `Lifecycle` interface extends `Disposable` to provide a more comprehensive c
 *   **Inheritance:** `interface Lifecycle : Disposable`
 *   **Definition:**
     ```kotlin
-    package ai.solace.core.lifecycle
+    package io.github.solaceharmony.core.lifecycle
 
     interface Lifecycle : Disposable {
         suspend fun start()
@@ -641,7 +641,7 @@ The relationship between these interfaces is straightforward:
 ```mermaid
 classDiagram
     direction LR
-    package "ai.solace.core.lifecycle" {
+    package "io.github.solaceharmony.core.lifecycle" {
         interface Disposable {
             <<Interface>>
             +dispose()
@@ -704,7 +704,7 @@ The Lifecycle module, encompassing the `Disposable` and `Lifecycle` interfaces, 
     *   The target is high unit and integration test coverage for all lifecycle management logic, ensuring that components initialize, start, stop, pause, resume, and dispose of resources reliably and predictably.
 
 Adherence to this testing strategy will ensure the stability and robustness of component management throughout the SolaceCore framework.
-## 3. Storage Module (`ai.solace.core.storage`)
+## 3. Storage Module (`io.github.solaceharmony.core.storage`)
 
 ### 3.0. Strategic Storage Vision (Neo4j and Kotlin-Native - from design document)
 
@@ -754,7 +754,7 @@ This generic interface is the primary contract for all storage implementations. 
 The `StorageManager` acts as a central coordinator and registry for various storage instances. It also manages the overall lifecycle of the storage system.
 
 *   **Purpose:** To provide a unified access point to different types of storage and manage their lifecycles.
-*   **Inheritance:** Implements `ai.solace.core.lifecycle.Lifecycle` (and therefore `Disposable`).
+*   **Inheritance:** Implements `io.github.solaceharmony.core.lifecycle.Lifecycle` (and therefore `Disposable`).
 *   **Key Methods:**
     *   `fun getConfigurationStorage(): ConfigurationStorage`: Retrieves a dedicated storage instance for configuration data.
     *   `fun getActorStateStorage(): ActorStateStorage`: Retrieves a dedicated storage instance for actor state.
@@ -812,13 +812,13 @@ A conceptual diagram illustrating these core storage interfaces:
 classDiagram
     direction LR
 
-    package "ai.solace.core.lifecycle" {
+    package "io.github.solaceharmony.core.lifecycle" {
         interface Lifecycle {
             <<Interface>>
         }
     }
 
-    package "ai.solace.core.storage" {
+    package "io.github.solaceharmony.core.storage" {
         interface "Storage<K, V>" {
             <<Interface>>
             +store(key: K, value: V, metadata: Map): Boolean
@@ -890,7 +890,7 @@ This interface is dedicated to storing and retrieving all pertinent information 
 *   **Purpose:** To provide a tailored API for managing the persistence of actor states, including their core data, port configurations, metrics, and any custom state information.
 *   **Inheritance:** Extends `Storage<String, Map<String, Any>>`. The `key` is typically the `actorId`.
 *   **Key Specialized Methods:**
-    *   `suspend fun getActorState(actorId: String): ActorState?`: Retrieves the primary state object for a given actor. (`ActorState` is defined in `ai.solace.core.actor`).
+    *   `suspend fun getActorState(actorId: String): ActorState?`: Retrieves the primary state object for a given actor. (`ActorState` is defined in `io.github.solaceharmony.core.actor`).
     *   `suspend fun setActorState(actorId: String, state: ActorState): Boolean`: Sets the primary state object for an actor.
     *   `suspend fun getActorPorts(actorId: String): Map<String, Map<String, Any>>?`: Retrieves the port configurations for an actor.
     *   `suspend fun setActorPorts(actorId: String, ports: Map<String, Map<String, Any>>): Boolean`: Sets the port configurations for an actor.
@@ -918,7 +918,7 @@ This interface is designed for managing configuration data for the overall syste
 These specialized interfaces are expected to be implemented by concrete storage backends (e.g., in-memory, file-based, database-backed) and made accessible via the `StorageManager`.
 #### 3.1.3. In-Memory Storage Implementations
 
-SolaceCore provides a set of concrete in-memory implementations for the storage interfaces, primarily useful for development, testing, or scenarios where persistence across application restarts is not required. These implementations reside in the `ai.solace.core.storage` package.
+SolaceCore provides a set of concrete in-memory implementations for the storage interfaces, primarily useful for development, testing, or scenarios where persistence across application restarts is not required. These implementations reside in the `io.github.solaceharmony.core.storage` package.
 
 ##### 3.1.3.1. `InMemoryStorage<K, V>` (from `InMemoryStorage.kt`)
 
@@ -990,9 +990,9 @@ The in-memory implementation of the central storage coordinator.
     *   Implements `start()`, `stop()`, `isActive()`, and `dispose()` (which calls `stop()` and `clearAll()`) for lifecycle management.
 
 These in-memory classes provide a fully functional, albeit volatile, persistence layer for SolaceCore, crucial for ease of development and testing.
-#### 3.1.4. Storage Caching Subsystem (`ai.solace.core.storage.cache`)
+#### 3.1.4. Storage Caching Subsystem (`io.github.solaceharmony.core.storage.cache`)
 
-To enhance performance, the `storage` module includes a caching subsystem that can wrap existing `Storage` implementations. This subsystem is located in the `ai.solace.core.storage.cache` package and comprises a generic caching storage decorator and various cache eviction policies.
+To enhance performance, the `storage` module includes a caching subsystem that can wrap existing `Storage` implementations. This subsystem is located in the `io.github.solaceharmony.core.storage.cache` package and comprises a generic caching storage decorator and various cache eviction policies.
 
 ##### 3.1.4.1. `CachePolicy<K, V>` Interface (from `CachePolicy.kt`)
 
@@ -1061,13 +1061,13 @@ A conceptual diagram of the caching subsystem:
 classDiagram
     direction LR
 
-    package "ai.solace.core.storage" {
+    package "io.github.solaceharmony.core.storage" {
         interface "Storage<K, V>" {
             <<Interface>>
         }
     }
 
-    package "ai.solace.core.storage.cache" {
+    package "io.github.solaceharmony.core.storage.cache" {
         interface "CachePolicy<K, V_CACHE>" {
             <<Interface>>
             +add(key: K, value: V_CACHE): Boolean
@@ -1106,9 +1106,9 @@ classDiagram
     note for "CachedStorage" "V_STORAGE is the type for the underlying storage,\nV_CACHE for CachePolicy here is Pair<V_STORAGE, Map>"
 ```
 This caching layer provides a significant performance optimization opportunity by reducing load on the primary storage backends, with configurable eviction strategies.
-#### 3.1.5. Actor State Recovery Subsystem (`ai.solace.core.storage.recovery`)
+#### 3.1.5. Actor State Recovery Subsystem (`io.github.solaceharmony.core.storage.recovery`)
 
-The `storage` module includes a dedicated subsystem for managing the snapshotting and recovery of actor states, ensuring data resilience. This is located in the `ai.solace.core.storage.recovery` package.
+The `storage` module includes a dedicated subsystem for managing the snapshotting and recovery of actor states, ensuring data resilience. This is located in the `io.github.solaceharmony.core.storage.recovery` package.
 
 ##### 3.1.5.1. `ActorStateSnapshot` Data Class (from `ActorStateSnapshot.kt`)
 
@@ -1118,7 +1118,7 @@ This data class represents an immutable snapshot of an actor's complete state at
 *   **Key Properties:**
     *   `actorId: String`: The unique identifier of the actor.
     *   `actorName: String`: The human-readable name of the actor.
-    *   `state: ActorState`: The core state of the actor (e.g., Initialized, Running, Stopped, Error, Paused), referencing the `ActorState` sealed class from `ai.solace.core.actor`.
+    *   `state: ActorState`: The core state of the actor (e.g., Initialized, Running, Stopped, Error, Paused), referencing the `ActorState` sealed class from `io.github.solaceharmony.core.actor`.
     *   `ports: Map<String, Map<String, Any>>`: Configuration of the actor's communication ports.
     *   `metrics: Map<String, Any>`: Metrics associated with the actor.
     *   `customState: Map<String, Any>`: Any additional custom state data for the actor.
@@ -1133,7 +1133,7 @@ This data class represents an immutable snapshot of an actor's complete state at
 This interface extends `ActorStateStorage` to add functionalities specifically for managing actor state snapshots.
 
 *   **Purpose:** To define a contract for storage backends that can persist and retrieve actor state snapshots.
-*   **Inheritance:** Extends `ai.solace.core.storage.ActorStateStorage`.
+*   **Inheritance:** Extends `io.github.solaceharmony.core.storage.ActorStateStorage`.
 *   **Key Snapshot-Specific Methods:**
     *   `suspend fun createSnapshot(actorId: String): ActorStateSnapshot?`: Implementations are expected to capture the current state of the actor (identified by `actorId`) from the storage and persist it as a new snapshot.
     *   `suspend fun restoreFromSnapshot(snapshot: ActorStateSnapshot): Boolean`: Restores the actor's state in the persistent storage to match the provided `snapshot`. This means the underlying `ActorStateStorage` will reflect the data within the snapshot.
@@ -1168,7 +1168,7 @@ This class provides a higher-level API to orchestrate actor snapshotting and rec
 classDiagram
     direction LR
 
-    package "ai.solace.core.actor" {
+    package "io.github.solaceharmony.core.actor" {
         class Actor {
             +id: String
             +name: String
@@ -1182,7 +1182,7 @@ classDiagram
         }
     }
 
-    package "ai.solace.core.storage" {
+    package "io.github.solaceharmony.core.storage" {
         interface ActorStateStorage {
             <<Interface>>
             +getActorPorts(actorId: String): Map?
@@ -1191,7 +1191,7 @@ classDiagram
         }
     }
 
-    package "ai.solace.core.storage.recovery" {
+    package "io.github.solaceharmony.core.storage.recovery" {
         class ActorStateSnapshot {
             +actorId: String
             +actorName: String
@@ -1239,7 +1239,7 @@ classDiagram
 This recovery system provides a crucial layer of fault tolerance for actors by allowing their states to be periodically saved and restored.
 #### 3.1.7. File-Based Storage Implementations (JVM-Specific)
 
-For persistent storage on the JVM, SolaceCore provides file-system-based implementations of the storage interfaces. These are located in the `ai.solace.core.storage` package within the `jvmMain` source set.
+For persistent storage on the JVM, SolaceCore provides file-system-based implementations of the storage interfaces. These are located in the `io.github.solaceharmony.core.storage` package within the `jvmMain` source set.
 
 ##### 3.1.7.1. `FileStorage<K, V>` Class (from `FileStorage.kt`)
 
@@ -1310,7 +1310,7 @@ The file-based implementation of the central `StorageManager`.
 These file-based implementations provide durable storage options for SolaceCore on the JVM, suitable for scenarios requiring data to persist across application restarts.
 #### 3.1.8. Storage Compression Subsystem (JVM-Specific)
 
-The `ai.solace.core.storage.compression` package in `jvmMain` provides a mechanism to transparently compress and decompress data being persisted through the `Storage` interface.
+The `io.github.solaceharmony.core.storage.compression` package in `jvmMain` provides a mechanism to transparently compress and decompress data being persisted through the `Storage` interface.
 
 ##### 3.1.8.1. `CompressionStrategy` Interface
 
@@ -1361,11 +1361,11 @@ A decorator class that wraps an existing `Storage<K, V>` implementation to add c
 classDiagram
     direction LR
 
-    package "ai.solace.core.storage" {
+    package "io.github.solaceharmony.core.storage" {
         interface "Storage<K, V>" { <<Interface>> }
     }
 
-    package "ai.solace.core.storage.compression" {
+    package "io.github.solaceharmony.core.storage.compression" {
         interface CompressionStrategy {
             <<Interface>>
             +compress(data: ByteArray): ByteArray
@@ -1398,7 +1398,7 @@ classDiagram
 This compression layer allows for efficient storage of large data by transparently applying compression based on configurable strategies and thresholds.
 #### 3.1.9. Storage Encryption Subsystem (JVM-Specific)
 
-SolaceCore provides a robust mechanism for encrypting data at rest within its storage module. This subsystem, located in the `ai.solace.core.storage.encryption` package in `jvmMain`, ensures the confidentiality and integrity of stored values and their metadata.
+SolaceCore provides a robust mechanism for encrypting data at rest within its storage module. This subsystem, located in the `io.github.solaceharmony.core.storage.encryption` package in `jvmMain`, ensures the confidentiality and integrity of stored values and their metadata.
 
 ##### 3.1.9.1. `EncryptionStrategy` Interface
 
@@ -1461,11 +1461,11 @@ A decorator class that wraps an existing `Storage` implementation to provide tra
 classDiagram
     direction LR
 
-    package "ai.solace.core.storage" {
+    package "io.github.solaceharmony.core.storage" {
         interface "Storage<K, V_OUT>" { <<Interface>> }
     }
 
-    package "ai.solace.core.storage.encryption" {
+    package "io.github.solaceharmony.core.storage.encryption" {
         interface EncryptionStrategy {
             <<Interface>>
             +encrypt(data: ByteArray): ByteArray
@@ -1497,7 +1497,7 @@ classDiagram
 This encryption layer provides a robust mechanism for securing sensitive data within the storage system, ensuring that both values and their metadata are protected.
 #### 3.1.10. JVM-Specific Serialization Utilities (`storage/serialization` Subdirectory)
 
-The `ai.solace.core.storage.serialization` package in `jvmMain` contains utility classes for serialization on the JVM.
+The `io.github.solaceharmony.core.storage.serialization` package in `jvmMain` contains utility classes for serialization on the JVM.
 
 ##### 3.1.10.1. `SerializationWrapper` Data Class (from `SerializationWrapper.kt`)
 
@@ -1506,7 +1506,7 @@ This data class provides a fallback mechanism for serializing objects that may n
 *   **Purpose:** To wrap an object's string representation (`toString()`) for serialization, typically when direct serialization of the object itself is not feasible or fails.
 *   **Definition:**
     ```kotlin
-    package ai.solace.core.storage.serialization
+    package io.github.solaceharmony.core.storage.serialization
 
     import kotlinx.serialization.Serializable
 
@@ -1519,9 +1519,9 @@ This data class provides a fallback mechanism for serializing objects that may n
     *   Upon deserialization, one would retrieve the original object's string representation from the `value` property. This does not reconstruct the original object instance but provides its string form.
 
 This utility ensures that a string representation can almost always be persisted, even for complex or non-standard objects, albeit with the loss of the original object's type and structure beyond its string form.
-#### 3.1.6. Actor State Serialization Subsystem (`ai.solace.core.storage.serialization`)
+#### 3.1.6. Actor State Serialization Subsystem (`io.github.solaceharmony.core.storage.serialization`)
 
-To handle the specific needs of persisting complex `ActorState` objects and custom actor data, the `storage` module includes a dedicated serialization subsystem. This is found in the `ai.solace.core.storage.serialization` package.
+To handle the specific needs of persisting complex `ActorState` objects and custom actor data, the `storage` module includes a dedicated serialization subsystem. This is found in the `io.github.solaceharmony.core.storage.serialization` package.
 
 ##### 3.1.6.1. `ActorStateSerializer<T : Any>` Interface (from `ActorStateSerializer.kt`)
 
@@ -1536,7 +1536,7 @@ This interface defines a contract for serializers specifically designed for acto
 
 ##### 3.1.6.2. `ActorStateEnumSerializer` Class (from `ActorStateEnumSerializer.kt`)
 
-A concrete implementation of `ActorStateSerializer<ActorState>` specifically for the `ai.solace.core.actor.ActorState` sealed class.
+A concrete implementation of `ActorStateSerializer<ActorState>` specifically for the `io.github.solaceharmony.core.actor.ActorState` sealed class.
 
 *   **Purpose:** To correctly serialize and deserialize the different states of an actor (e.g., `Initialized`, `Running`, `Stopped`, `Error`, `Paused`), including any associated data like error messages or pause reasons.
 *   **Serialization Logic:** Converts `ActorState` instances into a map, typically including a "type" field (e.g., "Running") and other relevant fields (e.g., "exception" for `ActorState.Error`).
@@ -1560,7 +1560,7 @@ Manages a collection of `ActorStateSerializer` instances.
 Extends `ActorStateStorage` to integrate specialized serialization for custom actor data.
 
 *   **Purpose:** To provide methods for storing and retrieving typed objects within an actor's "customState" map, using registered `ActorStateSerializer`s.
-*   **Inheritance:** Extends `ai.solace.core.storage.ActorStateStorage`.
+*   **Inheritance:** Extends `io.github.solaceharmony.core.storage.ActorStateStorage`.
 *   **Key Added Methods:**
     *   `fun getSerializerRegistry(): ActorStateSerializerRegistry`: Provides access to the associated serializer registry.
     *   `suspend fun <T : Any> serializeAndStore(actorId: String, key: String, obj: T, clazz: KClass<T>): Boolean`:
@@ -1591,17 +1591,17 @@ A concrete implementation of `SerializableActorStateStorage` that uses the decor
 classDiagram
     direction LR
 
-    package "ai.solace.core.actor" {
+    package "io.github.solaceharmony.core.actor" {
         class ActorState { <<Sealed>> }
     }
 
-    package "ai.solace.core.storage" {
+    package "io.github.solaceharmony.core.storage" {
         interface ActorStateStorage { <<Interface>> }
         class InMemoryActorStateStorage { }
         ActorStateStorage <|-- InMemoryActorStateStorage
     }
 
-    package "ai.solace.core.storage.serialization" {
+    package "io.github.solaceharmony.core.storage.serialization" {
         interface "ActorStateSerializer<T>" {
             <<Interface>>
             +serialize(obj: T): Map
@@ -1645,7 +1645,7 @@ classDiagram
     }
 ```
 This specialized serialization framework enhances the storage module by providing robust, type-safe handling for actor state data, particularly for custom objects within an actor's state.
-## 4. Actor Module (`ai.solace.core.actor`)
+## 4. Actor Module (`io.github.solaceharmony.core.actor`)
 
 The `actor` module implements the actor model for concurrent and distributed computation within SolaceCore. It provides abstractions for actors, their states, messages, and basic lifecycle management. The design emphasizes single responsibility, robust message handling, and resource management, leveraging Kotlin coroutines for asynchronous operations.
 
@@ -1720,7 +1720,7 @@ Represents messages exchanged between actors.
 #### 4.1.3. `ActorMessageHandler<T : Any>` Abstract Class (from `ActorMessage.kt`)
 
 A base class for handling specific types of `ActorMessage`s, integrating with the port system.
-*   **Implements:** `ai.solace.core.kernel.channels.ports.Port.MessageHandler<ActorMessage<T>, ActorMessage<T>>`.
+*   **Implements:** `io.github.solaceharmony.core.kernel.channels.ports.Port.MessageHandler<ActorMessage<T>, ActorMessage<T>>`.
 *   **Abstract Method:** `abstract suspend fun processMessage(message: ActorMessage<T>): ActorMessage<T>`.
 *   The `handle()` method (required by `Port.MessageHandler`) calls `processMessage()`.
 
@@ -1728,7 +1728,7 @@ A base class for handling specific types of `ActorMessage`s, integrating with th
 
 The central abstraction for all actors in the system.
 
-*   **Implements:** `ai.solace.core.lifecycle.Lifecycle`.
+*   **Implements:** `io.github.solaceharmony.core.lifecycle.Lifecycle`.
 *   **Constructor:**
     *   `id: String`: Unique actor ID (defaults to `Uuid.random().toString()`).
     *   `name: String`: Human-readable name (defaults to "Actor").
@@ -1738,7 +1738,7 @@ The central abstraction for all actors in the system.
     *   Uses an internal `DefaultLifecycle` instance (inner class implementing `Lifecycle`) for basic start/stop/active status.
 *   **Port-Based Communication:**
     *   Actors can create and manage typed communication ports using the `createPort<T : Any>(name, messageClass, handler, ...)` method.
-    *   Each port is an instance of an inner class `TypedPort<T : Any>`, which wraps a `ai.solace.core.kernel.channels.ports.Port<T>` (specifically, a `BidirectionalPort` is created).
+    *   Each port is an instance of an inner class `TypedPort<T : Any>`, which wraps a `io.github.solaceharmony.core.kernel.channels.ports.Port<T>` (specifically, a `BidirectionalPort` is created).
     *   The `TypedPort` handles incoming messages on its channel, processes them with a user-provided `handler` lambda, and includes timeout handling (`processingTimeout`) and metrics recording.
     *   Message processing for each port runs in a separate coroutine job, managed by the actor.
     *   Provides methods `getPort()`, `removePort()`, `recreatePort()`, `disconnectPort()`.
@@ -1766,7 +1766,7 @@ The central abstraction for all actors in the system.
 *Note: The actor system class diagram and its description have been moved to `/docs/components/actor_system/actor_system_class_diagram.md`.*
 ### 4.2. Actor Construction (`builder` Subdirectory)
 
-The `ai.solace.core.actor.builder` package provides a fluent API for constructing networks of actors and defining their interconnections.
+The `io.github.solaceharmony.core.actor.builder` package provides a fluent API for constructing networks of actors and defining their interconnections.
 
 #### 4.2.1. `ActorBuilder` Class (from `ActorBuilder.kt`)
 
@@ -1776,7 +1776,7 @@ The `ai.solace.core.actor.builder` package provides a fluent API for constructin
     3.  Establish connections between actor ports.
     4.  Ultimately produce a configured `WorkflowManager` instance that manages the constructed actor network.
 *   **Key Components & Workflow (Target Asynchronous Architecture):**
-    *   **Internal `WorkflowManager`:** The `ActorBuilder` internally creates and configures an instance of `ai.solace.core.workflow.WorkflowManager`.
+    *   **Internal `WorkflowManager`:** The `ActorBuilder` internally creates and configures an instance of `io.github.solaceharmony.core.workflow.WorkflowManager`.
     *   **Actor Registration (`suspend fun addActor()`):**
         *   The preferred method for adding an `Actor` is the `suspend fun addActor(actor, portDefinitions)`.
         *   When an `Actor` instance is added, it's stored internally by the builder.
@@ -1819,7 +1819,7 @@ val workflowManager = actorBuilder.build()
 This builder, when used with its asynchronous API, simplifies the setup of complex actor topologies by abstracting the direct interactions with the `WorkflowManager` during the configuration phase while preserving the benefits of Kotlin's coroutine system.
 ### 4.3. Actor Metrics (`metrics` Subdirectory)
 
-The `ai.solace.core.actor.metrics` package provides a dedicated class for collecting and managing performance and operational metrics for individual actors.
+The `io.github.solaceharmony.core.actor.metrics` package provides a dedicated class for collecting and managing performance and operational metrics for individual actors.
 
 #### 4.3.1. `ActorMetrics` Class (from `ActorMetrics.kt`)
 
@@ -1859,14 +1859,14 @@ This class offers a comprehensive suite of metrics to monitor an actor's behavio
 The `ActorMetrics` class is essential for observing the runtime behavior of actors, identifying bottlenecks, and ensuring the overall health of the actor system.
 ### 4.4. Actor Supervision (`supervisor` Subdirectory)
 
-The `ai.solace.core.actor.supervisor` package provides a mechanism for managing groups of actors.
+The `io.github.solaceharmony.core.actor.supervisor` package provides a mechanism for managing groups of actors.
 
 #### 4.4.1. `SupervisorActor` Class (from `SupervisorActor.kt`)
 
 This class is a concrete implementation of `Actor` designed to oversee and manage a collection of other "child" or "managed" actors. Its focus is on dynamic registration, lifecycle control, and hot-swapping of these actors.
 
 *   **Purpose:** To act as a central point for managing a group of actors, allowing for their addition, removal, and replacement at runtime, as well as collective lifecycle operations.
-*   **Inheritance:** Extends `ai.solace.core.actor.Actor`.
+*   **Inheritance:** Extends `io.github.solaceharmony.core.actor.Actor`.
 *   **Key Responsibilities and Features:**
     *   **Actor Registry:**
         *   Maintains an internal registry (`actorRegistry: Map<String, Actor>`) of actors it manages, keyed by actor ID.
@@ -1906,7 +1906,7 @@ The [`SupervisorActor.md`](docs/components/actor_system/SupervisorActor.md:1) de
 
 ### 4.5. Actor Usage Examples (`examples` Subdirectory)
 
-The `ai.solace.core.actor.examples` package provides concrete examples of how to implement custom actors by extending the `Actor` base class. These examples illustrate common patterns such as message filtering and transformation.
+The `io.github.solaceharmony.core.actor.examples` package provides concrete examples of how to implement custom actors by extending the `Actor` base class. These examples illustrate common patterns such as message filtering and transformation.
 
 #### 4.5.1. `Filter<T : Any>` Actor (from `Filter.kt`)
 
@@ -2075,10 +2075,10 @@ The archived `SolaceCoreFramework.md` document details a sophisticated design fo
     *   **Callback Channels:** Specialized channels for actors awaiting external events to avoid congesting general-purpose queues.
 
 This design aims to balance efficiency and resilience, enabling actors to handle diverse task types effectively.
-## 5. Workflow Module (`ai.solace.core.workflow`)
+## 5. Workflow Module (`io.github.solaceharmony.core.workflow`)
 
 *Note: The workflow module documentation has been moved to `/docs/components/workflow/Workflow_Management_Design.md`.*
-## 6. Scripting Module (`ai.solace.core.scripting`)
+## 6. Scripting Module (`io.github.solaceharmony.core.scripting`)
 
 The `scripting` module in SolaceCore provides a robust framework for integrating and executing dynamic Kotlin scripts (`.kts` files). This allows for flexible and updatable logic within the system, particularly for actor behaviors. The design emphasizes Kotlin script integration, hot-reloading, validation, versioning, and persistent storage.
 
@@ -2131,7 +2131,7 @@ Defines the contract for the core component responsible for compiling and execut
 ```mermaid
 classDiagram
     direction LR
-    package "ai.solace.core.scripting" {
+    package "io.github.solaceharmony.core.scripting" {
         interface CompiledScript {
             <<Interface>>
             +name: String
@@ -2190,7 +2190,7 @@ Handles the persistent storage and retrieval of script source code and associate
 A specialized `Actor` implementation whose behavior is defined by a dynamically loaded and compiled Kotlin script.
 
 *   **Purpose:** To enable actors with logic that can be updated at runtime (hot-reloading) without restarting the actor or the system.
-*   **Inheritance:** Extends `ai.solace.core.actor.Actor`.
+*   **Inheritance:** Extends `io.github.solaceharmony.core.actor.Actor`.
 *   **Key Features:**
     *   **Constructor:** Takes a `ScriptEngine`, initial `scriptSource` string, and `scriptName`.
     *   **Script Execution:**
@@ -2205,11 +2205,11 @@ A specialized `Actor` implementation whose behavior is defined by a dynamically 
 classDiagram
     direction LR
 
-    package "ai.solace.core.actor" {
+    package "io.github.solaceharmony.core.actor" {
         abstract class Actor { <<Abstract>> }
     }
 
-    package "ai.solace.core.scripting" {
+    package "io.github.solaceharmony.core.scripting" {
         interface ScriptEngine { <<Interface>> }
         interface CompiledScript { <<Interface>> }
         interface ScriptValidator { <<Interface>> }
@@ -2239,7 +2239,7 @@ classDiagram
 The scripting module, with these components, offers a powerful way to introduce dynamic and manageable custom logic into the SolaceCore system, especially for defining actor behaviors.
 ### 6.4. JVM-Specific Scripting Implementations
 
-The `ai.solace.core.scripting` package within the `jvmMain` source set provides concrete implementations for the scripting interfaces, tailored for the Java Virtual Machine environment.
+The `io.github.solaceharmony.core.scripting` package within the `jvmMain` source set provides concrete implementations for the scripting interfaces, tailored for the Java Virtual Machine environment.
 
 #### 6.4.1. `JvmScriptEngine` Class (from `JvmScriptEngine.kt`)
 
@@ -2279,7 +2279,7 @@ This class implements the `ScriptEngine` interface for the JVM, providing capabi
         *   Error handling distinguishes between compilation and execution phases to throw `ScriptCompilationException` or `ScriptExecutionException` accordingly.
 
 *   **Internal `KotlinCompiledScript` Class:**
-    *   A private data class implementing the public `ai.solace.core.scripting.CompiledScript` interface.
+    *   A private data class implementing the public `io.github.solaceharmony.core.scripting.CompiledScript` interface.
     *   It holds the `name`, `compilationTimestamp`, and the actual `kotlin.script.experimental.api.CompiledScript` object obtained from the Kotlin scripting host.
 
 *   **Custom Exceptions:**
@@ -2347,7 +2347,7 @@ A JVM-specific orchestrator class that integrates the various scripting componen
 classDiagram
     direction LR
 
-    package "ai.solace.core.scripting (commonMain)" {
+    package "io.github.solaceharmony.core.scripting (commonMain)" {
         interface ScriptEngine { <<Interface>> }
         interface CompiledScript { <<Interface>> }
         interface ScriptValidator { <<Interface>> }
@@ -2356,7 +2356,7 @@ classDiagram
         interface ScriptStorage { <<Interface>> }
     }
 
-    package "ai.solace.core.scripting (jvmMain)" {
+    package "io.github.solaceharmony.core.scripting (jvmMain)" {
         class JvmScriptEngine {
             +compile(): CompiledScript
             +execute(): Any?
@@ -2497,9 +2497,9 @@ The [`qodana.yaml`](qodana.yaml) file also provides commented-out sections for m
 *   Installing specific IDE plugins that Qodana can leverage during analysis (e.g., `#plugins: - id: <plugin.id>`).
 
 Currently, these advanced options are not actively used in the provided configuration, relying on the default behavior of the `qodana.starter` profile and the specified JVM linter. Regular execution of Qodana helps identify potential bugs, performance issues, and deviations from coding standards early in the development cycle, contributing to the overall robustness and quality of the SolaceCore framework.
-## 9. JVM-Specific Utilities (`ai.solace.core.util`)
+## 9. JVM-Specific Utilities (`io.github.solaceharmony.core.util`)
 
-The `ai.solace.core.util` package within `jvmMain` houses utility classes and functions specific to the JVM environment.
+The `io.github.solaceharmony.core.util` package within `jvmMain` houses utility classes and functions specific to the JVM environment.
 
 ### 9.1. Logging (`LoggerProvider.kt`)
 

@@ -64,7 +64,7 @@ class SolaceCoreUIIntegration(
      * This demonstrates the conversion between core actor system and UI representation
      */
     private suspend fun mapActorToDisplayData(
-        // In real implementation: actor: ai.solace.core.actor.Actor
+        // In real implementation: actor: io.github.solaceharmony.core.actor.Actor
         actorId: String,
         actorName: String
     ): ActorDisplayData {
@@ -74,11 +74,11 @@ class SolaceCoreUIIntegration(
         val metrics = actor.getMetrics()
         
         val uiState = when (coreState) {
-            is ai.solace.core.actor.ActorState.Running -> UIActorState.Running
-            is ai.solace.core.actor.ActorState.Stopped -> UIActorState.Stopped
-            is ai.solace.core.actor.ActorState.Error -> UIActorState.Error(coreState.exception)
-            is ai.solace.core.actor.ActorState.Paused -> UIActorState.Paused(coreState.reason)
-            is ai.solace.core.actor.ActorState.Initialized -> UIActorState.Initialized
+            is io.github.solaceharmony.core.actor.ActorState.Running -> UIActorState.Running
+            is io.github.solaceharmony.core.actor.ActorState.Stopped -> UIActorState.Stopped
+            is io.github.solaceharmony.core.actor.ActorState.Error -> UIActorState.Error(coreState.exception)
+            is io.github.solaceharmony.core.actor.ActorState.Paused -> UIActorState.Paused(coreState.reason)
+            is io.github.solaceharmony.core.actor.ActorState.Initialized -> UIActorState.Initialized
         }
         
         val uiMetrics = ActorMetricsData(

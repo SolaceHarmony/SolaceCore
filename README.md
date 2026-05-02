@@ -81,7 +81,7 @@ repositories {
 }
 
 dependencies {
-    implementation("ai.solace:solace-core:0.1.0")
+    implementation("io.github.solaceharmony:solace-core:0.1.0")
 }
 ```
 
