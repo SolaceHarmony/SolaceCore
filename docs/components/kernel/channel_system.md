@@ -12,13 +12,13 @@ The primary goal of the Channel System is to provide a robust and flexible mecha
 
 ## Core Abstractions and Interfaces
 
-The foundation of the Channel System is the `Port.kt` file, which defines the primary `Port<T>` interface and several crucial nested interfaces and classes for message handling, protocol adaptation, type conversion, and connection management. It leverages `kotlinx.coroutines.channels.Channel` for its underlying asynchronous communication and `ai.solace.core.lifecycle.Disposable` for resource management.
+The foundation of the Channel System is the `Port.kt` file, which defines the primary `Port<T>` interface and several crucial nested interfaces and classes for message handling, protocol adaptation, type conversion, and connection management. It leverages `kotlinx.coroutines.channels.Channel` for its underlying asynchronous communication and `io.github.solaceharmony.core.lifecycle.Disposable` for resource management.
 
 ### `Port<T : Any>` Interface
 
 This is the central interface for any communication endpoint in the system.
 
-*   **Inheritance:** Implements `ai.solace.core.lifecycle.Disposable`.
+*   **Inheritance:** Implements `io.github.solaceharmony.core.lifecycle.Disposable`.
 *   **Key Properties:**
     *   `id: String`: A unique identifier for the port, automatically generatable.
     *   `name: String`: A human-readable name for the port.
@@ -139,7 +139,7 @@ classDiagram
 
 ## Concrete Implementations and Utilities
 
-The `ai.solace.core.kernel.channels.ports` package also provides concrete implementations and utilities.
+The `io.github.solaceharmony.core.kernel.channels.ports` package also provides concrete implementations and utilities.
 
 ### `BidirectionalPort<T : Any>` Class
 

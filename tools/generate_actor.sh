@@ -8,9 +8,9 @@ if [ -z "$name" ]; then
   exit 1
 fi
 cat > "$name.kt" <<'TEMPLATE'
-package ai.solace.custom
+package io.github.solaceharmony.custom
 
-import ai.solace.core.actor.Actor
+import io.github.solaceharmony.core.actor.Actor
 
 class $name : Actor() {
     override suspend fun process() {

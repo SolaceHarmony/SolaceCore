@@ -186,7 +186,7 @@ class ConversationBufferMemory : Memory {
 
 ## Package-by-Package Improvements
 
-### 1. ai.solace.core.actor Package
+### 1. io.github.solaceharmony.core.actor Package
 
 Current:
 ```kotlin
@@ -218,7 +218,7 @@ class TextProcessingActor : ChainableActor<String, String>() {
 }
 ```
 
-### 2. ai.solace.core.channels Package
+### 2. io.github.solaceharmony.core.channels Package
 
 Current:
 ```kotlin
@@ -241,7 +241,7 @@ interface ChainPort<I, O> : Port<I> {
 }
 ```
 
-### 3. ai.solace.core.common Package
+### 3. io.github.solaceharmony.core.common Package
 
 Add LangChain-like utilities:
 ```kotlin
@@ -263,7 +263,7 @@ object Memory {
 
 ## New Packages to Add
 
-### 1. ai.solace.core.llm
+### 1. io.github.solaceharmony.core.llm
 LangChain-like LLM abstractions:
 ```kotlin
 interface LLM {
@@ -278,7 +278,7 @@ class OpenAILLM(private val apiKey: String) : LLM {
 }
 ```
 
-### 2. ai.solace.core.memory
+### 2. io.github.solaceharmony.core.memory
 Enhanced memory systems:
 ```kotlin
 interface VectorStore {
@@ -291,7 +291,7 @@ class ChromaVectorStore : VectorStore {
 }
 ```
 
-### 3. ai.solace.core.tools
+### 3. io.github.solaceharmony.core.tools
 Tool abstractions like LangChain:
 ```kotlin
 interface Tool {

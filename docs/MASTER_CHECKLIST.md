@@ -241,7 +241,7 @@ This document consolidates all actionable items, quality assurance checks, docum
 
 ## 📋 Planned Components
 
-### Kernel Module: Channel System (`ai.solace.core.kernel.channels`)
+### Kernel Module: Channel System (`io.github.solaceharmony.core.kernel.channels`)
 
 #### Connection Implementation
 - [ ] Implement actual message passing mechanism for `PortConnection`.
