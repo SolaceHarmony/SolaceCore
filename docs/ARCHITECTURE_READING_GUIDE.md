@@ -52,8 +52,7 @@ If you want the “Solace AI” vision/requirements framing, read the Solace AI 
   - [components/actor_inference_engine/InferenceCubeArchitecture.md](components/actor_inference_engine/InferenceCubeArchitecture.md)
 - **Supervisor emotional model design notes:**
   - [components/actor_system/SupervisorAI_EmotionalModel.md](components/actor_system/SupervisorAI_EmotionalModel.md)
-- **LangChain alignment and patterns:**
-  - [architecture.md](architecture.md)
+- **LangChain alignment and patterns** (downstream — the chains live in `prototypes/`, not `lib/`):
   - [langchain-patterns.md](langchain-patterns.md)
   - [RECOMMENDATIONS_LANGCHAIN.md](RECOMMENDATIONS_LANGCHAIN.md)
 
