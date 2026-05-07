@@ -1,12 +1,26 @@
 # SolaceCore Features
 
-This folder is the working surface for the project's design features. Each
-feature gets its own folder with a `README.md` carrying status, provenance,
-detailed design, implementation notes, and open questions. Folders are the
-unit of growth — when a feature accumulates enough material it sprouts
-additional files (`schema.md`, `sequence.md`, `prototype/`, etc.).
+This folder is where the architecture's intent lives in narrative form.
+Each feature has a folder; each folder's `README.md` is the spec for
+that feature, written as the document the design *is* rather than the
+document that talks about it. Folders sprout additional files
+(`schema.md`, `sequence.md`, `prototype/`) when material warrants the
+expansion.
 
-The status values are:
+The features here are documented as **two convergent threads where
+they have two**: SolaceCore is the merger of Sydney's **Solace**
+lineage (the Seamless Reflective AI Framework, SRAF, with its
+Supervisor / Mouth Tool / Time Actor / Confusion Corrector / Zoom
+controller) and her **Magentic** lineage (the Codex-era infrastructure
+contributions: Coroutine Shared-Memory, Neutral History XML,
+InferenceCube + LTC, Pipeline DSL, Provider Specs, MCP). Where the
+two threads describe the same primitive — Reflection Memory and
+Neutral History; Supervisor's executive cognition and safety boundary
+— the feature folder documents both threads in their own voice and
+sketches the convergence. Where a feature is uniquely from one
+lineage, the folder names the lineage but tells the story straight.
+
+The status values:
 
 | Status                | Meaning                                                                    |
 | --------------------- | -------------------------------------------------------------------------- |
