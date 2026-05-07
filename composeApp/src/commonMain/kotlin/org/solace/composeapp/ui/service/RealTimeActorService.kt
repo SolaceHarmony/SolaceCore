@@ -4,14 +4,21 @@ package org.solace.composeapp.ui.service
 import org.solace.composeapp.actor.ActorState
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.*
-import kotlinx.datetime.Clock
+import kotlin.time.Clock
+import kotlin.time.Instant
 import kotlin.math.roundToInt
 import org.solace.composeapp.ui.data.ActorDisplayData
 import org.solace.composeapp.ui.data.ActorMetricsData
+import org.solace.composeapp.ui.data.AgentType
+import org.solace.composeapp.ui.data.ChatMessage
+import org.solace.composeapp.ui.data.ChatRole
+import org.solace.composeapp.ui.data.LogEntry
+import org.solace.composeapp.ui.data.LogLevel
 import org.solace.composeapp.ui.data.SystemMetricsData
 import org.solace.composeapp.ui.data.ChannelDisplayData
 import org.solace.composeapp.ui.data.ChannelConnectionState
 import org.solace.composeapp.ui.data.ChannelMetricsData
+import org.solace.composeapp.ui.data.TaskInfo
 import org.solace.composeapp.ui.data.WorkflowDisplayData
 import org.solace.composeapp.ui.data.WorkflowState
 import kotlin.uuid.ExperimentalUuidApi
@@ -40,11 +47,21 @@ class RealTimeActorService(
     
     private val _isMonitoring = MutableStateFlow(false)
     val isMonitoring: StateFlow<Boolean> = _isMonitoring.asStateFlow()
-    
+
+    /** Per-actor log feeds, keyed by actor id. Each list is bounded to MAX_LOGS_PER_ACTOR. */
+    private val _logs = MutableStateFlow<Map<String, List<LogEntry>>>(emptyMap())
+    val logs: StateFlow<Map<String, List<LogEntry>>> = _logs.asStateFlow()
+
+    /** Per-AI-actor chat transcripts, keyed by actor id. */
+    private val _chats = MutableStateFlow<Map<String, List<ChatMessage>>>(emptyMap())
+    val chats: StateFlow<Map<String, List<ChatMessage>>> = _chats.asStateFlow()
+
     private var monitoringJob: Job? = null
     // Preserve user-created/deleted actors and state between ticks
     private val actorStore: MutableMap<String, ActorDisplayData> = mutableMapOf()
     private var monitoringStartMs: Long? = null
+
+    // Callers can `collectAsState` `logs`/`chats` and index by actor id — no per-actor flow needed.
     
     /**
      * Start real-time monitoring of the actor system
@@ -77,19 +94,157 @@ class RealTimeActorService(
         monitoringJob = null
     }
 
+    /**
+     * Append a log line for an actor. Bounded to MAX_LOGS_PER_ACTOR (oldest dropped).
+     * Safe to call from any thread — operates on the StateFlow.
+     */
+    private fun appendLog(actorId: String, level: LogLevel, message: String) {
+        val now = Clock.System.now()
+        val entry = LogEntry(now, level, message)
+        _logs.update { current ->
+            val existing = current[actorId].orEmpty()
+            val next = (existing + entry).takeLast(MAX_LOGS_PER_ACTOR)
+            current + (actorId to next)
+        }
+    }
+
+    /** Append a chat turn for an AI actor. */
+    private fun appendChat(actorId: String, role: ChatRole, content: String) {
+        val now = Clock.System.now()
+        _chats.update { current ->
+            val existing = current[actorId].orEmpty()
+            current + (actorId to existing + ChatMessage(now, role, content))
+        }
+    }
+
+    /**
+     * Operator-initiated chat message. Triggers a simulated agent reply for AI-typed actors.
+     * For non-AI actors the call is a no-op so the UI can disable the input.
+     */
+    fun sendChatMessage(actorId: String, content: String) {
+        val actor = actorStore[actorId] ?: return
+        if (actor.agentType != AgentType.AI) return
+        if (content.isBlank()) return
+
+        appendChat(actorId, ChatRole.User, content.trim())
+        appendLog(actorId, LogLevel.Info, "Operator: \"${content.trim().take(80)}\"")
+
+        // Simulate LLM thinking → reply, on a short delay.
+        scope.launch {
+            delay(400 + (200..900).random().toLong())
+            val reply = canonicalReply(actor, content.trim())
+            appendChat(actorId, ChatRole.Agent, reply)
+            appendLog(actorId, LogLevel.Debug, "Generated reply (${reply.length} chars)")
+        }
+    }
+
+    /**
+     * Generate a plausible-sounding stub reply. In a real integration this would dispatch to the
+     * underlying LLM/agent runtime via the actor's mailbox.
+     */
+    private fun canonicalReply(actor: ActorDisplayData, prompt: String): String {
+        val lower = prompt.lowercase()
+        return when {
+            lower.contains("status") || lower.contains("doing") || lower.contains("working on") -> {
+                val task = actor.currentTask
+                if (task != null) {
+                    val pct = task.progress?.let { " (${(it * 100).toInt()}%)" } ?: ""
+                    "Right now I'm on \"${task.title}\"$pct — ${task.detail}."
+                } else {
+                    "I'm idle and ready for work. Send me something to do."
+                }
+            }
+            lower.contains("help") || lower.contains("can you") -> {
+                "I can: ${actor.capabilities.joinToString(", ")}. Want me to demo any of those on a sample payload?"
+            }
+            lower.contains("error") || lower.contains("fail") -> {
+                "Last failure window: ${actor.metrics.messagesFailed} failures out of " +
+                    "${actor.metrics.messagesReceived} received (${actor.metrics.successRate.toInt()}% success)."
+            }
+            else -> "Acknowledged: \"${prompt.take(60)}\". I'll fold that into my next pass."
+        }
+    }
+
+    /**
+     * Tick a fresh "current task" for each actor and emit a couple of log lines so the UI feels live.
+     */
+    private fun tickActivity(actor: ActorDisplayData): ActorDisplayData {
+        if (actor.state !is ActorState.Running) {
+            // Non-running actors get one note per tick that they're not processing.
+            if ((0..4).random() == 0) {
+                appendLog(actor.id, LogLevel.Debug, "State: ${actor.state} — no work performed")
+            }
+            return actor
+        }
+
+        val now = Clock.System.now()
+        val task = nextTaskFor(actor, now)
+        // Generate 1-2 log lines tied to this work
+        val received = actor.metrics.messagesReceived
+        val processed = actor.metrics.messagesProcessed
+        appendLog(
+            actor.id, LogLevel.Info,
+            "Processed batch of ${(processed - actor.metrics.messagesProcessed).coerceAtLeast(0).coerceAtMost(received)} " +
+                "messages → \"${task.title}\""
+        )
+        if ((0..6).random() == 0) {
+            appendLog(actor.id, LogLevel.Warn, "Slow consumer detected on outbound port")
+        }
+        if (actor.metrics.messagesFailed > 0 && (0..3).random() == 0) {
+            appendLog(actor.id, LogLevel.Error, "Drop: payload schema mismatch (failed=${actor.metrics.messagesFailed})")
+        }
+        return actor.copy(currentTask = task)
+    }
+
+    private fun nextTaskFor(actor: ActorDisplayData, now: Instant): TaskInfo {
+        // Domain-flavored task descriptions per agent type / role.
+        val (title, detail, progress) = when (actor.id) {
+            DEMO_ACTOR_MESSAGE_PROCESSOR -> Triple(
+                "Classify inbound batch",
+                "Routing #${(1000..9999).random()} to ${listOf("transform", "logger", "aggregator").random()}",
+                (0.05f..0.95f).random()
+            )
+            DEMO_ACTOR_DATA_TRANSFORMER -> Triple(
+                "Normalize payloads",
+                "Applying schema v${(1..3).random()} to ${(20..200).random()} records",
+                (0.1f..0.9f).random()
+            )
+            DEMO_ACTOR_RESULT_AGGREGATOR -> Triple(
+                "Aggregate window",
+                "Synthesizing ${(3..12).random()} partials → final response",
+                (0.0f..1.0f).random()
+            )
+            DEMO_ACTOR_LOGGER_SERVICE -> Triple(
+                "Append + flush",
+                "Buffer: ${(50..500).random()} lines, last flush ${(0..30).random()}s ago",
+                null
+            )
+            else -> Triple("Working", "Processing inbound stream", (0.1f..0.9f).random())
+        }
+        // Keep startedAt sticky if the task title hasn't changed
+        val current = actor.currentTask
+        val startedAt = if (current?.title == title) current.startedAt else now
+        return TaskInfo(title = title, detail = detail, startedAt = startedAt, progress = progress)
+    }
+
+    private fun ClosedFloatingPointRange<Float>.random(): Float {
+        val span = endInclusive - start
+        return start + (kotlin.random.Random.nextFloat() * span)
+    }
+
     /** Update only metrics for existing actors; keep user edits persistent. */
     private suspend fun updateActorMetrics() {
         val now = Clock.System.now()
         if (actorStore.isEmpty() && _actors.value.isNotEmpty()) {
             _actors.value.forEach { actorStore[it.id] = it }
         }
-        // Update metrics for each actor
+        // Update metrics for each actor, then advance the per-tick activity (logs + currentTask).
         val updatedStore = actorStore.mapValues { (_, a) ->
             val received = (200..1500).random().toLong()
             val processed = (received * (70..100).random() / 100.0).toLong()
             val failed = (0..(received/10).toInt()).random().toLong()
             val success = if (received > 0) (100.0 * (processed - failed).coerceAtLeast(0) / received).coerceIn(0.0, 100.0) else a.metrics.successRate
-            a.copy(
+            val withMetrics = a.copy(
                 lastUpdate = now,
                 metrics = a.metrics.copy(
                     messagesReceived = received,
@@ -100,6 +255,7 @@ class RealTimeActorService(
                     lastProcessingTime = (5..60).random().toLong()
                 )
             )
+            tickActivity(withMetrics)
         }
         actorStore.clear()
         actorStore.putAll(updatedStore)
@@ -167,30 +323,61 @@ class RealTimeActorService(
                 name = "Message Processor",
                 state = ActorState.Running,
                 lastUpdate = now,
-                metrics = ActorMetricsData(0,0,0,95.0,20.0,10)
+                metrics = ActorMetricsData(0, 0, 0, 95.0, 20.0, 10),
+                agentType = AgentType.AI,
+                description = "LLM-backed agent that classifies inbound messages and routes them to downstream handlers.",
+                capabilities = listOf("classify", "route", "extract", "summarize"),
+                currentTask = TaskInfo(
+                    title = "Awaiting work",
+                    detail = "Idle on inbound queue",
+                    startedAt = now,
+                    progress = null
+                )
             ),
             ActorDisplayData(
                 id = DEMO_ACTOR_DATA_TRANSFORMER,
                 name = "Data Transformer",
                 state = ActorState.Running,
                 lastUpdate = now,
-                metrics = ActorMetricsData(0,0,0,97.0,25.0,12)
+                metrics = ActorMetricsData(0, 0, 0, 97.0, 25.0, 12),
+                agentType = AgentType.Standard,
+                description = "Stateless pipeline stage — normalizes payloads and applies schema mapping.",
+                capabilities = listOf("normalize", "validate", "schema-map")
             ),
             ActorDisplayData(
                 id = DEMO_ACTOR_RESULT_AGGREGATOR,
                 name = "Result Aggregator",
                 state = ActorState.Running,
                 lastUpdate = now,
-                metrics = ActorMetricsData(0,0,0,92.0,35.0,18)
+                metrics = ActorMetricsData(0, 0, 0, 92.0, 35.0, 18),
+                agentType = AgentType.AI,
+                description = "Aggregates partial results and synthesizes a final response with the help of an LLM.",
+                capabilities = listOf("aggregate", "synthesize", "explain")
             ),
             ActorDisplayData(
                 id = DEMO_ACTOR_LOGGER_SERVICE,
                 name = "Logger Service",
                 state = ActorState.Running,
                 lastUpdate = now,
-                metrics = ActorMetricsData(0,0,0,99.0,8.0,4)
+                metrics = ActorMetricsData(0, 0, 0, 99.0, 8.0, 4),
+                agentType = AgentType.System,
+                description = "Persists structured log lines to the durable log sink.",
+                capabilities = listOf("append", "flush", "rotate")
             )
         ).forEach { actorStore[it.id] = it }
+
+        // Seed each actor with a starting log line and (for AI agents) a greeting from the agent.
+        actorStore.values.forEach { actor ->
+            appendLog(actor.id, LogLevel.Info, "Actor \"${actor.name}\" initialized")
+            if (actor.agentType == AgentType.AI) {
+                appendChat(
+                    actor.id,
+                    ChatRole.Agent,
+                    "Hi — I'm ${actor.name}. I can help with: ${actor.capabilities.joinToString(", ")}. " +
+                        "Ask me anything about my current task or send work my way."
+                )
+            }
+        }
     }
     
     /**
@@ -522,6 +709,7 @@ class RealTimeActorService(
     
     companion object {
         private const val UPDATE_INTERVAL_MS = 2000L // 2 second updates for demo
+        private const val MAX_LOGS_PER_ACTOR = 200 // bounded ring of recent log lines per actor
         
         // Stable UUID-based IDs for demo actors to ensure consistency across UI updates
         // Using predictable UUIDs for demo purposes while maintaining uniqueness guarantees

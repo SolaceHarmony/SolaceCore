@@ -1,0 +1,23 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "composeApp:js (browser dev server)",
+      "runtimeExecutable": "gradle",
+      "runtimeArgs": [":composeApp:jsBrowserDevelopmentRun", "--continuous"],
+      "port": 8081
+    },
+    {
+      "name": "composeApp:wasmJs (browser dev server)",
+      "runtimeExecutable": "gradle",
+      "runtimeArgs": [":composeApp:wasmJsBrowserDevelopmentRun", "--continuous"],
+      "port": 8082
+    },
+    {
+      "name": "composeApp:desktop (Compose Desktop)",
+      "runtimeExecutable": "gradle",
+      "runtimeArgs": [":composeApp:run"],
+      "port": 0
+    }
+  ]
+}

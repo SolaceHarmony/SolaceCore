@@ -5,7 +5,7 @@ import org.solace.composeapp.ui.data.ActorDisplayData
 import org.solace.composeapp.ui.data.ActorMetricsData
 import org.solace.composeapp.actor.ActorState as UIActorState
 import kotlinx.coroutines.*
-import kotlinx.datetime.Clock
+import kotlin.time.Clock
 
 /**
  * Integration service that bridges the SolaceCore actor system with the real-time UI.

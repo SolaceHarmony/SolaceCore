@@ -1,6 +1,6 @@
 package org.solace.composeapp.ui.data
 
-import kotlinx.datetime.Instant
+import kotlin.time.Instant
 
 /**
  * UI-friendly representation of channel/port data for real-time display
