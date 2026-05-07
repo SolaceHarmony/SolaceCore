@@ -7,7 +7,7 @@ sentence the Mouth Tool externalised — all of it lands in one log,
 chronologically ordered, append-only, owned by no single agent.
 
 That log is Reflection Memory. The per-agent dual-context
-[memory tier](../memory/) sits on top of it. Agents read their own
+[memory tier](../memory/README.md) sits on top of it. Agents read their own
 working tier and their own long-term tier, and each agent's
 perspective on the past is encoded as compressed records in their
 long-term index — but the *events* those records refer to live here,
@@ -142,7 +142,7 @@ in-memory tail is fast, the durable tail requires a disk read.
 
 ## How the agent tiers index over it
 
-The per-agent [memory](../memory/) tiers are *views* over the
+The per-agent [memory](../memory/README.md) tiers are *views* over the
 substrate, not copies of it. A working entry in agent A's tier
 *references* a substrate entry by `id`. A long-term record in agent
 A's tier carries `originalEntryId` pointing back to the same
@@ -204,7 +204,7 @@ is *one substrate entry, two perspectival records*. The mechanism:
 
 - The first agent to observe the event writes the substrate entry.
 - The substrate emits a notification (via the
-  [Cross-Perspective Bus](../multimodal-nudging/) or directly through
+  [Cross-Perspective Bus](../multimodal-nudging/README.md) or directly through
   subscription) that other agents can subscribe to.
 - Each subscribing agent decides whether to record their own
   perspective. If yes, they write their own working entry that
@@ -220,7 +220,7 @@ shared truth and the perspectives are the agents' own.
 
 ## The Confusion Corrector's role
 
-The [Confusion Corrector](../confusion-corrector/) is one of the
+The [Confusion Corrector](../confusion-corrector/README.md) is one of the
 substrate's most important readers. When the Supervisor detects
 drift, the Corrector reads the substrate (not the agent's compressed
 tier) to assemble a replay summary. This is intentional: the agent's
@@ -256,16 +256,16 @@ summaries as context.
 
 ## Cross-references
 
-- **[memory](../memory/)** — the per-agent dual-context layer
+- **[memory](../memory/README.md)** — the per-agent dual-context layer
   that sits on top of this substrate.
-- [confusion-corrector](../confusion-corrector/) — reads the
+- [confusion-corrector](../confusion-corrector/README.md) — reads the
   substrate to assemble replay summaries; writes its own back.
-- [time-actor](../time-actor/) — writes heartbeat cues here.
-- [mouth-tool](../mouth-tool/) — emissions are recorded here as
+- [time-actor](../time-actor/README.md) — writes heartbeat cues here.
+- [mouth-tool](../mouth-tool/README.md) — emissions are recorded here as
   `EXTERNAL` origin entries.
-- [mood](../mood/) — `MoodCue` events land here as `MOOD_STATE`
+- [mood](../mood/README.md) — `MoodCue` events land here as `MOOD_STATE`
   entries on the emotional lane.
-- [supervisor](../supervisor/) — reads substrate when drift
+- [supervisor](../supervisor/README.md) — reads substrate when drift
   detection requires the ground truth rather than the agent's
   own (potentially drifting) tier.
 

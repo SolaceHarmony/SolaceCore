@@ -34,32 +34,32 @@ The status values:
 
 ### Memory architecture
 
-- **[memory](./memory/)** — **per-agent dual context** (working + long-term, with automatic compression). The current-era memory design — the key thing in the new version.
-- [reflection-memory](./reflection-memory/) — system-wide event substrate that both memory tiers persist into.
+- **[memory](./memory/README.md)** — **per-agent dual context** (working + long-term, with automatic compression). The current-era memory design — the key thing in the new version.
+- [reflection-memory](./reflection-memory/README.md) — system-wide event substrate that both memory tiers persist into.
 
 ### Narrative & cognition (the SRAF core)
 
-- [supervisor](./supervisor/) — sole executive cognition
-- [mouth-tool](./mouth-tool/) — thought→speech filter
-- [time-actor](./time-actor/) — temporal grounding heartbeat
-- [confusion-corrector](./confusion-corrector/) — drift detection + replay summary
+- [supervisor](./supervisor/README.md) — sole executive cognition
+- [mouth-tool](./mouth-tool/README.md) — thought→speech filter
+- [time-actor](./time-actor/README.md) — temporal grounding heartbeat
+- [confusion-corrector](./confusion-corrector/README.md) — drift detection + replay summary
 
 ### Advisors & perception
 
-- [mood](./mood/) — emotional sentiment advisor (lexical baseline + planned SNN)
-- [multimodal-nudging](./multimodal-nudging/) — vision/audio cross-perspective bus
-- [zoom-levels](./zoom-levels/) — adaptive context-buffer granularity
+- [mood](./mood/README.md) — emotional sentiment advisor (lexical baseline + planned SNN)
+- [multimodal-nudging](./multimodal-nudging/README.md) — vision/audio cross-perspective bus
+- [zoom-levels](./zoom-levels/README.md) — adaptive context-buffer granularity
 
 ### Tools & infrastructure (codex-era)
 
-- [mcp-tools](./mcp-tools/) — tool execution via MCP JSON-RPC, format negotiation, history
-- [pipeline](./pipeline/) — FlowLang DSL block composition
-- [providers](./providers/) — model provider abstraction (Ollama reference)
+- [mcp-tools](./mcp-tools/README.md) — tool execution via MCP JSON-RPC, format negotiation, history
+- [pipeline](./pipeline/README.md) — FlowLang DSL block composition
+- [providers](./providers/README.md) — model provider abstraction (Ollama reference)
 
 ### Primitives
 
-- [shared-memory](./shared-memory/) — lock-free queues + atomics for scheduler and inference
-- [inference-cube](./inference-cube/) — LNN takeover from transformer
+- [shared-memory](./shared-memory/README.md) — lock-free queues + atomics for scheduler and inference
+- [inference-cube](./inference-cube/README.md) — LNN takeover from transformer
 
 ## Provenance map
 
@@ -72,4 +72,4 @@ The status values:
 
 The Feb 2026 codex translation renamed several SRAF concepts (Reflection Memory → Neutral History XML; Supervisor AI → Supervisor+Advisor+Main triad) and dropped others (Time Actor, Mouth Tool, Confusion Corrector, Zoom levels). This folder treats the SRAF terminology as canonical and folds the codex infrastructure in as supporting features.
 
-[← docs](../) · [Architecture wiki (§N references)](../architecture/README.md) · [Recovered design material](../sketch-architecture/) · [Kotlin-aligned notes](../kotlin-aligned-docs/)
+[← docs](../README.md) · [Architecture wiki (§N references)](../architecture/README.md) · [Recovered design material](../sketch-architecture/README.md) · [Kotlin-aligned notes](../kotlin-aligned-docs/README.md)

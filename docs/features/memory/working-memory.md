@@ -97,7 +97,7 @@ score](./compression.md):
 3. When the score crosses the rung-2 threshold, the fade pipeline runs
    an abstractive summariser, and the entry's representation in working
    is now the abstractive summary. The raw text remains in the
-   [Reflection Memory](../reflection-memory/) substrate; the working
+   [Reflection Memory](../reflection-memory/README.md) substrate; the working
    slot just doesn't carry it anymore.
 4. When the score would push it past rung 2, the entry migrates out of
    working entirely. An embedding is computed; a long-term record is

@@ -117,7 +117,7 @@ operation holds a lock that other operations wait on.
 
 ### Layer 2: inference data
 
-The upper layer is the [InferenceCube](../inference-cube/) data
+The upper layer is the [InferenceCube](../inference-cube/README.md) data
 plane: the tensors, hidden states, and signatures that the
 LTC + Transformer hybrid passes between cubes. The primitive here is
 the **`SharedMemoryManager`** — a manager that hands out *slices*
@@ -152,13 +152,13 @@ entirely.
 
 ## Why the bus and the tier sit on top
 
-The [Cross-Perspective Bus](../multimodal-nudging/) is one
+The [Cross-Perspective Bus](../multimodal-nudging/README.md) is one
 direct consumer. Its lock-free pub/sub is exactly a
 `SharedDescriptorQueue` with one descriptor envelope per nudge.
 Every modality actor publishes by appending to the queue;
 subscribers consume by dequeuing. No locks, no contention.
 
-The [Reflection Memory](../reflection-memory/) substrate is
+The [Reflection Memory](../reflection-memory/README.md) substrate is
 another. Its in-memory ring is a `SharedWorkQueue` with
 ReflectionEntry envelopes. Periodic flush to durable storage
 reads from the ring and writes to disk; the ring stays available
@@ -300,16 +300,16 @@ The work order:
 
 ## Cross-references
 
-- [reflection-memory](../reflection-memory/) — sits on the
+- [reflection-memory](../reflection-memory/README.md) — sits on the
   shared-memory ring; the substrate's lock-free queue is one of
   these structures.
-- [multimodal-nudging](../multimodal-nudging/) — Cross-Perspective
+- [multimodal-nudging](../multimodal-nudging/README.md) — Cross-Perspective
   Bus is a SharedDescriptorQueue.
-- [memory](../memory/) — working tier holds slices; long-term
+- [memory](../memory/README.md) — working tier holds slices; long-term
   vector index uses atomic counters for fade metadata.
-- [inference-cube](../inference-cube/) — Layer 2 inference data
+- [inference-cube](../inference-cube/README.md) — Layer 2 inference data
   plane uses `SharedMemoryManager` for zero-copy slices.
-- [pipeline](../pipeline/) — pipeline DSL backs onto these
+- [pipeline](../pipeline/README.md) — pipeline DSL backs onto these
   primitives for stage-to-stage data flow.
 
 ## What the floor is in service of

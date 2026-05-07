@@ -44,11 +44,11 @@ That means concretely:
    emotion discontinuity (an abrupt shift in valence with no event
    to explain it).
 3. **Repair.** When drift is detected, the Supervisor invokes the
-   [Confusion Corrector](../confusion-corrector/) for a replay
+   [Confusion Corrector](../confusion-corrector/README.md) for a replay
    summary, ingests the summary into its working context, and
    resumes from the corrected state.
 4. **Decide externalisation.** The Supervisor produces a draft and
-   passes it to the [Mouth Tool](../mouth-tool/) when — and only
+   passes it to the [Mouth Tool](../mouth-tool/README.md) when — and only
    when — it has decided the draft is worth saying. Most internal
    reflection never reaches the Mouth Tool. The decision to
    externalise is itself a meta-reflective act.
@@ -70,7 +70,7 @@ a session is its primary load. Forgetting context is more expensive
 for the Supervisor than holding it; the budget reflects the
 asymmetry. When the Supervisor enters a deep dive (the *seven
 layers* mode), its budget temporarily expands, the
-[Time Actor](../time-actor/) is paused, and the agent commits to
+[Time Actor](../time-actor/README.md) is paused, and the agent commits to
 the depth until the Supervisor surfaces.
 
 ## Thread Two — Safety and Approval (Magentic)
@@ -205,7 +205,7 @@ fires when the agent starts saying the same thing in slightly
 different words.
 
 When drift exceeds threshold, the Supervisor invokes
-[Confusion Corrector](../confusion-corrector/), feeds the resulting
+[Confusion Corrector](../confusion-corrector/README.md), feeds the resulting
 replay summary into its working context, and resumes. The cost is a
 prompt-window-sized read; the benefit is that the agent does not
 spend the next ten turns being subtly off.
@@ -244,7 +244,7 @@ question is whether they're the same Supervisor or distinct ones.
 The current default is **distinct**. Each agent has its own
 Supervisor, owning the boundary for that agent's reasoning and
 actions. The agents talk to each other through the
-[Cross-Perspective Bus](../multimodal-nudging/), and inter-agent
+[Cross-Perspective Bus](../multimodal-nudging/README.md), and inter-agent
 coordination is mediated by message exchange rather than shared
 Supervisor authority.
 
@@ -277,17 +277,17 @@ Supervisor with cross-agent communication mediated by messages.
 
 ## Cross-references
 
-- [memory](../memory/) — Supervisor's working budget is the
+- [memory](../memory/README.md) — Supervisor's working budget is the
   largest; drift detection reads recent working entries.
-- [mouth-tool](../mouth-tool/) — the Supervisor's draft is the
+- [mouth-tool](../mouth-tool/README.md) — the Supervisor's draft is the
   Mouth Tool's input; speech is gated on Supervisor approval.
-- [time-actor](../time-actor/) — heartbeat cues are a primary
+- [time-actor](../time-actor/README.md) — heartbeat cues are a primary
   trigger for the Supervisor's coherence checks.
-- [confusion-corrector](../confusion-corrector/) — the Supervisor's
+- [confusion-corrector](../confusion-corrector/README.md) — the Supervisor's
   primary repair tool when drift is detected.
-- [mood](../mood/) — Mood Advisor cues are an input the Supervisor
+- [mood](../mood/README.md) — Mood Advisor cues are an input the Supervisor
   weights; emotion discontinuity is part of the drift signal.
-- [zoom-levels](../zoom-levels/) — the Supervisor owns the zoom
+- [zoom-levels](../zoom-levels/README.md) — the Supervisor owns the zoom
   state machine; transitions are its decision.
 
 ## What the Supervisor is in service of

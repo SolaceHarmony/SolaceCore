@@ -134,7 +134,7 @@ explicitly:
   The Time Actor's cue is a natural trigger because thirty minutes
   is roughly the timescale at which drift becomes detectable. If a
   coherence check fails, the Supervisor invokes
-  [Confusion Corrector](../confusion-corrector/) for a replay
+  [Confusion Corrector](../confusion-corrector/README.md) for a replay
   summary.
 - **Zoom suggestion.** A long stretch of fine-grained work (LOW
   zoom) might warrant a step back. The Supervisor can read the
@@ -244,14 +244,14 @@ When implementation begins, the work order is:
 
 ## Cross-references
 
-- [supervisor](../supervisor/) — consumes the cues, decides
+- [supervisor](../supervisor/README.md) — consumes the cues, decides
   responses, governs pause/resume.
-- [confusion-corrector](../confusion-corrector/) — the natural
+- [confusion-corrector](../confusion-corrector/README.md) — the natural
   follow-up when a Time Actor cue triggers a coherence check that
   fails.
-- [zoom-levels](../zoom-levels/) — Time Actor cues can suggest zoom
+- [zoom-levels](../zoom-levels/README.md) — Time Actor cues can suggest zoom
   transitions when the agent has spent too long at one level.
-- [memory](../memory/) — the cue lands in working with a tiny
+- [memory](../memory/README.md) — the cue lands in working with a tiny
   budget and aggressive fade.
 
 ## What the heartbeat is in service of

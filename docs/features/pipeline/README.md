@@ -179,7 +179,7 @@ For the Qwen3 + Ollama case above, the response pipeline
 includes `codec.mcp_over_xml` running in *parse* mode: the raw
 text response gets scanned for XML tool-call blocks, those
 blocks are extracted into structured tool-call records, and the
-records flow into the [Neutral History](../mcp-tools/) substrate
+records flow into the [Neutral History](../mcp-tools/README.md) substrate
 as `TOOL_CALL` events.
 
 ## Negotiation
@@ -192,7 +192,7 @@ session, when you want to call a tool, emit it in this shape;
 I'll parse it.*
 
 The negotiation block reads from the
-[ToolFormatNegotiator](../mcp-tools/) which knows what each
+[ToolFormatNegotiator](../mcp-tools/README.md) which knows what each
 model family supports natively. For Qwen3 over Ollama, the
 negotiation results in *XML-in-text* because Qwen3 doesn't
 have native function calling and Ollama doesn't expose a
@@ -311,15 +311,15 @@ The work order:
 
 ## Cross-references
 
-- [providers](../providers/) — protocol blocks instantiate
+- [providers](../providers/README.md) — protocol blocks instantiate
   per-provider clients; provider abstractions live there.
-- [mcp-tools](../mcp-tools/) — codec blocks and tools blocks
+- [mcp-tools](../mcp-tools/README.md) — codec blocks and tools blocks
   implement the format/protocol/storage separation; the
   pipeline is what wires the layers together at runtime.
-- [supervisor](../supervisor/) — Supervisor's tool-execution
+- [supervisor](../supervisor/README.md) — Supervisor's tool-execution
   approval gate runs after the pipeline produces a tool call
   but before the wire request goes out.
-- [shared-memory](../shared-memory/) — pipeline stages can
+- [shared-memory](../shared-memory/README.md) — pipeline stages can
   back onto shared-memory primitives for stage-to-stage
   data flow.
 

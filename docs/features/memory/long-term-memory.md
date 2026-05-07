@@ -12,7 +12,7 @@ evicted by default. What changes over time is the *fidelity* at which a
 record is held, not whether it exists at all. That is the principle
 that distinguishes this from a cache: a cache forgets, and the original
 is somewhere else. Long-term doesn't forget — it compresses, and the
-original lives in the [Reflection Memory](../reflection-memory/)
+original lives in the [Reflection Memory](../reflection-memory/README.md)
 substrate, recoverable at the cost of one read whenever a query
 demands it.
 

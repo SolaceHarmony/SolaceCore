@@ -106,7 +106,7 @@ interface ContextBufferManager {
 ```
 
 The Zoom Controller is a finite-state machine embedded in the
-[Supervisor](../supervisor/). It owns the current `ZoomLevel` and
+[Supervisor](../supervisor/README.md). It owns the current `ZoomLevel` and
 emits `ZoomEvent` when transitions happen. The transitions:
 
 ```
@@ -181,7 +181,7 @@ suggestion.
 ## The Mouth Tool reads the active zoom
 
 The downstream consequence of a zoom transition is in the
-[Mouth Tool](../mouth-tool/). The framing engine's detail level is
+[Mouth Tool](../mouth-tool/README.md). The framing engine's detail level is
 gated on the active `ZoomLevel`:
 
 | Zoom | External output strategy |
@@ -296,19 +296,19 @@ The work order:
 
 ## Cross-references
 
-- [supervisor](../supervisor/) — owns the Zoom Controller; emits
+- [supervisor](../supervisor/README.md) — owns the Zoom Controller; emits
   transition events.
-- [mouth-tool](../mouth-tool/) — framing engine reads active zoom
+- [mouth-tool](../mouth-tool/README.md) — framing engine reads active zoom
   to determine detail level.
-- [memory](../memory/) — the working tier holds rungs 0-2, the
+- [memory](../memory/README.md) — the working tier holds rungs 0-2, the
   long-term tier holds rungs 1-3, and zoom levels are the
   *projection* layer over the substrate that surfaces the right
   fidelity for the active lens.
-- [reflection-memory](../reflection-memory/) — the underlying
+- [reflection-memory](../reflection-memory/README.md) — the underlying
   substrate the three buffers project over.
-- [time-actor](../time-actor/) — heartbeat cues trigger zoom
+- [time-actor](../time-actor/README.md) — heartbeat cues trigger zoom
   considerations.
-- [confusion-corrector](../confusion-corrector/) — replay
+- [confusion-corrector](../confusion-corrector/README.md) — replay
   summaries map naturally to MID and HIGH outputs.
 
 ## What zoom levels are in service of

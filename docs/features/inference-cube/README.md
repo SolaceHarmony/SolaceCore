@@ -87,7 +87,7 @@ transformer's output for cube N and the LTC's input for cube N
 are *the same memory*, viewed through different slices of one
 underlying buffer. No copy happens between transformer output and
 LTC input. The `SharedMemoryManager` lives in the
-[shared-memory primitives](../shared-memory/) layer; this
+[shared-memory primitives](../shared-memory/README.md) layer; this
 component is its primary inference-side consumer.
 
 ### Cube Registry
@@ -137,9 +137,9 @@ reads to decide whether the module is ready to take over.
 
 The LTC's hidden state matters beyond inference. For cubes that
 process emotionally-charged inputs, the hidden state at write-time
-becomes the [MoodSignature](../mood/) of the corresponding
+becomes the [MoodSignature](../mood/README.md) of the corresponding
 Reflection Memory entry — the affective fingerprint the
-[memory](../memory/) tier indexes against. The LTC isn't just
+[memory](../memory/README.md) tier indexes against. The LTC isn't just
 producing output; it's producing a state that the rest of the
 architecture treats as semantically meaningful.
 
@@ -227,7 +227,7 @@ replay historical transformer outputs during idle periods to
 keep the LTCs aligned even when no fresh mentoring is happening.
 
 The cache that backs the Dream Engine is the durable
-[Reflection Memory](../reflection-memory/) substrate or a
+[Reflection Memory](../reflection-memory/README.md) substrate or a
 specialised LTC-output cache that grows alongside it. Either way,
 the dream is reading from the same record of what happened that
 the rest of the architecture indexes over.
@@ -286,7 +286,7 @@ to an LTC and run at fractional cost. The transformer remains
 available for the open-ended reasoning that benefits from its
 generality. The hybrid is what scales.
 
-This is also where the [mood module](../mood/) becomes more than
+This is also where the [mood module](../mood/README.md) becomes more than
 a lexical classifier. The eventual `SpikingEmotionalAdvisor` and
 `LTCSignatureExtractor` are specific applications of the
 InferenceCube framework: spike train substrate as a cube, LTC as
@@ -307,7 +307,7 @@ Lobe Manager, Dream Engine — is not in `lib/` yet.
 The work order:
 
 1. Build the `SharedMemoryManager` for inference data on top of
-   the [shared-memory primitives](../shared-memory/).
+   the [shared-memory primitives](../shared-memory/README.md).
 2. Build the CubeRegistry with atomic status tracking.
 3. Build a minimal LNN module against a small transformer;
    verify the mentoring loop reduces error.
@@ -338,18 +338,18 @@ The work order:
 
 ## Cross-references
 
-- [shared-memory](../shared-memory/) — Layer 2
+- [shared-memory](../shared-memory/README.md) — Layer 2
   `SharedMemoryManager` is the inference data plane this
   component uses.
-- [mood](../mood/) — `MoodSignature` interface anticipates
+- [mood](../mood/README.md) — `MoodSignature` interface anticipates
   LTC-extractor integration; the spike + liquid layers slot in
   here.
-- [reflection-memory](../reflection-memory/) — durable record of
+- [reflection-memory](../reflection-memory/README.md) — durable record of
   events that the Dream Engine replays from.
-- [memory](../memory/) — long-term tier's vector index will
+- [memory](../memory/README.md) — long-term tier's vector index will
   eventually use LTC signatures alongside or instead of
   embedding cosine.
-- [pipeline](../pipeline/) — pipeline DSL composes inference
+- [pipeline](../pipeline/README.md) — pipeline DSL composes inference
   stages; cubes are the natural unit of stage parallelism.
 
 ## What the takeover is in service of

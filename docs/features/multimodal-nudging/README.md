@@ -142,7 +142,7 @@ natural language.
 
 ## How the Mouth Tool reads the bus
 
-The Mouth Tool's [v2 active narrator](../mouth-tool/) subscribes to
+The Mouth Tool's [v2 active narrator](../mouth-tool/README.md) subscribes to
 the same bus the Supervisor reads. Inside the framing engine, the
 modality cues become *candidate facts* — things the response could
 mention. The CandidateBuilder collects them, the ContextRanker
@@ -262,7 +262,7 @@ soft form of this, but tighter scene-aware logic is open.
 **Designed, not built.** The lib codebase has no Vision Actor,
 Audio Actor, or Cross-Perspective Bus. The actor framework that
 would host them exists; the bus would sit on top of the
-[shared-memory](../shared-memory/) primitives.
+[shared-memory](../shared-memory/README.md) primitives.
 
 The work order:
 
@@ -293,18 +293,18 @@ The work order:
 
 ## Cross-references
 
-- [supervisor](../supervisor/) — primary consumer of the bus;
+- [supervisor](../supervisor/README.md) — primary consumer of the bus;
   fuses nudges into the prompt prime.
-- [mouth-tool](../mouth-tool/) — v2 active narrator subscribes to
+- [mouth-tool](../mouth-tool/README.md) — v2 active narrator subscribes to
   the bus; modality cues become candidate facts in framing.
-- [reflection-memory](../reflection-memory/) — modality cues are
+- [reflection-memory](../reflection-memory/README.md) — modality cues are
   also recorded here as the durable substrate; the bus is the
   fast path, the substrate is the record.
-- [mood](../mood/) — emotional advisors emit on the same bus
+- [mood](../mood/README.md) — emotional advisors emit on the same bus
   pattern; emotion is one of many modalities.
-- [shared-memory](../shared-memory/) — the lock-free pub/sub
+- [shared-memory](../shared-memory/README.md) — the lock-free pub/sub
   primitives the bus is built on.
-- [zoom-levels](../zoom-levels/) — Mouth Tool framing of modality
+- [zoom-levels](../zoom-levels/README.md) — Mouth Tool framing of modality
   cues respects the active zoom (LOW gets detailed, HIGH gets
   summarised).
 

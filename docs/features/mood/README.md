@@ -38,17 +38,17 @@ sparse, time-structured signature** that captures the contour. The
 spikes fire on salience — emotional valence, novelty, change — and
 their pattern over a short window is the affective fingerprint of
 what just happened. This is the layer the Magentic
-[InferenceCube](../inference-cube/) work has been building toward.
+[InferenceCube](../inference-cube/README.md) work has been building toward.
 
 **A Liquid Time-Constant cell integrates that signature into a
 continuous-time hidden state.** The hidden state at the moment a
-[Reflection Memory](../reflection-memory/) entry is written *is*
+[Reflection Memory](../reflection-memory/README.md) entry is written *is*
 the affective fingerprint of the entry, persisted alongside the
 text. Retrieval becomes signature correlation, not embedding cosine.
 
 **Mood cues are the structured handle on this primitive.** Typed
 messages produced by advisor actors and consumed by the executive
-[Supervisor](../supervisor/) and (eventually) the signature layer.
+[Supervisor](../supervisor/README.md) and (eventually) the signature layer.
 Cues are what the discrete cognitive layer can talk about. The
 underlying signature is what biological retrieval rhymes against.
 
@@ -174,7 +174,7 @@ classifier, while crude, captures enough signal to:
   Supervisor consumption).
 - Demonstrate the actor topology the spike-based advisor will
   eventually slot into.
-- Give downstream consumers ([Mouth Tool](../mouth-tool/) framing,
+- Give downstream consumers ([Mouth Tool](../mouth-tool/README.md) framing,
   Reflection Memory tagging) a real producer to wire against.
 
 When the spike-based advisor lands, the seam is clear: replace
@@ -198,7 +198,7 @@ contract is the load-bearing seam.
 - **`MoodTracker`** — running-state actor that integrates `MoodCue`
   messages over time, exposes a "current affective state" snapshot
   that other advisors can read (the
-  [Time Actor](../time-actor/) and zoom controller use this to
+  [Time Actor](../time-actor/README.md) and zoom controller use this to
   detect mood-change events).
 - **Cross-modal advisors** — vision, audio, biometric. Each emits
   its own `MoodCue` stream; the Supervisor weighs the cross-modal
@@ -210,7 +210,7 @@ today.
 ## How emotion enters memory
 
 The mood module's most consequential interaction is with the
-[memory](../memory/) tier. Every working entry carries an
+[memory](../memory/README.md) tier. Every working entry carries an
 `emotionalWeight` field (0..1) and an optional `moodSnapshot`
 capturing the discrete cue at the moment of recording. Both
 participate in the [fade composite](../memory/compression.md):
@@ -294,17 +294,17 @@ the kernel:
 
 ## Cross-references
 
-- [memory](../memory/) — emotional weight is a fade-resistance
+- [memory](../memory/README.md) — emotional weight is a fade-resistance
   signal in the composite score.
-- [supervisor](../supervisor/) — primary consumer of cues; weights,
+- [supervisor](../supervisor/README.md) — primary consumer of cues; weights,
   ignores, or acts on them.
-- [mouth-tool](../mouth-tool/) — politeness filter shapes tone;
+- [mouth-tool](../mouth-tool/README.md) — politeness filter shapes tone;
   cues never leak directly to output.
-- [reflection-memory](../reflection-memory/) — entries get
+- [reflection-memory](../reflection-memory/README.md) — entries get
   `moodSnapshot` and (eventually) `MoodSignature` stamps.
-- [inference-cube](../inference-cube/) — the LTC layer this
+- [inference-cube](../inference-cube/README.md) — the LTC layer this
   module's `MoodSignature` interface anticipates.
-- [confusion-corrector](../confusion-corrector/) — emotion
+- [confusion-corrector](../confusion-corrector/README.md) — emotion
   discontinuity is a drift signal the Corrector's trigger reads.
 
 ## What mood is in service of

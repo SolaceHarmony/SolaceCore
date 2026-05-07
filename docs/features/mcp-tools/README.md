@@ -181,7 +181,7 @@ provider's tool-use format because the history is stored
 neutrally and converted on demand.
 
 Neutral History is also the substrate underneath
-[Reflection Memory](../reflection-memory/) — the same one the
+[Reflection Memory](../reflection-memory/README.md) — the same one the
 agent's per-agent memory tier indexes over. The two are
 deliberately the same thing: there is one substrate, and the
 tool calls and the cognitive reflections are different
@@ -272,7 +272,7 @@ implementations.
 The work order:
 
 1. Build the Neutral History store on top of the
-   [Reflection Memory](../reflection-memory/) substrate. Verify
+   [Reflection Memory](../reflection-memory/README.md) substrate. Verify
    that all event types serialise and deserialise correctly.
 2. Build the MCP client over stdio (the most common transport).
    Test against a known-good MCP tool server.
@@ -306,13 +306,13 @@ The work order:
 
 ## Cross-references
 
-- [supervisor](../supervisor/) — gates MCP requests through the
+- [supervisor](../supervisor/README.md) — gates MCP requests through the
   approval boundary; tool execution requires Supervisor sign-off.
-- [reflection-memory](../reflection-memory/) — Neutral History
+- [reflection-memory](../reflection-memory/README.md) — Neutral History
   events land in the substrate alongside cognitive reflections.
-- [providers](../providers/) — provider abstraction reads which
+- [providers](../providers/README.md) — provider abstraction reads which
   ToolFormat each provider's models speak.
-- [pipeline](../pipeline/) — the pipeline DSL composes tool
+- [pipeline](../pipeline/README.md) — the pipeline DSL composes tool
   calls and reasoning steps; MCP is one of its outbound
   destinations.
 

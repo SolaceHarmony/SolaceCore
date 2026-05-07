@@ -72,7 +72,7 @@ second.
 Long-term returns compressed records, which means the merger sees the
 summary plus embedding and tags rather than the raw text. That's
 enough to score, but the merger may, when a hit deserves to surface,
-read through to the [Reflection Memory](../reflection-memory/) substrate
+read through to the [Reflection Memory](../reflection-memory/README.md) substrate
 to recover the original raw form via `originalEntryId`. This is the
 substrate's quiet role in retrieval: not part of the index, but the
 safety net that guarantees no information was actually lost when the

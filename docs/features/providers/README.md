@@ -55,7 +55,7 @@ The API spec is the largest. It declares:
 
 - **Style** — `OPENAI_COMPATIBLE`, `ANTHROPIC`, `CUSTOM`. The
   style determines which protocol block the
-  [pipeline DSL](../pipeline/) selects by default.
+  [pipeline DSL](../pipeline/README.md) selects by default.
 - **Base URL** — both the default and the environment variable
   that can override it. Most providers respect their conventional
   env var (`OLLAMA_BASE_URL`, `OPENAI_API_BASE`, etc.); the spec
@@ -304,18 +304,18 @@ matches; the framework falls back to the configured default.
 
 The provider spec is read by:
 
-- **The [pipeline DSL](../pipeline/)** — the API style determines
+- **The [pipeline DSL](../pipeline/README.md)** — the API style determines
   which protocol block to use; the streaming spec determines how
   the response decoder runs; the chunk schema feeds into delta
   parsing.
-- **The [MCP & Tool Format layer](../mcp-tools/)** — the tool
+- **The [MCP & Tool Format layer](../mcp-tools/README.md)** — the tool
   support spec governs what format negotiation outcomes are
   possible; the detection spec drives streaming-time
   classification of tool calls.
-- **The [Supervisor's safety boundary](../supervisor/)** — risk
+- **The [Supervisor's safety boundary](../supervisor/README.md)** — risk
   assessment can be provider-aware; some providers' tools warrant
   tighter scrutiny than others.
-- **The [Reflection Memory](../reflection-memory/) substrate** —
+- **The [Reflection Memory](../reflection-memory/README.md) substrate** —
   every event records the provider that produced it, so the
   durable record is portable across provider migrations.
 
@@ -366,14 +366,14 @@ The work order:
 
 ## Cross-references
 
-- [pipeline](../pipeline/) — protocol blocks instantiate clients
+- [pipeline](../pipeline/README.md) — protocol blocks instantiate clients
   per provider spec; streaming decoders read chunk schemas.
-- [mcp-tools](../mcp-tools/) — tool support sub-spec governs the
+- [mcp-tools](../mcp-tools/README.md) — tool support sub-spec governs the
   format negotiation outcome; detection sub-spec drives
   streaming-time tool-call recognition.
-- [supervisor](../supervisor/) — provider identity feeds risk
+- [supervisor](../supervisor/README.md) — provider identity feeds risk
   assessment.
-- [reflection-memory](../reflection-memory/) — every event records
+- [reflection-memory](../reflection-memory/README.md) — every event records
   its provider for cross-provider portability.
 
 ## What the spec is in service of

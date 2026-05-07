@@ -145,7 +145,7 @@ would erase exactly the differences that make a multi-agent system more
 than a single-agent system with more knobs.
 
 What the agents do share is the substrate. The Reflection Memory
-([described separately](../reflection-memory/), and to which the Magentic
+([described separately](../reflection-memory/README.md), and to which the Magentic
 side of the project contributed the XML serialisation and event schema
 under the name Neutral History) holds the raw events of the system — every
 reflection, every cue, every tool call result, every speech act — append-
