@@ -1,4 +1,7 @@
-[← Architecture Overview](../../wiki/Architecture-Overview.md) · §8 of 15
+<!-- topic: Reference -->
+<!-- title: Development Tooling and Practices -->
+
+[← Architecture Overview](Architecture-Overview) · §8 of 15
 
 ---
 
@@ -25,4 +28,4 @@ Currently, these advanced options are not actively used in the provided configur
 
 ---
 
-← [§7 Build System and Dependencies](./07-build-system-and-dependencies.md)  ·  [Architecture Overview](../../wiki/Architecture-Overview.md)  ·  [§9 JVM-Specific Utilities (`io.github.solaceharmony.core.util`)](./09-jvm-specific-utilities-io-github-solaceharmony-core-util.md) →
+← [§7 Build System and Dependencies](Build-System-and-Dependencies)  ·  [Architecture Overview](Architecture-Overview)  ·  [§9 JVM-Specific Utilities (`io.github.solaceharmony.core.util`)](JVM-Utilities) →

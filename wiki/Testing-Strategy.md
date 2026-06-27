@@ -1,4 +1,7 @@
-[← Architecture Overview](../../wiki/Architecture-Overview.md) · §10 of 15
+<!-- topic: Reference -->
+<!-- title: Testing Strategy -->
+
+[← Architecture Overview](Architecture-Overview) · §10 of 15
 
 ---
 
@@ -52,4 +55,4 @@ This testing structure suggests a commitment to ensuring the reliability and cor
 
 ---
 
-← [§9 JVM-Specific Utilities (`io.github.solaceharmony.core.util`)](./09-jvm-specific-utilities-io-github-solaceharmony-core-util.md)  ·  [Architecture Overview](../../wiki/Architecture-Overview.md)  ·  [§11 Architectural Vision](./11-architectural-vision.md) →
+← [§9 JVM-Specific Utilities (`io.github.solaceharmony.core.util`)](JVM-Utilities)  ·  [Architecture Overview](Architecture-Overview)  ·  [§11 Architectural Vision](Vision-and-Solace-AI) →

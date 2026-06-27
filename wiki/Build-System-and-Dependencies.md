@@ -1,3 +1,6 @@
+<!-- topic: Reference -->
+<!-- title: Build System and Dependencies -->
+
 [← Architecture Overview](Architecture-Overview) · §7 of 15
 
 ---
@@ -62,4 +65,4 @@ This build setup provides a modern, robust foundation for developing SolaceCore,
 
 ---
 
-← [§6 Scripting Module (`io.github.solaceharmony.core.scripting`)](Scripting-Engine)  ·  [Architecture Overview](Architecture-Overview)  ·  [§8 Development Tooling and Practices](./08-development-tooling-and-practices.md) →
+← [§6 Scripting Module (`io.github.solaceharmony.core.scripting`)](Scripting-Engine)  ·  [Architecture Overview](Architecture-Overview)  ·  [§8 Development Tooling and Practices](Development-Tooling-and-Practices) →

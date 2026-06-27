@@ -33,7 +33,7 @@ The working ledger is [curation-tracker.csv](curation-tracker.csv). Use it to se
 |---|---:|---|---|
 | `docs/ARCHITECTURE_READING_GUIDE.md` | 1-76 | [Architecture Overview](Architecture-Overview) | Consolidated, source removed |
 | `docs/architecture/README.md` | 1-45 | [Architecture Overview](Architecture-Overview) | Consolidated, source removed |
-| `docs/architecture/12-system-architecture-overview.md` | 1-45 | [Architecture Overview](Architecture-Overview) | Covered, source retained until architecture section migration |
+| `docs/architecture/12-system-architecture-overview.md` | 1-45 | [Architecture Overview](Architecture-Overview) | Appended to topic page, source removed |
 | `docs/architecture/00-solace-project-context.md` | 1-52, 141-169 | [Vision & Solace AI](Vision-and-Solace-AI) | Split by topic, source removed |
 | `docs/architecture/00-solace-project-context.md` | 54-140 | [Solace AI Overview](Solace-AI-Overview) | Split by topic, source removed |
 | `docs/architecture/00-solace-project-context.md` | 172-240 | [Architecture Overview](Architecture-Overview) | Split by topic, source removed |
@@ -43,6 +43,13 @@ The working ledger is [curation-tracker.csv](curation-tracker.csv). Use it to se
 | `docs/architecture/04-actor-module-io-github-solaceharmony-core-actor.md` | 1-417 | [Actor System](Actor-System) | Appended to topic page, source removed |
 | `docs/architecture/05-workflow-module-io-github-solaceharmony-core-workflow.md` | 1-10 | [Workflow Orchestration](Workflow-Orchestration) | Appended to topic page, source removed |
 | `docs/architecture/06-scripting-module-io-github-solaceharmony-core-scripting.md` | 1-326 | [Scripting Engine](Scripting-Engine) | Appended to topic page, source removed |
+| `docs/architecture/07-build-system-and-dependencies.md` | 1-65 | [Build System and Dependencies](Build-System-and-Dependencies) | Moved, source removed |
+| `docs/architecture/08-development-tooling-and-practices.md` | 1-28 | [Development Tooling and Practices](Development-Tooling-and-Practices) | Moved, source removed |
+| `docs/architecture/09-jvm-specific-utilities-io-github-solaceharmony-core-util.md` | 1-45 | [JVM Utilities](JVM-Utilities) | Moved, source removed |
+| `docs/architecture/10-testing-strategy-jvm-target.md` | 1-55 | [Testing Strategy](Testing-Strategy) | Moved, source removed |
+| `docs/architecture/11-architectural-vision.md` | 1-29 | [Vision & Solace AI](Vision-and-Solace-AI) | Appended to topic page, source removed |
+| `docs/architecture/13-storage-thread-safety-and-deadlock-prevention.md` | 1-82 | [Storage & Persistence](Storage-and-Persistence) | Appended to topic page, source removed |
+| `docs/architecture/14-inferencecube-architecture.md` | 1-47 | [Inference Cube](Inference-Cube) | Appended to topic page, source removed |
 | `docs/components/kernel/README.md` | 1-102 | [Kernel & Ports](Kernel-and-Ports) | Consolidated, source removed |
 | `docs/components/kernel/channel_system.md` | 1-261 | [Kernel & Ports](Kernel-and-Ports) | Consolidated, source removed |
 | `docs/components/kernel/system_architecture.md` | 1-77 | [Architecture Overview](Architecture-Overview) | Consolidated, source removed |

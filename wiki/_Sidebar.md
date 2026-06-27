@@ -65,10 +65,13 @@
 
 - [Advanced Workflow Example](Advanced-Workflow-Example)
 - [Basic Actor Usage](Basic-Actor-Usage)
+- [Build System and Dependencies](Build-System-and-Dependencies)
+- [Development Tooling and Practices](Development-Tooling-and-Practices)
 - [Documentation Catalog](Documentation-Catalog)
 - [Feature Index](Feature-Index)
 - [Glossary](Glossary)
 - [How the Wiki Publishes](How-The-Wiki-Publishes)
+- [JVM Utilities](JVM-Utilities)
 - [LangChain Bugs](LangChain-Bugs)
 - [LangChain Chain Implementation](LangChain-Chain-Implementation)
 - [LangChain Code Changes](LangChain-Code-Changes)
@@ -90,5 +93,6 @@
 - [Task 6 Deadlock Detection](Task-6-Deadlock-Detection)
 - [Task Documentation](Task-Documentation)
 - [Test Coverage Checklist](Test-Coverage-Checklist)
+- [Testing Strategy](Testing-Strategy)
 
 </details>
