@@ -56,6 +56,7 @@
 - [Memory Feature Overview](Memory-Feature-Overview)
 - [Memory Retrieval](Memory-Retrieval)
 - [Mood & Emotional Model](Mood-and-Emotional-Model)
+- [Mood Module Implementation](Mood-Module-Implementation)
 - [Mouth Tool Technical Spec](Mouth-Tool-Technical-Spec)
 - [Multimodal Nudging](Multimodal-Nudging)
 - [Perception Actors](Perception-Actors)

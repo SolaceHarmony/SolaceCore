@@ -125,3 +125,4 @@ Mouth-Tool-Technical-Spec,wiki/Voice-and-Mouth-Tool.md,4,148,145,complete_split,
 Inference-Cube-Technical-Architecture,wiki/Inference-Cube.md,4,151,148,complete_split,link_from_source,"Extracted formal InferenceCube architecture specification into its own Solace AI topic page."
 Inference-Cube-Technical-Architecture,wiki/Inference-Cube.md,532,578,47,complete_split,link_from_source,"Moved architecture overview appendix note into Inference Cube Technical Architecture."
 Supervisor-Emotional-Model-Integration,wiki/Mood-and-Emotional-Model.md,3,124,122,complete_split,link_from_source,"Extracted Supervisor AI emotional model integration sketch into its own Solace AI topic page."
+Mood-Module-Implementation,wiki/Mood-and-Emotional-Model.md,4,114,111,complete_split,link_from_source,"Extracted shipped core.mood implementation note into its own Solace AI topic page."
