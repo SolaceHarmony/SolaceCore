@@ -75,4 +75,4 @@ The status values:
 
 The Feb 2026 codex translation renamed several SRAF concepts (Reflection Memory → Neutral History XML; Supervisor AI → Supervisor+Advisor+Main triad) and dropped others (Time Actor, Mouth Tool, Confusion Corrector, Zoom levels). This folder treats the SRAF terminology as canonical and folds the codex infrastructure in as supporting features.
 
-[← docs](Documentation-Catalog) · [Architecture wiki](../../wiki/Architecture-Overview.md) · [Recovered design material](../docs/sketch-architecture/README.md) · [Kotlin-aligned notes](../docs/kotlin-aligned-docs/README.md)
+[← docs](Documentation-Catalog) · [Architecture wiki](Architecture-Overview) · [Recovered design material](../docs/sketch-architecture/README.md) · [Kotlin-aligned notes](Kotlin-Aligned-Documentation)

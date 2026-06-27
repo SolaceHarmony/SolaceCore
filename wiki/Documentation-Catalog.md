@@ -54,6 +54,10 @@ The working ledger is [curation-tracker.csv](curation-tracker.csv). Use it to se
 | `docs/Architectural_Deepdive.md` | 1-9 | [Architectural Deep Dive](Architectural-Deep-Dive) | Moved, source removed |
 | `docs/Architectural_Document_Solace_Core_Framework.md` | 1-576 | [Solace Core Framework Architecture](Solace-Core-Framework-Architecture) | Moved, source removed |
 | `docs/diagrams/system_architecture.md` | 1-77 | [System Architecture Diagram](System-Architecture-Diagram) | Moved, source removed |
+| `docs/kotlin-aligned-docs/README.md` | 1-83 | [Kotlin-Aligned Documentation](Kotlin-Aligned-Documentation) | Moved, source removed |
+| `docs/kotlin-aligned-docs/ARCHITECTURE_OVERVIEW.md` | 1-408 | [Kotlin-Aligned Architecture Overview](Kotlin-Aligned-Architecture-Overview) | Moved, source removed |
+| `docs/kotlin-aligned-docs/IMPLEMENTATION_STATUS.md` | 1-274 | [Kotlin-Aligned Implementation Status](Kotlin-Aligned-Implementation-Status) | Moved, source removed |
+| `docs/kotlin-aligned-docs/QUICK_START_DEVELOPERS.md` | 1-380 | [Kotlin-Aligned Quick Start](Kotlin-Aligned-Quick-Start) | Moved, source removed |
 | `docs/components/kernel/README.md` | 1-102 | [Kernel & Ports](Kernel-and-Ports) | Consolidated, source removed |
 | `docs/components/kernel/channel_system.md` | 1-261 | [Kernel & Ports](Kernel-and-Ports) | Consolidated, source removed |
 | `docs/components/kernel/system_architecture.md` | 1-77 | [Architecture Overview](Architecture-Overview) | Consolidated, source removed |

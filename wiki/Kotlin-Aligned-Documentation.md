@@ -1,3 +1,6 @@
+<!-- topic: Reference -->
+<!-- title: Kotlin-Aligned Documentation -->
+
 # Kotlin-Aligned Documentation
 
 This folder contains documentation from the original codex-vendored sources, translated and adapted to align with the SolaceCore Kotlin project.
@@ -16,10 +19,10 @@ The original documentation was written for a TypeScript-based system (Magentic C
 ## Translated Documents
 
 ### Core Documentation
-- **[README.md](README.md)** - Main documentation index with Kotlin paths
-- **[ARCHITECTURE_OVERVIEW.md](ARCHITECTURE_OVERVIEW.md)** - System architecture adapted for Kotlin/actors
-- **[IMPLEMENTATION_STATUS.md](IMPLEMENTATION_STATUS.md)** - Current implementation status with Kotlin metrics
-- **[QUICK_START_DEVELOPERS.md](QUICK_START_DEVELOPERS.md)** - Developer guide with Kotlin examples
+- **[README.md](Kotlin-Aligned-Documentation)** - Main documentation index with Kotlin paths
+- **[ARCHITECTURE_OVERVIEW.md](Kotlin-Aligned-Architecture-Overview)** - System architecture adapted for Kotlin/actors
+- **[IMPLEMENTATION_STATUS.md](Kotlin-Aligned-Implementation-Status)** - Current implementation status with Kotlin metrics
+- **[QUICK_START_DEVELOPERS.md](Kotlin-Aligned-Quick-Start)** - Developer guide with Kotlin examples
 
 ## Key Changes Made
 
@@ -51,7 +54,7 @@ The original documentation was written for a TypeScript-based system (Magentic C
 
 ## Integration with Kotlin Plans
 
-This documentation complements the [kotlin-plans](../kotlin-plans/) folder by providing:
+This documentation complements the `kotlin-plans` folder by providing:
 
 - **Documentation**: Human-readable guides and specifications
 - **Code Plans**: Executable Kotlin interfaces and implementations
@@ -77,7 +80,7 @@ When updating these documents:
 
 ## Related Resources
 
-- **[kotlin-plans](../kotlin-plans/)** - Executable Kotlin code plans
-- **[components](../components/)** - Component-specific documentation
-- **[examples](../../wiki/Basic-Actor-Usage.md)** - Usage examples and tutorials
+- **kotlin-plans** - Executable Kotlin code plans
+- **[components](Feature-Index)** - Component-specific documentation
+- **[examples](Basic-Actor-Usage)** - Usage examples and tutorials
 - **[CONTRIBUTING.md](../CONTRIBUTING.md)** - Contribution guidelines

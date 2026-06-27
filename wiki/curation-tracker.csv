@@ -97,3 +97,7 @@ SolaceCore-Architecture-Overview,docs/architecture.md,1,268,268,complete,remove_
 Architectural-Deep-Dive,docs/Architectural_Deepdive.md,1,9,9,complete,remove_source,"Source file copied directly into Architectural Deep Dive with wiki link repair."
 Solace-Core-Framework-Architecture,docs/Architectural_Document_Solace_Core_Framework.md,1,576,576,complete,remove_source,"Source file copied directly into Solace Core Framework Architecture."
 System-Architecture-Diagram,docs/diagrams/system_architecture.md,1,77,77,complete,remove_source,"Source file copied directly into System Architecture Diagram."
+Kotlin-Aligned-Documentation,docs/kotlin-aligned-docs/README.md,1,83,83,complete,remove_source,"Source file copied directly into Kotlin-Aligned Documentation."
+Kotlin-Aligned-Architecture-Overview,docs/kotlin-aligned-docs/ARCHITECTURE_OVERVIEW.md,1,408,408,complete,remove_source,"Source file copied directly into Kotlin-Aligned Architecture Overview."
+Kotlin-Aligned-Implementation-Status,docs/kotlin-aligned-docs/IMPLEMENTATION_STATUS.md,1,274,274,complete,remove_source,"Source file copied directly into Kotlin-Aligned Implementation Status."
+Kotlin-Aligned-Quick-Start,docs/kotlin-aligned-docs/QUICK_START_DEVELOPERS.md,1,380,380,complete,remove_source,"Source file copied directly into Kotlin-Aligned Quick Start."

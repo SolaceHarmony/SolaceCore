@@ -1,3 +1,6 @@
+<!-- topic: Reference -->
+<!-- title: Kotlin-Aligned Implementation Status -->
+
 ---
 title: Implementation Status — Current System State
 last-updated: 2026-02-04

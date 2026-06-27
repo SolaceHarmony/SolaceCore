@@ -1,3 +1,6 @@
+<!-- topic: Reference -->
+<!-- title: Kotlin-Aligned Quick Start -->
+
 ---
 title: Quick Start for Developers
 date: 2026-02-04
@@ -9,11 +12,11 @@ date: 2026-02-04
 
 Read these documents in order:
 
-1. **[Architecture Overview](ARCHITECTURE_OVERVIEW.md)** - System design and components (20 min)
-2. **[Implementation Status](IMPLEMENTATION_STATUS.md)** - Current state and priorities (15 min)
-3. **[Actor System Guide](../../wiki/Actor-System.md)** - Actor-based architecture (20 min)
-4. **[Lifecycle & Resources](../../wiki/Lifecycle-and-Resources.md)** - Safety and supervision (15 min)
-5. **[Memory & Reflection](../../wiki/Memory-and-Reflection.md)** - Context format (20 min)
+1. **[Architecture Overview](Kotlin-Aligned-Architecture-Overview)** - System design and components (20 min)
+2. **[Implementation Status](Kotlin-Aligned-Implementation-Status)** - Current state and priorities (15 min)
+3. **[Actor System Guide](Actor-System)** - Actor-based architecture (20 min)
+4. **[Lifecycle & Resources](Lifecycle-and-Resources)** - Safety and supervision (15 min)
+5. **[Memory & Reflection](Memory-and-Reflection)** - Context format (20 min)
 
 **Total time**: ~90 minutes to understand the architecture.
 

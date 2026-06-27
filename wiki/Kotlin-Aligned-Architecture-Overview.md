@@ -1,3 +1,6 @@
+<!-- topic: Reference -->
+<!-- title: Kotlin-Aligned Architecture Overview -->
+
 # SolaceCore Architecture Overview
 
 **Document Version:** 1.0.0

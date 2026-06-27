@@ -83,7 +83,7 @@ See **WORK_PLAN.md** for the ordered execution plan (safety → history → pipe
 1. **Pick a module**: Choose the Kotlin plan that matches the feature you are implementing (e.g., `NeutralHistoryCompletionStatus.kt` for storage/replay).
 2. **Wire interfaces**: Place implementations under `lib/src/commonMain/kotlin/com/solacecore/...` following the package hints inside each plan.
 3. **Add tests**: For each implementation, add JVM tests in `lib/src/jvmTest/` and, when relevant, JS tests in `lib/src/jsTest/`.
-4. **Document the result**: Update the matching doc in `docs/kotlin-aligned-docs/` so code and docs stay synchronized.
+4. **Document the result**: Update the matching doc in `Kotlin-Aligned-Documentation` so code and docs stay synchronized.
 5. **Verify contracts**: Run smoke tests (actor ping, MCP negotiation) before committing.
 
 ## Recommended Implementation Order
@@ -105,6 +105,6 @@ See **WORK_PLAN.md** for the ordered execution plan (safety → history → pipe
 
 ## Cross-References
 
-- `docs/kotlin-aligned-docs/ARCHITECTURE_OVERVIEW.md` — conceptual architecture aligned to Kotlin.
-- `docs/kotlin-aligned-docs/IMPLEMENTATION_STATUS.md` — current state and priorities.
-- `docs/kotlin-aligned-docs/QUICK_START_DEVELOPERS.md` — commands, setup, and examples.
+- `Kotlin-Aligned-Architecture-Overview` — conceptual architecture aligned to Kotlin.
+- `Kotlin-Aligned-Implementation-Status` — current state and priorities.
+- `Kotlin-Aligned-Quick-Start` — commands, setup, and examples.
