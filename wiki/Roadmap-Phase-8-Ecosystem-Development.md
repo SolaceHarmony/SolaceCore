@@ -7,7 +7,7 @@
 
 ### 8.1 Plugin System
 **Why First:** Enable third-party extensions and modular growth
-**Location:** `lib/src/commonMain/kotlin/ai/solace/core/plugin/`
+**Location:** `lib/src/commonMain/kotlin/io/github/solaceharmony/core/plugin/`
 
 - [ ] Plugin interface definition
 - [ ] Plugin discovery mechanism
@@ -16,7 +16,7 @@
 
 ### 8.2 Integration Adapters
 **Why Second:** Connect SolaceCore to external systems
-**Location:** `lib/src/commonMain/kotlin/ai/solace/core/integration/`
+**Location:** `lib/src/commonMain/kotlin/io/github/solaceharmony/core/integration/`
 
 - [ ] REST API adapter
 - [ ] WebSocket adapter
