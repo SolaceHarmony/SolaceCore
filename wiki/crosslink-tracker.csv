@@ -30,3 +30,5 @@ Mouth-Tool-Technical-Spec,24,30,verified_existing,5,"Extracted spec retains link
 Inference-Cube,4,11,complete,4,"Added related-topic links to technical architecture shared memory reflection memory and pipeline pages."
 Inference-Cube-Technical-Architecture,24,31,complete,6,"Extracted technical page links to shared memory memory reflection pipeline provider specs and notebook pages."
 Inference-Cube-Technical-Architecture,201,201,complete,1,"Corrected architecture sequence link to Storage Thread Safety page."
+Mood-and-Emotional-Model,108,113,complete,1,"Updated older executive-emotional sketch reference to extracted Supervisor Emotional Model Integration page."
+Supervisor-Emotional-Model-Integration,9,15,verified_existing,5,"Extracted page retains links to Supervisor AI memory time actor confusion corrector and mouth tool pages."
