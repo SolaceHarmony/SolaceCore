@@ -148,3 +148,16 @@ The workflow module, centered around the `WorkflowManager` class, is designed to
 
 ## Conclusion
 The workflow management system provides a flexible and scalable framework for orchestrating actor-based workflows. Future enhancements will focus on improving control and resilience, enabling advanced state management and persistence capabilities.
+
+---
+
+[← Architecture Overview](Architecture-Overview) · §5 of 15
+
+---
+
+## 5. Workflow Module (`io.github.solaceharmony.core.workflow`)
+*Note: The workflow module documentation has been moved to the wiki [Workflow Orchestration](../../wiki/Workflow-Orchestration.md) page.*
+
+---
+
+← [§4 Actor Module (`io.github.solaceharmony.core.actor`)](Actor-System)  ·  [Architecture Overview](Architecture-Overview)  ·  [§6 Scripting Module (`io.github.solaceharmony.core.scripting`)](Scripting-Engine) →

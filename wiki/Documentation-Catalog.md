@@ -37,6 +37,12 @@ The working ledger is [curation-tracker.csv](curation-tracker.csv). Use it to se
 | `docs/architecture/00-solace-project-context.md` | 1-52, 141-169 | [Vision & Solace AI](Vision-and-Solace-AI) | Split by topic, source removed |
 | `docs/architecture/00-solace-project-context.md` | 54-140 | [Solace AI Overview](Solace-AI-Overview) | Split by topic, source removed |
 | `docs/architecture/00-solace-project-context.md` | 172-240 | [Architecture Overview](Architecture-Overview) | Split by topic, source removed |
+| `docs/architecture/01-kernel-module.md` | 1-316 | [Kernel & Ports](Kernel-and-Ports) | Appended to topic page, source removed |
+| `docs/architecture/02-lifecycle-module-io-github-solaceharmony-core-lifecycle.md` | 1-134 | [Lifecycle & Resources](Lifecycle-and-Resources) | Appended to topic page, source removed |
+| `docs/architecture/03-storage-module-io-github-solaceharmony-core-storage.md` | 1-900 | [Storage & Persistence](Storage-and-Persistence) | Appended to topic page, source removed |
+| `docs/architecture/04-actor-module-io-github-solaceharmony-core-actor.md` | 1-417 | [Actor System](Actor-System) | Appended to topic page, source removed |
+| `docs/architecture/05-workflow-module-io-github-solaceharmony-core-workflow.md` | 1-10 | [Workflow Orchestration](Workflow-Orchestration) | Appended to topic page, source removed |
+| `docs/architecture/06-scripting-module-io-github-solaceharmony-core-scripting.md` | 1-326 | [Scripting Engine](Scripting-Engine) | Appended to topic page, source removed |
 | `docs/components/kernel/README.md` | 1-102 | [Kernel & Ports](Kernel-and-Ports) | Consolidated, source removed |
 | `docs/components/kernel/channel_system.md` | 1-261 | [Kernel & Ports](Kernel-and-Ports) | Consolidated, source removed |
 | `docs/components/kernel/system_architecture.md` | 1-77 | [Architecture Overview](Architecture-Overview) | Consolidated, source removed |
