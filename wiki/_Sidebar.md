@@ -18,12 +18,15 @@
 <summary><strong>Runtime</strong></summary>
 
 - [Actor Communication Sequence Diagram](Actor-Communication-Sequence)
+- [Actor Graph View](Actor-Graph-View)
 - [Actor System Architecture](Actor-System)
 - [Actor System Class Diagram](Actor-System-Class-Diagram)
+- [Compose App Features](Compose-App-Features)
 - [Kernel & Ports](Kernel-and-Ports)
 - [Lifecycle Class Diagram](Lifecycle-Class-Diagram)
 - [Lifecycle Management Architecture](Lifecycle-and-Resources)
 - [Pipeline DSL](Pipeline-DSL)
+- [Real-Time UI Implementation](Real-Time-UI-Implementation)
 - [Scripting Module Design](Scripting-Engine)
 - [Shared Memory](Shared-Memory)
 - [Storage & Persistence](Storage-and-Persistence)

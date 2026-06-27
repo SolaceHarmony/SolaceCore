@@ -44,9 +44,9 @@ When you want a gap view (without rewriting the design to match the code), see:
 
 ### Compose UI
 
-- [`COMPOSE_APP_FEATURES.md`](COMPOSE_APP_FEATURES.md)
-- [`REAL_TIME_UI_IMPLEMENTATION.md`](REAL_TIME_UI_IMPLEMENTATION.md)
-- [`ACTOR_GRAPH_VIEW.md`](ACTOR_GRAPH_VIEW.md)
+- [`../wiki/Compose-App-Features.md`](../wiki/Compose-App-Features.md)
+- [`../wiki/Real-Time-UI-Implementation.md`](../wiki/Real-Time-UI-Implementation.md)
+- [`../wiki/Actor-Graph-View.md`](../wiki/Actor-Graph-View.md)
 
 ### Project tracking
 

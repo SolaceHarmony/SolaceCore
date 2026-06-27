@@ -94,6 +94,9 @@ The working ledger is [curation-tracker.csv](curation-tracker.csv). Use it to se
 | `docs/tasks/task6.md` | 1-29 | [Task 6 Deadlock Detection](Task-6-Deadlock-Detection) | Moved, source removed |
 | `docs/examples/Basic_Actor_Usage.md` | 1-20 | [Basic Actor Usage](Basic-Actor-Usage) | Moved, source removed |
 | `docs/examples/advanced_workflow_example.md` | 1-30 | [Advanced Workflow Example](Advanced-Workflow-Example) | Moved, source removed |
+| `docs/COMPOSE_APP_FEATURES.md` | 1-129 | [Compose App Features](Compose-App-Features) | Moved, source removed |
+| `docs/REAL_TIME_UI_IMPLEMENTATION.md` | 1-132 | [Real-Time UI Implementation](Real-Time-UI-Implementation) | Moved, source removed |
+| `docs/ACTOR_GRAPH_VIEW.md` | 1-144 | [Actor Graph View](Actor-Graph-View) | Moved, source removed |
 
 ## Current Rule
 

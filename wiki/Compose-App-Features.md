@@ -1,3 +1,6 @@
+<!-- topic: Runtime -->
+<!-- title: Compose App Features -->
+
 # SolaceCore Compose App Features Documentation
 
 ## Overview

@@ -1,3 +1,6 @@
+<!-- topic: Runtime -->
+<!-- title: Real-Time UI Implementation -->
+
 # SolaceCore Real-Time UI Implementation
 
 ## Overview

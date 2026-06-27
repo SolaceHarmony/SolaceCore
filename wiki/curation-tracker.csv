@@ -64,3 +64,6 @@ Task-5-Integration-Tests,docs/tasks/task5.md,1,23,23,complete,remove_source,"Sou
 Task-6-Deadlock-Detection,docs/tasks/task6.md,1,29,29,complete,remove_source,"Source file copied directly into Task 6 Deadlock Detection."
 Basic-Actor-Usage,docs/examples/Basic_Actor_Usage.md,1,20,20,complete,remove_source,"Source file copied directly into Basic Actor Usage."
 Advanced-Workflow-Example,docs/examples/advanced_workflow_example.md,1,30,30,complete,remove_source,"Source file copied directly into Advanced Workflow Example."
+Compose-App-Features,docs/COMPOSE_APP_FEATURES.md,1,129,129,complete,remove_source,"Source file copied directly into Compose App Features."
+Real-Time-UI-Implementation,docs/REAL_TIME_UI_IMPLEMENTATION.md,1,132,132,complete,remove_source,"Source file copied directly into Real-Time UI Implementation."
+Actor-Graph-View,docs/ACTOR_GRAPH_VIEW.md,1,144,144,complete,remove_source,"Source file copied directly into Actor Graph View."

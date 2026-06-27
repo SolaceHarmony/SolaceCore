@@ -129,7 +129,7 @@ This directory contains comprehensive documentation analyzing the current state 
 
 ### Project Documentation
 - [`../../README.md`](../../README.md) - Project overview
-- [`../COMPOSE_APP_FEATURES.md`](../COMPOSE_APP_FEATURES.md) - UI features
+- [`Compose-App-Features`](Compose-App-Features) - UI features
 
 ---
 

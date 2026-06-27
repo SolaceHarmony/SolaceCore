@@ -1,3 +1,6 @@
+<!-- topic: Runtime -->
+<!-- title: Actor Graph View -->
+
 # Interactive Actor Graph View
 
 The Actor Graph View provides a visual, interactive representation of your actor system, displaying actors as nodes and communication channels as edges in a force-directed graph layout.
