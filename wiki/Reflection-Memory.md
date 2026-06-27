@@ -207,7 +207,7 @@ is *one substrate entry, two perspectival records*. The mechanism:
 
 - The first agent to observe the event writes the substrate entry.
 - The substrate emits a notification (via the
-  [Cross-Perspective Bus](../multimodal-nudging/README.md) or directly through
+  [Cross-Perspective Bus](Multimodal-Nudging) or directly through
   subscription) that other agents can subscribe to.
 - Each subscribing agent decides whether to record their own
   perspective. If yes, they write their own working entry that
@@ -223,7 +223,7 @@ shared truth and the perspectives are the agents' own.
 
 ## The Confusion Corrector's role
 
-The [Confusion Corrector](../confusion-corrector/README.md) is one of the
+The [Confusion Corrector](Confusion-Corrector) is one of the
 substrate's most important readers. When the Supervisor detects
 drift, the Corrector reads the substrate (not the agent's compressed
 tier) to assemble a replay summary. This is intentional: the agent's
@@ -261,14 +261,14 @@ summaries as context.
 
 - **[memory](Memory-Feature-Overview)** — the per-agent dual-context layer
   that sits on top of this substrate.
-- [confusion-corrector](../confusion-corrector/README.md) — reads the
+- [confusion-corrector](Confusion-Corrector) — reads the
   substrate to assemble replay summaries; writes its own back.
-- [time-actor](../time-actor/README.md) — writes heartbeat cues here.
-- [mouth-tool](../mouth-tool/README.md) — emissions are recorded here as
+- [time-actor](Time-Actor) — writes heartbeat cues here.
+- [mouth-tool](Voice-and-Mouth-Tool) — emissions are recorded here as
   `EXTERNAL` origin entries.
-- [mood](../mood/README.md) — `MoodCue` events land here as `MOOD_STATE`
+- [mood](Mood-and-Emotional-Model) — `MoodCue` events land here as `MOOD_STATE`
   entries on the emotional lane.
-- [supervisor](../supervisor/README.md) — reads substrate when drift
+- [supervisor](Supervisor-and-Hot-Swap) — reads substrate when drift
   detection requires the ground truth rather than the agent's
   own (potentially drifting) tier.
 

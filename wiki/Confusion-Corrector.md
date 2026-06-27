@@ -1,3 +1,6 @@
+<!-- topic: Solace AI -->
+<!-- title: Confusion Corrector -->
+
 # Confusion Corrector — The Repair Loop
 
 Every agent will, eventually, lose the thread. The model that was
@@ -27,7 +30,7 @@ Corrector takes that manual work and makes it structural.
 
 The Corrector has two trigger paths.
 
-**Supervisor-initiated.** The [Supervisor](../supervisor/README.md) runs drift
+**Supervisor-initiated.** The [Supervisor](Supervisor-and-Hot-Swap) runs drift
 detection continuously. When the composite drift score crosses
 threshold — perplexity spike, contradiction, emotion discontinuity,
 repetition — the Supervisor calls the Corrector for a replay
@@ -153,7 +156,7 @@ single pass is cheaper than three separate calls.
 ## The summarisation engine
 
 The Corrector's compression layer is the same one the
-[fade pipeline](../../../wiki/Memory-Compression.md) uses for rung-2 abstractive
+[fade pipeline](Memory-Compression) uses for rung-2 abstractive
 summaries. This is deliberate — keeping the two compressors
 identical means the Supervisor's working context stays at one voice,
 even as fade-aged content and replay-summary content are mixed
@@ -227,13 +230,13 @@ The work order:
 
 ## Cross-references
 
-- [supervisor](../supervisor/README.md) — primary trigger and primary
+- [supervisor](Supervisor-and-Hot-Swap) — primary trigger and primary
   consumer of replay summaries.
-- [memory](../../../wiki/Memory-Feature-Overview.md) — replay summaries land in Reflection Memory
+- [memory](Memory-Feature-Overview) — replay summaries land in Reflection Memory
   and integrate with the fade pipeline as native working entries.
-- [time-actor](../time-actor/README.md) — heartbeat cues often surface drift
+- [time-actor](Time-Actor) — heartbeat cues often surface drift
   that triggers a Corrector invocation.
-- [zoom-levels](../zoom-levels/README.md) — drift correction may include a
+- [zoom-levels](Zoom-Levels) — drift correction may include a
   zoom transition; the Corrector's mid-level output is the natural
   granularity for HIGH zoom.
 
@@ -252,4 +255,4 @@ have lost the thread, here is the thread, let me try again*.
 
 ---
 
-[← Features index](../README.md)
+[← Features index](Documentation-Catalog)

@@ -198,7 +198,7 @@ contract is the load-bearing seam.
 - **`MoodTracker`** — running-state actor that integrates `MoodCue`
   messages over time, exposes a "current affective state" snapshot
   that other advisors can read (the
-  [Time Actor](../time-actor/README.md) and zoom controller use this to
+  [Time Actor](../../../wiki/Time-Actor.md) and zoom controller use this to
   detect mood-change events).
 - **Cross-modal advisors** — vision, audio, biometric. Each emits
   its own `MoodCue` stream; the Supervisor weighs the cross-modal
@@ -304,7 +304,7 @@ the kernel:
   `moodSnapshot` and (eventually) `MoodSignature` stamps.
 - [inference-cube](../inference-cube/README.md) — the LTC layer this
   module's `MoodSignature` interface anticipates.
-- [confusion-corrector](../confusion-corrector/README.md) — emotion
+- [confusion-corrector](../../../wiki/Confusion-Corrector.md) — emotion
   discontinuity is a drift signal the Corrector's trigger reads.
 
 ## What mood is in service of

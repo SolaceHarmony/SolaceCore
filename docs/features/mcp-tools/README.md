@@ -162,7 +162,7 @@ invocation produce the *same* `NeutralEvent` shape; the only
 difference is the metadata field that records which native format
 was used. The framework reads Neutral History when it needs
 context, when it replays for the [Confusion Corrector]
-(../confusion-corrector/), when it migrates between providers.
+(../../../wiki/Confusion-Corrector.md), when it migrates between providers.
 
 Conversion in the other direction — from Neutral History back to
 a model-specific format — is also explicit:

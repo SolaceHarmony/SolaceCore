@@ -36,3 +36,7 @@ Memory-Retrieval,docs/features/memory/retrieval.md,1,215,215,complete,remove_sou
 Memory-Compression,docs/features/memory/compression.md,1,237,237,complete,remove_source,"Source file copied directly into Memory Compression."
 Reflection-Memory,docs/features/reflection-memory/README.md,1,288,288,complete,remove_source,"Source file copied directly into Reflection Memory."
 Shared-Memory,docs/features/shared-memory/README.md,1,332,332,complete,remove_source,"Source file copied directly into Shared Memory."
+Confusion-Corrector,docs/features/confusion-corrector/README.md,1,255,255,complete,remove_source,"Source file copied directly into Confusion Corrector."
+Multimodal-Nudging,docs/features/multimodal-nudging/README.md,1,329,329,complete,remove_source,"Source file copied directly into Multimodal Nudging."
+Time-Actor,docs/features/time-actor/README.md,1,273,273,complete,remove_source,"Source file copied directly into Time Actor."
+Zoom-Levels,docs/features/zoom-levels/README.md,1,333,333,complete,remove_source,"Source file appended directly into Zoom Levels."

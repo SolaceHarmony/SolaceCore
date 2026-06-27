@@ -66,6 +66,10 @@ The working ledger is [curation-tracker.csv](curation-tracker.csv). Use it to se
 | `docs/features/memory/compression.md` | 1-237 | [Memory Compression](Memory-Compression) | Moved, source removed |
 | `docs/features/reflection-memory/README.md` | 1-288 | [Reflection Memory](Reflection-Memory) | Moved, source removed |
 | `docs/features/shared-memory/README.md` | 1-332 | [Shared Memory](Shared-Memory) | Moved, source removed |
+| `docs/features/confusion-corrector/README.md` | 1-255 | [Confusion Corrector](Confusion-Corrector) | Moved, source removed |
+| `docs/features/multimodal-nudging/README.md` | 1-329 | [Multimodal Nudging](Multimodal-Nudging) | Moved, source removed |
+| `docs/features/time-actor/README.md` | 1-273 | [Time Actor](Time-Actor) | Moved, source removed |
+| `docs/features/zoom-levels/README.md` | 1-333 | [Zoom Levels](Zoom-Levels) | Moved, source removed |
 
 ## Current Rule
 

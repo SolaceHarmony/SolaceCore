@@ -155,7 +155,7 @@ entirely.
 
 ## Why the bus and the tier sit on top
 
-The [Cross-Perspective Bus](../multimodal-nudging/README.md) is one
+The [Cross-Perspective Bus](Multimodal-Nudging) is one
 direct consumer. Its lock-free pub/sub is exactly a
 `SharedDescriptorQueue` with one descriptor envelope per nudge.
 Every modality actor publishes by appending to the queue;
@@ -306,7 +306,7 @@ The work order:
 - [reflection-memory](Reflection-Memory) — sits on the
   shared-memory ring; the substrate's lock-free queue is one of
   these structures.
-- [multimodal-nudging](../multimodal-nudging/README.md) — Cross-Perspective
+- [multimodal-nudging](Multimodal-Nudging) — Cross-Perspective
   Bus is a SharedDescriptorQueue.
 - [memory](Memory-Feature-Overview) — working tier holds slices; long-term
   vector index uses atomic counters for fade metadata.

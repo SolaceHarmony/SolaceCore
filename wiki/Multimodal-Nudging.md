@@ -1,3 +1,6 @@
+<!-- topic: Solace AI -->
+<!-- title: Multimodal Nudging -->
+
 # Multimodal Cross-Perspective Nudging — How the Senses Talk
 
 A creature with eyes and ears doesn't reason about what it sees and
@@ -142,7 +145,7 @@ natural language.
 
 ## How the Mouth Tool reads the bus
 
-The Mouth Tool's [v2 active narrator](../mouth-tool/README.md) subscribes to
+The Mouth Tool's [v2 active narrator](Voice-and-Mouth-Tool) subscribes to
 the same bus the Supervisor reads. Inside the framing engine, the
 modality cues become *candidate facts* — things the response could
 mention. The CandidateBuilder collects them, the ContextRanker
@@ -262,7 +265,7 @@ soft form of this, but tighter scene-aware logic is open.
 **Designed, not built.** The lib codebase has no Vision Actor,
 Audio Actor, or Cross-Perspective Bus. The actor framework that
 would host them exists; the bus would sit on top of the
-[shared-memory](../../../wiki/Shared-Memory.md) primitives.
+[shared-memory](Shared-Memory) primitives.
 
 The work order:
 
@@ -293,18 +296,18 @@ The work order:
 
 ## Cross-references
 
-- [supervisor](../supervisor/README.md) — primary consumer of the bus;
+- [supervisor](Supervisor-and-Hot-Swap) — primary consumer of the bus;
   fuses nudges into the prompt prime.
-- [mouth-tool](../mouth-tool/README.md) — v2 active narrator subscribes to
+- [mouth-tool](Voice-and-Mouth-Tool) — v2 active narrator subscribes to
   the bus; modality cues become candidate facts in framing.
-- [reflection-memory](../../../wiki/Reflection-Memory.md) — modality cues are
+- [reflection-memory](Reflection-Memory) — modality cues are
   also recorded here as the durable substrate; the bus is the
   fast path, the substrate is the record.
-- [mood](../mood/README.md) — emotional advisors emit on the same bus
+- [mood](Mood-and-Emotional-Model) — emotional advisors emit on the same bus
   pattern; emotion is one of many modalities.
-- [shared-memory](../../../wiki/Shared-Memory.md) — the lock-free pub/sub
+- [shared-memory](Shared-Memory) — the lock-free pub/sub
   primitives the bus is built on.
-- [zoom-levels](../zoom-levels/README.md) — Mouth Tool framing of modality
+- [zoom-levels](Zoom-Levels) — Mouth Tool framing of modality
   cues respects the active zoom (LOW gets detailed, HIGH gets
   summarised).
 
@@ -326,4 +329,4 @@ heard.
 
 ---
 
-[← Features index](../README.md)
+[← Features index](Documentation-Catalog)

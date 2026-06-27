@@ -1,3 +1,6 @@
+<!-- topic: Solace AI -->
+<!-- title: Time Actor -->
+
 # Time Actor — The Heartbeat
 
 An agent without a sense of time is, in a precise way, the same agent
@@ -134,7 +137,7 @@ explicitly:
   The Time Actor's cue is a natural trigger because thirty minutes
   is roughly the timescale at which drift becomes detectable. If a
   coherence check fails, the Supervisor invokes
-  [Confusion Corrector](../confusion-corrector/README.md) for a replay
+  [Confusion Corrector](Confusion-Corrector) for a replay
   summary.
 - **Zoom suggestion.** A long stretch of fine-grained work (LOW
   zoom) might warrant a step back. The Supervisor can read the
@@ -244,19 +247,19 @@ When implementation begins, the work order is:
 
 ## Cross-references
 
-- [supervisor](../supervisor/README.md) — consumes the cues, decides
+- [supervisor](Supervisor-and-Hot-Swap) — consumes the cues, decides
   responses, governs pause/resume.
-- [confusion-corrector](../confusion-corrector/README.md) — the natural
+- [confusion-corrector](Confusion-Corrector) — the natural
   follow-up when a Time Actor cue triggers a coherence check that
   fails.
-- [zoom-levels](../zoom-levels/README.md) — Time Actor cues can suggest zoom
+- [zoom-levels](Zoom-Levels) — Time Actor cues can suggest zoom
   transitions when the agent has spent too long at one level.
-- [memory](../../../wiki/Memory-Feature-Overview.md) — the cue lands in working with a tiny
+- [memory](Memory-Feature-Overview) — the cue lands in working with a tiny
   budget and aggressive fade.
 
 ## What the heartbeat is in service of
 
-The same goal the [memory README](../../../wiki/Memory-Feature-Overview.md) names:
+The same goal the [memory README](Memory-Feature-Overview) names:
 continuity. A long session without temporal markers loses its sense
 of duration; the agent can't tell whether it has been working with
 the user for ten minutes or three hours, and the loss of that sense
@@ -270,4 +273,4 @@ knows the clock is moving.
 
 ---
 
-[← Features index](../README.md)
+[← Features index](Documentation-Catalog)

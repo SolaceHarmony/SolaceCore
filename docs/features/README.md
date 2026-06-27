@@ -41,14 +41,14 @@ The status values:
 
 - [supervisor](./supervisor/README.md) — sole executive cognition
 - [mouth-tool](./mouth-tool/README.md) — thought→speech filter
-- [time-actor](./time-actor/README.md) — temporal grounding heartbeat
-- [confusion-corrector](./confusion-corrector/README.md) — drift detection + replay summary
+- [time-actor](../../wiki/Time-Actor.md) — temporal grounding heartbeat
+- [confusion-corrector](../../wiki/Confusion-Corrector.md) — drift detection + replay summary
 
 ### Advisors & perception
 
 - [mood](./mood/README.md) — emotional sentiment advisor (lexical baseline + planned SNN)
-- [multimodal-nudging](./multimodal-nudging/README.md) — vision/audio cross-perspective bus
-- [zoom-levels](./zoom-levels/README.md) — adaptive context-buffer granularity
+- [multimodal-nudging](../../wiki/Multimodal-Nudging.md) — vision/audio cross-perspective bus
+- [zoom-levels](../../wiki/Zoom-Levels.md) — adaptive context-buffer granularity
 
 ### Tools & infrastructure (codex-era)
 

@@ -160,7 +160,7 @@ heuristic table is small but does real work:
 | Descriptive follow-up likely | *"Yes — the shirt is a rich cobalt blue, close to navy."* |
 | Emotionally charged audio cue | *"She sounds noticeably angry; you may want to approach gently."* |
 
-The detail-level choice is also where the [zoom level](../zoom-levels/README.md)
+The detail-level choice is also where the [zoom level](../../../wiki/Zoom-Levels.md)
 plugs in. When the Supervisor is in LOW zoom (deep dive, fine
 granularity), the framing engine produces step-by-step responses. In
 HIGH zoom (synthesis, summary), it produces concise recaps. The same
@@ -273,11 +273,11 @@ queue the Nudge Bus will sit on top of.
 - [supervisor](../supervisor/README.md) — the Mouth Tool's input is the
   Supervisor's draft; their interaction is the most load-bearing
   contract in the system.
-- [multimodal-nudging](../multimodal-nudging/README.md) — the Nudge Bus that
+- [multimodal-nudging](../../../wiki/Multimodal-Nudging.md) — the Nudge Bus that
   feeds v2's CandidateBuilder.
-- [zoom-levels](../zoom-levels/README.md) — the framing engine's detail level
+- [zoom-levels](../../../wiki/Zoom-Levels.md) — the framing engine's detail level
   is gated on the active zoom.
-- [confusion-corrector](../confusion-corrector/README.md) — when drift is
+- [confusion-corrector](../../../wiki/Confusion-Corrector.md) — when drift is
   detected, the Confusion Corrector's replay summary becomes
   candidate input to the Mouth Tool's next emission.
 
