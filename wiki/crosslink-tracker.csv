@@ -18,3 +18,8 @@ Storage-and-Persistence,24,32,complete,1,"Added related-topic link to extracted 
 Solace-Core-Framework-Architecture,361,367,complete,3,"Linked Appendix A to standalone system architecture actor class and actor communication diagram pages."
 Project-Status,12,18,complete,3,"Generated extensionless links to Quick Status Project Status Report and Design vs Implementation."
 Storage-and-Persistence,24,33,complete,1,"Added related-topic link to extracted Storage Module Architecture page."
+Providers-and-MCP-Tools,1,14,complete,4,"Retitled as Provider Specs and linked to MCP/tool format pipeline supervisor and reflection pages."
+MCP-and-Tool-Format,310,320,verified_existing,4,"Extracted page retains links to supervisor reflection provider specs and pipeline pages."
+Feature-Index,56,60,complete,1,"Pointed mcp-tools index entry to extracted MCP and Tool Format page."
+Home,20,22,complete,1,"Added MCP and Tool Format to the Solace AI navigation line."
+Solace-AI-Overview,14,14,complete,1,"Added MCP and Tool Format beside Provider Specs in language integration row."

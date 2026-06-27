@@ -11,7 +11,7 @@ Solace AI is composed as a set of cooperating capabilities rather than a single 
 | Visual workflow orchestrator | Configures tools, plugins, agents, and memory flows. | [Workflow Orchestration](Workflow-Orchestration) |
 | Memory management system | Holds session context, retrieves long-term memories, and supports emotional continuity. | [Memory & Reflection](Memory-and-Reflection) |
 | Middleware / routing layer | Coordinates request flow between orchestrator, stores, language engines, and tools. | [Kernel & Ports](Kernel-and-Ports), [Actor System](Actor-System) |
-| Language processing integration | Handles embeddings, response generation, and dynamic script execution. | [Providers & MCP Tools](Providers-and-MCP-Tools), [Scripting Engine](Scripting-Engine) |
+| Language processing integration | Handles embeddings, response generation, and dynamic script execution. | [Provider Specs](Providers-and-MCP-Tools), [MCP and Tool Format](MCP-and-Tool-Format), [Scripting Engine](Scripting-Engine) |
 | Parallel advisors and executive function | Combine specialized insight with conversation-level decision making. | [Mood & Emotional Model](Mood-and-Emotional-Model), [Inference Cube](Inference-Cube) |
 | Real-time voice integration | Streams voice input/output and coordinates transcription/synthesis. | [Voice & Mouth Tool](Voice-and-Mouth-Tool) |
 | User engagement interface | Presents text, voice, transcription, and feedback loops. | [Perception Actors](Perception-Actors) |

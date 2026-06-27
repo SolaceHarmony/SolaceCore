@@ -55,7 +55,7 @@ The status values:
 
 ### Tools & infrastructure (codex-era)
 
-- [mcp-tools](Providers-and-MCP-Tools) — tool execution via MCP JSON-RPC, format negotiation, history
+- [mcp-tools](MCP-and-Tool-Format) — tool execution via MCP JSON-RPC, format negotiation, history
 - [pipeline](Pipeline-DSL) — FlowLang DSL block composition
 - [providers](Providers-and-MCP-Tools) — model provider abstraction (Ollama reference)
 
