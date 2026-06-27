@@ -94,7 +94,7 @@ graph TB
 
     subgraph "Storage & Workflow"
         StorageSystem[Storage System<br/>docs/components/storage/<br/>StorageSystem.kt]
-        WorkflowEngine[Workflow Engine<br/>docs/components/workflow/<br/>WorkflowEngine.kt]
+        WorkflowEngine[Workflow Engine<br/>wiki/Workflow-Orchestration.md]
         ScriptingEngine[Scripting Engine<br/>docs/components/scripting/<br/>ScriptingEngine.kt]
     end
 

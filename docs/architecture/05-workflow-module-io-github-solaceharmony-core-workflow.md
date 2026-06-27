@@ -3,7 +3,7 @@
 ---
 
 ## 5. Workflow Module (`io.github.solaceharmony.core.workflow`)
-*Note: The workflow module documentation has been moved to `/docs/components/workflow/Workflow_Management_Design.md`.*
+*Note: The workflow module documentation has been moved to the wiki [Workflow Orchestration](../../wiki/Workflow-Orchestration.md) page.*
 
 ---
 

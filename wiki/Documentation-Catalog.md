@@ -48,6 +48,8 @@ The working ledger is [curation-tracker.csv](curation-tracker.csv). Use it to se
 | `docs/components/actor_system/SupervisorAI_EmotionalModel.md` | 1-114 | [Mood & Emotional Model](Mood-and-Emotional-Model) | Moved, source removed |
 | `docs/components/lifecycle/README.md` | 1-107 | [Lifecycle & Resources](Lifecycle-and-Resources) | Moved, source removed |
 | `docs/components/lifecycle/lifecycle_class_diagram.md` | 1-65 | [Lifecycle Class Diagram](Lifecycle-Class-Diagram) | Moved as its own diagram page, source removed |
+| `docs/components/workflow/README.md` | 1-60 | [Workflow Orchestration](Workflow-Orchestration) | Moved, source removed |
+| `docs/components/workflow/Workflow_Management_Design.md` | 1-56 | [Workflow Orchestration](Workflow-Orchestration) | Moved, source removed |
 
 ## Current Rule
 

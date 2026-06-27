@@ -20,7 +20,7 @@ This directory holds the design and reference documentation for SolaceCore. The 
 | Lifecycle | [`../wiki/Lifecycle-and-Resources.md`](../wiki/Lifecycle-and-Resources.md) | The `Disposable` / `Lifecycle` contract and its class diagram now live in the wiki. |
 | Memory | [`components/memory/`](components/memory/) | The SRAF / Reflection Memory / Mouth Tool / Zoom design ([`MemoryToolDesign.md`](components/memory/MemoryToolDesign.md)). |
 | Scripting | [`components/scripting/`](components/scripting/) | The dynamic scripting module design. |
-| Workflow | [`components/workflow/`](components/workflow/) | Workflow orchestration design and management. |
+| Workflow | [`../wiki/Workflow-Orchestration.md`](../wiki/Workflow-Orchestration.md) | Workflow orchestration design and management now lives in the wiki. |
 | Actor inference engine | [`components/actor_inference_engine/`](components/actor_inference_engine/) | The InferenceCube architecture and the [Liquid + Transformer hybrid notebook](components/actor_inference_engine/liquid-neural-networks-hybrid-transformer.ipynb). |
 
 ### `examples/` — small runnable examples
