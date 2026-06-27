@@ -64,6 +64,7 @@
 - [Time Actor](Time-Actor)
 - [Voice & Mouth Tool](Voice-and-Mouth-Tool)
 - [Working Memory](Working-Memory)
+- [Zoom Level Technical Spec](Zoom-Level-Technical-Spec)
 - [Zoom Levels](Zoom-Levels)
 
 </details>

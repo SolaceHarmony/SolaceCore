@@ -23,3 +23,5 @@ MCP-and-Tool-Format,310,320,verified_existing,4,"Extracted page retains links to
 Feature-Index,56,60,complete,1,"Pointed mcp-tools index entry to extracted MCP and Tool Format page."
 Home,20,22,complete,1,"Added MCP and Tool Format to the Solace AI navigation line."
 Solace-AI-Overview,14,14,complete,1,"Added MCP and Tool Format beside Provider Specs in language integration row."
+Zoom-Levels,4,13,complete,3,"Added related-topic links to zoom technical spec mouth tool and Supervisor AI pages."
+Zoom-Levels,335,337,complete,1,"Corrected Features index return link from Documentation Catalog to Feature Index."
