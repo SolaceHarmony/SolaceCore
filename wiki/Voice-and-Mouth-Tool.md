@@ -439,4 +439,4 @@ That is what the Mouth Tool is for.
 
 ---
 
-[← Features index](../README.md)
+[← Feature Index](Feature-Index)

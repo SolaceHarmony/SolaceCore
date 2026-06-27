@@ -44,3 +44,7 @@ Mood-and-Emotional-Model,docs/features/mood/README.md,1,327,327,complete,remove_
 Voice-and-Mouth-Tool,docs/features/mouth-tool/README.md,1,299,299,complete,remove_source,"Source file appended directly into Voice & Mouth Tool."
 Inference-Cube,docs/features/inference-cube/README.md,1,376,376,complete,remove_source,"Source file appended directly into Inference Cube."
 Supervisor-AI,docs/features/supervisor/README.md,1,310,310,complete,remove_source,"Source file copied directly into Supervisor AI."
+Feature-Index,docs/features/README.md,1,75,75,complete,remove_source,"Source file copied directly into Feature Index."
+Providers-and-MCP-Tools,docs/features/providers/README.md,1,398,398,complete,remove_source,"Source file appended directly into Providers & MCP Tools."
+Providers-and-MCP-Tools,docs/features/mcp-tools/README.md,1,336,336,complete,remove_source,"Source file appended directly into Providers & MCP Tools."
+Pipeline-DSL,docs/features/pipeline/README.md,1,345,345,complete,remove_source,"Source file copied directly into Pipeline DSL."

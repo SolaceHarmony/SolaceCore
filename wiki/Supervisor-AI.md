@@ -310,4 +310,4 @@ they aren't, to intervene.
 
 ---
 
-[← Features index](../README.md)
+[← Feature Index](Feature-Index)

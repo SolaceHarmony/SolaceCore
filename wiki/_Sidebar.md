@@ -21,6 +21,7 @@
 - [Kernel & Ports](Kernel-and-Ports)
 - [Lifecycle Class Diagram](Lifecycle-Class-Diagram)
 - [Lifecycle Management Architecture](Lifecycle-and-Resources)
+- [Pipeline DSL](Pipeline-DSL)
 - [Scripting Module Design](Scripting-Engine)
 - [Shared Memory](Shared-Memory)
 - [Storage & Persistence](Storage-and-Persistence)
@@ -58,6 +59,7 @@
 <summary><strong>Reference</strong></summary>
 
 - [Documentation Catalog](Documentation-Catalog)
+- [Feature Index](Feature-Index)
 - [Glossary](Glossary)
 - [How the Wiki Publishes](How-The-Wiki-Publishes)
 - [Roadmap](Roadmap)

@@ -1,3 +1,6 @@
+<!-- topic: Reference -->
+<!-- title: Feature Index -->
+
 # SolaceCore Features
 
 This folder is where the architecture's intent lives in narrative form.
@@ -34,42 +37,42 @@ The status values:
 
 ### Memory architecture
 
-- **[memory](../../wiki/Memory-Feature-Overview.md)** — **per-agent dual context** (working + long-term, with automatic compression). The current-era memory design — the key thing in the new version.
-- [reflection-memory](../../wiki/Reflection-Memory.md) — system-wide event substrate that both memory tiers persist into.
+- **[memory](Memory-Feature-Overview)** — **per-agent dual context** (working + long-term, with automatic compression). The current-era memory design — the key thing in the new version.
+- [reflection-memory](Reflection-Memory) — system-wide event substrate that both memory tiers persist into.
 
 ### Narrative & cognition (the SRAF core)
 
-- [supervisor](../../wiki/Supervisor-AI.md) — sole executive cognition
-- [mouth-tool](../../wiki/Voice-and-Mouth-Tool.md) — thought→speech filter
-- [time-actor](../../wiki/Time-Actor.md) — temporal grounding heartbeat
-- [confusion-corrector](../../wiki/Confusion-Corrector.md) — drift detection + replay summary
+- [supervisor](Supervisor-AI) — sole executive cognition
+- [mouth-tool](Voice-and-Mouth-Tool) — thought→speech filter
+- [time-actor](Time-Actor) — temporal grounding heartbeat
+- [confusion-corrector](Confusion-Corrector) — drift detection + replay summary
 
 ### Advisors & perception
 
-- [mood](../../wiki/Mood-and-Emotional-Model.md) — emotional sentiment advisor (lexical baseline + planned SNN)
-- [multimodal-nudging](../../wiki/Multimodal-Nudging.md) — vision/audio cross-perspective bus
-- [zoom-levels](../../wiki/Zoom-Levels.md) — adaptive context-buffer granularity
+- [mood](Mood-and-Emotional-Model) — emotional sentiment advisor (lexical baseline + planned SNN)
+- [multimodal-nudging](Multimodal-Nudging) — vision/audio cross-perspective bus
+- [zoom-levels](Zoom-Levels) — adaptive context-buffer granularity
 
 ### Tools & infrastructure (codex-era)
 
-- [mcp-tools](./mcp-tools/README.md) — tool execution via MCP JSON-RPC, format negotiation, history
-- [pipeline](./pipeline/README.md) — FlowLang DSL block composition
-- [providers](./providers/README.md) — model provider abstraction (Ollama reference)
+- [mcp-tools](Providers-and-MCP-Tools) — tool execution via MCP JSON-RPC, format negotiation, history
+- [pipeline](Pipeline-DSL) — FlowLang DSL block composition
+- [providers](Providers-and-MCP-Tools) — model provider abstraction (Ollama reference)
 
 ### Primitives
 
-- [shared-memory](../../wiki/Shared-Memory.md) — lock-free queues + atomics for scheduler and inference
-- [inference-cube](../../wiki/Inference-Cube.md) — LNN takeover from transformer
+- [shared-memory](Shared-Memory) — lock-free queues + atomics for scheduler and inference
+- [inference-cube](Inference-Cube) — LNN takeover from transformer
 
 ## Provenance map
 
 | Era | Date | Source | What it gave us |
 |---|---|---|---|
 | Genesis | Nov 15 2024 | `e59a719` `docs/ProjectPlan.md` + `SolaceCoreFramework.md` | actor kernel, hot-pluggable supervisor, memory-driven AI vision |
-| SRAF | Jun 4 2025 | `1524574` [Memory & Reflection](../../wiki/Memory-and-Reflection.md) | Reflection Memory, Supervisor, Mouth Tool, Time Actor, Mood, Confusion Corrector, Multimodal nudging, Zoom levels |
+| SRAF | Jun 4 2025 | `1524574` [Memory & Reflection](Memory-and-Reflection) | Reflection Memory, Supervisor, Mouth Tool, Time Actor, Mood, Confusion Corrector, Multimodal nudging, Zoom levels |
 | Codex translation | Feb 4 2026 | `6d7b1b4` `docs/sketch-architecture/`, `docs/kotlin-aligned-docs/` | MCP, Pipeline, Providers, NeutralHistoryXML rename, CoroutineSharedMemory, InferenceCube |
 | Now | May 2026 | `3045c9c` `lib/.../core/mood/` | first SRAF feature lands as code (mood lexical baseline) |
 
 The Feb 2026 codex translation renamed several SRAF concepts (Reflection Memory → Neutral History XML; Supervisor AI → Supervisor+Advisor+Main triad) and dropped others (Time Actor, Mouth Tool, Confusion Corrector, Zoom levels). This folder treats the SRAF terminology as canonical and folds the codex infrastructure in as supporting features.
 
-[← docs](../README.md) · [Architecture wiki](../../wiki/Architecture-Overview.md) · [Recovered design material](../sketch-architecture/README.md) · [Kotlin-aligned notes](../kotlin-aligned-docs/README.md)
+[← docs](Documentation-Catalog) · [Architecture wiki](../../wiki/Architecture-Overview.md) · [Recovered design material](../docs/sketch-architecture/README.md) · [Kotlin-aligned notes](../docs/kotlin-aligned-docs/README.md)

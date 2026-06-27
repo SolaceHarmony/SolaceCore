@@ -1,3 +1,6 @@
+<!-- topic: Runtime -->
+<!-- title: Pipeline DSL -->
+
 # Pipeline DSL — Composable Request Shaping
 
 A request to a language model isn't a single thing. It's a stack
@@ -179,7 +182,7 @@ For the Qwen3 + Ollama case above, the response pipeline
 includes `codec.mcp_over_xml` running in *parse* mode: the raw
 text response gets scanned for XML tool-call blocks, those
 blocks are extracted into structured tool-call records, and the
-records flow into the [Neutral History](../mcp-tools/README.md) substrate
+records flow into the [Neutral History](Providers-and-MCP-Tools) substrate
 as `TOOL_CALL` events.
 
 ## Negotiation
@@ -192,7 +195,7 @@ session, when you want to call a tool, emit it in this shape;
 I'll parse it.*
 
 The negotiation block reads from the
-[ToolFormatNegotiator](../mcp-tools/README.md) which knows what each
+[ToolFormatNegotiator](Providers-and-MCP-Tools) which knows what each
 model family supports natively. For Qwen3 over Ollama, the
 negotiation results in *XML-in-text* because Qwen3 doesn't
 have native function calling and Ollama doesn't expose a
@@ -311,15 +314,15 @@ The work order:
 
 ## Cross-references
 
-- [providers](../providers/README.md) — protocol blocks instantiate
+- [providers](Providers-and-MCP-Tools) — protocol blocks instantiate
   per-provider clients; provider abstractions live there.
-- [mcp-tools](../mcp-tools/README.md) — codec blocks and tools blocks
+- [mcp-tools](Providers-and-MCP-Tools) — codec blocks and tools blocks
   implement the format/protocol/storage separation; the
   pipeline is what wires the layers together at runtime.
-- [supervisor](../../../wiki/Supervisor-AI.md) — Supervisor's tool-execution
+- [supervisor](Supervisor-AI) — Supervisor's tool-execution
   approval gate runs after the pipeline produces a tool call
   but before the wire request goes out.
-- [shared-memory](../../../wiki/Shared-Memory.md) — pipeline stages can
+- [shared-memory](Shared-Memory) — pipeline stages can
   back onto shared-memory primitives for stage-to-stage
   data flow.
 
@@ -342,4 +345,4 @@ its own future.
 
 ---
 
-[← Features index](../README.md)
+[← Features index](Feature-Index)

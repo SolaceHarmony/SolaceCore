@@ -492,7 +492,7 @@ The work order:
 - [memory](../../../wiki/Memory-Feature-Overview.md) — long-term tier's vector index will
   eventually use LTC signatures alongside or instead of
   embedding cosine.
-- [pipeline](../pipeline/README.md) — pipeline DSL composes inference
+- [pipeline](Pipeline-DSL) — pipeline DSL composes inference
   stages; cubes are the natural unit of stage parallelism.
 
 ## What the takeover is in service of
@@ -516,4 +516,4 @@ That's what InferenceCube is for.
 
 ---
 
-[← Features index](../README.md)
+[← Feature Index](Feature-Index)

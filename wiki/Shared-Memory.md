@@ -312,7 +312,7 @@ The work order:
   vector index uses atomic counters for fade metadata.
 - [inference-cube](Inference-Cube) — Layer 2 inference data
   plane uses `SharedMemoryManager` for zero-copy slices.
-- [pipeline](../pipeline/README.md) — pipeline DSL backs onto these
+- [pipeline](Pipeline-DSL) — pipeline DSL backs onto these
   primitives for stage-to-stage data flow.
 
 ## What the floor is in service of

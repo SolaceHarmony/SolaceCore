@@ -74,6 +74,10 @@ The working ledger is [curation-tracker.csv](curation-tracker.csv). Use it to se
 | `docs/features/mouth-tool/README.md` | 1-299 | [Voice & Mouth Tool](Voice-and-Mouth-Tool) | Moved, source removed |
 | `docs/features/inference-cube/README.md` | 1-376 | [Inference Cube](Inference-Cube) | Moved, source removed |
 | `docs/features/supervisor/README.md` | 1-310 | [Supervisor AI](Supervisor-AI) | Moved, source removed |
+| `docs/features/README.md` | 1-75 | [Feature Index](Feature-Index) | Moved, source removed |
+| `docs/features/providers/README.md` | 1-398 | [Providers & MCP Tools](Providers-and-MCP-Tools) | Moved, source removed |
+| `docs/features/mcp-tools/README.md` | 1-336 | [Providers & MCP Tools](Providers-and-MCP-Tools) | Moved, source removed |
+| `docs/features/pipeline/README.md` | 1-345 | [Pipeline DSL](Pipeline-DSL) | Moved, source removed |
 
 ## Current Rule
 

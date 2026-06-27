@@ -553,4 +553,4 @@ That's what mood is for.
 
 ---
 
-[← Features index](../README.md)
+[← Feature Index](Feature-Index)
