@@ -21,7 +21,7 @@
 - [Kernel & Ports](Kernel-and-Ports)
 - [Lifecycle Class Diagram](Lifecycle-Class-Diagram)
 - [Lifecycle Management Architecture](Lifecycle-and-Resources)
-- [Scripting Engine](Scripting-Engine)
+- [Scripting Module Design](Scripting-Engine)
 - [Storage & Persistence](Storage-and-Persistence)
 - [Supervisor and Hot Swap](Supervisor-and-Hot-Swap)
 - [SupervisorActor](SupervisorActor)

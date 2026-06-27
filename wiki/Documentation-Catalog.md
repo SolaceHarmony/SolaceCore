@@ -50,6 +50,7 @@ The working ledger is [curation-tracker.csv](curation-tracker.csv). Use it to se
 | `docs/components/lifecycle/lifecycle_class_diagram.md` | 1-65 | [Lifecycle Class Diagram](Lifecycle-Class-Diagram) | Moved as its own diagram page, source removed |
 | `docs/components/workflow/README.md` | 1-60 | [Workflow Orchestration](Workflow-Orchestration) | Moved, source removed |
 | `docs/components/workflow/Workflow_Management_Design.md` | 1-56 | [Workflow Orchestration](Workflow-Orchestration) | Moved, source removed |
+| `docs/components/scripting/Scripting_Module_Design.md` | 1-96 | [Scripting Engine](Scripting-Engine) | Moved, source removed |
 
 ## Current Rule
 
