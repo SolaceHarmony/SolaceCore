@@ -176,3 +176,7 @@ Framework-Deployment-and-Containerization,wiki/Solace-Core-Framework-Architectur
 Framework-Observability-and-Monitoring,wiki/Solace-Core-Framework-Architecture.md,269,294,26,complete_split,link_from_source,"Extracted framework observability and monitoring overview into its own Orientation topic page."
 Framework-Implementation-Status,wiki/Solace-Core-Framework-Architecture.md,295,325,31,complete_split,link_from_source,"Extracted framework implementation status into its own Orientation topic page."
 Framework-Development-Roadmap,wiki/Solace-Core-Framework-Architecture.md,326,354,29,complete_split,link_from_source,"Extracted framework development roadmap into its own Orientation topic page."
+Kotlin-Aligned-System-Architecture,wiki/Kotlin-Aligned-Architecture-Overview.md,37,140,104,complete_split,link_from_source,"Extracted Kotlin-aligned high-level system architecture into its own Reference topic page."
+Kotlin-Aligned-Core-Architectural-Principles,wiki/Kotlin-Aligned-Architecture-Overview.md,142,244,103,complete_split,link_from_source,"Extracted Kotlin-aligned core architectural principles into their own Reference topic page."
+Kotlin-Implementation-Details,wiki/Kotlin-Aligned-Architecture-Overview.md,246,357,112,complete_split,link_from_source,"Extracted Kotlin implementation details and data flow notes into their own Reference topic page."
+Kotlin-Aligned-Development-Workflow,wiki/Kotlin-Aligned-Architecture-Overview.md,359,411,53,complete_split,link_from_source,"Extracted Kotlin-aligned development workflow into its own Reference topic page."

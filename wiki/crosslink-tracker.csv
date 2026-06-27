@@ -91,3 +91,8 @@ Framework-Deployment-and-Containerization,1,31,verified_existing,1,"Extracted fr
 Framework-Observability-and-Monitoring,1,31,verified_existing,1,"Extracted framework observability page links back to Solace Core Framework Architecture."
 Framework-Implementation-Status,1,36,verified_existing,1,"Extracted framework implementation status page links back to Solace Core Framework Architecture."
 Framework-Development-Roadmap,1,34,verified_existing,1,"Extracted framework development roadmap page links back to Solace Core Framework Architecture."
+Kotlin-Aligned-Architecture-Overview,37,42,complete,4,"Added architecture topic map linking to system architecture core principles implementation details and development workflow pages."
+Kotlin-Aligned-System-Architecture,1,109,verified_existing,1,"Extracted system architecture page links back to Kotlin-Aligned Architecture Overview."
+Kotlin-Aligned-Core-Architectural-Principles,1,108,verified_existing,1,"Extracted core architectural principles page links back to Kotlin-Aligned Architecture Overview."
+Kotlin-Implementation-Details,1,117,verified_existing,1,"Extracted implementation details page links back to Kotlin-Aligned Architecture Overview."
+Kotlin-Aligned-Development-Workflow,1,58,verified_existing,1,"Extracted development workflow page links back to Kotlin-Aligned Architecture Overview."
