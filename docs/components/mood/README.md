@@ -107,4 +107,4 @@ Sensitive emotional inferences (e.g., "user appears depressed") are still infere
 - [`../memory/MemoryToolDesign.md`](../memory/MemoryToolDesign.md) — the SRAF narrative-management spec; covers the supervisor's decision loop and the Mouth Tool that owns egress.
 - [`../actor_inference_engine/InferenceCubeArchitecture.md`](../actor_inference_engine/InferenceCubeArchitecture.md) — the Liquid + Transformer hybrid this layer will integrate with.
 - [`../actor_inference_engine/liquid-neural-networks-hybrid-transformer.ipynb`](../actor_inference_engine/liquid-neural-networks-hybrid-transformer.ipynb) — Kaggle proof of the LTC + attention composition.
-- [`../actor_system/SupervisorAI_EmotionalModel.md`](../actor_system/SupervisorAI_EmotionalModel.md) — the older sketch of the executive-emotional integration; this module is the concrete shipped subset.
+- [`../../../wiki/Mood-and-Emotional-Model.md`](../../../wiki/Mood-and-Emotional-Model.md) — the older sketch of the executive-emotional integration; this module is the concrete shipped subset.

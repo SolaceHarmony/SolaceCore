@@ -39,6 +39,13 @@ The working ledger is [curation-tracker.csv](curation-tracker.csv). Use it to se
 | `docs/components/kernel/README.md` | 1-102 | [Kernel & Ports](Kernel-and-Ports) | Consolidated, source removed |
 | `docs/components/kernel/channel_system.md` | 1-261 | [Kernel & Ports](Kernel-and-Ports) | Consolidated, source removed |
 | `docs/components/kernel/system_architecture.md` | 1-77 | [Architecture Overview](Architecture-Overview) | Consolidated, source removed |
+| `docs/components/actor_system/README.md` | 1-69, 83-89 | [Actor System](Actor-System) | Split by topic, source removed |
+| `docs/components/actor_system/README.md` | 70-82 | [Supervisor & Hot-Swap](Supervisor-and-Hot-Swap) | Split by topic, source removed |
+| `docs/components/actor_system/actor_communication_sequence.md` | 1-63 | [Actor Communication Sequence](Actor-Communication-Sequence) | Moved as its own diagram page, source removed |
+| `docs/components/actor_system/actor_system_class_diagram.md` | 1-132 | [Actor System Class Diagram](Actor-System-Class-Diagram) | Moved as its own diagram page, source removed |
+| `docs/components/actor_system/SupervisorActor.md` | 1-128 | [SupervisorActor](SupervisorActor) | Moved as its own design page, source removed |
+| `docs/components/actor_system/Workflow_Management_Design.md` | 1-29 | [Workflow Orchestration](Workflow-Orchestration) | Moved, source removed |
+| `docs/components/actor_system/SupervisorAI_EmotionalModel.md` | 1-114 | [Mood & Emotional Model](Mood-and-Emotional-Model) | Moved, source removed |
 
 ## Current Rule
 

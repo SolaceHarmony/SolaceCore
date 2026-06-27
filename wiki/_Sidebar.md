@@ -15,13 +15,16 @@
 <details>
 <summary><strong>Runtime</strong></summary>
 
-- [Actor System](Actor-System)
+- [Actor Communication Sequence Diagram](Actor-Communication-Sequence)
+- [Actor System Architecture](Actor-System)
+- [Actor System Class Diagram](Actor-System-Class-Diagram)
 - [Kernel & Ports](Kernel-and-Ports)
 - [Lifecycle & Resources](Lifecycle-and-Resources)
 - [Scripting Engine](Scripting-Engine)
 - [Storage & Persistence](Storage-and-Persistence)
-- [Supervisor & Hot-Swap](Supervisor-and-Hot-Swap)
-- [Workflow Orchestration](Workflow-Orchestration)
+- [Supervisor and Hot Swap](Supervisor-and-Hot-Swap)
+- [SupervisorActor](SupervisorActor)
+- [Workflow Management Design](Workflow-Orchestration)
 
 </details>
 
@@ -30,10 +33,10 @@
 
 - [Inference Cube](Inference-Cube)
 - [Memory & Reflection](Memory-and-Reflection)
-- [Mood & Emotional Model](Mood-and-Emotional-Model)
 - [Perception Actors](Perception-Actors)
 - [Providers & MCP Tools](Providers-and-MCP-Tools)
 - [Solace AI Overview](Solace-AI-Overview)
+- [Supervisor AI and Emotional Model Integration](Mood-and-Emotional-Model)
 - [Voice & Mouth Tool](Voice-and-Mouth-Tool)
 
 </details>

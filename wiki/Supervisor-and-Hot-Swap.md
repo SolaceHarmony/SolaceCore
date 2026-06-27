@@ -1,17 +1,15 @@
 <!-- topic: Runtime -->
 
-# Supervisor & Hot-Swap
+## SupervisorActor
 
-> 🚧 **Stub — content pending.** Part of the SolaceCore single-source-of-truth wiki. This placeholder defines the page's scope; we fill it together, page by page.
+The SupervisorActor is a specialized actor responsible for managing the lifecycle of other actors in the system. It provides functionality for dynamic actor registration, unregistration, and hot-swapping, allowing for runtime modification of the actor system without requiring system restarts.
 
-**What this page covers**
-Dynamic registration, factory creation, and runtime hot-swapping of actors with state preservation.
+Key features:
+- Dynamic actor registration and unregistration at runtime
+- Hot-swapping actors with new instances of the same type
+- Type-safe actor management
+- Thread-safe operations using a mutex
+- Lifecycle management for all managed actors
 
-**Where it fits**
-The hot-pluggable promise made real. Manages every actor's lifecycle.
+For more details, see [SupervisorActor.md](SupervisorActor.md).
 
-**Primary sources (in-repo)**
-- `docs/components/actor_system/SupervisorActor.md`
-
----
-*This page will be authored from the sources above, with prose recounted (not assumed) and verified against the code.*

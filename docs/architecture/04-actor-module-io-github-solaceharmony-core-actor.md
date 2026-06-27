@@ -8,7 +8,7 @@ The `actor` module implements the actor model for concurrent and distributed com
 As per `ACTOR_README.md`, this module is designed with JDK 21+ and Kotlin 2.0.21+ in mind, utilizing features like virtual threads (implied for coroutine dispatchers), string templates, built-in UUIDs, and improved coroutines.
 
 ### 4.0. Actor System Design Principles, Status, and Goals
-Insights from existing design documents (`docs/components/actor_system/`) provide valuable context for the SolaceCore Actor System.
+Insights from the wiki [Actor System](../../wiki/Actor-System.md) and [Supervisor & Hot-Swap](../../wiki/Supervisor-and-Hot-Swap.md) pages provide valuable context for the SolaceCore Actor System.
 
 **A. Design Principles**
 
@@ -38,7 +38,7 @@ The actor system is built upon the following core principles:
     *   Advanced queuing mechanisms for messages.
     *   Correlation IDs for tracking tasks across multiple actors.
 #### 4.0.1. Conceptual Actor Communication Flow (Sequence Diagram)
-*Note: The actor communication sequence diagram and its description have been moved to `/docs/components/actor_system/actor_communication_sequence.md`.*
+*Note: The actor communication sequence diagram and its description have been moved to the wiki [Actor Communication Sequence](../../wiki/Actor-Communication-Sequence.md) page.*
 ### 4.1. Core Actor Definitions
 The foundational components of the actor model are defined in `ActorState.kt`, `ActorMessage.kt`, and `Actor.kt`.
 
@@ -111,7 +111,7 @@ The central abstraction for all actors in the system.
 *   **Metrics:** Contains a `protected val metrics = ActorMetrics()` instance for collecting performance data.
 
 #### 4.1.5. Actor System Core Class Relationships (Diagram)
-*Note: The actor system class diagram and its description have been moved to `/docs/components/actor_system/actor_system_class_diagram.md`.*
+*Note: The actor system class diagram and its description have been moved to the wiki [Actor System Class Diagram](../../wiki/Actor-System-Class-Diagram.md) page.*
 ### 4.2. Actor Construction (`builder` Subdirectory)
 The `io.github.solaceharmony.core.actor.builder` package provides a fluent API for constructing networks of actors and defining their interconnections.
 
@@ -217,7 +217,7 @@ This class is a concrete implementation of `Actor` designed to oversee and manag
     *   **Dynamic Actor Management:**
         *   `suspend fun registerActor(actor: Actor): Boolean`: Adds a new actor to its management pool. Requires the `SupervisorActor` to be running.
         *   `suspend fun unregisterActor(actorId: String): Boolean`: Removes an actor from its management pool. Requires the `SupervisorActor` to be running.
-        *   `suspend fun hotSwapActor(oldActorId: String, newActor: Actor): Boolean`: Replaces an existing managed actor with a new instance. The process, as detailed in its design document ([`SupervisorActor.md`](docs/components/actor_system/SupervisorActor.md:1)), involves:
+        *   `suspend fun hotSwapActor(oldActorId: String, newActor: Actor): Boolean`: Replaces an existing managed actor with a new instance. The process, as detailed in the wiki [SupervisorActor](../../wiki/SupervisorActor.md) page, involves:
             1.  Checking if the `oldActorId` exists in the registry.
             2.  Verifying that the `newActor` is of the same `KClass` as the old one, ensuring type safety.
             3.  Noting if the old actor was in a `Running` state.
@@ -225,7 +225,7 @@ This class is a concrete implementation of `Actor` designed to oversee and manag
             5.  Replacing the old actor with the new one in the internal `actorRegistry` and `actorTypeRegistry`.
             6.  Starting the `newActor` if the old actor was previously running.
             This operation requires the `SupervisorActor` itself to be in a `Running` state.
-*   **Operational Note:** Most dynamic management operations (`registerActor`, `unregisterActor`, `hotSwapActor`) and collective lifecycle controls (`startAllActors`, `stopAllActors`) require the `SupervisorActor` to be in a `Running` state. Attempting these operations when the supervisor is not running will typically result in an `IllegalStateException`. Furthermore, methods like `registerActor`, `unregisterActor`, and `hotSwapActor` return a `Boolean` value: `true` indicates successful completion, while `false` usually signifies a failure due to conditions such as a non-existent actor ID or a type mismatch during hot-swapping, as noted in the [`SupervisorActor.md`](docs/components/actor_system/SupervisorActor.md:1) design document.
+*   **Operational Note:** Most dynamic management operations (`registerActor`, `unregisterActor`, `hotSwapActor`) and collective lifecycle controls (`startAllActors`, `stopAllActors`) require the `SupervisorActor` to be in a `Running` state. Attempting these operations when the supervisor is not running will typically result in an `IllegalStateException`. Furthermore, methods like `registerActor`, `unregisterActor`, and `hotSwapActor` return a `Boolean` value: `true` indicates successful completion, while `false` usually signifies a failure due to conditions such as a non-existent actor ID or a type mismatch during hot-swapping, as noted in the wiki [SupervisorActor](../../wiki/SupervisorActor.md) page.
     *   **Actor Discovery:**
         *   `suspend fun getActor(actorId: String): Actor?`: Retrieves a specific managed actor by its ID.
         *   `suspend fun getAllActors(): List<Actor>`: Returns a list of all actors currently managed by the supervisor.
@@ -236,7 +236,7 @@ This class is a concrete implementation of `Actor` designed to oversee and manag
     *   **Resource Cleanup (`dispose()`):**
         *   When the `SupervisorActor` itself is disposed, it iterates through all its managed actors in `actorRegistry` and calls `dispose()` on each, then clears its internal registries before calling `super.dispose()`.
 ##### 4.4.1.1. Best Practices
-The [`SupervisorActor.md`](docs/components/actor_system/SupervisorActor.md:1) design document outlines several best practices for using the `SupervisorActor` effectively:
+The wiki [SupervisorActor](../../wiki/SupervisorActor.md) page outlines several best practices for using the `SupervisorActor` effectively:
 
 *   **Initialization Order:** Always start the `SupervisorActor` (by calling its `start()` method) before attempting to register any child actors.
 *   **Unique Actor IDs:** Ensure that all actors registered with a supervisor have unique IDs to prevent registration conflicts and ensure predictable behavior.
@@ -342,9 +342,9 @@ The existing design documents for the actor system also outline several areas fo
 The following capabilities were identified as potential future additions or areas for improvement:
 
 *   **Advanced Error Handling and Recovery (including Supervisor-specific enhancements):** Implementing more sophisticated strategies beyond basic error state reporting, such as:
-    *   Automatic actor restart policies and more general automatic actor recovery after failures (especially for supervised actors, as noted in `SupervisorActor.md`).
+	    *   Automatic actor restart policies and more general automatic actor recovery after failures (especially for supervised actors, as noted in [SupervisorActor](../../wiki/SupervisorActor.md)).
     *   State rollback mechanisms upon failure.
-    *   Formalized actor supervision strategies (e.g., one-for-one, all-for-one restart/stop strategies, as distinct from the current `SupervisorActor`'s focus on dynamic management), potentially including hierarchical supervision with child supervisors (also from `SupervisorActor.md`).
+	    *   Formalized actor supervision strategies (e.g., one-for-one, all-for-one restart/stop strategies, as distinct from the current `SupervisorActor`'s focus on dynamic management), potentially including hierarchical supervision with child supervisors (also from [SupervisorActor](../../wiki/SupervisorActor.md)).
 *   **Message Management:**
     *   More advanced message queuing mechanisms (e.g., priority queues, dead-letter queues).
     *   Enhanced message prioritization schemes.

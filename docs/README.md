@@ -15,7 +15,7 @@ This directory holds the design and reference documentation for SolaceCore. The 
 
 | Module | Folder | Notes |
 |---|---|---|
-| Actor system | [`components/actor_system/`](components/actor_system/) | README, supervisor, communication sequence diagrams, class diagrams. The supervisor's emotional-model design notes ([`SupervisorAI_EmotionalModel.md`](components/actor_system/SupervisorAI_EmotionalModel.md)) live here. |
+| Actor system | [`../wiki/Actor-System.md`](../wiki/Actor-System.md) | Actor architecture, supervisor notes, communication sequence, class diagrams, and emotional-model integration now live in the wiki. |
 | Kernel | [`components/kernel/`](components/kernel/) | Port system, channel system, system-architecture overview. |
 | Lifecycle | [`components/lifecycle/`](components/lifecycle/) | The `Disposable` / `Lifecycle` contract and its class diagram. |
 | Memory | [`components/memory/`](components/memory/) | The SRAF / Reflection Memory / Mouth Tool / Zoom design ([`MemoryToolDesign.md`](components/memory/MemoryToolDesign.md)). |
