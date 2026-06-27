@@ -211,7 +211,7 @@ Quick links by interest:
 │   └── src/jvmTest/kotlin/                # JVM test suite
 ├── composeApp/                            # Compose Multiplatform UI for actor graph visualization
 ├── prototypes/                            # LangChain-style chain prototypes (not production)
-├── docs/                                  # design docs, deep dive, component READMEs, status, examples
+├── wiki/                                  # topic wiki, publishing workflow, migrated design/reference docs
 └── tools/
     └── generate_actor.sh                  # actor scaffolding helper
 ```

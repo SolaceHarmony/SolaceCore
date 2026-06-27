@@ -31,6 +31,7 @@ The working ledger is [curation-tracker.csv](curation-tracker.csv). Use it to se
 
 | Source | Lines | Destination | Status |
 |---|---:|---|---|
+| `docs/README.md` | 1-95 | [Documentation Index](Documentation-Index) | Moved, source removed |
 | `docs/ARCHITECTURE_READING_GUIDE.md` | 1-76 | [Architecture Overview](Architecture-Overview) | Consolidated, source removed |
 | `docs/architecture/README.md` | 1-45 | [Architecture Overview](Architecture-Overview) | Consolidated, source removed |
 | `docs/architecture/12-system-architecture-overview.md` | 1-45 | [Architecture Overview](Architecture-Overview) | Appended to topic page, source removed |

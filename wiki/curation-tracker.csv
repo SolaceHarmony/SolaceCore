@@ -1,4 +1,5 @@
 wiki_article,source_path,start_line,end_line,last_processed_line,status,source_action,notes
+Documentation-Index,docs/README.md,1,95,95,complete,remove_source,"Source file copied directly into Documentation Index."
 Architecture-Overview,docs/ARCHITECTURE_READING_GUIDE.md,1,76,76,complete,remove_source,"Recommended reading path consolidated into the topic map and cross-links."
 Architecture-Overview,docs/architecture/README.md,1,45,45,complete,remove_source,"Rosetta section index and cross-reference model consolidated into the architecture overview."
 Architecture-Overview,docs/architecture/12-system-architecture-overview.md,1,45,45,complete,remove_source,"Source file appended directly into Architecture Overview."

@@ -72,6 +72,7 @@
 - [Build System and Dependencies](Build-System-and-Dependencies)
 - [Development Tooling and Practices](Development-Tooling-and-Practices)
 - [Documentation Catalog](Documentation-Catalog)
+- [Documentation Index](Documentation-Index)
 - [Feature Index](Feature-Index)
 - [Glossary](Glossary)
 - [How the Wiki Publishes](How-The-Wiki-Publishes)
