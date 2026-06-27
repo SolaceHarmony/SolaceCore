@@ -12,3 +12,4 @@ Voice-and-Mouth-Tool,24,30,complete,5,"Added Solace AI links to Supervisor AI me
 Inference-Cube,24,31,complete,6,"Added Solace AI links to shared memory reflection memory pipeline provider and notebook pages."
 Perception-Actors,27,33,complete,5,"Added Solace AI links to multimodal nudging mouth tool Supervisor AI memory and shared-memory pages."
 Supervisor-AI,29,35,complete,5,"Added Solace AI links to memory confusion correction mouth tool mood and provider/tool pages."
+Wiki-Link-Normalization,1,691,complete,19,"Normalized legacy .md wiki link targets, removed stale CONTRIBUTING references, and repaired feature index return links."

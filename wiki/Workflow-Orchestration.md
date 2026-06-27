@@ -164,7 +164,7 @@ The workflow management system provides a flexible and scalable framework for or
 ---
 
 ## 5. Workflow Module (`io.github.solaceharmony.core.workflow`)
-*Note: The workflow module documentation has been moved to the wiki [Workflow Orchestration](../../wiki/Workflow-Orchestration.md) page.*
+*Note: The workflow module documentation has been moved to the wiki [Workflow Orchestration](Workflow-Orchestration) page.*
 
 ---
 

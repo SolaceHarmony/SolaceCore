@@ -38,5 +38,5 @@ Most tasks have been completed. Tasks 5 and 6 are ongoing high-priority items th
 ## Related Documentation
 
 For current project status and future roadmap, see:
-- [Status Documentation](../../wiki/Status-Documentation.md) - Comprehensive project status reports
+- [Status Documentation](Status-Documentation) - Comprehensive project status reports
 - [Master Checklist](Master-Checklist) - Complete project checklist

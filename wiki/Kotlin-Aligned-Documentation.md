@@ -83,4 +83,4 @@ When updating these documents:
 - **kotlin-plans** - Executable Kotlin code plans
 - **[components](Feature-Index)** - Component-specific documentation
 - **[examples](Basic-Actor-Usage)** - Usage examples and tutorials
-- **[CONTRIBUTING.md](../CONTRIBUTING.md)** - Contribution guidelines
+- **Contribution guidelines** - Not currently tracked as a standalone wiki page

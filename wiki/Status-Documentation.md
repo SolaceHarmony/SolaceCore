@@ -128,7 +128,7 @@ This directory contains comprehensive documentation analyzing the current state 
 - `Task-6-Deadlock-Detection` - Deadlock Detection 🔄 HIGH PRIORITY
 
 ### Project Documentation
-- [`../../README.md`](../../README.md) - Project overview
+- [Home](Home) - Project overview
 - [`Compose-App-Features`](Compose-App-Features) - UI features
 
 ---

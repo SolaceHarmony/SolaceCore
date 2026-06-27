@@ -380,4 +380,4 @@ suspend fun debugActor() {
 4. Ensure all tests pass
 5. Submit a pull request
 
-See [CONTRIBUTING.md](../CONTRIBUTING.md) for detailed guidelines.
+Detailed contribution guidelines are not currently tracked as a standalone wiki page.

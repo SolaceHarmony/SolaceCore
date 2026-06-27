@@ -166,7 +166,7 @@ Represents a rule for converting an input type `IN` to an output type `OUT`.
     *   `internal inline fun <reified IN : Any, reified OUT : Any> create(...)`: Factory method to create `ConversionRule` instances.
 
 ##### 1.1.2.6. `Port.PortConnection<in IN : Any, out OUT : Any>` Data Class
-> **Note — verify against source:** §1.1.2.6 below describes `PortConnection` as a validated connection wrapper. The wiki [Kernel & Ports](../../wiki/Kernel-and-Ports.md) page describes the same type as additionally **actively routing messages when started**, while §1.1.7 (Future Enhancements) below says message piping is *not* implemented. These three claims need reconciling against the current `Port.kt` source — recorded here so it isn't lost.
+> **Note — verify against source:** §1.1.2.6 below describes `PortConnection` as a validated connection wrapper. The wiki [Kernel & Ports](Kernel-and-Ports) page describes the same type as additionally **actively routing messages when started**, while §1.1.7 (Future Enhancements) below says message piping is *not* implemented. These three claims need reconciling against the current `Port.kt` source — recorded here so it isn't lost.
 
 Represents a validated connection between a source port and a target port, potentially involving handlers, a protocol adapter, and conversion rules.
 *   **Key Properties:**
@@ -343,7 +343,7 @@ suspend fun main() { // Example, typically run in a coroutine scope
 ```
 
 #### 1.1.7. Future Enhancements & Considerations
-The `CHANNELS_README.md` and the wiki [Kernel & Ports](../../wiki/Kernel-and-Ports.md) page also outline several areas for future development and refinement, which remain relevant:
+The `CHANNELS_README.md` and the wiki [Kernel & Ports](Kernel-and-Ports) page also outline several areas for future development and refinement, which remain relevant:
 *   **Connection Implementation Details:**
     *   Implementing the actual message passing mechanism (the current `Port.connect` establishes the connection data class but doesn't actively pipe messages; this is typically handled by higher-level constructs or actor systems that use these ports).
     *   Supporting multiple subscribers for a single `OutputPort`.

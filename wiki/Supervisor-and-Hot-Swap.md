@@ -11,5 +11,4 @@ Key features:
 - Thread-safe operations using a mutex
 - Lifecycle management for all managed actors
 
-For more details, see [SupervisorActor.md](SupervisorActor.md).
-
+For more details, see [SupervisorActor](SupervisorActor).
