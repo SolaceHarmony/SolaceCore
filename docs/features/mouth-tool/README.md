@@ -247,7 +247,7 @@ when vision and audio actors start producing nudges.
 When implementation begins, two pieces of existing scaffolding apply:
 the actor framework in `lib/src/commonMain/kotlin/.../actor/` provides
 the message-passing substrate, and the
-[shared-memory](../shared-memory/README.md) primitives provide the lock-free
+[shared-memory](../../../wiki/Shared-Memory.md) primitives provide the lock-free
 queue the Nudge Bus will sit on top of.
 
 ## Open questions
@@ -268,7 +268,7 @@ queue the Nudge Bus will sit on top of.
 
 ## Cross-references
 
-- [memory](../memory/README.md) — the Mouth Tool reads working entries through
+- [memory](../../../wiki/Memory-Feature-Overview.md) — the Mouth Tool reads working entries through
   origin filtering; the `shareable` flag lives on the entry.
 - [supervisor](../supervisor/README.md) — the Mouth Tool's input is the
   Supervisor's draft; their interaction is the most load-bearing

@@ -319,7 +319,7 @@ The work order:
 - [supervisor](../supervisor/README.md) — Supervisor's tool-execution
   approval gate runs after the pipeline produces a tool call
   but before the wire request goes out.
-- [shared-memory](../shared-memory/README.md) — pipeline stages can
+- [shared-memory](../../../wiki/Shared-Memory.md) — pipeline stages can
   back onto shared-memory primitives for stage-to-stage
   data flow.
 

@@ -1,3 +1,6 @@
+<!-- topic: Solace AI -->
+<!-- title: Memory Retrieval -->
+
 # Retrieval — How an Agent Gets Back to Itself
 
 There is a moment, in any agent's life, when something in the present
@@ -9,8 +12,8 @@ that it has already worked the same problem in a different vocabulary.
 
 Retrieval is what lets the agent recognise. It is the mechanism by
 which a query — implicit or explicit, internal or external — reaches
-into both the [working tier](./working-memory.md) and the [long-term
-tier](./long-term-memory.md) and brings back what the agent has known
+into both the [working tier](Working-Memory) and the [long-term
+tier](Long-Term-Memory) and brings back what the agent has known
 all along.
 
 The architecture treats the two tiers as complementary indices of the
@@ -72,7 +75,7 @@ second.
 Long-term returns compressed records, which means the merger sees the
 summary plus embedding and tags rather than the raw text. That's
 enough to score, but the merger may, when a hit deserves to surface,
-read through to the [Reflection Memory](../reflection-memory/README.md) substrate
+read through to the [Reflection Memory](Reflection-Memory) substrate
 to recover the original raw form via `originalEntryId`. This is the
 substrate's quiet role in retrieval: not part of the index, but the
 safety net that guarantees no information was actually lost when the
@@ -203,7 +206,7 @@ requires retrieval to be fast.
 
 ## What retrieval is in service of
 
-A line from the [memory README](./README.md) bears repeating here:
+A line from the [memory README](Memory-Feature-Overview) bears repeating here:
 the architecture's commitment is continuity. Retrieval is the operation
 that delivers on it. The fade pipeline keeps the past available without
 breaking the prompt window; the substrate keeps the raw form

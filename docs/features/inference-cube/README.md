@@ -87,7 +87,7 @@ transformer's output for cube N and the LTC's input for cube N
 are *the same memory*, viewed through different slices of one
 underlying buffer. No copy happens between transformer output and
 LTC input. The `SharedMemoryManager` lives in the
-[shared-memory primitives](../shared-memory/README.md) layer; this
+[shared-memory primitives](../../../wiki/Shared-Memory.md) layer; this
 component is its primary inference-side consumer.
 
 ### Cube Registry
@@ -139,7 +139,7 @@ The LTC's hidden state matters beyond inference. For cubes that
 process emotionally-charged inputs, the hidden state at write-time
 becomes the [MoodSignature](../mood/README.md) of the corresponding
 Reflection Memory entry — the affective fingerprint the
-[memory](../memory/README.md) tier indexes against. The LTC isn't just
+[memory](../../../wiki/Memory-Feature-Overview.md) tier indexes against. The LTC isn't just
 producing output; it's producing a state that the rest of the
 architecture treats as semantically meaningful.
 
@@ -227,7 +227,7 @@ replay historical transformer outputs during idle periods to
 keep the LTCs aligned even when no fresh mentoring is happening.
 
 The cache that backs the Dream Engine is the durable
-[Reflection Memory](../reflection-memory/README.md) substrate or a
+[Reflection Memory](../../../wiki/Reflection-Memory.md) substrate or a
 specialised LTC-output cache that grows alongside it. Either way,
 the dream is reading from the same record of what happened that
 the rest of the architecture indexes over.
@@ -307,7 +307,7 @@ Lobe Manager, Dream Engine — is not in `lib/` yet.
 The work order:
 
 1. Build the `SharedMemoryManager` for inference data on top of
-   the [shared-memory primitives](../shared-memory/README.md).
+   the [shared-memory primitives](../../../wiki/Shared-Memory.md).
 2. Build the CubeRegistry with atomic status tracking.
 3. Build a minimal LNN module against a small transformer;
    verify the mentoring loop reduces error.
@@ -338,15 +338,15 @@ The work order:
 
 ## Cross-references
 
-- [shared-memory](../shared-memory/README.md) — Layer 2
+- [shared-memory](../../../wiki/Shared-Memory.md) — Layer 2
   `SharedMemoryManager` is the inference data plane this
   component uses.
 - [mood](../mood/README.md) — `MoodSignature` interface anticipates
   LTC-extractor integration; the spike + liquid layers slot in
   here.
-- [reflection-memory](../reflection-memory/README.md) — durable record of
+- [reflection-memory](../../../wiki/Reflection-Memory.md) — durable record of
   events that the Dream Engine replays from.
-- [memory](../memory/README.md) — long-term tier's vector index will
+- [memory](../../../wiki/Memory-Feature-Overview.md) — long-term tier's vector index will
   eventually use LTC signatures alongside or instead of
   embedding cosine.
 - [pipeline](../pipeline/README.md) — pipeline DSL composes inference

@@ -181,7 +181,7 @@ provider's tool-use format because the history is stored
 neutrally and converted on demand.
 
 Neutral History is also the substrate underneath
-[Reflection Memory](../reflection-memory/README.md) — the same one the
+[Reflection Memory](../../../wiki/Reflection-Memory.md) — the same one the
 agent's per-agent memory tier indexes over. The two are
 deliberately the same thing: there is one substrate, and the
 tool calls and the cognitive reflections are different
@@ -272,7 +272,7 @@ implementations.
 The work order:
 
 1. Build the Neutral History store on top of the
-   [Reflection Memory](../reflection-memory/README.md) substrate. Verify
+   [Reflection Memory](../../../wiki/Reflection-Memory.md) substrate. Verify
    that all event types serialise and deserialise correctly.
 2. Build the MCP client over stdio (the most common transport).
    Test against a known-good MCP tool server.
@@ -308,7 +308,7 @@ The work order:
 
 - [supervisor](../supervisor/README.md) — gates MCP requests through the
   approval boundary; tool execution requires Supervisor sign-off.
-- [reflection-memory](../reflection-memory/README.md) — Neutral History
+- [reflection-memory](../../../wiki/Reflection-Memory.md) — Neutral History
   events land in the substrate alongside cognitive reflections.
 - [providers](../providers/README.md) — provider abstraction reads which
   ToolFormat each provider's models speak.

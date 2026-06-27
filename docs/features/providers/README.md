@@ -315,7 +315,7 @@ The provider spec is read by:
 - **The [Supervisor's safety boundary](../supervisor/README.md)** — risk
   assessment can be provider-aware; some providers' tools warrant
   tighter scrutiny than others.
-- **The [Reflection Memory](../reflection-memory/README.md) substrate** —
+- **The [Reflection Memory](../../../wiki/Reflection-Memory.md) substrate** —
   every event records the provider that produced it, so the
   durable record is portable across provider migrations.
 
@@ -373,7 +373,7 @@ The work order:
   streaming-time tool-call recognition.
 - [supervisor](../supervisor/README.md) — provider identity feeds risk
   assessment.
-- [reflection-memory](../reflection-memory/README.md) — every event records
+- [reflection-memory](../../../wiki/Reflection-Memory.md) — every event records
   its provider for cross-provider portability.
 
 ## What the spec is in service of

@@ -1,3 +1,6 @@
+<!-- topic: Solace AI -->
+<!-- title: Working Memory -->
+
 # Working Memory
 
 If you watched a person solve a problem out loud, you would notice that
@@ -85,7 +88,7 @@ depth most of the time and reaches further only when the work needs it.
 A new working entry is born at rung 0 — raw text, full structured
 metadata, freshly written by whichever actor produced it. From that
 point its fortunes depend on the [composite fade
-score](./compression.md):
+score](Memory-Compression):
 
 1. While its score stays below threshold for the next rung, it sits at
    full fidelity. The agent reads it like any other recent thing.
@@ -97,7 +100,7 @@ score](./compression.md):
 3. When the score crosses the rung-2 threshold, the fade pipeline runs
    an abstractive summariser, and the entry's representation in working
    is now the abstractive summary. The raw text remains in the
-   [Reflection Memory](../reflection-memory/README.md) substrate; the working
+   [Reflection Memory](Reflection-Memory) substrate; the working
    slot just doesn't carry it anymore.
 4. When the score would push it past rung 2, the entry migrates out of
    working entirely. An embedding is computed; a long-term record is
@@ -106,7 +109,7 @@ score](./compression.md):
 Working never holds rung 3 (embedding-only) entries — that's the line
 where it stops being working memory and starts being long-term.
 
-The lifecycle can also run in reverse. When [retrieval](./retrieval.md)
+The lifecycle can also run in reverse. When [retrieval](Memory-Retrieval)
 returns a high-scoring long-term hit, the matching record can be
 **rehydrated** back into working as a transient cue. The cue carries
 through the current reasoning step; if the agent actually references it
@@ -128,7 +131,7 @@ recent entries, rung 1 or rung 2 for older ones, ordered by timestamp
 unless the agent has explicitly asked for a different ordering.
 
 Explicit queries — when the agent or another agent asks "what was that
-thing about X" — follow the [retrieval](./retrieval.md) path, which
+thing about X" — follow the [retrieval](Memory-Retrieval) path, which
 scans both tiers and merges. Working's part of that merge is cheap
 because the data structure is small and lives in process memory; a
 linear scan is acceptable at the budgets above. An inverted index
@@ -151,7 +154,7 @@ agent's long-term tier — the records that, in the previous session, had
 just demoted past working — and surfaces them as native working entries
 so the next reasoning step has continuity with the previous one. The
 exact value of N and the rung at which records are brought back is
-TBD; it's one of the open questions in the [README](./README.md). The
+TBD; it's one of the open questions in the [README](Memory-Feature-Overview). The
 principle is that the agent should pick up where it left off, not start
 over.
 
@@ -162,7 +165,7 @@ look for "what was just said," "what is the agent trying to do right
 now," "what cues did advisors emit in the last few turns." It is not
 the right place to look for "what did we decide last week" or "what
 was the user upset about that one time" — those questions pass through
-[long-term memory](./long-term-memory.md) and the substrate, and they
+[long-term memory](Long-Term-Memory) and the substrate, and they
 go through retrieval rather than direct read.
 
 The two tiers are complementary, not redundant. Trying to make working

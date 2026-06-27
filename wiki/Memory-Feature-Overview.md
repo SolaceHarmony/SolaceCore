@@ -1,3 +1,6 @@
+<!-- topic: Solace AI -->
+<!-- title: Memory Feature Overview -->
+
 # Memory
 
 Every mind has to solve a contradiction. The thoughts you're having right
@@ -145,7 +148,7 @@ would erase exactly the differences that make a multi-agent system more
 than a single-agent system with more knobs.
 
 What the agents do share is the substrate. The Reflection Memory
-([described separately](../reflection-memory/README.md), and to which the Magentic
+([described separately](Reflection-Memory), and to which the Magentic
 side of the project contributed the XML serialisation and event schema
 under the name Neutral History) holds the raw events of the system — every
 reflection, every cue, every tool call result, every speech act — append-
@@ -158,7 +161,7 @@ is still recoverable from the substrate at the cost of one read.
 
 A query against an agent's memory is run against both tiers in parallel
 and merged on a single composite score. The full mechanic is documented
-in [retrieval.md](./retrieval.md), but the principle worth capturing
+in [retrieval.md](Memory-Retrieval), but the principle worth capturing
 here is that the two tiers are *complementary indices*, not
 primary-and-cache. Working answers fast and exact, with full structured
 metadata available to the merger. Long-term answers semantically, by
@@ -228,12 +231,12 @@ substrate, the rehydration — is in service of it.
 
 ## Sub-pages
 
-- [working-memory.md](./working-memory.md) — what lives in the
+- [working-memory.md](Working-Memory) — what lives in the
   full-fidelity tier and how it's bounded
-- [long-term-memory.md](./long-term-memory.md) — the compressed tier,
+- [long-term-memory.md](Long-Term-Memory) — the compressed tier,
   its indices, and how it grows
-- [compression.md](./compression.md) — the fade pipeline in detail
-- [retrieval.md](./retrieval.md) — how queries traverse both tiers
+- [compression.md](Memory-Compression) — the fade pipeline in detail
+- [retrieval.md](Memory-Retrieval) — how queries traverse both tiers
   and the rehydration path
 
 ## Open questions

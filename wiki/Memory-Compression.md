@@ -1,3 +1,6 @@
+<!-- topic: Solace AI -->
+<!-- title: Memory Compression -->
+
 # Compression — The Fade
 
 Compression in SolaceCore is not the eviction policy of a cache. It is
@@ -174,7 +177,7 @@ underneath the conversation, not next to it.
 ## Promotion and rehydration
 
 The descent down the ladder is the dominant flow, but reads can move
-material the other way. When [retrieval](./retrieval.md) scores a
+material the other way. When [retrieval](Memory-Retrieval) scores a
 long-term hit highly, the matching record can be **rehydrated** back
 into working as a transient cue. Rehydration may bring back the
 abstractive summary (rung 2 form) or, when the score is high enough
@@ -224,7 +227,7 @@ The pipeline tunes itself against the answers as they arrive.
 
 ## What the fade is in service of
 
-The same goal the [memory README](./README.md) names: an agent that does
+The same goal the [memory README](Memory-Feature-Overview) names: an agent that does
 not lose itself across sessions. The composite score, the ladder, the
 throttled dispatcher, the rehydration path — every detail above is in
 service of that goal. The architecture is willing to be quite

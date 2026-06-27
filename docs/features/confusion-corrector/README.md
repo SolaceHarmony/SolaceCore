@@ -153,7 +153,7 @@ single pass is cheaper than three separate calls.
 ## The summarisation engine
 
 The Corrector's compression layer is the same one the
-[fade pipeline](../memory/compression.md) uses for rung-2 abstractive
+[fade pipeline](../../../wiki/Memory-Compression.md) uses for rung-2 abstractive
 summaries. This is deliberate — keeping the two compressors
 identical means the Supervisor's working context stays at one voice,
 even as fade-aged content and replay-summary content are mixed
@@ -229,7 +229,7 @@ The work order:
 
 - [supervisor](../supervisor/README.md) — primary trigger and primary
   consumer of replay summaries.
-- [memory](../memory/README.md) — replay summaries land in Reflection Memory
+- [memory](../../../wiki/Memory-Feature-Overview.md) — replay summaries land in Reflection Memory
   and integrate with the fade pipeline as native working entries.
 - [time-actor](../time-actor/README.md) — heartbeat cues often surface drift
   that triggers a Corrector invocation.

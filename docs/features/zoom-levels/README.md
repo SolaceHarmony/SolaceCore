@@ -81,7 +81,7 @@ MID is moderately expensive because every entry passes through an
 extractive scoring procedure to decide whether it's a *key
 reflection* worth retaining at MID's resolution. HIGH is the most
 expensive because it requires the abstractive summariser, the same
-one the [fade pipeline](../memory/compression.md) uses for rung-2
+one the [fade pipeline](../../../wiki/Memory-Compression.md) uses for rung-2
 demotion.
 
 The buffers are kept consistent by the substrate: every event is
@@ -300,11 +300,11 @@ The work order:
   transition events.
 - [mouth-tool](../mouth-tool/README.md) — framing engine reads active zoom
   to determine detail level.
-- [memory](../memory/README.md) — the working tier holds rungs 0-2, the
+- [memory](../../../wiki/Memory-Feature-Overview.md) — the working tier holds rungs 0-2, the
   long-term tier holds rungs 1-3, and zoom levels are the
   *projection* layer over the substrate that surfaces the right
   fidelity for the active lens.
-- [reflection-memory](../reflection-memory/README.md) — the underlying
+- [reflection-memory](../../../wiki/Reflection-Memory.md) — the underlying
   substrate the three buffers project over.
 - [time-actor](../time-actor/README.md) — heartbeat cues trigger zoom
   considerations.

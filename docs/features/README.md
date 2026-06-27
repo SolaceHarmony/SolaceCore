@@ -34,8 +34,8 @@ The status values:
 
 ### Memory architecture
 
-- **[memory](./memory/README.md)** — **per-agent dual context** (working + long-term, with automatic compression). The current-era memory design — the key thing in the new version.
-- [reflection-memory](./reflection-memory/README.md) — system-wide event substrate that both memory tiers persist into.
+- **[memory](../../wiki/Memory-Feature-Overview.md)** — **per-agent dual context** (working + long-term, with automatic compression). The current-era memory design — the key thing in the new version.
+- [reflection-memory](../../wiki/Reflection-Memory.md) — system-wide event substrate that both memory tiers persist into.
 
 ### Narrative & cognition (the SRAF core)
 
@@ -58,7 +58,7 @@ The status values:
 
 ### Primitives
 
-- [shared-memory](./shared-memory/README.md) — lock-free queues + atomics for scheduler and inference
+- [shared-memory](../../wiki/Shared-Memory.md) — lock-free queues + atomics for scheduler and inference
 - [inference-cube](./inference-cube/README.md) — LNN takeover from transformer
 
 ## Provenance map

@@ -42,7 +42,7 @@ what just happened. This is the layer the Magentic
 
 **A Liquid Time-Constant cell integrates that signature into a
 continuous-time hidden state.** The hidden state at the moment a
-[Reflection Memory](../reflection-memory/README.md) entry is written *is*
+[Reflection Memory](../../../wiki/Reflection-Memory.md) entry is written *is*
 the affective fingerprint of the entry, persisted alongside the
 text. Retrieval becomes signature correlation, not embedding cosine.
 
@@ -210,10 +210,10 @@ today.
 ## How emotion enters memory
 
 The mood module's most consequential interaction is with the
-[memory](../memory/README.md) tier. Every working entry carries an
+[memory](../../../wiki/Memory-Feature-Overview.md) tier. Every working entry carries an
 `emotionalWeight` field (0..1) and an optional `moodSnapshot`
 capturing the discrete cue at the moment of recording. Both
-participate in the [fade composite](../memory/compression.md):
+participate in the [fade composite](../../../wiki/Memory-Compression.md):
 
 ```
 fadeScore =
@@ -294,13 +294,13 @@ the kernel:
 
 ## Cross-references
 
-- [memory](../memory/README.md) — emotional weight is a fade-resistance
+- [memory](../../../wiki/Memory-Feature-Overview.md) — emotional weight is a fade-resistance
   signal in the composite score.
 - [supervisor](../supervisor/README.md) — primary consumer of cues; weights,
   ignores, or acts on them.
 - [mouth-tool](../mouth-tool/README.md) — politeness filter shapes tone;
   cues never leak directly to output.
-- [reflection-memory](../reflection-memory/README.md) — entries get
+- [reflection-memory](../../../wiki/Reflection-Memory.md) — entries get
   `moodSnapshot` and (eventually) `MoodSignature` stamps.
 - [inference-cube](../inference-cube/README.md) — the LTC layer this
   module's `MoodSignature` interface anticipates.

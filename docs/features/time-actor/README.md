@@ -251,12 +251,12 @@ When implementation begins, the work order is:
   fails.
 - [zoom-levels](../zoom-levels/README.md) — Time Actor cues can suggest zoom
   transitions when the agent has spent too long at one level.
-- [memory](../memory/README.md) — the cue lands in working with a tiny
+- [memory](../../../wiki/Memory-Feature-Overview.md) — the cue lands in working with a tiny
   budget and aggressive fade.
 
 ## What the heartbeat is in service of
 
-The same goal the [memory README](../memory/README.md) names:
+The same goal the [memory README](../../../wiki/Memory-Feature-Overview.md) names:
 continuity. A long session without temporal markers loses its sense
 of duration; the agent can't tell whether it has been working with
 the user for ten minutes or three hours, and the loss of that sense

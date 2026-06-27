@@ -22,6 +22,7 @@
 - [Lifecycle Class Diagram](Lifecycle-Class-Diagram)
 - [Lifecycle Management Architecture](Lifecycle-and-Resources)
 - [Scripting Module Design](Scripting-Engine)
+- [Shared Memory](Shared-Memory)
 - [Storage & Persistence](Storage-and-Persistence)
 - [Supervisor and Hot Swap](Supervisor-and-Hot-Swap)
 - [SupervisorActor](SupervisorActor)
@@ -33,12 +34,18 @@
 <summary><strong>Solace AI</strong></summary>
 
 - [Inference Cube](Inference-Cube)
+- [Long-Term Memory](Long-Term-Memory)
 - [Memory & Reflection](Memory-and-Reflection)
+- [Memory Compression](Memory-Compression)
+- [Memory Feature Overview](Memory-Feature-Overview)
+- [Memory Retrieval](Memory-Retrieval)
 - [Perception Actors](Perception-Actors)
 - [Providers & MCP Tools](Providers-and-MCP-Tools)
+- [Reflection Memory](Reflection-Memory)
 - [Solace AI Overview](Solace-AI-Overview)
 - [Supervisor AI and Emotional Model Integration](Mood-and-Emotional-Model)
 - [Voice & Mouth Tool](Voice-and-Mouth-Tool)
+- [Working Memory](Working-Memory)
 - [Zoom Levels](Zoom-Levels)
 
 </details>

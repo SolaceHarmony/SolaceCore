@@ -277,7 +277,7 @@ Supervisor with cross-agent communication mediated by messages.
 
 ## Cross-references
 
-- [memory](../memory/README.md) — Supervisor's working budget is the
+- [memory](../../../wiki/Memory-Feature-Overview.md) — Supervisor's working budget is the
   largest; drift detection reads recent working entries.
 - [mouth-tool](../mouth-tool/README.md) — the Supervisor's draft is the
   Mouth Tool's input; speech is gated on Supervisor approval.

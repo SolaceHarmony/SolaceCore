@@ -1,3 +1,6 @@
+<!-- topic: Solace AI -->
+<!-- title: Reflection Memory -->
+
 # Reflection Memory — The Substrate Beneath Memory
 
 There is a single source of truth in SolaceCore for *what happened
@@ -7,7 +10,7 @@ sentence the Mouth Tool externalised — all of it lands in one log,
 chronologically ordered, append-only, owned by no single agent.
 
 That log is Reflection Memory. The per-agent dual-context
-[memory tier](../memory/README.md) sits on top of it. Agents read their own
+[memory tier](Memory-Feature-Overview) sits on top of it. Agents read their own
 working tier and their own long-term tier, and each agent's
 perspective on the past is encoded as compressed records in their
 long-term index — but the *events* those records refer to live here,
@@ -109,7 +112,7 @@ exploits the type field heavily.
 **`source`** is the originating actor's identity. Multiple agents
 may write entries about the same event; `source` is what
 distinguishes them. The `originalEntryId` pointers in per-agent
-[long-term](../memory/long-term-memory.md) records reference back to
+[long-term](Long-Term-Memory) records reference back to
 substrate entries by `id`, and the `source` field is part of how
 agents know which entries are theirs.
 
@@ -142,7 +145,7 @@ in-memory tail is fast, the durable tail requires a disk read.
 
 ## How the agent tiers index over it
 
-The per-agent [memory](../memory/README.md) tiers are *views* over the
+The per-agent [memory](Memory-Feature-Overview) tiers are *views* over the
 substrate, not copies of it. A working entry in agent A's tier
 *references* a substrate entry by `id`. A long-term record in agent
 A's tier carries `originalEntryId` pointing back to the same
@@ -256,7 +259,7 @@ summaries as context.
 
 ## Cross-references
 
-- **[memory](../memory/README.md)** — the per-agent dual-context layer
+- **[memory](Memory-Feature-Overview)** — the per-agent dual-context layer
   that sits on top of this substrate.
 - [confusion-corrector](../confusion-corrector/README.md) — reads the
   substrate to assemble replay summaries; writes its own back.
@@ -285,4 +288,4 @@ floor the rest of the memory architecture stands on.
 
 ---
 
-[← Features index](../README.md)
+[← Features index](.Memory-Feature-Overview)

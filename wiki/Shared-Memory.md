@@ -1,3 +1,6 @@
+<!-- topic: Runtime -->
+<!-- title: Shared Memory -->
+
 # Shared-Memory Primitives — The Lock-Free Floor
 
 Underneath all the cognition — the Supervisor reasoning, the Mood
@@ -158,13 +161,13 @@ direct consumer. Its lock-free pub/sub is exactly a
 Every modality actor publishes by appending to the queue;
 subscribers consume by dequeuing. No locks, no contention.
 
-The [Reflection Memory](../reflection-memory/README.md) substrate is
+The [Reflection Memory](Reflection-Memory) substrate is
 another. Its in-memory ring is a `SharedWorkQueue` with
 ReflectionEntry envelopes. Periodic flush to durable storage
 reads from the ring and writes to disk; the ring stays available
 for new entries throughout the flush.
 
-The [working memory](../memory/working-memory.md) tier is a third.
+The [working memory](Working-Memory) tier is a third.
 Its in-process structure is a small set of slices managed by the
 `SharedMemoryManager`, sized to the agent's working budget. Reads
 are direct buffer accesses; writes use atomic counters for the
@@ -300,12 +303,12 @@ The work order:
 
 ## Cross-references
 
-- [reflection-memory](../reflection-memory/README.md) — sits on the
+- [reflection-memory](Reflection-Memory) — sits on the
   shared-memory ring; the substrate's lock-free queue is one of
   these structures.
 - [multimodal-nudging](../multimodal-nudging/README.md) — Cross-Perspective
   Bus is a SharedDescriptorQueue.
-- [memory](../memory/README.md) — working tier holds slices; long-term
+- [memory](Memory-Feature-Overview) — working tier holds slices; long-term
   vector index uses atomic counters for fade metadata.
 - [inference-cube](../inference-cube/README.md) — Layer 2 inference data
   plane uses `SharedMemoryManager` for zero-copy slices.
@@ -329,4 +332,4 @@ That's what the floor is for.
 
 ---
 
-[← Features index](../README.md)
+[← Features index](.Memory-Feature-Overview)
