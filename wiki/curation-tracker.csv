@@ -116,3 +116,4 @@ Sketch-Architecture,docs/sketch-architecture/ProviderSpecs.kt,1,307,307,complete
 Sketch-Architecture,docs/sketch-architecture/QuickStartDevelopers.kt,1,261,261,complete_move,remove_source,"Kotlin plan moved unchanged into wiki/sketch-architecture/."
 Storage-Checklist,wiki/Storage-and-Persistence.md,768,924,157,complete_split,link_from_source,"Extracted embedded storage checklist into its own topical wiki page."
 Storage-Thread-Safety-and-Deadlock-Prevention,wiki/Storage-and-Persistence.md,1672,1753,82,complete_split,link_from_source,"Extracted storage thread-safety appendix into its own topical wiki page."
+Solace-Core-Framework-Architecture,wiki/Solace-Core-Framework-Architecture.md,361,570,210,complete_deduplicate,link_to_topics,"Replaced duplicated Appendix A Mermaid diagrams with links to standalone diagram pages."

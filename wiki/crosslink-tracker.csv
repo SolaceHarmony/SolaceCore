@@ -15,3 +15,4 @@ Supervisor-AI,29,35,complete,5,"Added Solace AI links to memory confusion correc
 Wiki-Link-Normalization,1,691,complete,19,"Normalized legacy .md wiki link targets, removed stale CONTRIBUTING references, and repaired feature index return links."
 Storage-and-Persistence,24,31,complete,1,"Added related-topic link to extracted Storage Checklist page."
 Storage-and-Persistence,24,32,complete,1,"Added related-topic link to extracted Storage Thread Safety page."
+Solace-Core-Framework-Architecture,361,367,complete,3,"Linked Appendix A to standalone system architecture actor class and actor communication diagram pages."
