@@ -33,6 +33,7 @@
 - [Scripting Module Design](Scripting-Engine)
 - [Shared Memory](Shared-Memory)
 - [Storage & Persistence](Storage-and-Persistence)
+- [Storage Checklist](Storage-Checklist)
 - [Supervisor and Hot Swap](Supervisor-and-Hot-Swap)
 - [SupervisorActor](SupervisorActor)
 - [System Architecture Diagram](System-Architecture-Diagram)
