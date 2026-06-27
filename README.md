@@ -183,7 +183,7 @@ For a richer composition example see [`docs/examples/advanced_workflow_example.m
 
 ## Reading guide
 
-The architecture and design docs are extensive. The recommended path is in [`docs/ARCHITECTURE_READING_GUIDE.md`](docs/ARCHITECTURE_READING_GUIDE.md) — fast to deep, anchored on the canonical narrative.
+The architecture and design docs are extensive. The recommended path is now the wiki [Architecture Overview](wiki/Architecture-Overview.md) — fast to deep, anchored on the canonical narrative.
 
 Quick links by interest:
 

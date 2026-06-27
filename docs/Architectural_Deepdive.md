@@ -2,7 +2,7 @@
 
 This document has been split into a navigable wiki.
 
-**→ [docs/architecture/README.md](./architecture/README.md)**
+**→ [wiki/Architecture-Overview.md](../wiki/Architecture-Overview.md)**
 
 The previous monolithic content (~2,800 lines) is preserved verbatim across the
 section files in [`docs/architecture/`](./architecture/). Section numbering is

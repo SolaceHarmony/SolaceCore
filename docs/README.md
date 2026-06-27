@@ -4,7 +4,7 @@ This directory holds the design and reference documentation for SolaceCore. The 
 
 ## Where to start
 
-- **The recommended reading path** is in [`ARCHITECTURE_READING_GUIDE.md`](ARCHITECTURE_READING_GUIDE.md) — fast → deep, anchored on the canonical narrative.
+- **The recommended reading path** is now the wiki [Architecture Overview](../wiki/Architecture-Overview.md) — fast → deep, anchored on the canonical narrative.
 - **One-screen mental model**: [`components/kernel/system_architecture.md`](components/kernel/system_architecture.md) — the system diagram.
 - **Full architecture deep dive**: [`Architectural_Deepdive.md`](Architectural_Deepdive.md).
 - **The Solace project framing** (what this kernel exists to support): [`Architectural_Document_Solace_Core_Framework.md`](Architectural_Document_Solace_Core_Framework.md).

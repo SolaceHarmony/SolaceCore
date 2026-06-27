@@ -2,16 +2,38 @@
 
 # Documentation Catalog
 
-> 🚧 **Stub — content pending.** Part of the SolaceCore single-source-of-truth wiki. This placeholder defines the page's scope; we fill it together, page by page.
+This catalog tracks the migration from the old `docs/` tree into topic-based wiki pages. It is not a file dump. Each source document is either being consolidated into a topic page, split across several topic pages, or retained temporarily until its line ranges have been curated.
 
-**What this page covers**
-An index/map of the 100+ source docs in the repo and which wiki page now carries each.
+The working ledger is [curation-tracker.csv](curation-tracker.csv). Use it to see the article, source file, line range, and current status for each migration chunk.
 
-**Where it fits**
-Traceability from old sprawl to the new component pages.
+## Topic Spine
 
-**Primary sources (in-repo)**
-- `docs/** (full inventory)`
+| Topic | Role |
+|---|---|
+| [Vision & Solace AI](Vision-and-Solace-AI) | Why the project exists and how Solace AI maps onto the runtime. |
+| [Architecture Overview](Architecture-Overview) | The system map and reading path. |
+| [Kernel & Ports](Kernel-and-Ports) | Communication substrate. |
+| [Lifecycle & Resources](Lifecycle-and-Resources) | Startup, pause, stop, dispose, and cleanup discipline. |
+| [Actor System](Actor-System) | Actor runtime, state isolation, messaging, metrics. |
+| [Supervisor & Hot-Swap](Supervisor-and-Hot-Swap) | Dynamic registration, hot-plugging, and hot-swapping. |
+| [Workflow Orchestration](Workflow-Orchestration) | Composing actors into executable flows. |
+| [Scripting Engine](Scripting-Engine) | Runtime Kotlin scripting and script actor behavior. |
+| [Storage & Persistence](Storage-and-Persistence) | Storage abstractions, recovery, caching, file/in-memory backends. |
+| [Memory & Reflection](Memory-and-Reflection) | Companion memory, reflection, and continuity. |
+| [Mood & Emotional Model](Mood-and-Emotional-Model) | Emotional advisor and mood-signature work. |
+| [Voice & Mouth Tool](Voice-and-Mouth-Tool) | Spoken interaction and thought-to-speech filtering. |
+| [Inference Cube](Inference-Cube) | Actor inference engine and hybrid reasoning model. |
+| [Project Status](Project-Status) | Generated implementation/status snapshot. |
+| [Roadmap](Roadmap) | Generated implementation roadmap. |
 
----
-*This page will be authored from the sources above, with prose recounted (not assumed) and verified against the code.*
+## Curated So Far
+
+| Source | Lines | Destination | Status |
+|---|---:|---|---|
+| `docs/ARCHITECTURE_READING_GUIDE.md` | 1-76 | [Architecture Overview](Architecture-Overview) | Consolidated, source removed |
+| `docs/architecture/README.md` | 1-45 | [Architecture Overview](Architecture-Overview) | Consolidated, source removed |
+| `docs/architecture/12-system-architecture-overview.md` | 1-45 | [Architecture Overview](Architecture-Overview) | Covered, source retained until architecture section migration |
+
+## Current Rule
+
+Move content when it has a topic home. If a source document spans multiple topics, split it by source line range in `curation-tracker.csv` and update each destination page before removing the old document.
