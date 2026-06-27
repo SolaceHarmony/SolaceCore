@@ -1,3 +1,6 @@
+<!-- topic: Orientation -->
+<!-- title: SolaceCore Architecture Overview -->
+
 # SolaceCore Architecture Overview
 
 SolaceCore implements a LangChain-like framework using Kotlin's powerful coroutines and actor-based concurrency model. The architecture combines the best of both worlds: the flexibility of LangChain's chain-based processing with Kotlin's robust concurrency primitives.

@@ -50,6 +50,10 @@ The working ledger is [curation-tracker.csv](curation-tracker.csv). Use it to se
 | `docs/architecture/11-architectural-vision.md` | 1-29 | [Vision & Solace AI](Vision-and-Solace-AI) | Appended to topic page, source removed |
 | `docs/architecture/13-storage-thread-safety-and-deadlock-prevention.md` | 1-82 | [Storage & Persistence](Storage-and-Persistence) | Appended to topic page, source removed |
 | `docs/architecture/14-inferencecube-architecture.md` | 1-47 | [Inference Cube](Inference-Cube) | Appended to topic page, source removed |
+| `docs/architecture.md` | 1-268 | [SolaceCore Architecture Overview](SolaceCore-Architecture-Overview) | Moved, source removed |
+| `docs/Architectural_Deepdive.md` | 1-9 | [Architectural Deep Dive](Architectural-Deep-Dive) | Moved, source removed |
+| `docs/Architectural_Document_Solace_Core_Framework.md` | 1-576 | [Solace Core Framework Architecture](Solace-Core-Framework-Architecture) | Moved, source removed |
+| `docs/diagrams/system_architecture.md` | 1-77 | [System Architecture Diagram](System-Architecture-Diagram) | Moved, source removed |
 | `docs/components/kernel/README.md` | 1-102 | [Kernel & Ports](Kernel-and-Ports) | Consolidated, source removed |
 | `docs/components/kernel/channel_system.md` | 1-261 | [Kernel & Ports](Kernel-and-Ports) | Consolidated, source removed |
 | `docs/components/kernel/system_architecture.md` | 1-77 | [Architecture Overview](Architecture-Overview) | Consolidated, source removed |

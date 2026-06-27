@@ -1,3 +1,6 @@
+<!-- topic: Orientation -->
+<!-- title: Solace Core Framework Architecture -->
+
 # Solace Core Framework - Architectural Document
 
 ## Executive Summary

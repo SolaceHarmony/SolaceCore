@@ -1,3 +1,6 @@
+<!-- topic: Runtime -->
+<!-- title: System Architecture Diagram -->
+
 # Solace Core Framework System Architecture
 
 ```mermaid

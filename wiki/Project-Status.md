@@ -3,7 +3,7 @@
 
 # Project Status
 
-_Generated 2026-06-27 04:25 UTC for `SolaceHarmony/SolaceCore`. Aggregates status pages in `wiki/` plus an optional live project board._
+_Generated 2026-06-27 04:35 UTC for `SolaceHarmony/SolaceCore`. Aggregates status pages in `wiki/` plus an optional live project board._
 
 ## Live Project Board
 
@@ -130,7 +130,7 @@ _Generated 2026-06-27 04:25 UTC for `SolaceHarmony/SolaceCore`. Aggregates statu
 - **Full Status Report:** [Project-Status-Report](Project-Status-Report)
 - **Design Gap Analysis:** [Design-vs-Implementation](Design-vs-Implementation)
 - **Master Checklist:** [Master Checklist](Master-Checklist)
-- **Architecture Docs:** [../Architectural_Document_Solace_Core_Framework.md](../Architectural_Document_Solace_Core_Framework.md)
+- **Architecture Docs:** [Solace Core Framework Architecture](Solace-Core-Framework-Architecture)
 
 ---
 
@@ -556,8 +556,8 @@ However, to achieve the **full vision** outlined in the design documents, signif
 
 - `Master-Checklist` - Comprehensive project checklist
 - `Storage-and-Persistence` - Storage system tasks
-- `../Architectural_Document_Solace_Core_Framework.md` - Architecture overview
-- `../Architectural_Deepdive.md` - Detailed implementation guide
+- `Solace-Core-Framework-Architecture` - Architecture overview
+- `Architectural-Deep-Dive` - Detailed implementation guide
 - `Task-1-Core-Tests` through `Task-6-Deadlock-Detection` - Recent task completion status
 - `../../README.md` - Project overview and roadmap
 

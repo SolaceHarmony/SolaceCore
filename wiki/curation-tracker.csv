@@ -93,3 +93,7 @@ Testing-Strategy,docs/architecture/10-testing-strategy-jvm-target.md,1,55,55,com
 Vision-and-Solace-AI,docs/architecture/11-architectural-vision.md,1,29,29,complete,remove_source,"Source file appended directly into Vision & Solace AI."
 Storage-and-Persistence,docs/architecture/13-storage-thread-safety-and-deadlock-prevention.md,1,82,82,complete,remove_source,"Source file appended directly into Storage & Persistence."
 Inference-Cube,docs/architecture/14-inferencecube-architecture.md,1,47,47,complete,remove_source,"Source file appended directly into Inference Cube."
+SolaceCore-Architecture-Overview,docs/architecture.md,1,268,268,complete,remove_source,"Source file copied directly into SolaceCore Architecture Overview."
+Architectural-Deep-Dive,docs/Architectural_Deepdive.md,1,9,9,complete,remove_source,"Source file copied directly into Architectural Deep Dive with wiki link repair."
+Solace-Core-Framework-Architecture,docs/Architectural_Document_Solace_Core_Framework.md,1,576,576,complete,remove_source,"Source file copied directly into Solace Core Framework Architecture."
+System-Architecture-Diagram,docs/diagrams/system_architecture.md,1,77,77,complete,remove_source,"Source file copied directly into System Architecture Diagram."

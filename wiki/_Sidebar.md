@@ -5,11 +5,14 @@
 <details>
 <summary><strong>Orientation</strong></summary>
 
+- [Architectural Deep Dive](Architectural-Deep-Dive)
 - [Architecture Overview](Architecture-Overview)
 - [Design vs Implementation](Design-vs-Implementation)
 - [Project Status](Project-Status)
 - [Project Status Report](Project-Status-Report)
 - [Quick Status](Quick-Status)
+- [Solace Core Framework Architecture](Solace-Core-Framework-Architecture)
+- [SolaceCore Architecture Overview](SolaceCore-Architecture-Overview)
 - [Vision & Solace AI](Vision-and-Solace-AI)
 
 </details>
@@ -32,6 +35,7 @@
 - [Storage & Persistence](Storage-and-Persistence)
 - [Supervisor and Hot Swap](Supervisor-and-Hot-Swap)
 - [SupervisorActor](SupervisorActor)
+- [System Architecture Diagram](System-Architecture-Diagram)
 - [Workflow Management Design](Workflow-Orchestration)
 
 </details>

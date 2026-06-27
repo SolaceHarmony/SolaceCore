@@ -3,7 +3,7 @@
 
 # SolaceCore: Master Checklist
 
-This document consolidates all actionable items, quality assurance checks, documentation tasks, and other checklist points related to the SolaceCore project. It serves as a companion to the `Architectural_Deepdive.md` and helps track the completeness and correctness of various aspects of the system.
+This document consolidates all actionable items, quality assurance checks, documentation tasks, and other checklist points related to the SolaceCore project. It serves as a companion to the `Architectural-Deep-Dive` and helps track the completeness and correctness of various aspects of the system.
 
 ## 🚨 Critical Issues - Immediate Priority
 
