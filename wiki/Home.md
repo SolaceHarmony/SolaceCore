@@ -19,7 +19,7 @@ The single source of truth for **SolaceCore** — the Kotlin/Ktor hot-pluggable 
 
 ## Solace AI (the companion, as actors)
 
-[Solace AI Overview](Solace-AI-Overview) · [Memory & Reflection](Memory-and-Reflection) · [Mood & Emotional Model](Mood-and-Emotional-Model) · [Voice & Mouth Tool](Voice-and-Mouth-Tool) · [Inference Cube](Inference-Cube) · [Providers & MCP Tools](Providers-and-MCP-Tools) · [Perception Actors](Perception-Actors)
+[Solace AI Overview](Solace-AI-Overview) · [Memory & Reflection](Memory-and-Reflection) · [Mood & Emotional Model](Mood-and-Emotional-Model) · [Voice & Mouth Tool](Voice-and-Mouth-Tool) · [Inference Cube](Inference-Cube) · [Provider Specs](Providers-and-MCP-Tools) · [MCP and Tool Format](MCP-and-Tool-Format) · [Perception Actors](Perception-Actors)
 
 ## Reference
 

@@ -1,18 +1,109 @@
 <!-- topic: Runtime -->
 
-# Scripting Engine
+# Scripting Module Design
 
-> 🚧 **Stub — content pending.** Part of the SolaceCore single-source-of-truth wiki. This placeholder defines the page's scope; we fill it together, page by page.
+## Overview and Design Goals
 
-**What this page covers**
-Runtime Kotlin scripting: compilation, caching, validation, versioning, and hot-reloadable script actors.
+The scripting module in SolaceCore provides a robust framework for integrating and executing dynamic Kotlin scripts (`.kts` files). This allows for flexible and updatable logic within the system, particularly for actor behaviors. The design emphasizes Kotlin script integration, hot-reloading, validation, versioning, and persistent storage.
 
-**Where it fits**
-How actor behavior changes at runtime without redeploys.
+The scripting engine is designed with the following key requirements and features in mind:
 
-**Primary sources (in-repo)**
-- `docs/components/scripting/Scripting_Module_Design.md`
-- `docs/architecture/06-scripting-module-io-github-solaceharmony-core-scripting.md`
+*   **Kotlin Script Integration:**
+    *   Leverage Kotlin's native scripting capabilities.
+    *   Support compilation and execution of `.kts` script files.
+    *   Provide a sandboxed environment for safe script execution.
+*   **Hot-Reloading:**
+    *   Enable dynamic updates to actor logic by reloading scripts without system downtime.
+    *   Support automatic detection of script changes and subsequent reloading.
+    *   Ensure actor state is preserved across script reloads.
+*   **Script Validation:**
+    *   Perform syntax and semantic validation of scripts before execution.
+    *   Verify that scripts adhere to any required interfaces or contracts.
+    *   Offer clear error reporting for invalid scripts.
+*   **Versioning and Rollback:**
+    *   Track different versions of scripts.
+    *   Allow rollback to previously known good versions if issues arise with new script versions.
+*   **Script Storage:**
+    *   Persistently store scripts and their metadata (version, creation date, etc.).
+    *   Support loading scripts from various sources (e.g., file system, database).
 
----
-*This page will be authored from the sources above, with prose recounted (not assumed) and verified against the code.*
+## Related Topics
+
+- [Actor System](Actor-System): scripts can supply dynamic actor behavior.
+- [Workflow Orchestration](Workflow-Orchestration): workflows can compose scripted actors with static actors.
+- [Storage & Persistence](Storage-and-Persistence): script storage uses the same persistence discipline.
+- [Build System and Dependencies](Build-System-and-Dependencies): Kotlin scripting dependencies and Gradle setup.
+- [JVM Utilities](JVM-Utilities): JVM-specific runtime support that sits near scripting.
+- [Scripting Module Architecture](Scripting-Module-Architecture): architecture-overview module framing and core interface diagram.
+- [Scripting Supporting Components](Scripting-Supporting-Components): validator, version manager, storage, and `ScriptActor` design.
+- [JVM Scripting Implementations](JVM-Scripting-Implementations): JVM engine, file storage, versioning, validator, and manager implementations.
+
+## Core Scripting Interfaces
+
+The foundational interfaces for the scripting engine are defined as follows:
+
+### `CompiledScript` Interface
+
+Represents a script that has been successfully compiled by the `ScriptEngine` and is ready for execution.
+
+*   **Purpose:** To serve as a handle or representation of a validated and prepared script.
+*   **Key Properties:**
+    *   `val name: String`: The unique name assigned to the script.
+    *   `val compilationTimestamp: Long`: The epoch milliseconds timestamp indicating when the script was compiled.
+
+### `ScriptEngine` Interface
+
+Defines the contract for the core component responsible for compiling and executing Kotlin scripts.
+
+*   **Purpose:** To manage the lifecycle of scripts, including their compilation and execution.
+*   **Key Methods:**
+    *   `suspend fun compile(scriptSource: String, scriptName: String): CompiledScript`: Takes Kotlin script source code as a string and a name, then compiles it, returning a `CompiledScript` instance.
+    *   `suspend fun execute(compiledScript: CompiledScript, parameters: Map<String, Any?>): Any?`: Executes a previously compiled `CompiledScript`, passing in a map of parameters. It returns an optional `Any?` result from the script execution.
+    *   `suspend fun eval(scriptSource: String, scriptName: String, parameters: Map<String, Any?> = emptyMap()): Any?`: A convenience method that combines compilation and execution in a single step.
+
+### `ScriptStorage` Interface
+
+Handles the persistent storage of scripts, providing a mechanism to save, load, list, and delete scripts.
+
+*   **Purpose:** To provide a standardized way of storing and retrieving scripts from various storage backends.
+*   **Key Methods:**
+    *   `suspend fun saveScript(scriptName: String, scriptSource: String, metadata: Map<String, Any> = emptyMap())`: Saves a script with its metadata to storage.
+    *   `suspend fun loadScript(scriptName: String): Pair<String, Map<String, Any>>?`: Loads a script and its metadata from storage, returning null if the script doesn't exist.
+    *   `suspend fun listScripts(): List<String>`: Lists all available scripts in storage.
+    *   `suspend fun deleteScript(scriptName: String): Boolean`: Deletes a script from storage, returning true if successful.
+
+### Core Interface Relationships
+
+The SolaceCore scripting module's interfaces work together to provide a complete script management solution:
+
+1. **Compilation**: The `ScriptEngine` compiles script source code into a `CompiledScript` object.
+2. **Execution**: The `ScriptEngine` executes a `CompiledScript`, potentially with parameters, to produce a result.
+3. **Storage**: The `ScriptStorage` interface provides persistence for scripts, allowing them to be saved, loaded, listed, and deleted.
+
+Implementations of these interfaces, such as the `FileScriptStorage` class, provide concrete functionality for script storage using specific backend technologies (e.g., file system).
+
+## JVM Script Engine (MainKts) Execution Details
+
+The JVM implementation (`JvmScriptEngine`) uses Kotlin’s experimental scripting APIs with `MainKtsScript`:
+
+- Classpath resolution: `dependenciesFromCurrentContext(wholeClasspath = true)` ensures project classes and dependencies are visible during evaluation.
+- Argument passing: `MainKtsScript` expects `args` via constructor; the engine sets `constructorArgs(emptyArray<String>())`. Script parameters are not passed via `providedProperties` for `MainKtsScript`.
+- Evaluation: `BasicJvmScriptingHost.eval(source, compilationConfiguration, evaluationConfiguration)` compiles and evaluates the script. Failures aggregate diagnostic reports and are surfaced via `ScriptExecutionException`.
+
+### Examples
+
+Compile/execute:
+```kotlin
+val engine = JvmScriptEngine()
+val compiled = engine.compile("val x = 2 + 3\nx", "sum")
+val result = engine.execute(compiled, emptyMap()) // 5
+```
+
+Eval in one step:
+```kotlin
+val engine = JvmScriptEngine()
+val out = engine.eval("""
+    val greeting = "Hello"
+    greeting + ", world!"
+""".trimIndent(), "hello", emptyMap()) // "Hello, world!"
+```

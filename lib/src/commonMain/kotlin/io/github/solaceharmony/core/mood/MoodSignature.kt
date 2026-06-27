@@ -21,7 +21,7 @@ package io.github.solaceharmony.core.mood
  * - **LTC hidden-state signature** — the dense hidden state of a Liquid
  *   Time-Constant cell at write-time, integrating recent input under a
  *   continuous-time gate. This is what the
- *   [InferenceCube architecture](../../../../../../../../../docs/components/actor_inference_engine/InferenceCubeArchitecture.md)
+ *   [InferenceCube architecture](../../../../../../../../../wiki/Inference-Cube.md)
  *   produces inside each cube.
  *
  * Both implementations satisfy the same correlation contract, so the

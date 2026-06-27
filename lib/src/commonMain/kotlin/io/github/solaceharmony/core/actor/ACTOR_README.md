@@ -101,6 +101,9 @@ Patterns used in `lib/src/jvmTest/kotlin/io/github/solaceharmony/core/actor/`:
 
 ## See also
 
-- [`docs/components/actor_system/`](../../../../../../../../../docs/components/actor_system/) — design-level docs (architecture, supervisor, sequence diagrams).
+- [`wiki/Actor-System.md`](../../../../../../../../../wiki/Actor-System.md) — design-level docs for actor architecture.
+- [`wiki/SupervisorActor.md`](../../../../../../../../../wiki/SupervisorActor.md) — dynamic registration, lifecycle management, and hot-swap behavior.
+- [`wiki/Actor-Communication-Sequence.md`](../../../../../../../../../wiki/Actor-Communication-Sequence.md) — actor communication sequence diagram.
+- [`wiki/Actor-System-Class-Diagram.md`](../../../../../../../../../wiki/Actor-System-Class-Diagram.md) — actor system class diagram.
 - [`../kernel/channels/`](../kernel/channels/) — the port runtime that actors use for message passing.
 - [`../lifecycle/`](../lifecycle/) — the `Lifecycle` / `Disposable` contract this module implements.

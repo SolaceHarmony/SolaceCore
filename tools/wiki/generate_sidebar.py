@@ -5,6 +5,8 @@ Scans every page in ``wiki/`` for a ``<!-- topic: NAME -->`` marker on the
 first line and groups the pages under their topic, in a fixed topic order.
 Pages without a topic marker (and the special ``Home``/``_Sidebar``/``_Footer``
 pages) are handled explicitly so the navigation stays stable and predictable.
+Topic groups are rendered as collapsible ``<details>`` blocks to match the
+wiki publishing style used by the knowledge-base reference project.
 
 Run from CI or locally:
 
@@ -25,10 +27,15 @@ TOPIC_ORDER = ["Orientation", "Runtime", "Solace AI", "Reference"]
 EXCLUDE = {"_Sidebar.md", "_Footer.md", "Home.md"}
 
 TOPIC_RE = re.compile(r"<!--\s*topic:\s*(.+?)\s*-->", re.IGNORECASE)
+TITLE_RE = re.compile(r"<!--\s*title:\s*(.+?)\s*-->", re.IGNORECASE)
 
 
 def page_title(path: Path) -> str:
     """First Markdown H1 (``# ...``) or a humanized filename fallback."""
+    head = path.read_text(encoding="utf-8")[:400]
+    m = TITLE_RE.search(head)
+    if m:
+        return m.group(1).strip()
     for line in path.read_text(encoding="utf-8").splitlines():
         if line.startswith("# "):
             return line[2:].strip()
@@ -61,10 +68,13 @@ def build_sidebar(wiki_dir: Path) -> str:
     out.append("**[SolaceCore Wiki](Home)**")
     out.append("")
     for topic in ordered_topics:
-        out.append(f"**{topic}**")
+        out.append("<details>")
+        out.append(f"<summary><strong>{topic}</strong></summary>")
         out.append("")
-        for md in groups[topic]:
+        for md in sorted(groups[topic], key=page_title):
             out.append(f"- {link(md)}")
+        out.append("")
+        out.append("</details>")
         out.append("")
     return "\n".join(out).rstrip() + "\n"
 
