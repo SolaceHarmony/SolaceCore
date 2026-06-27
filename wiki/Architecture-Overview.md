@@ -114,4 +114,4 @@ The diagram’s major regions map directly to the runtime wiki pages: [Actor Sys
 Source coverage is tracked in [curation-tracker.csv](curation-tracker.csv). That ledger records the wiki article, source document, source line range, and current processing status for each chunk.
 
 ---
-This page currently covers `docs/ARCHITECTURE_READING_GUIDE.md`, `docs/architecture/README.md`, `docs/architecture/12-system-architecture-overview.md`, and the runtime graph from `docs/architecture/00-solace-project-context.md`.
+This page currently covers `docs/ARCHITECTURE_READING_GUIDE.md`, `docs/architecture/README.md`, `docs/architecture/12-system-architecture-overview.md`, the runtime graph from `docs/architecture/00-solace-project-context.md`, and `docs/components/kernel/system_architecture.md`.

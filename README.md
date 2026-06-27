@@ -187,7 +187,7 @@ The architecture and design docs are extensive. The recommended path is now the 
 
 Quick links by interest:
 
-- **One-screen mental model**: [`docs/components/kernel/system_architecture.md`](docs/components/kernel/system_architecture.md) — the system diagram.
+- **One-screen mental model**: [`wiki/Architecture-Overview.md`](wiki/Architecture-Overview.md) — the system diagram and runtime map.
 - **Why this is different from RAG / why memory rhymes**: [`docs/components/memory/MemoryToolDesign.md`](docs/components/memory/MemoryToolDesign.md) — the SRAF design.
 - **The vector-to-neuron mechanism**: [`docs/components/actor_inference_engine/InferenceCubeArchitecture.md`](docs/components/actor_inference_engine/InferenceCubeArchitecture.md) and the [hybrid notebook](docs/components/actor_inference_engine/liquid-neural-networks-hybrid-transformer.ipynb).
 - **Full architecture deep dive**: [`docs/Architectural_Deepdive.md`](docs/Architectural_Deepdive.md).

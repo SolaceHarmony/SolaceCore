@@ -86,4 +86,4 @@ If you need to forbid sending into a port that an actor uses only for output (or
 
 - [`../../actor/`](../../actor/) — the actor runtime that calls into this module.
 - [`docs/components/kernel/`](../../../../../../../../../../docs/components/kernel/) — design-level docs for the kernel.
-- [`docs/components/kernel/channel_system.md`](../../../../../../../../../../docs/components/kernel/channel_system.md) — channel-system design.
+- [`wiki/Kernel-and-Ports.md`](../../../../../../../../../../wiki/Kernel-and-Ports.md) — channel-system design.

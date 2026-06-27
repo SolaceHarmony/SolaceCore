@@ -72,7 +72,7 @@ Represents a rule for converting an input type `IN` to an output type `OUT`.
     *   `internal inline fun <reified IN : Any, reified OUT : Any> create(...)`: Factory method to create `ConversionRule` instances.
 
 ##### 1.1.2.6. `Port.PortConnection<in IN : Any, out OUT : Any>` Data Class
-> **Note — verify against source:** §1.1.2.6 below describes `PortConnection` as a validated connection wrapper. The companion `docs/components/kernel/channel_system.md` describes the same type as additionally **actively routing messages when started**, while §1.1.7 (Future Enhancements) below says message piping is *not* implemented. These three claims need reconciling against the current `Port.kt` source — recorded here so it isn't lost.
+> **Note — verify against source:** §1.1.2.6 below describes `PortConnection` as a validated connection wrapper. The wiki [Kernel & Ports](../../wiki/Kernel-and-Ports.md) page describes the same type as additionally **actively routing messages when started**, while §1.1.7 (Future Enhancements) below says message piping is *not* implemented. These three claims need reconciling against the current `Port.kt` source — recorded here so it isn't lost.
 
 Represents a validated connection between a source port and a target port, potentially involving handlers, a protocol adapter, and conversion rules.
 *   **Key Properties:**

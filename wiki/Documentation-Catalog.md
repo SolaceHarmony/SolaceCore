@@ -37,6 +37,8 @@ The working ledger is [curation-tracker.csv](curation-tracker.csv). Use it to se
 | `docs/architecture/00-solace-project-context.md` | 54-140 | [Solace AI Overview](Solace-AI-Overview) | Split by topic, source removed |
 | `docs/architecture/00-solace-project-context.md` | 172-240 | [Architecture Overview](Architecture-Overview) | Split by topic, source removed |
 | `docs/components/kernel/README.md` | 1-102 | [Kernel & Ports](Kernel-and-Ports) | Consolidated, source removed |
+| `docs/components/kernel/channel_system.md` | 1-261 | [Kernel & Ports](Kernel-and-Ports) | Consolidated, source removed |
+| `docs/components/kernel/system_architecture.md` | 1-77 | [Architecture Overview](Architecture-Overview) | Consolidated, source removed |
 
 ## Current Rule
 
