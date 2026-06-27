@@ -3,6 +3,15 @@
 
 # Solace Core Framework System Architecture
 
+## Related Topics
+
+- [Architecture Overview](Architecture-Overview): the main runtime map.
+- [Kernel & Ports](Kernel-and-Ports): port and channel layer shown in the diagram.
+- [Actor System](Actor-System): actor and supervisor layer shown in the diagram.
+- [Lifecycle & Resources](Lifecycle-and-Resources): lifecycle and disposal layer shown in the diagram.
+- [Workflow Orchestration](Workflow-Orchestration): workflow layer shown in the diagram.
+- [Storage & Persistence](Storage-and-Persistence): planned external storage relationships shown in the diagram.
+
 ```mermaid
 graph TD
     subgraph "Actor System"

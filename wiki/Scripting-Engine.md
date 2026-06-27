@@ -27,6 +27,14 @@ The scripting engine is designed with the following key requirements and feature
     *   Persistently store scripts and their metadata (version, creation date, etc.).
     *   Support loading scripts from various sources (e.g., file system, database).
 
+## Related Topics
+
+- [Actor System](Actor-System): scripts can supply dynamic actor behavior.
+- [Workflow Orchestration](Workflow-Orchestration): workflows can compose scripted actors with static actors.
+- [Storage & Persistence](Storage-and-Persistence): script storage uses the same persistence discipline.
+- [Build System and Dependencies](Build-System-and-Dependencies): Kotlin scripting dependencies and Gradle setup.
+- [JVM Utilities](JVM-Utilities): JVM-specific runtime support that sits near scripting.
+
 ## Core Scripting Interfaces
 
 The foundational interfaces for the scripting engine are defined as follows:

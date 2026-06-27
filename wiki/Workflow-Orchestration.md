@@ -5,6 +5,14 @@
 ## Overview
 WorkflowManager orchestrates a network of actors: it adds/removes actors, connects their ports, and manages lifecycle transitions. The manager validates type compatibility for connections and starts routing between ports when the workflow starts.
 
+## Related Topics
+
+- [Actor System](Actor-System): workflows compose actor instances.
+- [Kernel & Ports](Kernel-and-Ports): workflow connections are port connections with routing jobs.
+- [Lifecycle & Resources](Lifecycle-and-Resources): workflow startup and shutdown depend on lifecycle order.
+- [Scripting Engine](Scripting-Engine): dynamic actor behavior can be driven by scripts inside workflows.
+- [Advanced Workflow Example](Advanced-Workflow-Example): compact example of chained actor orchestration.
+
 ## Start/Stop Ordering
 - `start()`
   1. Starts all actors (transition to Running).

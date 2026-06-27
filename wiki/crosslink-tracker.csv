@@ -1,0 +1,8 @@
+wiki_article,start_line,end_line,status,links_added,notes
+Actor-System,8,14,complete,5,"Added runtime spine links to kernel lifecycle supervisor communication sequence and workflow pages."
+Lifecycle-and-Resources,8,14,complete,5,"Added runtime spine links to kernel actor workflow storage and lifecycle diagram pages."
+Workflow-Orchestration,8,14,complete,5,"Added runtime spine links to actor kernel lifecycle scripting and workflow example pages."
+Scripting-Engine,30,36,complete,5,"Added runtime spine links to actor workflow storage build system and JVM utility pages."
+Storage-and-Persistence,24,30,complete,5,"Added runtime spine links to lifecycle actor workflow memory and shared-memory pages."
+System-Architecture-Diagram,6,13,complete,6,"Added diagram navigation links to overview and each runtime layer represented in the diagram."
+Kernel-and-Ports,83,88,verified_existing,4,"Existing related-topic block reviewed as part of runtime spine pass."

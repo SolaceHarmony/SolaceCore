@@ -5,6 +5,14 @@
 ## Overview
 The actor system is the core component of the Solace Core Framework, responsible for managing the execution and interaction of modular actors. Each actor encapsulates specific functionality and communicates with other actors through message passing via typed ports.
 
+## Related Topics
+
+- [Kernel & Ports](Kernel-and-Ports): the typed communication substrate actors use.
+- [Lifecycle & Resources](Lifecycle-and-Resources): the lifecycle contract actors implement.
+- [SupervisorActor](SupervisorActor): dynamic registration, lifecycle control, and hot-swap operations.
+- [Actor Communication Sequence](Actor-Communication-Sequence): message flow across connected actor ports.
+- [Workflow Orchestration](Workflow-Orchestration): actor composition into executable workflows.
+
 ## Design Principles
 - **Isolation**: Actors operate independently, with their own state and behavior
 - **Message-Driven Communication**: Actors communicate exclusively through message passing

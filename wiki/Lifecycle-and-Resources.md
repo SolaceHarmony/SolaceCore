@@ -5,6 +5,14 @@
 ## Overview
 The lifecycle management component provides a standardized approach to managing the lifecycle of various components in the Solace Core Framework. It ensures proper initialization, operation, and cleanup of resources, which is crucial for maintaining system stability and preventing resource leaks.
 
+## Related Topics
+
+- [Kernel & Ports](Kernel-and-Ports): ports participate in disposal and cleanup discipline.
+- [Actor System](Actor-System): actors implement lifecycle transitions around message processing.
+- [Workflow Orchestration](Workflow-Orchestration): workflows coordinate actor and connection start/stop order.
+- [Storage & Persistence](Storage-and-Persistence): storage managers implement lifecycle-safe startup and cleanup.
+- [Lifecycle Class Diagram](Lifecycle-Class-Diagram): diagram-only view of the lifecycle/resource contracts.
+
 ## Design Principles
 - **Resource Safety**: Ensure all resources are properly disposed of when no longer needed
 - **Consistency**: Provide a consistent lifecycle model across all components

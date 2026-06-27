@@ -21,6 +21,14 @@
 
 The SolaceCore Storage System provides a flexible and extensible way to store and retrieve data for the SolaceCore framework. It is designed to handle different types of data, including configuration data and actor state data, and to support different storage backends. The system is built with thread safety, performance, and reliability in mind, with special attention to preventing deadlocks in concurrent environments.
 
+## Related Topics
+
+- [Lifecycle & Resources](Lifecycle-and-Resources): storage managers share the lifecycle/disposal contract.
+- [Actor System](Actor-System): actor state and metrics are storage use cases.
+- [Workflow Orchestration](Workflow-Orchestration): workflow state persistence is a planned storage use case.
+- [Memory & Reflection](Memory-and-Reflection): companion memory sits above the storage substrate.
+- [Shared Memory](Shared-Memory): concurrency-oriented memory design related to storage safety.
+
 ## Architecture
 
 The storage system is built around a set of interfaces that define the contract for storage operations. These interfaces are implemented by different storage backends, allowing for flexibility in how data is stored and retrieved. The system also includes transaction support for atomic operations, ensuring data consistency even in the face of failures.
