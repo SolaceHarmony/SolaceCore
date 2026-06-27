@@ -47,7 +47,7 @@ def mirror(repo_root: Path, source_rel: str, target_name: str, topic: str, title
     lines = src_text.splitlines()
     if lines and lines[0].startswith("# "):
         lines = lines[1:]
-    body = "\n".join(lines).lstrip("\n")
+    body = "\n".join(line.rstrip() for line in lines).lstrip("\n")
 
     page = (
         f"<!-- topic: {topic} -->\n"
@@ -56,7 +56,7 @@ def mirror(repo_root: Path, source_rel: str, target_name: str, topic: str, title
         f"> Mirrored from `{source_rel}`. This page is regenerated on publish; "
         f"edit the source document.\n\n"
         f"{body}\n"
-    )
+    ).rstrip() + "\n"
     target.write_text(page, encoding="utf-8")
     print(f"  synced: {source_rel} -> wiki/{target_name}")
     return True

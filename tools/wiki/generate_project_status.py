@@ -39,6 +39,7 @@ def _demote_headings(text: str, by: int = 1) -> str:
     under the page's own section headings without creating multiple H1s."""
     out = []
     for line in text.splitlines():
+        line = line.rstrip()
         if line.startswith("#"):
             hashes = len(line) - len(line.lstrip("#"))
             if 1 <= hashes <= 5:
@@ -156,7 +157,7 @@ def build_page(repo_root: Path) -> str:
         f"{project_board_section()}\n"
         "## In-Repo Status\n\n"
         f"{aggregate_status(repo_root)}\n"
-    )
+    ).rstrip() + "\n"
 
 
 def main(argv: list[str]) -> int:
