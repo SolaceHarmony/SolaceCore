@@ -51,6 +51,7 @@ The working ledger is [curation-tracker.csv](curation-tracker.csv). Use it to se
 | `docs/components/workflow/README.md` | 1-60 | [Workflow Orchestration](Workflow-Orchestration) | Moved, source removed |
 | `docs/components/workflow/Workflow_Management_Design.md` | 1-56 | [Workflow Orchestration](Workflow-Orchestration) | Moved, source removed |
 | `docs/components/scripting/Scripting_Module_Design.md` | 1-96 | [Scripting Engine](Scripting-Engine) | Moved, source removed |
+| `docs/components/mood/README.md` | 1-110 | [Mood & Emotional Model](Mood-and-Emotional-Model) | Moved, source removed |
 
 ## Current Rule
 

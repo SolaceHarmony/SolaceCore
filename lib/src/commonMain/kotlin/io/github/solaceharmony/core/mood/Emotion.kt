@@ -14,7 +14,7 @@ package io.github.solaceharmony.core.mood
  * surface words onto each category; the category itself is the contract
  * with the supervisor.
  *
- * For the design rationale see [`docs/components/mood/README.md`](../../../../../../../../../docs/components/mood/README.md).
+ * For the design rationale see [`wiki/Mood-and-Emotional-Model.md`](../../../../../../../../../wiki/Mood-and-Emotional-Model.md).
  *
  * @property label Human-readable label for logging and prompt-prime construction.
  */

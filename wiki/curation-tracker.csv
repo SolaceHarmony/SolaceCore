@@ -22,3 +22,4 @@ Lifecycle-Class-Diagram,docs/components/lifecycle/lifecycle_class_diagram.md,1,6
 Workflow-Orchestration,docs/components/workflow/README.md,1,60,60,complete,remove_source,"Source file appended directly into Workflow Orchestration."
 Workflow-Orchestration,docs/components/workflow/Workflow_Management_Design.md,1,56,56,complete,remove_source,"Source file appended directly into Workflow Orchestration."
 Scripting-Engine,docs/components/scripting/Scripting_Module_Design.md,1,96,96,complete,remove_source,"Source file copied directly into Scripting Engine."
+Mood-and-Emotional-Model,docs/components/mood/README.md,1,110,110,complete,remove_source,"Source file appended directly into Mood & Emotional Model."
