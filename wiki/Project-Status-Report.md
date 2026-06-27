@@ -175,7 +175,7 @@ SolaceCore is a powerful, actor-based framework designed for flexible, resilient
 
 **Impact:** Risk of production hangs  
 **Effort:** 2-3 weeks  
-**Reference:** Task 6 (Task-6-Deadlock-Detection), ../MASTER_CHECKLIST.md line 37
+**Reference:** Task 6 (Task-6-Deadlock-Detection), Master-Checklist line 37
 
 ### ❌ Major Missing Features (Priority: MEDIUM-HIGH)
 
@@ -192,7 +192,7 @@ SolaceCore is a powerful, actor-based framework designed for flexible, resilient
 
 **Impact:** Cannot store complex relationships  
 **Effort:** 3-4 weeks  
-**Reference:** MASTER_CHECKLIST.md lines 262-287, Architectural_Document lines 192-197
+**Reference:** Master-Checklist lines 262-287, Architectural_Document lines 192-197
 
 #### 4. Distributed Actor Communication
 **From Design:** Actors communicating across processes/nodes
@@ -207,7 +207,7 @@ SolaceCore is a powerful, actor-based framework designed for flexible, resilient
 
 **Impact:** Cannot scale horizontally  
 **Effort:** 4-6 weeks  
-**Reference:** MASTER_CHECKLIST.md lines 295-296
+**Reference:** Master-Checklist lines 295-296
 
 #### 5. Clustering Support
 **From Design:** Multi-node operation with state synchronization
@@ -222,7 +222,7 @@ SolaceCore is a powerful, actor-based framework designed for flexible, resilient
 
 **Impact:** Cannot run distributed deployments  
 **Effort:** 6-8 weeks  
-**Reference:** MASTER_CHECKLIST.md lines 302-303, 377-383
+**Reference:** Master-Checklist lines 302-303, 377-383
 
 ### ❌ Infrastructure Features (Priority: MEDIUM)
 
@@ -240,7 +240,7 @@ SolaceCore is a powerful, actor-based framework designed for flexible, resilient
 
 **Impact:** Cannot deploy to Kubernetes  
 **Effort:** 1-2 weeks  
-**Reference:** MASTER_CHECKLIST.md lines 368-384
+**Reference:** Master-Checklist lines 368-384
 
 #### 7. Observability and Monitoring
 **From Design:** Comprehensive metrics and monitoring
@@ -256,7 +256,7 @@ SolaceCore is a powerful, actor-based framework designed for flexible, resilient
 
 **Impact:** Limited production visibility  
 **Effort:** 2-3 weeks  
-**Reference:** MASTER_CHECKLIST.md lines 385-398, 540-547
+**Reference:** Master-Checklist lines 385-398, 540-547
 
 #### 8. Docker Containerization
 **From Design:** Complete containerized deployment
@@ -271,7 +271,7 @@ SolaceCore is a powerful, actor-based framework designed for flexible, resilient
 
 **Impact:** Deployment complexity  
 **Effort:** 1 week  
-**Reference:** MASTER_CHECKLIST.md lines 368-384
+**Reference:** Master-Checklist lines 368-384
 
 ### ❌ Developer Experience Features (Priority: LOW-MEDIUM)
 
@@ -288,7 +288,7 @@ SolaceCore is a powerful, actor-based framework designed for flexible, resilient
 
 **Impact:** Workflows must be coded manually  
 **Effort:** 4-6 weeks  
-**Reference:** MASTER_CHECKLIST.md line 400
+**Reference:** Master-Checklist line 400
 
 #### 10. Interactive CLI Tool
 **From Design:** Command-line interface for management
@@ -303,7 +303,7 @@ SolaceCore is a powerful, actor-based framework designed for flexible, resilient
 
 **Impact:** Limited operational tooling  
 **Effort:** 2-3 weeks  
-**Reference:** MASTER_CHECKLIST.md line 414
+**Reference:** Master-Checklist line 414
 
 #### 11. Enhanced Documentation
 **From Design:** Comprehensive API documentation and guides
@@ -319,7 +319,7 @@ SolaceCore is a powerful, actor-based framework designed for flexible, resilient
 
 **Impact:** Steeper learning curve  
 **Effort:** Ongoing  
-**Reference:** MASTER_CHECKLIST.md lines 48-57, 433-448
+**Reference:** Master-Checklist lines 48-57, 433-448
 
 ### ❌ Security Features (Priority: MEDIUM)
 
@@ -337,7 +337,7 @@ SolaceCore is a powerful, actor-based framework designed for flexible, resilient
 
 **Impact:** No access control  
 **Effort:** 3-4 weeks  
-**Reference:** MASTER_CHECKLIST.md lines 407-411, 532-538
+**Reference:** Master-Checklist lines 407-411, 532-538
 
 ### ❌ Storage Enhancements (Priority: LOW)
 
@@ -353,7 +353,7 @@ SolaceCore is a powerful, actor-based framework designed for flexible, resilient
 
 **Impact:** Limited to file and memory storage  
 **Effort:** 4-5 weeks  
-**Reference:** MASTER_CHECKLIST.md lines 288-293
+**Reference:** Master-Checklist lines 288-293
 
 #### 14. Database Storage Implementations
 **From Design:** Generic database-backed storage
@@ -413,7 +413,7 @@ However, to achieve the **full vision** outlined in the design documents, signif
 
 ## References
 
-- `../MASTER_CHECKLIST.md` - Comprehensive project checklist
+- `Master-Checklist` - Comprehensive project checklist
 - `Storage-and-Persistence` - Storage system tasks
 - `../Architectural_Document_Solace_Core_Framework.md` - Architecture overview
 - `../Architectural_Deepdive.md` - Detailed implementation guide

@@ -116,7 +116,7 @@ This directory contains comprehensive documentation analyzing the current state 
 ### Design Documents
 - [`../Architectural_Document_Solace_Core_Framework.md`](../Architectural_Document_Solace_Core_Framework.md)
 - [`../Architectural_Deepdive.md`](../Architectural_Deepdive.md)
-- [`../MASTER_CHECKLIST.md`](../MASTER_CHECKLIST.md)
+- [`Master-Checklist`](Master-Checklist)
 - [`Storage-and-Persistence`](Storage-and-Persistence)
 
 ### Task Status

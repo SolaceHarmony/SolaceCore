@@ -696,4 +696,4 @@ With 1 engineer, multiply timelines by 2-3x.
 - [Project-Status-Report](Project-Status-Report) - Current implementation status
 - [Design-vs-Implementation](Design-vs-Implementation) - Gap analysis
 - [Quick-Status](Quick-Status) - Quick reference
-- [docs/MASTER_CHECKLIST.md](docs/MASTER_CHECKLIST.md) - Detailed task list
+- [Master Checklist](Master-Checklist) - Detailed task list

@@ -117,7 +117,7 @@
 
 - **Full Status Report:** [Project-Status-Report](Project-Status-Report)
 - **Design Gap Analysis:** [Design-vs-Implementation](Design-vs-Implementation)
-- **Master Checklist:** [../MASTER_CHECKLIST.md](../MASTER_CHECKLIST.md)
+- **Master Checklist:** [Master Checklist](Master-Checklist)
 - **Architecture Docs:** [../Architectural_Document_Solace_Core_Framework.md](../Architectural_Document_Solace_Core_Framework.md)
 
 ---

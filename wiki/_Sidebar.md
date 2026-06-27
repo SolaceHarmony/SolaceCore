@@ -69,6 +69,8 @@
 - [Feature Index](Feature-Index)
 - [Glossary](Glossary)
 - [How the Wiki Publishes](How-The-Wiki-Publishes)
+- [LangChain Code Changes](LangChain-Code-Changes)
+- [Master Checklist](Master-Checklist)
 - [Roadmap](Roadmap)
 - [Roadmap Issues](Roadmap-Issues)
 - [Setup Instructions](Setup-Instructions)
@@ -80,5 +82,6 @@
 - [Task 5 Integration Tests](Task-5-Integration-Tests)
 - [Task 6 Deadlock Detection](Task-6-Deadlock-Detection)
 - [Task Documentation](Task-Documentation)
+- [Test Coverage Checklist](Test-Coverage-Checklist)
 
 </details>

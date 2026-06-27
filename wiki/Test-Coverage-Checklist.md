@@ -1,3 +1,6 @@
+<!-- topic: Reference -->
+<!-- title: Test Coverage Checklist -->
+
 # Test Coverage Checklist
 
 This document provides an overview of the current test coverage in the SolaceCore project, listing classes and functions that are covered by tests versus those that are not.

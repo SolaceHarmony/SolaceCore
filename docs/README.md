@@ -49,9 +49,9 @@ When you want a gap view (without rewriting the design to match the code), see:
 
 ### Project tracking
 
-- [`MASTER_CHECKLIST.md`](MASTER_CHECKLIST.md) — consolidated checklist.
-- [`Test_Coverage_Checklist.md`](Test_Coverage_Checklist.md) — test coverage tracking.
-- [`CODE_CHANGES.md`](CODE_CHANGES.md) — narrative changelog.
+- [`../wiki/Master-Checklist.md`](../wiki/Master-Checklist.md) — consolidated checklist.
+- [`../wiki/Test-Coverage-Checklist.md`](../wiki/Test-Coverage-Checklist.md) — test coverage tracking.
+- [`../wiki/LangChain-Code-Changes.md`](../wiki/LangChain-Code-Changes.md) — LangChain integration changes.
 
 ### LangChain notes (downstream pattern, not core)
 
