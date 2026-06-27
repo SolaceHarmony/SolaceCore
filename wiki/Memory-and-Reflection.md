@@ -25,6 +25,14 @@ Modern conversational agents must preserve a continuous internal narrative while
 
 The specification targets Kotlin‑based coroutine actors but is implementation‑agnostic enough for alternative runtimes.
 
+## Related Topics
+
+- [Supervisor AI](Supervisor-AI): executive cognition and meta-reflection over memory.
+- [Reflection Memory](Reflection-Memory): durable event substrate for the narrative log.
+- [Working Memory](Working-Memory), [Long-Term Memory](Long-Term-Memory), and [Memory Retrieval](Memory-Retrieval): feature-level memory layers.
+- [Confusion Corrector](Confusion-Corrector): drift detection and replay repair.
+- [Voice & Mouth Tool](Voice-and-Mouth-Tool): selective expression boundary for internal reflections.
+
 ---
 
 ## 2  Architectural Overview

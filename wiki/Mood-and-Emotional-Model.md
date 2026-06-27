@@ -5,6 +5,14 @@
 ## Overview
 This document outlines the integration of emotional intelligence capabilities within the Solace Core Framework's actor-based architecture, with the Supervisor AI as the central orchestrator for emotional context and responses.
 
+## Related Topics
+
+- [Supervisor AI](Supervisor-AI): executive actor that integrates emotional cues.
+- [Memory & Reflection](Memory-and-Reflection): narrative substrate where emotional context is recorded.
+- [Time Actor](Time-Actor): temporal cue stream that grounds emotional continuity.
+- [Confusion Corrector](Confusion-Corrector): repair path when emotion or context drifts.
+- [Voice & Mouth Tool](Voice-and-Mouth-Tool): response framing layer that carries emotional tone outward.
+
 ## Architecture Integration
 
 ### Actor-Based Approach
@@ -224,7 +232,7 @@ Sensitive emotional inferences (e.g., "user appears depressed") are still infere
 - [Memory & Reflection](Memory-and-Reflection) — the SRAF narrative-management spec; covers the supervisor's decision loop and the Mouth Tool that owns egress.
 - [Inference Cube](Inference-Cube) — the Liquid + Transformer hybrid this layer will integrate with.
 - [`notebooks/liquid-neural-networks-hybrid-transformer.ipynb`](notebooks/liquid-neural-networks-hybrid-transformer.ipynb) — Kaggle proof of the LTC + attention composition.
-- [`../../../wiki/Mood-and-Emotional-Model.md`](../../../wiki/Mood-and-Emotional-Model.md) — the older sketch of the executive-emotional integration; this module is the concrete shipped subset.
+- [Mood & Emotional Model](Mood-and-Emotional-Model) — the older sketch of the executive-emotional integration; this module is the concrete shipped subset.
 
 
 # Mood — Affect as the Indexing Primitive
@@ -271,7 +279,7 @@ what just happened. This is the layer the Magentic
 
 **A Liquid Time-Constant cell integrates that signature into a
 continuous-time hidden state.** The hidden state at the moment a
-[Reflection Memory](../../../wiki/Reflection-Memory.md) entry is written *is*
+[Reflection Memory](Reflection-Memory) entry is written *is*
 the affective fingerprint of the entry, persisted alongside the
 text. Retrieval becomes signature correlation, not embedding cosine.
 
@@ -427,7 +435,7 @@ contract is the load-bearing seam.
 - **`MoodTracker`** — running-state actor that integrates `MoodCue`
   messages over time, exposes a "current affective state" snapshot
   that other advisors can read (the
-  [Time Actor](../../../wiki/Time-Actor.md) and zoom controller use this to
+  [Time Actor](Time-Actor) and zoom controller use this to
   detect mood-change events).
 - **Cross-modal advisors** — vision, audio, biometric. Each emits
   its own `MoodCue` stream; the Supervisor weighs the cross-modal
@@ -439,10 +447,10 @@ today.
 ## How emotion enters memory
 
 The mood module's most consequential interaction is with the
-[memory](../../../wiki/Memory-Feature-Overview.md) tier. Every working entry carries an
+[memory](Memory-Feature-Overview) tier. Every working entry carries an
 `emotionalWeight` field (0..1) and an optional `moodSnapshot`
 capturing the discrete cue at the moment of recording. Both
-participate in the [fade composite](../../../wiki/Memory-Compression.md):
+participate in the [fade composite](Memory-Compression):
 
 ```
 fadeScore =
@@ -523,17 +531,17 @@ the kernel:
 
 ## Cross-references
 
-- [memory](../../../wiki/Memory-Feature-Overview.md) — emotional weight is a fade-resistance
+- [memory](Memory-Feature-Overview) — emotional weight is a fade-resistance
   signal in the composite score.
 - [supervisor](Supervisor-AI) — primary consumer of cues; weights,
   ignores, or acts on them.
 - [mouth-tool](Voice-and-Mouth-Tool) — politeness filter shapes tone;
   cues never leak directly to output.
-- [reflection-memory](../../../wiki/Reflection-Memory.md) — entries get
+- [reflection-memory](Reflection-Memory) — entries get
   `moodSnapshot` and (eventually) `MoodSignature` stamps.
 - [inference-cube](Inference-Cube) — the LTC layer this
   module's `MoodSignature` interface anticipates.
-- [confusion-corrector](../../../wiki/Confusion-Corrector.md) — emotion
+- [confusion-corrector](Confusion-Corrector) — emotion
   discontinuity is a drift signal the Corrector's trigger reads.
 
 ## What mood is in service of

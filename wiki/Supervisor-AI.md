@@ -26,6 +26,14 @@ SolaceCore Supervisor will need to do both. This page documents
 both threads in their own voices, and then sketches how they
 converge.
 
+## Related Topics
+
+- [Memory & Reflection](Memory-and-Reflection): unified narrative log the Supervisor reads and writes.
+- [Confusion Corrector](Confusion-Corrector): repair actor invoked when the Supervisor detects drift.
+- [Voice & Mouth Tool](Voice-and-Mouth-Tool): speech boundary controlled by Supervisor decisions.
+- [Mood & Emotional Model](Mood-and-Emotional-Model): emotional cue stream feeding executive cognition.
+- [Providers & MCP Tools](Providers-and-MCP-Tools): tool and provider layer gated by Supervisor safety.
+
 ## Thread One — Executive Cognition (SRAF §4.2)
 
 The Supervisor is the only actor permitted to think about its own
@@ -47,7 +55,7 @@ That means concretely:
    emotion discontinuity (an abrupt shift in valence with no event
    to explain it).
 3. **Repair.** When drift is detected, the Supervisor invokes the
-   [Confusion Corrector](../../../wiki/Confusion-Corrector.md) for a replay
+   [Confusion Corrector](Confusion-Corrector) for a replay
    summary, ingests the summary into its working context, and
    resumes from the corrected state.
 4. **Decide externalisation.** The Supervisor produces a draft and
@@ -73,7 +81,7 @@ a session is its primary load. Forgetting context is more expensive
 for the Supervisor than holding it; the budget reflects the
 asymmetry. When the Supervisor enters a deep dive (the *seven
 layers* mode), its budget temporarily expands, the
-[Time Actor](../../../wiki/Time-Actor.md) is paused, and the agent commits to
+[Time Actor](Time-Actor) is paused, and the agent commits to
 the depth until the Supervisor surfaces.
 
 ## Thread Two — Safety and Approval (Magentic)
@@ -208,7 +216,7 @@ fires when the agent starts saying the same thing in slightly
 different words.
 
 When drift exceeds threshold, the Supervisor invokes
-[Confusion Corrector](../../../wiki/Confusion-Corrector.md), feeds the resulting
+[Confusion Corrector](Confusion-Corrector), feeds the resulting
 replay summary into its working context, and resumes. The cost is a
 prompt-window-sized read; the benefit is that the agent does not
 spend the next ten turns being subtly off.
@@ -247,7 +255,7 @@ question is whether they're the same Supervisor or distinct ones.
 The current default is **distinct**. Each agent has its own
 Supervisor, owning the boundary for that agent's reasoning and
 actions. The agents talk to each other through the
-[Cross-Perspective Bus](../../../wiki/Multimodal-Nudging.md), and inter-agent
+[Cross-Perspective Bus](Multimodal-Nudging), and inter-agent
 coordination is mediated by message exchange rather than shared
 Supervisor authority.
 
@@ -280,17 +288,17 @@ Supervisor with cross-agent communication mediated by messages.
 
 ## Cross-references
 
-- [memory](../../../wiki/Memory-Feature-Overview.md) — Supervisor's working budget is the
+- [memory](Memory-Feature-Overview) — Supervisor's working budget is the
   largest; drift detection reads recent working entries.
 - [mouth-tool](Voice-and-Mouth-Tool) — the Supervisor's draft is the
   Mouth Tool's input; speech is gated on Supervisor approval.
-- [time-actor](../../../wiki/Time-Actor.md) — heartbeat cues are a primary
+- [time-actor](Time-Actor) — heartbeat cues are a primary
   trigger for the Supervisor's coherence checks.
-- [confusion-corrector](../../../wiki/Confusion-Corrector.md) — the Supervisor's
+- [confusion-corrector](Confusion-Corrector) — the Supervisor's
   primary repair tool when drift is detected.
 - [mood](Mood-and-Emotional-Model) — Mood Advisor cues are an input the Supervisor
   weights; emotion discontinuity is part of the drift signal.
-- [zoom-levels](../../../wiki/Zoom-Levels.md) — the Supervisor owns the zoom
+- [zoom-levels](Zoom-Levels) — the Supervisor owns the zoom
   state machine; transitions are its decision.
 
 ## What the Supervisor is in service of

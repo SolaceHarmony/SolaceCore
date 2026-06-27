@@ -24,6 +24,14 @@ Augment the baseline architecture with **parallel multimodal actor clusters**—
 3. **Nudge** modality‑aware cues into the **system‑prompt sub‑spaces** of *other* actors (cross‑perspective priming).
 4. Enable zero‑latency answers to queries such as *"Is the shirt blue?"* or *"Did she sound angry?"* by fusing their outputs through the Supervisor's mouth tool.
 
+## Related Topics
+
+- [Multimodal Nudging](Multimodal-Nudging): feature-level view of the cross-perspective bus.
+- [Voice & Mouth Tool](Voice-and-Mouth-Tool): expression layer that frames validated perception cues.
+- [Supervisor AI](Supervisor-AI): executive actor that merges perception nudges into response decisions.
+- [Memory & Reflection](Memory-and-Reflection): context substrate that perception cues read from and write into.
+- [Shared Memory](Shared-Memory): concurrency pattern for low-latency multimodal exchange.
+
 ---
 
 ## A‑2  High‑Level Topology
@@ -152,4 +160,3 @@ The fused prime is appended **below** the conversation synopsis but **above** th
 The multimodal extension preserves the **single‑narrative guarantee** while granting the Supervisor instantaneous access to *what every sensory actor perceives*. Cross‑perspective nudging embeds high‑confidence modality facts into the LM's prompt, enabling accurate, context‑aware answers with minimal latency and no cognitive fragmentation.
 
 ---
-

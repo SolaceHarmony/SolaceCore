@@ -21,6 +21,15 @@ This architecture enables a gradual offload from transformers to LNNs while pres
 4. **Version-Resilient Growth** — on transformer updates, freeze learned lobes and grow new ones, maintaining continuity.
 5. **Reflective Reinforcement** — replay historical transformer outputs to counteract LNN decay.
 
+## Related Topics
+
+- [Shared Memory](Shared-Memory): zero-copy substrate for cube slices.
+- [Memory & Reflection](Memory-and-Reflection): replay and reinforcement source for reflective training cycles.
+- [Reflection Memory](Reflection-Memory): durable record used by dream/replay mechanisms.
+- [Pipeline DSL](Pipeline-DSL): request-shaping layer that can route model-family behavior.
+- [Providers & MCP Tools](Providers-and-MCP-Tools): model/provider integration layer around inference.
+- [Hybrid notebook](notebooks/liquid-neural-networks-hybrid-transformer.ipynb): proof artifact for the liquid/transformer direction.
+
 ## 3. System Overview
 ```mermaid
 flowchart TD
@@ -230,7 +239,7 @@ transformer's output for cube N and the LTC's input for cube N
 are *the same memory*, viewed through different slices of one
 underlying buffer. No copy happens between transformer output and
 LTC input. The `SharedMemoryManager` lives in the
-[shared-memory primitives](../../../wiki/Shared-Memory.md) layer; this
+[shared-memory primitives](Shared-Memory) layer; this
 component is its primary inference-side consumer.
 
 ### Cube Registry
@@ -282,7 +291,7 @@ The LTC's hidden state matters beyond inference. For cubes that
 process emotionally-charged inputs, the hidden state at write-time
 becomes the [MoodSignature](Mood-and-Emotional-Model) of the corresponding
 Reflection Memory entry — the affective fingerprint the
-[memory](../../../wiki/Memory-Feature-Overview.md) tier indexes against. The LTC isn't just
+[memory](Memory-Feature-Overview) tier indexes against. The LTC isn't just
 producing output; it's producing a state that the rest of the
 architecture treats as semantically meaningful.
 
@@ -370,7 +379,7 @@ replay historical transformer outputs during idle periods to
 keep the LTCs aligned even when no fresh mentoring is happening.
 
 The cache that backs the Dream Engine is the durable
-[Reflection Memory](../../../wiki/Reflection-Memory.md) substrate or a
+[Reflection Memory](Reflection-Memory) substrate or a
 specialised LTC-output cache that grows alongside it. Either way,
 the dream is reading from the same record of what happened that
 the rest of the architecture indexes over.
@@ -450,7 +459,7 @@ Lobe Manager, Dream Engine — is not in `lib/` yet.
 The work order:
 
 1. Build the `SharedMemoryManager` for inference data on top of
-   the [shared-memory primitives](../../../wiki/Shared-Memory.md).
+   the [shared-memory primitives](Shared-Memory).
 2. Build the CubeRegistry with atomic status tracking.
 3. Build a minimal LNN module against a small transformer;
    verify the mentoring loop reduces error.
@@ -481,15 +490,15 @@ The work order:
 
 ## Cross-references
 
-- [shared-memory](../../../wiki/Shared-Memory.md) — Layer 2
+- [shared-memory](Shared-Memory) — Layer 2
   `SharedMemoryManager` is the inference data plane this
   component uses.
 - [mood](Mood-and-Emotional-Model) — `MoodSignature` interface anticipates
   LTC-extractor integration; the spike + liquid layers slot in
   here.
-- [reflection-memory](../../../wiki/Reflection-Memory.md) — durable record of
+- [reflection-memory](Reflection-Memory) — durable record of
   events that the Dream Engine replays from.
-- [memory](../../../wiki/Memory-Feature-Overview.md) — long-term tier's vector index will
+- [memory](Memory-Feature-Overview) — long-term tier's vector index will
   eventually use LTC signatures alongside or instead of
   embedding cosine.
 - [pipeline](Pipeline-DSL) — pipeline DSL composes inference

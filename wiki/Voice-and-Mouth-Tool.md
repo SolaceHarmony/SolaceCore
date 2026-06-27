@@ -21,6 +21,14 @@ Augment the Mouth Tool so it no longer acts as a *pass‑through formatter*, but
 2. **Determines conversational relevance** in real time.
 3. **Frames or withholds** those cues to produce context‑aligned, human‑like responses.
 
+## Related Topics
+
+- [Supervisor AI](Supervisor-AI): decides which internal drafts are allowed to become speech.
+- [Memory & Reflection](Memory-and-Reflection): source of reflection snippets and conversation context.
+- [Perception Actors](Perception-Actors): vision/audio/text cues that feed the nudge bus.
+- [Multimodal Nudging](Multimodal-Nudging): feature-level cross-perspective cue model.
+- [Zoom Levels](Zoom-Levels): detail-level control for response framing.
+
 ---
 
 ## B‑2  Revised Mouth Tool Architecture
@@ -303,7 +311,7 @@ heuristic table is small but does real work:
 | Descriptive follow-up likely | *"Yes — the shirt is a rich cobalt blue, close to navy."* |
 | Emotionally charged audio cue | *"She sounds noticeably angry; you may want to approach gently."* |
 
-The detail-level choice is also where the [zoom level](../../../wiki/Zoom-Levels.md)
+The detail-level choice is also where the [zoom level](Zoom-Levels)
 plugs in. When the Supervisor is in LOW zoom (deep dive, fine
 granularity), the framing engine produces step-by-step responses. In
 HIGH zoom (synthesis, summary), it produces concise recaps. The same
@@ -390,7 +398,7 @@ when vision and audio actors start producing nudges.
 When implementation begins, two pieces of existing scaffolding apply:
 the actor framework in `lib/src/commonMain/kotlin/.../actor/` provides
 the message-passing substrate, and the
-[shared-memory](../../../wiki/Shared-Memory.md) primitives provide the lock-free
+[shared-memory](Shared-Memory) primitives provide the lock-free
 queue the Nudge Bus will sit on top of.
 
 ## Open questions
@@ -411,16 +419,16 @@ queue the Nudge Bus will sit on top of.
 
 ## Cross-references
 
-- [memory](../../../wiki/Memory-Feature-Overview.md) — the Mouth Tool reads working entries through
+- [memory](Memory-Feature-Overview) — the Mouth Tool reads working entries through
   origin filtering; the `shareable` flag lives on the entry.
 - [supervisor](Supervisor-AI) — the Mouth Tool's input is the
   Supervisor's draft; their interaction is the most load-bearing
   contract in the system.
-- [multimodal-nudging](../../../wiki/Multimodal-Nudging.md) — the Nudge Bus that
+- [multimodal-nudging](Multimodal-Nudging) — the Nudge Bus that
   feeds v2's CandidateBuilder.
-- [zoom-levels](../../../wiki/Zoom-Levels.md) — the framing engine's detail level
+- [zoom-levels](Zoom-Levels) — the framing engine's detail level
   is gated on the active zoom.
-- [confusion-corrector](../../../wiki/Confusion-Corrector.md) — when drift is
+- [confusion-corrector](Confusion-Corrector) — when drift is
   detected, the Confusion Corrector's replay summary becomes
   candidate input to the Mouth Tool's next emission.
 
