@@ -3,7 +3,7 @@
 ---
 
 ## 14. InferenceCube Architecture
-The `docs/InferenceCubeArchitecture.md` file describes a specialized framework or application named "InferenceCube," designed for progressively migrating inference tasks from transformer models to Liquid Neural Networks (LNNs), specifically Liquid Time Constant (LTC) networks. While distinct from the core Solace Core Framework modules, its description provides insight into potential advanced applications or systems that could be built leveraging Solace Core's actor-based and modular nature.
+The wiki [Inference Cube](../../wiki/Inference-Cube.md) page describes a specialized framework or application named "InferenceCube," designed for progressively migrating inference tasks from transformer models to Liquid Neural Networks (LNNs), specifically Liquid Time Constant (LTC) networks. While distinct from the core Solace Core Framework modules, its description provides insight into potential advanced applications or systems that could be built leveraging Solace Core's actor-based and modular nature.
 
 ### 14.1. Motivation and Goals
 *   **Problem:** High computational and memory costs of transformer models for inference.

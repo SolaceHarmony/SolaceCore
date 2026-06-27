@@ -57,6 +57,8 @@ The working ledger is [curation-tracker.csv](curation-tracker.csv). Use it to se
 | `docs/components/memory/MemoryToolDesign.md` | 273-424 | [Perception Actors](Perception-Actors) | Split by topic, source removed |
 | `docs/components/memory/MemoryToolDesign.md` | 425-562 | [Voice & Mouth Tool](Voice-and-Mouth-Tool) | Split by topic, source removed |
 | `docs/components/memory/MemoryToolDesign.md` | 563-752 | [Zoom Levels](Zoom-Levels) | Split by topic, source removed |
+| `docs/components/actor_inference_engine/InferenceCubeArchitecture.md` | 1-138 | [Inference Cube](Inference-Cube) | Moved, source removed |
+| `docs/components/actor_inference_engine/liquid-neural-networks-hybrid-transformer.ipynb` | 1-1017 | [Hybrid notebook](notebooks/liquid-neural-networks-hybrid-transformer.ipynb) | Moved as wiki notebook asset, source removed |
 
 ## Current Rule
 

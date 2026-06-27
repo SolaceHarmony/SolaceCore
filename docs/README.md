@@ -21,7 +21,7 @@ This directory holds the design and reference documentation for SolaceCore. The 
 | Memory | [`../wiki/Memory-and-Reflection.md`](../wiki/Memory-and-Reflection.md) | The SRAF / Reflection Memory design now lives in the wiki, with Mouth Tool and Zoom split into their own topic pages. |
 | Scripting | [`../wiki/Scripting-Engine.md`](../wiki/Scripting-Engine.md) | The dynamic scripting module design now lives in the wiki. |
 | Workflow | [`../wiki/Workflow-Orchestration.md`](../wiki/Workflow-Orchestration.md) | Workflow orchestration design and management now lives in the wiki. |
-| Actor inference engine | [`components/actor_inference_engine/`](components/actor_inference_engine/) | The InferenceCube architecture and the [Liquid + Transformer hybrid notebook](components/actor_inference_engine/liquid-neural-networks-hybrid-transformer.ipynb). |
+| Actor inference engine | [`../wiki/Inference-Cube.md`](../wiki/Inference-Cube.md) | The InferenceCube architecture and the [Liquid + Transformer hybrid notebook](../wiki/notebooks/liquid-neural-networks-hybrid-transformer.ipynb). |
 
 ### `examples/` — small runnable examples
 
@@ -69,7 +69,7 @@ The chain types live in [`prototypes/`](../prototypes/), not in `lib/`. These do
 
 ## Implementation status (high level)
 
-The kernel is real. The cognition layers above the kernel are designed and partly prototyped (see [the hybrid notebook](components/actor_inference_engine/liquid-neural-networks-hybrid-transformer.ipynb)) but not yet ported into `lib/`.
+The kernel is real. The cognition layers above the kernel are designed and partly prototyped (see [the hybrid notebook](../wiki/notebooks/liquid-neural-networks-hybrid-transformer.ipynb)) but not yet ported into `lib/`.
 
 | Subsystem | Status |
 |---|---|
@@ -81,8 +81,8 @@ The kernel is real. The cognition layers above the kernel are designed and partl
 | Workflow (`core.workflow`) | ✅ Shipped — `WorkflowManager` with start/stop ordering, pause/resume, failure handling |
 | Reflection Memory + signature retrieval | 🚧 Designed (see [`../wiki/Memory-and-Reflection.md`](../wiki/Memory-and-Reflection.md)), not yet built |
 | Mouth Tool (thought→speech filter) | 🚧 Designed, not yet built |
-| Liquid + Transformer hybrid block (LTC port) | 🚧 [Kaggle proof](components/actor_inference_engine/liquid-neural-networks-hybrid-transformer.ipynb) validated; Kotlin port pending |
-| InferenceCube state machine | 🚧 Designed in [`components/actor_inference_engine/InferenceCubeArchitecture.md`](components/actor_inference_engine/InferenceCubeArchitecture.md), not yet built |
+| Liquid + Transformer hybrid block (LTC port) | 🚧 [Kaggle proof](../wiki/notebooks/liquid-neural-networks-hybrid-transformer.ipynb) validated; Kotlin port pending |
+| InferenceCube state machine | 🚧 Designed in [`../wiki/Inference-Cube.md`](../wiki/Inference-Cube.md), not yet built |
 | Spiking advisor + emotional cue stream | 🚧 Designed, not yet built |
 
 For a more detailed view, [`status/DESIGN_VS_IMPLEMENTATION.md`](status/DESIGN_VS_IMPLEMENTATION.md) is the canonical gap report.

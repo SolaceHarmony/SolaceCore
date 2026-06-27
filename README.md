@@ -50,9 +50,9 @@ The kernel doesn't ship a spiking layer or a Liquid cell yet — those are the n
 
 ### Vector‑to‑neuron takeover
 
-The Liquid + Transformer hybrid block (proven in the [`liquid-neural-networks-hybrid-transformer.ipynb`](docs/components/actor_inference_engine/liquid-neural-networks-hybrid-transformer.ipynb) notebook in this repo) lets a per‑cube LTC cell *learn to be the transformer* for that cube. While the LTC's per‑cube error is high, the transformer owns the cube and the LTC mentors against it. When the error drops below threshold, ownership flips: `TRANSFORMER → MENTORING → LNN_OWNED`. The cube goes **from a vector** (multi‑dim attention output) **to a neuron** (one cell's continuous‑time dynamic). The transformer is no longer needed for that cube, and the LTC keeps learning from input — plasticity past the takeover line.
+The Liquid + Transformer hybrid block (proven in the [`liquid-neural-networks-hybrid-transformer.ipynb`](wiki/notebooks/liquid-neural-networks-hybrid-transformer.ipynb) notebook in this repo) lets a per‑cube LTC cell *learn to be the transformer* for that cube. While the LTC's per‑cube error is high, the transformer owns the cube and the LTC mentors against it. When the error drops below threshold, ownership flips: `TRANSFORMER → MENTORING → LNN_OWNED`. The cube goes **from a vector** (multi‑dim attention output) **to a neuron** (one cell's continuous‑time dynamic). The transformer is no longer needed for that cube, and the LTC keeps learning from input — plasticity past the takeover line.
 
-This is how the kernel scales long‑term operation. A pure LLM‑only system grows context unboundedly. With the InferenceCube state machine, the cheaper layer absorbs routine patterns and frees the LLM for genuinely novel reasoning. See [`docs/components/actor_inference_engine/InferenceCubeArchitecture.md`](docs/components/actor_inference_engine/InferenceCubeArchitecture.md) for the design and the notebook for the math.
+This is how the kernel scales long‑term operation. A pure LLM‑only system grows context unboundedly. With the InferenceCube state machine, the cheaper layer absorbs routine patterns and frees the LLM for genuinely novel reasoning. See [`wiki/Inference-Cube.md`](wiki/Inference-Cube.md) for the design and the notebook for the math.
 
 ### Thought is not speech
 
@@ -87,7 +87,7 @@ This is where Solace is going. Calling these out so the gap between *kernel* and
 
 - **Reflection Memory** — append‑only, origin-tagged (`INTERNAL` / `USER` / `ADVISOR` / `SYSTEM`), dual-indexed by timestamp and signature. Will live alongside `core.storage` once the signature primitive lands.
 - **Spiking layer** — sparse event-driven advisor that fires on salience (emotional valence, novelty, change). One actor per modality.
-- **Liquid Time-Constant cell** — per-cube continuous-time integration, ported from the [Kaggle proof-of-concept](docs/components/actor_inference_engine/liquid-neural-networks-hybrid-transformer.ipynb). Likely a PyTorch sidecar for training and ONNX-runtime inside Kotlin for frozen-cube inference.
+- **Liquid Time-Constant cell** — per-cube continuous-time integration, ported from the [Kaggle proof-of-concept](wiki/notebooks/liquid-neural-networks-hybrid-transformer.ipynb). Likely a PyTorch sidecar for training and ONNX-runtime inside Kotlin for frozen-cube inference.
 - **InferenceCube state machine** — `TRANSFORMER` → `MENTORING` → `LNN_OWNED` → `FROZEN` ownership flips per cube; `LobeManager` for transformer-version transitions; `DreamEngine` for signature-density-weighted offline replay.
 - **Mouth Tool** — `CandidateBuilder` → `ContextRanker` → `Framing & Style Engine`. The architectural seam between thought and speech.
 - **Supervisor narrative loop** — the LLM as executive cognition, talking to Reflection Memory and the advisor actors via the existing actor runtime.
@@ -189,7 +189,7 @@ Quick links by interest:
 
 - **One-screen mental model**: [`wiki/Architecture-Overview.md`](wiki/Architecture-Overview.md) — the system diagram and runtime map.
 - **Why this is different from RAG / why memory rhymes**: [`wiki/Memory-and-Reflection.md`](wiki/Memory-and-Reflection.md) — the SRAF design.
-- **The vector-to-neuron mechanism**: [`docs/components/actor_inference_engine/InferenceCubeArchitecture.md`](docs/components/actor_inference_engine/InferenceCubeArchitecture.md) and the [hybrid notebook](docs/components/actor_inference_engine/liquid-neural-networks-hybrid-transformer.ipynb).
+- **The vector-to-neuron mechanism**: [`wiki/Inference-Cube.md`](wiki/Inference-Cube.md) and the [hybrid notebook](wiki/notebooks/liquid-neural-networks-hybrid-transformer.ipynb).
 - **Full architecture deep dive**: [`docs/Architectural_Deepdive.md`](docs/Architectural_Deepdive.md).
 - **Status reality check** (design vs implementation): [`docs/status/DESIGN_VS_IMPLEMENTATION.md`](docs/status/DESIGN_VS_IMPLEMENTATION.md), [`docs/status/QUICK_STATUS.md`](docs/status/QUICK_STATUS.md).
 

@@ -297,7 +297,7 @@ signature stamped onto Reflection Memory. The mood module's
 ## Implementation status
 
 **Designed, not built.** The component definitions exist in
-`docs/components/actor_inference_engine/InferenceCubeArchitecture.md`
+`wiki/Inference-Cube.md`
 and the Kaggle proof notebook demonstrates the LTC + attention
 composition is mathematically sound. The actual scaffolding —
 SharedMemoryManager (the inference-data form), CubeRegistry,

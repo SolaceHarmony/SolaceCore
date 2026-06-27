@@ -27,3 +27,5 @@ Memory-and-Reflection,docs/components/memory/MemoryToolDesign.md,1,272,272,compl
 Perception-Actors,docs/components/memory/MemoryToolDesign.md,273,424,424,complete_split,remove_source,"Multimodal perception addendum copied directly into Perception Actors."
 Voice-and-Mouth-Tool,docs/components/memory/MemoryToolDesign.md,425,562,562,complete_split,remove_source,"Mouth Tool extension addendum copied directly into Voice & Mouth Tool."
 Zoom-Levels,docs/components/memory/MemoryToolDesign.md,563,752,752,complete_split,remove_source,"Zoom control addendum copied directly into Zoom Levels."
+Inference-Cube,docs/components/actor_inference_engine/InferenceCubeArchitecture.md,1,138,138,complete,remove_source,"Source file copied directly into Inference Cube."
+Inference-Cube,docs/components/actor_inference_engine/liquid-neural-networks-hybrid-transformer.ipynb,1,1017,1017,complete_move,remove_source,"Notebook moved unchanged into wiki/notebooks/."

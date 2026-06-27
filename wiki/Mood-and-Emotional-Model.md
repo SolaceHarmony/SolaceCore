@@ -132,7 +132,7 @@ The architectural argument:
 
 This is what makes SolaceCore different from a RAG-flavored chat system. The mood module is the entry point to that difference.
 
-For the broader Solace narrative-management framing — Reflection Memory, Mouth Tool, Confusion Corrector, Time Awareness, Zoom Controller — see [Memory & Reflection](Memory-and-Reflection) (the SRAF design). For the Liquid + Transformer hybrid that produces the integrated signatures, see [Inference Cube](Inference-Cube) and the Kaggle proof notebook in `docs/components/actor_inference_engine/liquid-neural-networks-hybrid-transformer.ipynb`.
+For the broader Solace narrative-management framing — Reflection Memory, Mouth Tool, Confusion Corrector, Time Awareness, Zoom Controller — see [Memory & Reflection](Memory-and-Reflection) (the SRAF design). For the Liquid + Transformer hybrid that produces the integrated signatures, see [Inference Cube](Inference-Cube) and the Kaggle proof notebook in `wiki/notebooks/liquid-neural-networks-hybrid-transformer.ipynb`.
 
 ## Where mood sits in the three-tier hybrid
 
@@ -193,7 +193,7 @@ When the spike-based advisor lands, the seam is clear: replace `LexicalEmotional
 ## What's designed but not yet built
 
 - **`SpikingEmotionalAdvisor`** — integrate-and-fire substrate that produces sparse spike trains rather than discrete cues. Cues become a coarser projection of the underlying spike signature.
-- **`LTCSignatureExtractor`** — wraps an LTC cell (per [InferenceCube](../actor_inference_engine/InferenceCubeArchitecture.md)) so the cell's hidden state at write-time can be retrieved as a `MoodSignature` for stamping a Reflection Memory entry.
+- **`LTCSignatureExtractor`** — wraps an LTC cell (per [InferenceCube](Inference-Cube)) so the cell's hidden state at write-time can be retrieved as a `MoodSignature` for stamping a Reflection Memory entry.
 - **`SignatureCorrelator`** — the retrieval primitive. Given a current `MoodSignature` and a freshness window, returns Reflection Memory entries whose stored signature correlates above threshold.
 - **`MoodTracker`** — running-state actor that integrates `MoodCue`s over time, exposes a "current affective state" snapshot that other advisors can read (e.g., to detect mood-change events for the time/zoom controllers).
 - **Cross-modal advisors** — vision, audio, biometric. Each emits its own `MoodCue` stream; the supervisor weighs the cross-modal evidence.
@@ -222,6 +222,6 @@ Sensitive emotional inferences (e.g., "user appears depressed") are still infere
 ## See also
 
 - [Memory & Reflection](Memory-and-Reflection) — the SRAF narrative-management spec; covers the supervisor's decision loop and the Mouth Tool that owns egress.
-- [`../actor_inference_engine/InferenceCubeArchitecture.md`](../actor_inference_engine/InferenceCubeArchitecture.md) — the Liquid + Transformer hybrid this layer will integrate with.
-- [`../actor_inference_engine/liquid-neural-networks-hybrid-transformer.ipynb`](../actor_inference_engine/liquid-neural-networks-hybrid-transformer.ipynb) — Kaggle proof of the LTC + attention composition.
+- [Inference Cube](Inference-Cube) — the Liquid + Transformer hybrid this layer will integrate with.
+- [`notebooks/liquid-neural-networks-hybrid-transformer.ipynb`](notebooks/liquid-neural-networks-hybrid-transformer.ipynb) — Kaggle proof of the LTC + attention composition.
 - [`../../../wiki/Mood-and-Emotional-Model.md`](../../../wiki/Mood-and-Emotional-Model.md) — the older sketch of the executive-emotional integration; this module is the concrete shipped subset.
