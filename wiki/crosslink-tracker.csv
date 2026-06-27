@@ -53,3 +53,7 @@ Kernel-Port-Implementations-and-Exceptions,1,64,verified_existing,1,"Extracted p
 Kernel-Port-Usage-Example,1,43,verified_existing,1,"Extracted port usage example links back to Kernel Ports."
 Kernel-Future-Enhancements,1,27,verified_existing,2,"Extracted future enhancements page retains Kernel Ports link and backlink."
 Kernel-Testing-Strategy,1,49,verified_existing,3,"Extracted testing strategy page retains Vision Architecture Overview Lifecycle and Kernel Ports links."
+Scripting-Engine,30,40,complete,8,"Added related-topic links to scripting module architecture supporting components and JVM implementation pages."
+Scripting-Module-Architecture,1,74,verified_existing,2,"Extracted module architecture page retains Architecture Overview and Scripting Engine backlink."
+Scripting-Supporting-Components,1,89,verified_existing,1,"Extracted supporting components page links back to Scripting Engine."
+JVM-Scripting-Implementations,1,178,verified_existing,4,"Extracted JVM implementations page retains Workflow Orchestration Architecture Overview Build System and Scripting Engine links."

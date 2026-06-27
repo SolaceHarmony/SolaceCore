@@ -142,3 +142,6 @@ Kernel-Port-Implementations-and-Exceptions,wiki/Kernel-and-Ports.md,247,305,59,c
 Kernel-Port-Usage-Example,wiki/Kernel-and-Ports.md,306,343,38,complete_split,link_from_source,"Extracted basic bidirectional port usage example into its own Runtime topic page."
 Kernel-Future-Enhancements,wiki/Kernel-and-Ports.md,345,366,22,complete_split,link_from_source,"Extracted kernel channel future enhancements into their own Runtime topic page."
 Kernel-Testing-Strategy,wiki/Kernel-and-Ports.md,367,410,44,complete_split,link_from_source,"Extracted target kernel testing strategy into its own Runtime topic page."
+Scripting-Module-Architecture,wiki/Scripting-Engine.md,110,178,69,complete_split,link_from_source,"Extracted scripting module architecture and core interface diagram into their own Runtime topic page."
+Scripting-Supporting-Components,wiki/Scripting-Engine.md,179,262,84,complete_split,link_from_source,"Extracted scripting validator version manager storage and ScriptActor design into their own Runtime topic page."
+JVM-Scripting-Implementations,wiki/Scripting-Engine.md,263,435,173,complete_split,link_from_source,"Extracted JVM scripting implementations and architecture overview navigation into their own Runtime topic page."
