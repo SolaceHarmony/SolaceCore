@@ -15,7 +15,7 @@ import kotlin.uuid.Uuid
  *
  * Cues are written to Reflection Memory tagged with `Origin.ADVISOR` (the
  * Reflection Memory abstraction itself is designed but not yet shipped; see
- * [`docs/components/memory/MemoryToolDesign.md`](../../../../../../../../../docs/components/memory/MemoryToolDesign.md)).
+ * [`wiki/Memory-and-Reflection.md`](../../../../../../../../../wiki/Memory-and-Reflection.md)).
  * They are *internal* signals; user-facing output goes through the Mouth Tool,
  * not directly through the supervisor's interpretation of cues.
  *

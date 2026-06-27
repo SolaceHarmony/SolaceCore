@@ -60,7 +60,7 @@ In Solace, the LLM does not speak. It *thinks* — into Reflection Memory, freel
 
 This separation is a privacy property, a safety property, and a UX property at the same time. It is also the easiest place to layer in deployment policy: PII redaction, persona consistency, refusal canon. The architectural seam is what matters; the policy can mature.
 
-The Mouth Tool is not yet implemented in `lib/`. Its architectural contract is in [`docs/components/memory/MemoryToolDesign.md`](docs/components/memory/MemoryToolDesign.md) (the SRAF design — *Seamless Reflective AI Framework*, the canonical narrative-management spec for Solace).
+The Mouth Tool is not yet implemented in `lib/`. Its architectural contract is in the wiki [Voice & Mouth Tool](wiki/Voice-and-Mouth-Tool.md) page, derived from the SRAF design — *Seamless Reflective AI Framework*, the canonical narrative-management spec for Solace.
 
 ---
 
@@ -188,7 +188,7 @@ The architecture and design docs are extensive. The recommended path is now the 
 Quick links by interest:
 
 - **One-screen mental model**: [`wiki/Architecture-Overview.md`](wiki/Architecture-Overview.md) — the system diagram and runtime map.
-- **Why this is different from RAG / why memory rhymes**: [`docs/components/memory/MemoryToolDesign.md`](docs/components/memory/MemoryToolDesign.md) — the SRAF design.
+- **Why this is different from RAG / why memory rhymes**: [`wiki/Memory-and-Reflection.md`](wiki/Memory-and-Reflection.md) — the SRAF design.
 - **The vector-to-neuron mechanism**: [`docs/components/actor_inference_engine/InferenceCubeArchitecture.md`](docs/components/actor_inference_engine/InferenceCubeArchitecture.md) and the [hybrid notebook](docs/components/actor_inference_engine/liquid-neural-networks-hybrid-transformer.ipynb).
 - **Full architecture deep dive**: [`docs/Architectural_Deepdive.md`](docs/Architectural_Deepdive.md).
 - **Status reality check** (design vs implementation): [`docs/status/DESIGN_VS_IMPLEMENTATION.md`](docs/status/DESIGN_VS_IMPLEMENTATION.md), [`docs/status/QUICK_STATUS.md`](docs/status/QUICK_STATUS.md).

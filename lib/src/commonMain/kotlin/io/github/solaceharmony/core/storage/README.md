@@ -2,7 +2,7 @@
 
 Persistence substrate for SolaceCore. Generic typed key/value storage, transactions, caching, recovery, serialization, and (on JVM) file-backed implementations with optional compression and encryption.
 
-This module is the foundation for the **Reflection Memory** that the Solace cognition layer will need (append-only narrative log, dual-keyed by timestamp and signature). The primitives are shipped; the higher-level Reflection Memory abstraction is designed but not yet built — see [`docs/components/memory/MemoryToolDesign.md`](../../../../../../../../../docs/components/memory/MemoryToolDesign.md).
+This module is the foundation for the **Reflection Memory** that the Solace cognition layer will need (append-only narrative log, dual-keyed by timestamp and signature). The primitives are shipped; the higher-level Reflection Memory abstraction is designed but not yet built — see [`wiki/Memory-and-Reflection.md`](../../../../../../../../../wiki/Memory-and-Reflection.md).
 
 ## Layered design
 
@@ -101,4 +101,4 @@ The `TransactionalStorage` interface is orthogonal to caching/compression/encryp
 - [`../scripting/`](../scripting/) — uses `Storage` for compiled-script artifacts and version metadata.
 - [`docs/STORAGE_DOCUMENTATION.md`](../../../../../../../../../docs/STORAGE_DOCUMENTATION.md) — long-form guidance and JSON coercion rules.
 - [`docs/STORAGE_CHECKLIST.md`](../../../../../../../../../docs/STORAGE_CHECKLIST.md) — backlog and known gaps.
-- [`docs/components/memory/MemoryToolDesign.md`](../../../../../../../../../docs/components/memory/MemoryToolDesign.md) — the Reflection Memory design that will be built on top of this substrate.
+- [`wiki/Memory-and-Reflection.md`](../../../../../../../../../wiki/Memory-and-Reflection.md) — the Reflection Memory design that will be built on top of this substrate.

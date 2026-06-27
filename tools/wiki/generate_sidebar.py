@@ -27,10 +27,15 @@ TOPIC_ORDER = ["Orientation", "Runtime", "Solace AI", "Reference"]
 EXCLUDE = {"_Sidebar.md", "_Footer.md", "Home.md"}
 
 TOPIC_RE = re.compile(r"<!--\s*topic:\s*(.+?)\s*-->", re.IGNORECASE)
+TITLE_RE = re.compile(r"<!--\s*title:\s*(.+?)\s*-->", re.IGNORECASE)
 
 
 def page_title(path: Path) -> str:
     """First Markdown H1 (``# ...``) or a humanized filename fallback."""
+    head = path.read_text(encoding="utf-8")[:400]
+    m = TITLE_RE.search(head)
+    if m:
+        return m.group(1).strip()
     for line in path.read_text(encoding="utf-8").splitlines():
         if line.startswith("# "):
             return line[2:].strip()

@@ -66,7 +66,7 @@ The status values:
 | Era | Date | Source | What it gave us |
 |---|---|---|---|
 | Genesis | Nov 15 2024 | `e59a719` `docs/ProjectPlan.md` + `SolaceCoreFramework.md` | actor kernel, hot-pluggable supervisor, memory-driven AI vision |
-| SRAF | Jun 4 2025 | `1524574` `docs/components/memory/MemoryToolDesign.md` | Reflection Memory, Supervisor, Mouth Tool, Time Actor, Mood, Confusion Corrector, Multimodal nudging, Zoom levels |
+| SRAF | Jun 4 2025 | `1524574` [Memory & Reflection](../../wiki/Memory-and-Reflection.md) | Reflection Memory, Supervisor, Mouth Tool, Time Actor, Mood, Confusion Corrector, Multimodal nudging, Zoom levels |
 | Codex translation | Feb 4 2026 | `6d7b1b4` `docs/sketch-architecture/`, `docs/kotlin-aligned-docs/` | MCP, Pipeline, Providers, NeutralHistoryXML rename, CoroutineSharedMemory, InferenceCube |
 | Now | May 2026 | `3045c9c` `lib/.../core/mood/` | first SRAF feature lands as code (mood lexical baseline) |
 

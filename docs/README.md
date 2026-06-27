@@ -18,7 +18,7 @@ This directory holds the design and reference documentation for SolaceCore. The 
 | Actor system | [`../wiki/Actor-System.md`](../wiki/Actor-System.md) | Actor architecture, supervisor notes, communication sequence, class diagrams, and emotional-model integration now live in the wiki. |
 | Kernel | [`components/kernel/`](components/kernel/) | Port system, channel system, system-architecture overview. |
 | Lifecycle | [`../wiki/Lifecycle-and-Resources.md`](../wiki/Lifecycle-and-Resources.md) | The `Disposable` / `Lifecycle` contract and its class diagram now live in the wiki. |
-| Memory | [`components/memory/`](components/memory/) | The SRAF / Reflection Memory / Mouth Tool / Zoom design ([`MemoryToolDesign.md`](components/memory/MemoryToolDesign.md)). |
+| Memory | [`../wiki/Memory-and-Reflection.md`](../wiki/Memory-and-Reflection.md) | The SRAF / Reflection Memory design now lives in the wiki, with Mouth Tool and Zoom split into their own topic pages. |
 | Scripting | [`../wiki/Scripting-Engine.md`](../wiki/Scripting-Engine.md) | The dynamic scripting module design now lives in the wiki. |
 | Workflow | [`../wiki/Workflow-Orchestration.md`](../wiki/Workflow-Orchestration.md) | Workflow orchestration design and management now lives in the wiki. |
 | Actor inference engine | [`components/actor_inference_engine/`](components/actor_inference_engine/) | The InferenceCube architecture and the [Liquid + Transformer hybrid notebook](components/actor_inference_engine/liquid-neural-networks-hybrid-transformer.ipynb). |
@@ -79,7 +79,7 @@ The kernel is real. The cognition layers above the kernel are designed and partl
 | Storage (`core.storage`) | ✅ Shipped — in-memory, transactional, cached, recoverable, serialization, JVM file backends |
 | Scripting (`core.scripting`) | ✅ Shipped — engine, validator, storage, version manager, JVM `kotlin-main-kts` host |
 | Workflow (`core.workflow`) | ✅ Shipped — `WorkflowManager` with start/stop ordering, pause/resume, failure handling |
-| Reflection Memory + signature retrieval | 🚧 Designed (see [`components/memory/MemoryToolDesign.md`](components/memory/MemoryToolDesign.md)), not yet built |
+| Reflection Memory + signature retrieval | 🚧 Designed (see [`../wiki/Memory-and-Reflection.md`](../wiki/Memory-and-Reflection.md)), not yet built |
 | Mouth Tool (thought→speech filter) | 🚧 Designed, not yet built |
 | Liquid + Transformer hybrid block (LTC port) | 🚧 [Kaggle proof](components/actor_inference_engine/liquid-neural-networks-hybrid-transformer.ipynb) validated; Kotlin port pending |
 | InferenceCube state machine | 🚧 Designed in [`components/actor_inference_engine/InferenceCubeArchitecture.md`](components/actor_inference_engine/InferenceCubeArchitecture.md), not yet built |

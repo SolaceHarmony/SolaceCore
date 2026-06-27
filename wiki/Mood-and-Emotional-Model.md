@@ -132,7 +132,7 @@ The architectural argument:
 
 This is what makes SolaceCore different from a RAG-flavored chat system. The mood module is the entry point to that difference.
 
-For the broader Solace narrative-management framing — Reflection Memory, Mouth Tool, Confusion Corrector, Time Awareness, Zoom Controller — see [`../memory/MemoryToolDesign.md`](../memory/MemoryToolDesign.md) (the SRAF design). For the Liquid + Transformer hybrid that produces the integrated signatures, see [`../actor_inference_engine/InferenceCubeArchitecture.md`](../actor_inference_engine/InferenceCubeArchitecture.md) and the [Kaggle proof notebook](../actor_inference_engine/liquid-neural-networks-hybrid-transformer.ipynb).
+For the broader Solace narrative-management framing — Reflection Memory, Mouth Tool, Confusion Corrector, Time Awareness, Zoom Controller — see [Memory & Reflection](Memory-and-Reflection) (the SRAF design). For the Liquid + Transformer hybrid that produces the integrated signatures, see [Inference Cube](Inference-Cube) and the Kaggle proof notebook in `docs/components/actor_inference_engine/liquid-neural-networks-hybrid-transformer.ipynb`.
 
 ## Where mood sits in the three-tier hybrid
 
@@ -221,7 +221,7 @@ Sensitive emotional inferences (e.g., "user appears depressed") are still infere
 
 ## See also
 
-- [`../memory/MemoryToolDesign.md`](../memory/MemoryToolDesign.md) — the SRAF narrative-management spec; covers the supervisor's decision loop and the Mouth Tool that owns egress.
+- [Memory & Reflection](Memory-and-Reflection) — the SRAF narrative-management spec; covers the supervisor's decision loop and the Mouth Tool that owns egress.
 - [`../actor_inference_engine/InferenceCubeArchitecture.md`](../actor_inference_engine/InferenceCubeArchitecture.md) — the Liquid + Transformer hybrid this layer will integrate with.
 - [`../actor_inference_engine/liquid-neural-networks-hybrid-transformer.ipynb`](../actor_inference_engine/liquid-neural-networks-hybrid-transformer.ipynb) — Kaggle proof of the LTC + attention composition.
 - [`../../../wiki/Mood-and-Emotional-Model.md`](../../../wiki/Mood-and-Emotional-Model.md) — the older sketch of the executive-emotional integration; this module is the concrete shipped subset.

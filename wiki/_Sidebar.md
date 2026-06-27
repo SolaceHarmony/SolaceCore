@@ -39,6 +39,7 @@
 - [Solace AI Overview](Solace-AI-Overview)
 - [Supervisor AI and Emotional Model Integration](Mood-and-Emotional-Model)
 - [Voice & Mouth Tool](Voice-and-Mouth-Tool)
+- [Zoom Levels](Zoom-Levels)
 
 </details>
 

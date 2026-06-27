@@ -158,7 +158,7 @@ status: Development Implementation
    - **Issue**: Emotional ↔ technical memory cross-indexing partially implemented
    - **Impact**: Limited context retrieval across emotional and technical domains
    - **Priority**: P1 - Essential
-   - **Files Affected**: `docs/components/memory/MemoryConsolidation.kt`
+   - **Files Affected**: `wiki/Memory-and-Reflection.md`
    - **Status**: Design exists, implementation partial
 
 **⚠️ Minor Issues:**

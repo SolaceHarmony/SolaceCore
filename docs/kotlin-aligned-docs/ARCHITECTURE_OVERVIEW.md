@@ -54,7 +54,7 @@ graph TB
         MoodManager[Mood Manager<br/>lib/src/commonMain/kotlin/com/solacecore/mood/<br/>MoodManager.kt]
         SNN[Spiking Neural Network<br/>3-layer integrate-and-fire<br/>lib/src/commonMain/kotlin/com/solacecore/mood/snn/]
         MoodOrchestrator[Mood Orchestrator<br/>Decision making<br/>lib/src/commonMain/kotlin/com/solacecore/mood/]
-        MemoryConsolidation[Memory Consolidation<br/>docs/components/memory/<br/>MemoryConsolidation.kt]
+        MemoryConsolidation[Memory Consolidation<br/>wiki/Memory-and-Reflection.md]
         EmotionalContext[Emotional Context<br/>lib/src/commonMain/kotlin/com/solacecore/mood/<br/>EmotionalContext.kt]
     end
 
