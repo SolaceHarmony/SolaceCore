@@ -48,6 +48,7 @@
 
 - [Confusion Corrector](Confusion-Corrector)
 - [Inference Cube](Inference-Cube)
+- [Inference Cube Technical Architecture](Inference-Cube-Technical-Architecture)
 - [Long-Term Memory](Long-Term-Memory)
 - [MCP and Tool Format](MCP-and-Tool-Format)
 - [Memory & Reflection](Memory-and-Reflection)
