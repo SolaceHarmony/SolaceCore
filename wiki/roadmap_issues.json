@@ -30,7 +30,7 @@
   },
   {
     "title": "1.4 Enhanced Error Handling",
-    "body": "**Phase:** Phase 1: Stability & Testing (2-3 months)\n\n**Estimated Effort:** 2 weeks\n\n**Why:** ** Improve resilience\n\n**Location:** ``lib/src/commonMain/kotlin/ai/solace/core/actor/supervision/``\n\n\n## Tasks\n\n- [ ] Supervisor restart strategies (one-for-one, all-for-one)\n- [ ] Circuit breaker pattern implementation\n- [ ] Configurable retry logic\n- [ ] Error escalation mechanisms\n- [ ] Comprehensive error documentation\n\n\n## Success Criteria\n\n- Actors can recover from transient failures\n- Supervisor strategies are configurable\n- Error handling is consistent\n\n\n---\n\n*This issue was automatically created from [IMPLEMENTATION_ROADMAP.md](../blob/main/docs/status/IMPLEMENTATION_ROADMAP.md)*",
+    "body": "**Phase:** Phase 1: Stability & Testing (2-3 months)\n\n**Estimated Effort:** 2 weeks\n\n**Why:** ** Improve resilience\n\n**Location:** ``lib/src/commonMain/kotlin/ai/solace/core/actor/supervision/``\n\n\n## Tasks\n\n- [ ] Supervisor restart strategies (one-for-one, all-for-one)\n- [ ] Basic actor-level circuit breaker pattern implementation\n- [ ] Configurable retry logic\n- [ ] Error escalation mechanisms\n- [ ] Comprehensive error documentation\n\n\n## Success Criteria\n\n- Actors can recover from transient failures\n- Supervisor strategies are configurable\n- Error handling is consistent\n\n\n---\n\n*This issue was automatically created from [IMPLEMENTATION_ROADMAP.md](../blob/main/docs/status/IMPLEMENTATION_ROADMAP.md)*",
     "labels": [
       "enhancement",
       "roadmap",
@@ -103,7 +103,7 @@
   },
   {
     "title": "3.2 Getting Started Guide",
-    "body": "**Phase:** Phase 3: Documentation & Developer Experience (1-2 months)\n\n**Estimated Effort:** 1 week\n\n**Why:** ** Lower barrier to entry\n\n**Location:** ``docs/getting-started.md``\n\n\n## Tasks\n\n- [ ] Installation instructions\n- [ ] \"Hello World\" actor example\n- [ ] Simple workflow tutorial\n- [ ] Storage integration example\n- [ ] Scripting example\n- [ ] Troubleshooting section\n\n\n## Success Criteria\n\n- New developer can run example in 15 minutes\n- Covers core concepts\n- Links to detailed docs\n\n\n---\n\n*This issue was automatically created from [IMPLEMENTATION_ROADMAP.md](../blob/main/docs/status/IMPLEMENTATION_ROADMAP.md)*",
+    "body": "**Phase:** Phase 3: Documentation & Developer Experience (1-2 months)\n\n**Estimated Effort:** 1 week\n\n**Why:** ** Lower barrier to entry\n\n**Location:** [Kotlin-Aligned Quick Start](https://github.com/SolaceHarmony/SolaceCore/wiki/Kotlin-Aligned-Quick-Start) (Wiki)\n\n\n## Tasks\n\n- [ ] Installation instructions\n- [ ] \"Hello World\" actor example\n- [ ] Simple workflow tutorial\n- [ ] Storage integration example\n- [ ] Scripting example\n- [ ] Troubleshooting section\n\n\n## Success Criteria\n\n- New developer can run example in 15 minutes\n- Covers core concepts\n- Links to detailed docs\n\n\n---\n\n*This issue was automatically created from [IMPLEMENTATION_ROADMAP.md](../blob/main/docs/status/IMPLEMENTATION_ROADMAP.md)*",
     "labels": [
       "enhancement",
       "roadmap",
@@ -112,7 +112,7 @@
   },
   {
     "title": "3.3 Best Practices Guide",
-    "body": "**Phase:** Phase 3: Documentation & Developer Experience (1-2 months)\n\n**Estimated Effort:** 1 week\n\n**Why:** ** Guide developers to success\n\n**Location:** ``docs/best-practices.md``\n\n\n## Tasks\n\n- [ ] Actor design patterns\n- [ ] Workflow composition patterns\n- [ ] Error handling strategies\n- [ ] Performance optimization tips\n- [ ] Testing strategies\n- [ ] Production deployment checklist\n\n\n## Success Criteria\n\n- Covers common scenarios\n- Explains tradeoffs\n- Practical examples\n\n\n---\n\n*This issue was automatically created from [IMPLEMENTATION_ROADMAP.md](../blob/main/docs/status/IMPLEMENTATION_ROADMAP.md)*",
+    "body": "**Phase:** Phase 3: Documentation & Developer Experience (1-2 months)\n\n**Estimated Effort:** 1 week\n\n**Why:** ** Guide developers to success\n\n**Location:** [LangChain Best Practices](https://github.com/SolaceHarmony/SolaceCore/wiki/LangChain-Best-Practices) (Wiki)\n\n\n## Tasks\n\n- [ ] Actor design patterns\n- [ ] Workflow composition patterns\n- [ ] Error handling strategies\n- [ ] Performance optimization tips\n- [ ] Testing strategies\n- [ ] Production deployment checklist\n\n\n## Success Criteria\n\n- Covers common scenarios\n- Explains tradeoffs\n- Practical examples\n\n\n---\n\n*This issue was automatically created from [IMPLEMENTATION_ROADMAP.md](../blob/main/docs/status/IMPLEMENTATION_ROADMAP.md)*",
     "labels": [
       "enhancement",
       "roadmap",
@@ -121,7 +121,7 @@
   },
   {
     "title": "3.4 Migration Guide",
-    "body": "**Phase:** Phase 3: Documentation & Developer Experience (1-2 months)\n\n**Estimated Effort:** 1 week\n\n**Why:** ** Support version upgrades\n\n**Location:** ``docs/migration/``\n\n\n## Tasks\n\n- [ ] Breaking changes documentation\n- [ ] Version-to-version guides\n- [ ] Automated migration scripts\n- [ ] Compatibility matrix\n\n\n## Success Criteria\n\n- Clear upgrade path\n- Minimal breaking changes\n- Tools to assist migration\n\n\n---\n\n*This issue was automatically created from [IMPLEMENTATION_ROADMAP.md](../blob/main/docs/status/IMPLEMENTATION_ROADMAP.md)*",
+    "body": "**Phase:** Phase 3: Documentation & Developer Experience (1-2 months)\n\n**Estimated Effort:** 1 week\n\n**Why:** ** Support version upgrades\n\n**Location:** [LangChain Migration Strategy](https://github.com/SolaceHarmony/SolaceCore/wiki/LangChain-Migration-Strategy) (Wiki)\n\n\n## Tasks\n\n- [ ] Breaking changes documentation\n- [ ] Version-to-version guides\n- [ ] Automated migration scripts\n- [ ] Compatibility matrix\n\n\n## Success Criteria\n\n- Clear upgrade path\n- Minimal breaking changes\n- Tools to assist migration\n\n\n---\n\n*This issue was automatically created from [IMPLEMENTATION_ROADMAP.md](../blob/main/docs/status/IMPLEMENTATION_ROADMAP.md)*",
     "labels": [
       "enhancement",
       "roadmap",
