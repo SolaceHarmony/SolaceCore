@@ -3,7 +3,7 @@
 
 # Project Status
 
-_Generated 2026-06-27 04:15 UTC for `SolaceHarmony/SolaceCore`. Aggregates status pages in `wiki/` plus an optional live project board._
+_Generated 2026-06-27 04:18 UTC for `SolaceHarmony/SolaceCore`. Aggregates status pages in `wiki/` plus an optional live project board._
 
 ## Live Project Board
 
@@ -301,7 +301,7 @@ SolaceCore is a powerful, actor-based framework designed for flexible, resilient
 
 **Impact:** Limits confidence in complex workflows
 **Effort:** 2-3 weeks
-**Reference:** Task 5 (../tasks/task5.md)
+**Reference:** Task 5 (Task-5-Integration-Tests)
 
 ##### 2. Deadlock Detection
 **From Design:** Comprehensive deadlock prevention and detection
@@ -316,7 +316,7 @@ SolaceCore is a powerful, actor-based framework designed for flexible, resilient
 
 **Impact:** Risk of production hangs
 **Effort:** 2-3 weeks
-**Reference:** Task 6 (../tasks/task6.md), ../MASTER_CHECKLIST.md line 37
+**Reference:** Task 6 (Task-6-Deadlock-Detection), ../MASTER_CHECKLIST.md line 37
 
 #### ❌ Major Missing Features (Priority: MEDIUM-HIGH)
 
@@ -558,7 +558,7 @@ However, to achieve the **full vision** outlined in the design documents, signif
 - `../STORAGE_CHECKLIST.md` - Storage system tasks
 - `../Architectural_Document_Solace_Core_Framework.md` - Architecture overview
 - `../Architectural_Deepdive.md` - Detailed implementation guide
-- `../tasks/task1.md` through `../tasks/task6.md` - Recent task completion status
+- `Task-1-Core-Tests` through `Task-6-Deadlock-Detection` - Recent task completion status
 - `../../README.md` - Project overview and roadmap
 
 ---

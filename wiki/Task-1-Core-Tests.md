@@ -1,3 +1,6 @@
+<!-- topic: Reference -->
+<!-- title: Task 1 Core Tests -->
+
 # Task 1: Add Core Tests [COMPLETED]
 
 Write unit tests for the following items from the master checklist:

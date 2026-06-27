@@ -120,12 +120,12 @@ This directory contains comprehensive documentation analyzing the current state 
 - [`../STORAGE_CHECKLIST.md`](../STORAGE_CHECKLIST.md)
 
 ### Task Status
-- [`../tasks/task1.md`](../tasks/task1.md) - Core Tests ✅ COMPLETED
-- [`../tasks/task2.md`](../tasks/task2.md) - Connection Wiring ✅ COMPLETED
-- [`../tasks/task3.md`](../tasks/task3.md) - Concurrency Issues ⚠️ MOSTLY COMPLETED
-- [`../tasks/task4.md`](../tasks/task4.md) - Dynamic Registration ✅ COMPLETED
-- [`../tasks/task5.md`](../tasks/task5.md) - Integration Tests 🔄 HIGH PRIORITY
-- [`../tasks/task6.md`](../tasks/task6.md) - Deadlock Detection 🔄 HIGH PRIORITY
+- `Task-1-Core-Tests` - Core Tests ✅ COMPLETED
+- `Task-2-Connection-Wiring` - Connection Wiring ✅ COMPLETED
+- `Task-3-Concurrency-Issues` - Concurrency Issues ⚠️ MOSTLY COMPLETED
+- `Task-4-Dynamic-Registration` - Dynamic Registration ✅ COMPLETED
+- `Task-5-Integration-Tests` - Integration Tests 🔄 HIGH PRIORITY
+- `Task-6-Deadlock-Detection` - Deadlock Detection 🔄 HIGH PRIORITY
 
 ### Project Documentation
 - [`../../README.md`](../../README.md) - Project overview

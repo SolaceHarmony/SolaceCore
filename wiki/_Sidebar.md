@@ -67,5 +67,12 @@
 - [Roadmap](Roadmap)
 - [Roadmap Issues](Roadmap-Issues)
 - [Status Documentation](Status-Documentation)
+- [Task 1 Core Tests](Task-1-Core-Tests)
+- [Task 2 Connection Wiring](Task-2-Connection-Wiring)
+- [Task 3 Concurrency Issues](Task-3-Concurrency-Issues)
+- [Task 4 Dynamic Registration](Task-4-Dynamic-Registration)
+- [Task 5 Integration Tests](Task-5-Integration-Tests)
+- [Task 6 Deadlock Detection](Task-6-Deadlock-Detection)
+- [Task Documentation](Task-Documentation)
 
 </details>

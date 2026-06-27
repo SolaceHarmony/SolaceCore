@@ -79,12 +79,19 @@ The working ledger is [curation-tracker.csv](curation-tracker.csv). Use it to se
 | `docs/features/mcp-tools/README.md` | 1-336 | [Providers & MCP Tools](Providers-and-MCP-Tools) | Moved, source removed |
 | `docs/features/pipeline/README.md` | 1-345 | [Pipeline DSL](Pipeline-DSL) | Moved, source removed |
 | `docs/status/README.md` | 1-184 | [Status Documentation](Status-Documentation) | Moved, source removed |
-| `wiki/Quick-Status.md` | 1-124 | [Quick Status](Quick-Status) | Moved, source removed |
-| `wiki/Project-Status-Report.md` | 1-418 | [Project Status Report](Project-Status-Report) | Moved, source removed |
-| `wiki/Design-vs-Implementation.md` | 1-278 | [Design vs Implementation](Design-vs-Implementation) | Moved, source removed |
-| `wiki/Roadmap.md` | 1-696 | [Roadmap](Roadmap) | Moved, source removed |
-| `wiki/Roadmap-Issues.md` | 1-219 | [Roadmap Issues](Roadmap-Issues) | Moved, source removed |
-| `wiki/roadmap_issues.json` | 1-248 | [roadmap_issues.json](roadmap_issues.json) | Moved unchanged, source removed |
+| `docs/status/QUICK_STATUS.md` | 1-124 | [Quick Status](Quick-Status) | Moved, source removed |
+| `docs/status/PROJECT_STATUS.md` | 1-418 | [Project Status Report](Project-Status-Report) | Moved, source removed |
+| `docs/status/DESIGN_VS_IMPLEMENTATION.md` | 1-278 | [Design vs Implementation](Design-vs-Implementation) | Moved, source removed |
+| `docs/status/IMPLEMENTATION_ROADMAP.md` | 1-696 | [Roadmap](Roadmap) | Moved, source removed |
+| `docs/status/ROADMAP_ISSUES_README.md` | 1-219 | [Roadmap Issues](Roadmap-Issues) | Moved, source removed |
+| `docs/status/roadmap_issues.json` | 1-248 | [roadmap_issues.json](roadmap_issues.json) | Moved unchanged, source removed |
+| `docs/tasks/README.md` | 1-39 | [Task Documentation](Task-Documentation) | Moved, source removed |
+| `docs/tasks/task1.md` | 1-9 | [Task 1 Core Tests](Task-1-Core-Tests) | Moved, source removed |
+| `docs/tasks/task2.md` | 1-10 | [Task 2 Connection Wiring](Task-2-Connection-Wiring) | Moved, source removed |
+| `docs/tasks/task3.md` | 1-11 | [Task 3 Concurrency Issues](Task-3-Concurrency-Issues) | Moved, source removed |
+| `docs/tasks/task4.md` | 1-10 | [Task 4 Dynamic Registration](Task-4-Dynamic-Registration) | Moved, source removed |
+| `docs/tasks/task5.md` | 1-23 | [Task 5 Integration Tests](Task-5-Integration-Tests) | Moved, source removed |
+| `docs/tasks/task6.md` | 1-29 | [Task 6 Deadlock Detection](Task-6-Deadlock-Detection) | Moved, source removed |
 
 ## Current Rule
 

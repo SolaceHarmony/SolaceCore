@@ -1,3 +1,6 @@
+<!-- topic: Reference -->
+<!-- title: Task 3 Concurrency Issues -->
+
 # Task 3: Fix Concurrency Issues [MOSTLY COMPLETED]
 
 Remove `runBlocking` usages in library code and make `ActorBuilder` fully asynchronous. Review other instances and add deadlock detection mechanisms.

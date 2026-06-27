@@ -1,30 +1,33 @@
+<!-- topic: Reference -->
+<!-- title: Task Documentation -->
+
 # Completed Task Documentation
 
 This directory contains documentation for completed development tasks in the SolaceCore project.
 
 ## Task Files
 
-- **[task1.md](task1.md)** - Core Tests ✅ COMPLETED
+- **[Task 1 Core Tests](Task-1-Core-Tests)** - Core Tests ✅ COMPLETED
   - Added unit tests for Port interface, PortConnection validation, Lifecycle interfaces, and Disposable resource management
   - 360+ tests total covering fundamental framework components
 
-- **[task2.md](task2.md)** - Connection Wiring ✅ COMPLETED
+- **[Task 2 Connection Wiring](Task-2-Connection-Wiring)** - Connection Wiring ✅ COMPLETED
   - Implemented connection wiring mechanisms
   - Port connection lifecycle management
 
-- **[task3.md](task3.md)** - Concurrency Issues ⚠️ MOSTLY COMPLETED
+- **[Task 3 Concurrency Issues](Task-3-Concurrency-Issues)** - Concurrency Issues ⚠️ MOSTLY COMPLETED
   - Addressed various concurrency issues in the actor system
   - Thread safety improvements
 
-- **[task4.md](task4.md)** - Dynamic Registration ✅ COMPLETED
+- **[Task 4 Dynamic Registration](Task-4-Dynamic-Registration)** - Dynamic Registration ✅ COMPLETED
   - Implemented dynamic actor registration capabilities
   - Runtime actor management features
 
-- **[task5.md](task5.md)** - Integration Tests 🔄 HIGH PRIORITY
+- **[Task 5 Integration Tests](Task-5-Integration-Tests)** - Integration Tests 🔄 HIGH PRIORITY
   - Integration test suite development
   - End-to-end workflow testing
 
-- **[task6.md](task6.md)** - Deadlock Detection 🔄 HIGH PRIORITY
+- **[Task 6 Deadlock Detection](Task-6-Deadlock-Detection)** - Deadlock Detection 🔄 HIGH PRIORITY
   - Deadlock detection and prevention mechanisms
   - System stability improvements
 

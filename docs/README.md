@@ -65,7 +65,7 @@ The chain types live in [`prototypes/`](../prototypes/), not in `lib/`. These do
 
 ### Tasks
 
-- [`tasks/`](tasks/) — discrete task notes used during development phases.
+- [`../wiki/Task-Documentation.md`](../wiki/Task-Documentation.md) — discrete task notes used during development phases.
 
 ## Implementation status (high level)
 

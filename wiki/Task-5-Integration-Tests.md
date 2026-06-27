@@ -1,3 +1,6 @@
+<!-- topic: Reference -->
+<!-- title: Task 5 Integration Tests -->
+
 # Task 5: Add Integration Tests [HIGH PRIORITY]
 
 Expand test coverage beyond unit tests to include comprehensive integration and end-to-end testing.

@@ -1,3 +1,6 @@
+<!-- topic: Reference -->
+<!-- title: Task 4 Dynamic Registration -->
+
 # Task 4: Complete Dynamic Actor Registration [COMPLETED]
 
 Finalize runtime actor registration mechanisms and enhance hot-swapping capabilities for actor replacement during runtime.

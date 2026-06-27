@@ -1,3 +1,6 @@
+<!-- topic: Reference -->
+<!-- title: Task 6 Deadlock Detection -->
+
 # Task 6: Complete Deadlock Detection [HIGH PRIORITY]
 
 Implement comprehensive deadlock detection and prevention mechanisms for the actor system.
