@@ -67,9 +67,10 @@
 
 ### 7.5 Circuit Breakers (1 week)
 **Location:** `lib/src/commonMain/kotlin/ai/solace/core/resilience/`
+**Scope:** Phase 1 covers basic actor-level supervision; this phase hardens system-wide resilience for workflows and external dependencies.
 
 **Tasks:**
-- [ ] Circuit breaker pattern
+- [ ] System-wide circuit breaker pattern
 - [ ] Automatic failure detection
 - [ ] Fallback mechanisms
 - [ ] Recovery strategies
