@@ -34,6 +34,7 @@
 - [Shared Memory](Shared-Memory)
 - [Storage & Persistence](Storage-and-Persistence)
 - [Storage Checklist](Storage-Checklist)
+- [Storage Thread Safety and Deadlock Prevention](Storage-Thread-Safety-and-Deadlock-Prevention)
 - [Supervisor and Hot Swap](Supervisor-and-Hot-Swap)
 - [SupervisorActor](SupervisorActor)
 - [System Architecture Diagram](System-Architecture-Diagram)
