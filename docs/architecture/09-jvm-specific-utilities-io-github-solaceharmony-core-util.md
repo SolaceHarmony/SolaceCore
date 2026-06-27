@@ -1,4 +1,4 @@
-[← Back to index](./README.md) · §9 of 15
+[← Architecture Overview](../../wiki/Architecture-Overview.md) · §9 of 15
 
 ---
 
@@ -42,4 +42,4 @@ This utility ensures a standardized approach to logging across the JVM-specific 
 
 ---
 
-← [§8 Development Tooling and Practices](./08-development-tooling-and-practices.md)  ·  [Index](./README.md)  ·  [§10 Testing Strategy (JVM Target)](./10-testing-strategy-jvm-target.md) →
+← [§8 Development Tooling and Practices](./08-development-tooling-and-practices.md)  ·  [Architecture Overview](../../wiki/Architecture-Overview.md)  ·  [§10 Testing Strategy (JVM Target)](./10-testing-strategy-jvm-target.md) →

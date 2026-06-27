@@ -1,4 +1,4 @@
-[← Back to index](./README.md) · §1 of 15
+[← Architecture Overview](../../wiki/Architecture-Overview.md) · §1 of 15
 
 ---
 
@@ -313,4 +313,4 @@ This detailed testing strategy, once implemented, will provide strong assurances
 
 ---
 
-← [§0 Solace Project Context](./00-solace-project-context.md)  ·  [Index](./README.md)  ·  [§2 Lifecycle Module (`io.github.solaceharmony.core.lifecycle`)](./02-lifecycle-module-io-github-solaceharmony-core-lifecycle.md) →
+← [Vision & Solace AI](../../wiki/Vision-and-Solace-AI.md)  ·  [Architecture Overview](../../wiki/Architecture-Overview.md)  ·  [§2 Lifecycle Module (`io.github.solaceharmony.core.lifecycle`)](./02-lifecycle-module-io-github-solaceharmony-core-lifecycle.md) →

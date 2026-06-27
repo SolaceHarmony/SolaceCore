@@ -1,4 +1,4 @@
-[← Back to index](./README.md) · §4 of 15
+[← Architecture Overview](../../wiki/Architecture-Overview.md) · §4 of 15
 
 ---
 
@@ -414,4 +414,4 @@ This design aims to balance efficiency and resilience, enabling actors to handle
 
 ---
 
-← [§3 Storage Module (`io.github.solaceharmony.core.storage`)](./03-storage-module-io-github-solaceharmony-core-storage.md)  ·  [Index](./README.md)  ·  [§5 Workflow Module (`io.github.solaceharmony.core.workflow`)](./05-workflow-module-io-github-solaceharmony-core-workflow.md) →
+← [§3 Storage Module (`io.github.solaceharmony.core.storage`)](./03-storage-module-io-github-solaceharmony-core-storage.md)  ·  [Architecture Overview](../../wiki/Architecture-Overview.md)  ·  [§5 Workflow Module (`io.github.solaceharmony.core.workflow`)](./05-workflow-module-io-github-solaceharmony-core-workflow.md) →

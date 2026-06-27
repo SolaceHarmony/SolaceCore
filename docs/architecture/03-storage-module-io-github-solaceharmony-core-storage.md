@@ -1,4 +1,4 @@
-[← Back to index](./README.md) · §3 of 15
+[← Architecture Overview](../../wiki/Architecture-Overview.md) · §3 of 15
 
 ---
 
@@ -897,4 +897,4 @@ This specialized serialization framework enhances the storage module by providin
 
 ---
 
-← [§2 Lifecycle Module (`io.github.solaceharmony.core.lifecycle`)](./02-lifecycle-module-io-github-solaceharmony-core-lifecycle.md)  ·  [Index](./README.md)  ·  [§4 Actor Module (`io.github.solaceharmony.core.actor`)](./04-actor-module-io-github-solaceharmony-core-actor.md) →
+← [§2 Lifecycle Module (`io.github.solaceharmony.core.lifecycle`)](./02-lifecycle-module-io-github-solaceharmony-core-lifecycle.md)  ·  [Architecture Overview](../../wiki/Architecture-Overview.md)  ·  [§4 Actor Module (`io.github.solaceharmony.core.actor`)](./04-actor-module-io-github-solaceharmony-core-actor.md) →

@@ -1,4 +1,4 @@
-[← Back to index](./README.md) · §2 of 15
+[← Architecture Overview](../../wiki/Architecture-Overview.md) · §2 of 15
 
 ---
 
@@ -131,4 +131,4 @@ Adherence to this testing strategy will ensure the stability and robustness of c
 
 ---
 
-← [§1 Kernel Module](./01-kernel-module.md)  ·  [Index](./README.md)  ·  [§3 Storage Module (`io.github.solaceharmony.core.storage`)](./03-storage-module-io-github-solaceharmony-core-storage.md) →
+← [§1 Kernel Module](./01-kernel-module.md)  ·  [Architecture Overview](../../wiki/Architecture-Overview.md)  ·  [§3 Storage Module (`io.github.solaceharmony.core.storage`)](./03-storage-module-io-github-solaceharmony-core-storage.md) →

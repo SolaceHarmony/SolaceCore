@@ -1,4 +1,4 @@
-[← Back to index](./README.md) · §14 of 15
+[← Architecture Overview](../../wiki/Architecture-Overview.md) · §14 of 15
 
 ---
 
@@ -44,4 +44,4 @@ This InferenceCube architecture represents an advanced application of AI model o
 
 ---
 
-← [§13 Storage Thread Safety and Deadlock Prevention](./13-storage-thread-safety-and-deadlock-prevention.md)  ·  [Index](./README.md)
+← [§13 Storage Thread Safety and Deadlock Prevention](./13-storage-thread-safety-and-deadlock-prevention.md)  ·  [Architecture Overview](../../wiki/Architecture-Overview.md)

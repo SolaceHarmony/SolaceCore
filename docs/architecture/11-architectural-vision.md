@@ -1,4 +1,4 @@
-[← Back to index](./README.md) · §11 of 15
+[← Architecture Overview](../../wiki/Architecture-Overview.md) · §11 of 15
 
 ---
 
@@ -26,4 +26,4 @@ The development of the Solace Core Framework targets the following primary objec
 
 ---
 
-← [§10 Testing Strategy (JVM Target)](./10-testing-strategy-jvm-target.md)  ·  [Index](./README.md)  ·  [§12 System Architecture Overview](./12-system-architecture-overview.md) →
+← [§10 Testing Strategy (JVM Target)](./10-testing-strategy-jvm-target.md)  ·  [Architecture Overview](../../wiki/Architecture-Overview.md)  ·  [§12 System Architecture Overview](./12-system-architecture-overview.md) →

@@ -1,4 +1,4 @@
-[← Back to index](./README.md) · §6 of 15
+[← Architecture Overview](../../wiki/Architecture-Overview.md) · §6 of 15
 
 ---
 
@@ -323,4 +323,4 @@ These JVM implementations provide a functional, albeit with some current simplif
 
 ---
 
-← [§5 Workflow Module (`io.github.solaceharmony.core.workflow`)](./05-workflow-module-io-github-solaceharmony-core-workflow.md)  ·  [Index](./README.md)  ·  [§7 Build System and Dependencies](./07-build-system-and-dependencies.md) →
+← [§5 Workflow Module (`io.github.solaceharmony.core.workflow`)](./05-workflow-module-io-github-solaceharmony-core-workflow.md)  ·  [Architecture Overview](../../wiki/Architecture-Overview.md)  ·  [§7 Build System and Dependencies](./07-build-system-and-dependencies.md) →

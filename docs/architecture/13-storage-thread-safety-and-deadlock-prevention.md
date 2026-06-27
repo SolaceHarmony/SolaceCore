@@ -1,4 +1,4 @@
-[← Back to index](./README.md) · §13 of 15
+[← Architecture Overview](../../wiki/Architecture-Overview.md) · §13 of 15
 
 ---
 
@@ -79,4 +79,4 @@ By adhering to these principles, the SolaceCore storage module aims to provide r
 
 ---
 
-← [§12 System Architecture Overview](./12-system-architecture-overview.md)  ·  [Index](./README.md)  ·  [§14 InferenceCube Architecture](./14-inferencecube-architecture.md) →
+← [§12 System Architecture Overview](./12-system-architecture-overview.md)  ·  [Architecture Overview](../../wiki/Architecture-Overview.md)  ·  [§14 InferenceCube Architecture](./14-inferencecube-architecture.md) →

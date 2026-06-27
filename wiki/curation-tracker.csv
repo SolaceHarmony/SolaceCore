@@ -2,3 +2,7 @@ wiki_article,source_path,start_line,end_line,last_processed_line,status,source_a
 Architecture-Overview,docs/ARCHITECTURE_READING_GUIDE.md,1,76,76,complete,remove_source,"Recommended reading path consolidated into the topic map and cross-links."
 Architecture-Overview,docs/architecture/README.md,1,45,45,complete,remove_source,"Rosetta section index and cross-reference model consolidated into the architecture overview."
 Architecture-Overview,docs/architecture/12-system-architecture-overview.md,1,45,45,covered_source_retained,"Layered architecture and major component overview summarized here; source retained until the numbered architecture sections are migrated."
+Vision-and-Solace-AI,docs/architecture/00-solace-project-context.md,1,52,52,complete_split,remove_source,"Vision objectives and requirements moved into the orientation vision page."
+Solace-AI-Overview,docs/architecture/00-solace-project-context.md,54,140,140,complete_split,remove_source,"Companion components and conceptual workflow moved into Solace AI overview."
+Vision-and-Solace-AI,docs/architecture/00-solace-project-context.md,141,169,169,complete_split,remove_source,"Guiding principles moved into the orientation vision page."
+Architecture-Overview,docs/architecture/00-solace-project-context.md,172,240,240,complete_split,remove_source,"Runtime component graph and component overview moved into architecture overview."

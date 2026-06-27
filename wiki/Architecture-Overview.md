@@ -66,9 +66,52 @@ The original architecture material is being curated into topic pages rather than
 | InferenceCube architecture | [Inference Cube](Inference-Cube) |
 | Build, testing, tooling, status | [Roadmap](Roadmap), [Project Status](Project-Status), and [Documentation Catalog](Documentation-Catalog) |
 
+## Runtime Component Graph
+
+```mermaid
+graph TD
+    subgraph "Actor System"
+        A[Actor] -->|uses| P[Port System]
+        A -->|implements| L[Lifecycle]
+        A -->|collects| M[Metrics]
+        SA[Supervisor Actor] -->|manages| A
+    end
+
+    subgraph "Kernel"
+        P -->|implements| D[Disposable]
+        P -->|uses| CH[Channels]
+        PC[Port Connection] -->|connects| P
+        MH[Message Handler] -->|processes| P
+        PA[Protocol Adapter] -->|converts| P
+        CR[Conversion Rule] -->|transforms| P
+    end
+
+    subgraph "Lifecycle Management"
+        L -->|extends| D
+        D -->|manages| R[Resources]
+    end
+
+    subgraph "Workflow Management"
+        WM[Workflow Manager] -->|orchestrates| A
+        WB[Workflow Builder] -->|constructs| W[Workflow]
+        W -->|contains| A
+    end
+
+    subgraph "External Integration Points"
+        NEO[Neo4j] -.->|graph storage| SA
+        KDB[Kotlin DB] -.->|structured storage| A
+        KTR[Kotlin Interpreter] -.->|scripting| A
+    end
+
+    A --> WM
+    L --> A
+```
+
+The diagram’s major regions map directly to the runtime wiki pages: [Actor System](Actor-System), [Kernel & Ports](Kernel-and-Ports), [Lifecycle & Resources](Lifecycle-and-Resources), [Workflow Orchestration](Workflow-Orchestration), [Storage & Persistence](Storage-and-Persistence), and [Scripting Engine](Scripting-Engine).
+
 ## Curation Ledger
 
 Source coverage is tracked in [curation-tracker.csv](curation-tracker.csv). That ledger records the wiki article, source document, source line range, and current processing status for each chunk.
 
 ---
-This page currently covers `docs/ARCHITECTURE_READING_GUIDE.md`, `docs/architecture/README.md`, and the layered model from `docs/architecture/12-system-architecture-overview.md`.
+This page currently covers `docs/ARCHITECTURE_READING_GUIDE.md`, `docs/architecture/README.md`, `docs/architecture/12-system-architecture-overview.md`, and the runtime graph from `docs/architecture/00-solace-project-context.md`.

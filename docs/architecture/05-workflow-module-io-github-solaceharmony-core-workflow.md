@@ -1,4 +1,4 @@
-[← Back to index](./README.md) · §5 of 15
+[← Architecture Overview](../../wiki/Architecture-Overview.md) · §5 of 15
 
 ---
 
@@ -7,4 +7,4 @@
 
 ---
 
-← [§4 Actor Module (`io.github.solaceharmony.core.actor`)](./04-actor-module-io-github-solaceharmony-core-actor.md)  ·  [Index](./README.md)  ·  [§6 Scripting Module (`io.github.solaceharmony.core.scripting`)](./06-scripting-module-io-github-solaceharmony-core-scripting.md) →
+← [§4 Actor Module (`io.github.solaceharmony.core.actor`)](./04-actor-module-io-github-solaceharmony-core-actor.md)  ·  [Architecture Overview](../../wiki/Architecture-Overview.md)  ·  [§6 Scripting Module (`io.github.solaceharmony.core.scripting`)](./06-scripting-module-io-github-solaceharmony-core-scripting.md) →

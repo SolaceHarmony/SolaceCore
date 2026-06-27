@@ -1,4 +1,4 @@
-[← Back to index](./README.md) · §12 of 15
+[← Architecture Overview](../../wiki/Architecture-Overview.md) · §12 of 15
 
 ---
 
@@ -42,4 +42,4 @@ This high-level structure from the existing documentation generally aligns with 
 
 ---
 
-← [§11 Architectural Vision](./11-architectural-vision.md)  ·  [Index](./README.md)  ·  [§13 Storage Thread Safety and Deadlock Prevention](./13-storage-thread-safety-and-deadlock-prevention.md) →
+← [§11 Architectural Vision](./11-architectural-vision.md)  ·  [Architecture Overview](../../wiki/Architecture-Overview.md)  ·  [§13 Storage Thread Safety and Deadlock Prevention](./13-storage-thread-safety-and-deadlock-prevention.md) →

@@ -1,4 +1,4 @@
-[← Back to index](./README.md) · §10 of 15
+[← Architecture Overview](../../wiki/Architecture-Overview.md) · §10 of 15
 
 ---
 
@@ -52,4 +52,4 @@ This testing structure suggests a commitment to ensuring the reliability and cor
 
 ---
 
-← [§9 JVM-Specific Utilities (`io.github.solaceharmony.core.util`)](./09-jvm-specific-utilities-io-github-solaceharmony-core-util.md)  ·  [Index](./README.md)  ·  [§11 Architectural Vision](./11-architectural-vision.md) →
+← [§9 JVM-Specific Utilities (`io.github.solaceharmony.core.util`)](./09-jvm-specific-utilities-io-github-solaceharmony-core-util.md)  ·  [Architecture Overview](../../wiki/Architecture-Overview.md)  ·  [§11 Architectural Vision](./11-architectural-vision.md) →

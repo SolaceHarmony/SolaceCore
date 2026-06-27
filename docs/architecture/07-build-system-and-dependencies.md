@@ -1,4 +1,4 @@
-[← Back to index](./README.md) · §7 of 15
+[← Architecture Overview](../../wiki/Architecture-Overview.md) · §7 of 15
 
 ---
 
@@ -62,4 +62,4 @@ This build setup provides a modern, robust foundation for developing SolaceCore,
 
 ---
 
-← [§6 Scripting Module (`io.github.solaceharmony.core.scripting`)](./06-scripting-module-io-github-solaceharmony-core-scripting.md)  ·  [Index](./README.md)  ·  [§8 Development Tooling and Practices](./08-development-tooling-and-practices.md) →
+← [§6 Scripting Module (`io.github.solaceharmony.core.scripting`)](./06-scripting-module-io-github-solaceharmony-core-scripting.md)  ·  [Architecture Overview](../../wiki/Architecture-Overview.md)  ·  [§8 Development Tooling and Practices](./08-development-tooling-and-practices.md) →
