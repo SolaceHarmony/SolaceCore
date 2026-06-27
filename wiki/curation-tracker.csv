@@ -40,3 +40,7 @@ Confusion-Corrector,docs/features/confusion-corrector/README.md,1,255,255,comple
 Multimodal-Nudging,docs/features/multimodal-nudging/README.md,1,329,329,complete,remove_source,"Source file copied directly into Multimodal Nudging."
 Time-Actor,docs/features/time-actor/README.md,1,273,273,complete,remove_source,"Source file copied directly into Time Actor."
 Zoom-Levels,docs/features/zoom-levels/README.md,1,333,333,complete,remove_source,"Source file appended directly into Zoom Levels."
+Mood-and-Emotional-Model,docs/features/mood/README.md,1,327,327,complete,remove_source,"Source file appended directly into Mood & Emotional Model."
+Voice-and-Mouth-Tool,docs/features/mouth-tool/README.md,1,299,299,complete,remove_source,"Source file appended directly into Voice & Mouth Tool."
+Inference-Cube,docs/features/inference-cube/README.md,1,376,376,complete,remove_source,"Source file appended directly into Inference Cube."
+Supervisor-AI,docs/features/supervisor/README.md,1,310,310,complete,remove_source,"Source file copied directly into Supervisor AI."

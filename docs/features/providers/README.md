@@ -312,7 +312,7 @@ The provider spec is read by:
   support spec governs what format negotiation outcomes are
   possible; the detection spec drives streaming-time
   classification of tool calls.
-- **The [Supervisor's safety boundary](../supervisor/README.md)** — risk
+- **The [Supervisor's safety boundary](../../../wiki/Supervisor-AI.md)** — risk
   assessment can be provider-aware; some providers' tools warrant
   tighter scrutiny than others.
 - **The [Reflection Memory](../../../wiki/Reflection-Memory.md) substrate** —
@@ -371,7 +371,7 @@ The work order:
 - [mcp-tools](../mcp-tools/README.md) — tool support sub-spec governs the
   format negotiation outcome; detection sub-spec drives
   streaming-time tool-call recognition.
-- [supervisor](../supervisor/README.md) — provider identity feeds risk
+- [supervisor](../../../wiki/Supervisor-AI.md) — provider identity feeds risk
   assessment.
 - [reflection-memory](../../../wiki/Reflection-Memory.md) — every event records
   its provider for cross-provider portability.

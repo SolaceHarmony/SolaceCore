@@ -39,14 +39,14 @@ The status values:
 
 ### Narrative & cognition (the SRAF core)
 
-- [supervisor](./supervisor/README.md) — sole executive cognition
-- [mouth-tool](./mouth-tool/README.md) — thought→speech filter
+- [supervisor](../../wiki/Supervisor-AI.md) — sole executive cognition
+- [mouth-tool](../../wiki/Voice-and-Mouth-Tool.md) — thought→speech filter
 - [time-actor](../../wiki/Time-Actor.md) — temporal grounding heartbeat
 - [confusion-corrector](../../wiki/Confusion-Corrector.md) — drift detection + replay summary
 
 ### Advisors & perception
 
-- [mood](./mood/README.md) — emotional sentiment advisor (lexical baseline + planned SNN)
+- [mood](../../wiki/Mood-and-Emotional-Model.md) — emotional sentiment advisor (lexical baseline + planned SNN)
 - [multimodal-nudging](../../wiki/Multimodal-Nudging.md) — vision/audio cross-perspective bus
 - [zoom-levels](../../wiki/Zoom-Levels.md) — adaptive context-buffer granularity
 
@@ -59,7 +59,7 @@ The status values:
 ### Primitives
 
 - [shared-memory](../../wiki/Shared-Memory.md) — lock-free queues + atomics for scheduler and inference
-- [inference-cube](./inference-cube/README.md) — LNN takeover from transformer
+- [inference-cube](../../wiki/Inference-Cube.md) — LNN takeover from transformer
 
 ## Provenance map
 

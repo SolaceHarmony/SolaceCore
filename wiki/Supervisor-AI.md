@@ -1,3 +1,6 @@
+<!-- topic: Solace AI -->
+<!-- title: Supervisor AI -->
+
 # Supervisor — Two Threads of the Same Idea
 
 There are two stories about the Supervisor in SolaceCore, and the
@@ -48,7 +51,7 @@ That means concretely:
    summary, ingests the summary into its working context, and
    resumes from the corrected state.
 4. **Decide externalisation.** The Supervisor produces a draft and
-   passes it to the [Mouth Tool](../mouth-tool/README.md) when — and only
+   passes it to the [Mouth Tool](Voice-and-Mouth-Tool) when — and only
    when — it has decided the draft is worth saying. Most internal
    reflection never reaches the Mouth Tool. The decision to
    externalise is itself a meta-reflective act.
@@ -279,13 +282,13 @@ Supervisor with cross-agent communication mediated by messages.
 
 - [memory](../../../wiki/Memory-Feature-Overview.md) — Supervisor's working budget is the
   largest; drift detection reads recent working entries.
-- [mouth-tool](../mouth-tool/README.md) — the Supervisor's draft is the
+- [mouth-tool](Voice-and-Mouth-Tool) — the Supervisor's draft is the
   Mouth Tool's input; speech is gated on Supervisor approval.
 - [time-actor](../../../wiki/Time-Actor.md) — heartbeat cues are a primary
   trigger for the Supervisor's coherence checks.
 - [confusion-corrector](../../../wiki/Confusion-Corrector.md) — the Supervisor's
   primary repair tool when drift is detected.
-- [mood](../mood/README.md) — Mood Advisor cues are an input the Supervisor
+- [mood](Mood-and-Emotional-Model) — Mood Advisor cues are an input the Supervisor
   weights; emotion discontinuity is part of the drift signal.
 - [zoom-levels](../../../wiki/Zoom-Levels.md) — the Supervisor owns the zoom
   state machine; transitions are its decision.

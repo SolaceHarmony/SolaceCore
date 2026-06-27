@@ -120,7 +120,7 @@ operation holds a lock that other operations wait on.
 
 ### Layer 2: inference data
 
-The upper layer is the [InferenceCube](../inference-cube/README.md) data
+The upper layer is the [InferenceCube](Inference-Cube) data
 plane: the tensors, hidden states, and signatures that the
 LTC + Transformer hybrid passes between cubes. The primitive here is
 the **`SharedMemoryManager`** — a manager that hands out *slices*
@@ -310,7 +310,7 @@ The work order:
   Bus is a SharedDescriptorQueue.
 - [memory](Memory-Feature-Overview) — working tier holds slices; long-term
   vector index uses atomic counters for fade metadata.
-- [inference-cube](../inference-cube/README.md) — Layer 2 inference data
+- [inference-cube](Inference-Cube) — Layer 2 inference data
   plane uses `SharedMemoryManager` for zero-copy slices.
 - [pipeline](../pipeline/README.md) — pipeline DSL backs onto these
   primitives for stage-to-stage data flow.

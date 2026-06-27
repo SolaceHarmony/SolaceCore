@@ -45,6 +45,7 @@
 - [Providers & MCP Tools](Providers-and-MCP-Tools)
 - [Reflection Memory](Reflection-Memory)
 - [Solace AI Overview](Solace-AI-Overview)
+- [Supervisor AI](Supervisor-AI)
 - [Supervisor AI and Emotional Model Integration](Mood-and-Emotional-Model)
 - [Time Actor](Time-Actor)
 - [Voice & Mouth Tool](Voice-and-Mouth-Tool)

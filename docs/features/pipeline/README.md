@@ -316,7 +316,7 @@ The work order:
 - [mcp-tools](../mcp-tools/README.md) — codec blocks and tools blocks
   implement the format/protocol/storage separation; the
   pipeline is what wires the layers together at runtime.
-- [supervisor](../supervisor/README.md) — Supervisor's tool-execution
+- [supervisor](../../../wiki/Supervisor-AI.md) — Supervisor's tool-execution
   approval gate runs after the pipeline produces a tool call
   but before the wire request goes out.
 - [shared-memory](../../../wiki/Shared-Memory.md) — pipeline stages can

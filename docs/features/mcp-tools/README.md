@@ -306,7 +306,7 @@ The work order:
 
 ## Cross-references
 
-- [supervisor](../supervisor/README.md) — gates MCP requests through the
+- [supervisor](../../../wiki/Supervisor-AI.md) — gates MCP requests through the
   approval boundary; tool execution requires Supervisor sign-off.
 - [reflection-memory](../../../wiki/Reflection-Memory.md) — Neutral History
   events land in the substrate alongside cognitive reflections.

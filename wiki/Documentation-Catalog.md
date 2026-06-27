@@ -70,6 +70,10 @@ The working ledger is [curation-tracker.csv](curation-tracker.csv). Use it to se
 | `docs/features/multimodal-nudging/README.md` | 1-329 | [Multimodal Nudging](Multimodal-Nudging) | Moved, source removed |
 | `docs/features/time-actor/README.md` | 1-273 | [Time Actor](Time-Actor) | Moved, source removed |
 | `docs/features/zoom-levels/README.md` | 1-333 | [Zoom Levels](Zoom-Levels) | Moved, source removed |
+| `docs/features/mood/README.md` | 1-327 | [Mood & Emotional Model](Mood-and-Emotional-Model) | Moved, source removed |
+| `docs/features/mouth-tool/README.md` | 1-299 | [Voice & Mouth Tool](Voice-and-Mouth-Tool) | Moved, source removed |
+| `docs/features/inference-cube/README.md` | 1-376 | [Inference Cube](Inference-Cube) | Moved, source removed |
+| `docs/features/supervisor/README.md` | 1-310 | [Supervisor AI](Supervisor-AI) | Moved, source removed |
 
 ## Current Rule
 
