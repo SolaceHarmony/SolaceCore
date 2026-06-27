@@ -34,3 +34,6 @@ Mood-and-Emotional-Model,108,113,complete,1,"Updated older executive-emotional s
 Supervisor-Emotional-Model-Integration,9,15,verified_existing,5,"Extracted page retains links to Supervisor AI memory time actor confusion corrector and mouth tool pages."
 Mood-and-Emotional-Model,4,13,complete,4,"Added related-topic links to mood implementation Supervisor emotional integration Inference Cube and Memory pages."
 Mood-Module-Implementation,108,113,verified_existing,4,"Extracted implementation note retains links to memory inference notebook and Supervisor emotional integration pages."
+Workflow-Orchestration,8,16,complete,6,"Added related-topic links to workflow architecture and design concept split pages."
+Workflow-Management-Architecture,1,66,verified_existing,1,"Extracted planned workflow architecture page links back to Workflow Orchestration."
+Workflow-Management-Design-Concept,1,76,verified_existing,4,"Extracted design concept page retains architecture overview actor and scripting links and links back to Workflow Orchestration."

@@ -39,7 +39,9 @@
 - [Supervisor and Hot Swap](Supervisor-and-Hot-Swap)
 - [SupervisorActor](SupervisorActor)
 - [System Architecture Diagram](System-Architecture-Diagram)
-- [Workflow Management Design](Workflow-Orchestration)
+- [Workflow Management Architecture](Workflow-Management-Architecture)
+- [Workflow Management Design Concept](Workflow-Management-Design-Concept)
+- [Workflow Orchestration](Workflow-Orchestration)
 
 </details>
 

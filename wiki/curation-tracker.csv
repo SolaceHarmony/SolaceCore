@@ -126,3 +126,5 @@ Inference-Cube-Technical-Architecture,wiki/Inference-Cube.md,4,151,148,complete_
 Inference-Cube-Technical-Architecture,wiki/Inference-Cube.md,532,578,47,complete_split,link_from_source,"Moved architecture overview appendix note into Inference Cube Technical Architecture."
 Supervisor-Emotional-Model-Integration,wiki/Mood-and-Emotional-Model.md,3,124,122,complete_split,link_from_source,"Extracted Supervisor AI emotional model integration sketch into its own Solace AI topic page."
 Mood-Module-Implementation,wiki/Mood-and-Emotional-Model.md,4,114,111,complete_split,link_from_source,"Extracted shipped core.mood implementation note into its own Solace AI topic page."
+Workflow-Management-Architecture,wiki/Workflow-Orchestration.md,42,101,60,complete_split,link_from_source,"Extracted planned workflow management architecture into its own Runtime topic page."
+Workflow-Management-Design-Concept,wiki/Workflow-Orchestration.md,103,171,69,complete_split,link_from_source,"Extracted earlier workflow management design narrative and architecture overview pointer into its own Runtime topic page."
