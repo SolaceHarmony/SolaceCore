@@ -20,10 +20,18 @@
 <details>
 <summary><strong>Runtime</strong></summary>
 
+- [Actor Builder](Actor-Builder)
 - [Actor Communication Sequence Diagram](Actor-Communication-Sequence)
+- [Actor Core Definitions](Actor-Core-Definitions)
 - [Actor Graph View](Actor-Graph-View)
+- [Actor Metrics](Actor-Metrics)
+- [Actor Module Architecture](Actor-Module-Architecture)
+- [Actor Queue Hibernation and Correlation](Actor-Queue-Hibernation-and-Correlation)
+- [Actor Roadmap](Actor-Roadmap)
+- [Actor Supervision Module](Actor-Supervision-Module)
 - [Actor System Architecture](Actor-System)
 - [Actor System Class Diagram](Actor-System-Class-Diagram)
+- [Actor Usage Examples](Actor-Usage-Examples)
 - [Compose App Features](Compose-App-Features)
 - [Kernel & Ports](Kernel-and-Ports)
 - [Lifecycle Class Diagram](Lifecycle-Class-Diagram)
