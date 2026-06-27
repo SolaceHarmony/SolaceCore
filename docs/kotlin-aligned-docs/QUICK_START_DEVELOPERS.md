@@ -12,7 +12,7 @@ Read these documents in order:
 1. **[Architecture Overview](ARCHITECTURE_OVERVIEW.md)** - System design and components (20 min)
 2. **[Implementation Status](IMPLEMENTATION_STATUS.md)** - Current state and priorities (15 min)
 3. **[Actor System Guide](../../wiki/Actor-System.md)** - Actor-based architecture (20 min)
-4. **[Safety System Spec](components/lifecycle/SAFETY_SYSTEM_SPEC.md)** - Safety and supervision (15 min)
+4. **[Lifecycle & Resources](../../wiki/Lifecycle-and-Resources.md)** - Safety and supervision (15 min)
 5. **[Neutral History XML Spec](components/memory/NEUTRAL_HISTORY_XML_SPEC.md)** - Context format (20 min)
 
 **Total time**: ~90 minutes to understand the architecture.

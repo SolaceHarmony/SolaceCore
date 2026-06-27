@@ -46,7 +46,7 @@ graph TB
     subgraph "Core Actor System"
         ActorSystem[Actor System<br/>lib/src/commonMain/kotlin/com/solacecore/actor/<br/>ActorSystem.kt]
         ActorSupervisor[Actor Supervisor<br/>lib/src/commonMain/kotlin/com/solacecore/actor/<br/>ActorSupervisor.kt]
-        ActorLifecycle[Actor Lifecycle<br/>docs/components/lifecycle/<br/>ActorLifecycle.kt]
+        ActorLifecycle[Actor Lifecycle<br/>wiki/Lifecycle-and-Resources.md]
         ActorInference[Actor Inference Engine<br/>docs/components/actor_inference_engine/<br/>InferenceEngine.kt]
     end
 

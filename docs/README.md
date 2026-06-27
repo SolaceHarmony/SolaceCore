@@ -17,7 +17,7 @@ This directory holds the design and reference documentation for SolaceCore. The 
 |---|---|---|
 | Actor system | [`../wiki/Actor-System.md`](../wiki/Actor-System.md) | Actor architecture, supervisor notes, communication sequence, class diagrams, and emotional-model integration now live in the wiki. |
 | Kernel | [`components/kernel/`](components/kernel/) | Port system, channel system, system-architecture overview. |
-| Lifecycle | [`components/lifecycle/`](components/lifecycle/) | The `Disposable` / `Lifecycle` contract and its class diagram. |
+| Lifecycle | [`../wiki/Lifecycle-and-Resources.md`](../wiki/Lifecycle-and-Resources.md) | The `Disposable` / `Lifecycle` contract and its class diagram now live in the wiki. |
 | Memory | [`components/memory/`](components/memory/) | The SRAF / Reflection Memory / Mouth Tool / Zoom design ([`MemoryToolDesign.md`](components/memory/MemoryToolDesign.md)). |
 | Scripting | [`components/scripting/`](components/scripting/) | The dynamic scripting module design. |
 | Workflow | [`components/workflow/`](components/workflow/) | Workflow orchestration design and management. |

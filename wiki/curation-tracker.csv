@@ -17,3 +17,5 @@ Actor-System-Class-Diagram,docs/components/actor_system/actor_system_class_diagr
 SupervisorActor,docs/components/actor_system/SupervisorActor.md,1,128,128,complete,remove_source,"Source file copied directly into its own wiki design page."
 Workflow-Orchestration,docs/components/actor_system/Workflow_Management_Design.md,1,29,29,complete,remove_source,"Source file copied directly into Workflow Orchestration."
 Mood-and-Emotional-Model,docs/components/actor_system/SupervisorAI_EmotionalModel.md,1,114,114,complete,remove_source,"Source file copied directly into Mood & Emotional Model."
+Lifecycle-and-Resources,docs/components/lifecycle/README.md,1,107,107,complete,remove_source,"Source file copied directly into Lifecycle & Resources."
+Lifecycle-Class-Diagram,docs/components/lifecycle/lifecycle_class_diagram.md,1,65,65,complete,remove_source,"Source file copied directly into its own wiki diagram page."
