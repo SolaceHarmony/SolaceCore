@@ -25,3 +25,5 @@ Home,20,22,complete,1,"Added MCP and Tool Format to the Solace AI navigation lin
 Solace-AI-Overview,14,14,complete,1,"Added MCP and Tool Format beside Provider Specs in language integration row."
 Zoom-Levels,4,13,complete,3,"Added related-topic links to zoom technical spec mouth tool and Supervisor AI pages."
 Zoom-Levels,335,337,complete,1,"Corrected Features index return link from Documentation Catalog to Feature Index."
+Voice-and-Mouth-Tool,4,13,complete,4,"Added related-topic links to mouth technical spec Supervisor AI multimodal nudging and zoom pages."
+Mouth-Tool-Technical-Spec,24,30,verified_existing,5,"Extracted spec retains links to Supervisor AI memory perception multimodal nudging and zoom pages."

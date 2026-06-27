@@ -121,3 +121,4 @@ Project-Status,wiki/Project-Status.md,14,845,832,complete_deduplicate,generated_
 Storage-Module-Architecture,wiki/Storage-and-Persistence.md,774,1670,897,complete_split,link_from_source,"Extracted storage module architecture deep dive into its own topical wiki page."
 MCP-and-Tool-Format,wiki/Providers-and-MCP-Tools.md,421,756,336,complete_split,link_from_source,"Extracted MCP and tool-format boundary article into its own Solace AI topic page."
 Zoom-Level-Technical-Spec,wiki/Zoom-Levels.md,4,194,191,complete_split,link_from_source,"Extracted formal Addendum C zoom mechanism specification into its own Solace AI topic page."
+Mouth-Tool-Technical-Spec,wiki/Voice-and-Mouth-Tool.md,4,148,145,complete_split,link_from_source,"Extracted formal Addendum B mouth tool expression pipeline specification into its own Solace AI topic page."

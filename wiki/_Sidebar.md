@@ -54,6 +54,7 @@
 - [Memory Compression](Memory-Compression)
 - [Memory Feature Overview](Memory-Feature-Overview)
 - [Memory Retrieval](Memory-Retrieval)
+- [Mouth Tool Technical Spec](Mouth-Tool-Technical-Spec)
 - [Multimodal Nudging](Multimodal-Nudging)
 - [Perception Actors](Perception-Actors)
 - [Provider Specs](Providers-and-MCP-Tools)
