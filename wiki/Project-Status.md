@@ -3,7 +3,7 @@
 
 # Project Status
 
-_Generated 2026-06-27 04:18 UTC for `SolaceHarmony/SolaceCore`. Aggregates status pages in `wiki/` plus an optional live project board._
+_Generated 2026-06-27 04:23 UTC for `SolaceHarmony/SolaceCore`. Aggregates status pages in `wiki/` plus an optional live project board._
 
 ## Live Project Board
 
@@ -508,7 +508,7 @@ SolaceCore is a powerful, actor-based framework designed for flexible, resilient
 
 **Impact:** No traditional database support
 **Effort:** 2-3 weeks
-**Reference:** STORAGE_CHECKLIST.md lines 118-125
+**Reference:** Storage-and-Persistence checklist lines 118-125
 
 ### Recommended Prioritization
 
@@ -555,7 +555,7 @@ However, to achieve the **full vision** outlined in the design documents, signif
 ### References
 
 - `../MASTER_CHECKLIST.md` - Comprehensive project checklist
-- `../STORAGE_CHECKLIST.md` - Storage system tasks
+- `Storage-and-Persistence` - Storage system tasks
 - `../Architectural_Document_Solace_Core_Framework.md` - Architecture overview
 - `../Architectural_Deepdive.md` - Detailed implementation guide
 - `Task-1-Core-Tests` through `Task-6-Deadlock-Detection` - Recent task completion status

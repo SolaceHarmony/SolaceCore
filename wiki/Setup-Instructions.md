@@ -1,3 +1,6 @@
+<!-- topic: Reference -->
+<!-- title: Setup Instructions -->
+
 # Setup Instructions
 
 This guide provides a quick way to get a development environment running.

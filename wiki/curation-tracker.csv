@@ -67,3 +67,6 @@ Advanced-Workflow-Example,docs/examples/advanced_workflow_example.md,1,30,30,com
 Compose-App-Features,docs/COMPOSE_APP_FEATURES.md,1,129,129,complete,remove_source,"Source file copied directly into Compose App Features."
 Real-Time-UI-Implementation,docs/REAL_TIME_UI_IMPLEMENTATION.md,1,132,132,complete,remove_source,"Source file copied directly into Real-Time UI Implementation."
 Actor-Graph-View,docs/ACTOR_GRAPH_VIEW.md,1,144,144,complete,remove_source,"Source file copied directly into Actor Graph View."
+Storage-and-Persistence,docs/STORAGE_DOCUMENTATION.md,1,753,753,complete,remove_source,"Source file copied directly into Storage & Persistence."
+Storage-and-Persistence,docs/STORAGE_CHECKLIST.md,1,151,151,complete,remove_source,"Source file appended directly into Storage & Persistence."
+Setup-Instructions,docs/SETUP.md,1,8,8,complete,remove_source,"Source file copied directly into Setup Instructions."

@@ -38,9 +38,8 @@ When you want a gap view (without rewriting the design to match the code), see:
 
 ### Storage and operations
 
-- [`STORAGE_DOCUMENTATION.md`](STORAGE_DOCUMENTATION.md) — the storage subsystem.
-- [`STORAGE_CHECKLIST.md`](STORAGE_CHECKLIST.md) — storage backlog.
-- [`SETUP.md`](SETUP.md) — basic development setup.
+- [`../wiki/Storage-and-Persistence.md`](../wiki/Storage-and-Persistence.md) — the storage subsystem and backlog.
+- [`../wiki/Setup-Instructions.md`](../wiki/Setup-Instructions.md) — basic development setup.
 
 ### Compose UI
 

@@ -117,7 +117,7 @@ This directory contains comprehensive documentation analyzing the current state 
 - [`../Architectural_Document_Solace_Core_Framework.md`](../Architectural_Document_Solace_Core_Framework.md)
 - [`../Architectural_Deepdive.md`](../Architectural_Deepdive.md)
 - [`../MASTER_CHECKLIST.md`](../MASTER_CHECKLIST.md)
-- [`../STORAGE_CHECKLIST.md`](../STORAGE_CHECKLIST.md)
+- [`Storage-and-Persistence`](Storage-and-Persistence)
 
 ### Task Status
 - `Task-1-Core-Tests` - Core Tests ✅ COMPLETED

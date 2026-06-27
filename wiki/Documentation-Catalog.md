@@ -97,6 +97,9 @@ The working ledger is [curation-tracker.csv](curation-tracker.csv). Use it to se
 | `docs/COMPOSE_APP_FEATURES.md` | 1-129 | [Compose App Features](Compose-App-Features) | Moved, source removed |
 | `docs/REAL_TIME_UI_IMPLEMENTATION.md` | 1-132 | [Real-Time UI Implementation](Real-Time-UI-Implementation) | Moved, source removed |
 | `docs/ACTOR_GRAPH_VIEW.md` | 1-144 | [Actor Graph View](Actor-Graph-View) | Moved, source removed |
+| `docs/STORAGE_DOCUMENTATION.md` | 1-753 | [Storage & Persistence](Storage-and-Persistence) | Moved into topic page, source removed |
+| `docs/STORAGE_CHECKLIST.md` | 1-151 | [Storage & Persistence](Storage-and-Persistence) | Moved into topic page, source removed |
+| `docs/SETUP.md` | 1-8 | [Setup Instructions](Setup-Instructions) | Moved, source removed |
 
 ## Current Rule
 

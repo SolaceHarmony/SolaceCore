@@ -71,6 +71,7 @@
 - [How the Wiki Publishes](How-The-Wiki-Publishes)
 - [Roadmap](Roadmap)
 - [Roadmap Issues](Roadmap-Issues)
+- [Setup Instructions](Setup-Instructions)
 - [Status Documentation](Status-Documentation)
 - [Task 1 Core Tests](Task-1-Core-Tests)
 - [Task 2 Connection Wiring](Task-2-Connection-Wiring)
