@@ -36,11 +36,12 @@ STATUS_SOURCES = [
 
 def _page_title(path: Path) -> str:
     """Use an explicit wiki title marker, first H1, or filename fallback."""
-    head = path.read_text(encoding="utf-8")[:400]
+    content = path.read_text(encoding="utf-8")
+    head = content[:400]
     for line in head.splitlines():
         if line.startswith("<!-- title:") and line.endswith("-->"):
             return line.removeprefix("<!-- title:").removesuffix("-->").strip()
-    for line in path.read_text(encoding="utf-8").splitlines():
+    for line in content.splitlines():
         if line.startswith("# "):
             return line[2:].strip()
     return path.stem.replace("-", " ")
