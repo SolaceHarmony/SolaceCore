@@ -212,3 +212,7 @@ LangChain-Implementation-Priorities,wiki/LangChain-Usage-Design-Improvements.md,
 LangChain-Migration-Strategy,wiki/LangChain-Usage-Design-Improvements.md,315,343,29,complete_split,link_from_source,"Extracted LangChain migration strategy into its own Reference topic page."
 LangChain-Best-Practices,wiki/LangChain-Usage-Design-Improvements.md,344,374,31,complete_split,link_from_source,"Extracted LangChain best practices into their own Reference topic page."
 LangChain-Documentation-Improvements,wiki/LangChain-Usage-Design-Improvements.md,375,399,25,complete_split,link_from_source,"Extracted LangChain documentation improvements and notes into their own Reference topic page."
+LangChain-Type-Safe-Dynamic-Wiring-System,wiki/LangChain-Type-Safe-Dynamic-Wiring.md,6,188,183,complete_split,link_from_source,"Extracted type-safe dynamic wiring system design into its own Reference topic page."
+LangChain-Package-by-Package-Improvements,wiki/LangChain-Type-Safe-Dynamic-Wiring.md,190,266,77,complete_split,link_from_source,"Extracted package-by-package LangChain improvements into their own Reference topic page."
+LangChain-New-Packages-to-Add,wiki/LangChain-Type-Safe-Dynamic-Wiring.md,267,315,49,complete_split,link_from_source,"Extracted proposed new LangChain-style packages into their own Reference topic page."
+LangChain-Dynamic-Wiring-Rollout-Notes,wiki/LangChain-Type-Safe-Dynamic-Wiring.md,316,373,58,complete_split,link_from_source,"Extracted dynamic wiring implementation priorities migration strategy differences and notes into their own Reference topic page."

@@ -132,3 +132,8 @@ LangChain-Implementation-Priorities,1,28,verified_existing,1,"Extracted implemen
 LangChain-Migration-Strategy,1,35,verified_existing,1,"Extracted migration strategy page links back to LangChain Usage Design Improvements."
 LangChain-Best-Practices,1,37,verified_existing,1,"Extracted best practices page links back to LangChain Usage Design Improvements."
 LangChain-Documentation-Improvements,1,30,verified_existing,1,"Extracted documentation improvements page links back to LangChain Usage Design Improvements."
+LangChain-Type-Safe-Dynamic-Wiring,6,11,complete,4,"Added wiring topic map linking to dynamic wiring system package improvements new packages and rollout notes pages."
+LangChain-Type-Safe-Dynamic-Wiring-System,1,189,verified_existing,1,"Extracted type-safe dynamic wiring system page links back to LangChain Type-Safe Dynamic Wiring."
+LangChain-Package-by-Package-Improvements,1,83,verified_existing,1,"Extracted package-by-package improvements page links back to LangChain Type-Safe Dynamic Wiring."
+LangChain-New-Packages-to-Add,1,55,verified_existing,1,"Extracted new packages page links back to LangChain Type-Safe Dynamic Wiring."
+LangChain-Dynamic-Wiring-Rollout-Notes,1,64,verified_existing,1,"Extracted dynamic wiring rollout notes page links back to LangChain Type-Safe Dynamic Wiring."
