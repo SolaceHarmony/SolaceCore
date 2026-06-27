@@ -177,7 +177,7 @@ b.stop(); a.stop()
 
 The `PortConnection` is the runtime that sits between two ports — it owns a routing coroutine, optional message handlers, an optional protocol adapter, and an optional list of conversion rules. `stopAndJoin()` cancels and waits, so workflows can shut down without losing in-flight messages.
 
-For a richer composition example see [`docs/examples/advanced_workflow_example.md`](docs/examples/advanced_workflow_example.md).
+For a richer composition example see [`wiki/Advanced-Workflow-Example.md`](wiki/Advanced-Workflow-Example.md).
 
 ---
 

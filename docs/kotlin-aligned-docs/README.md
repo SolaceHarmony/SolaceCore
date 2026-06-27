@@ -79,5 +79,5 @@ When updating these documents:
 
 - **[kotlin-plans](../kotlin-plans/)** - Executable Kotlin code plans
 - **[components](../components/)** - Component-specific documentation
-- **[examples](../examples/)** - Usage examples and tutorials
+- **[examples](../../wiki/Basic-Actor-Usage.md)** - Usage examples and tutorials
 - **[CONTRIBUTING.md](../CONTRIBUTING.md)** - Contribution guidelines

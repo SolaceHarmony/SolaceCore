@@ -92,6 +92,8 @@ The working ledger is [curation-tracker.csv](curation-tracker.csv). Use it to se
 | `docs/tasks/task4.md` | 1-10 | [Task 4 Dynamic Registration](Task-4-Dynamic-Registration) | Moved, source removed |
 | `docs/tasks/task5.md` | 1-23 | [Task 5 Integration Tests](Task-5-Integration-Tests) | Moved, source removed |
 | `docs/tasks/task6.md` | 1-29 | [Task 6 Deadlock Detection](Task-6-Deadlock-Detection) | Moved, source removed |
+| `docs/examples/Basic_Actor_Usage.md` | 1-20 | [Basic Actor Usage](Basic-Actor-Usage) | Moved, source removed |
+| `docs/examples/advanced_workflow_example.md` | 1-30 | [Advanced Workflow Example](Advanced-Workflow-Example) | Moved, source removed |
 
 ## Current Rule
 

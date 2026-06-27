@@ -1,3 +1,6 @@
+<!-- topic: Reference -->
+<!-- title: Advanced Workflow Example -->
+
 # Advanced Workflow Example
 
 This example demonstrates an advanced workflow that chains multiple actors with error handling and dynamic port usage. It illustrates how to build a resilient pipeline using the SolaceCore framework.

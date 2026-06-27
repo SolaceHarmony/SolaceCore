@@ -62,3 +62,5 @@ Task-3-Concurrency-Issues,docs/tasks/task3.md,1,11,11,complete,remove_source,"So
 Task-4-Dynamic-Registration,docs/tasks/task4.md,1,10,10,complete,remove_source,"Source file copied directly into Task 4 Dynamic Registration."
 Task-5-Integration-Tests,docs/tasks/task5.md,1,23,23,complete,remove_source,"Source file copied directly into Task 5 Integration Tests."
 Task-6-Deadlock-Detection,docs/tasks/task6.md,1,29,29,complete,remove_source,"Source file copied directly into Task 6 Deadlock Detection."
+Basic-Actor-Usage,docs/examples/Basic_Actor_Usage.md,1,20,20,complete,remove_source,"Source file copied directly into Basic Actor Usage."
+Advanced-Workflow-Example,docs/examples/advanced_workflow_example.md,1,30,30,complete,remove_source,"Source file copied directly into Advanced Workflow Example."

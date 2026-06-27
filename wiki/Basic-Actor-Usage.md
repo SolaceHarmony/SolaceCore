@@ -1,3 +1,6 @@
+<!-- topic: Reference -->
+<!-- title: Basic Actor Usage -->
+
 # Basic Actor Usage Example
 
 The following example demonstrates creating a small actor and connecting it in a workflow.

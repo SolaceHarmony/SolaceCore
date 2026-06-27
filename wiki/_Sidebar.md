@@ -60,6 +60,8 @@
 <details>
 <summary><strong>Reference</strong></summary>
 
+- [Advanced Workflow Example](Advanced-Workflow-Example)
+- [Basic Actor Usage](Basic-Actor-Usage)
 - [Documentation Catalog](Documentation-Catalog)
 - [Feature Index](Feature-Index)
 - [Glossary](Glossary)

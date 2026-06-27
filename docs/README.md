@@ -23,10 +23,10 @@ This directory holds the design and reference documentation for SolaceCore. The 
 | Workflow | [`../wiki/Workflow-Orchestration.md`](../wiki/Workflow-Orchestration.md) | Workflow orchestration design and management now lives in the wiki. |
 | Actor inference engine | [`../wiki/Inference-Cube.md`](../wiki/Inference-Cube.md) | The InferenceCube architecture and the [Liquid + Transformer hybrid notebook](../wiki/notebooks/liquid-neural-networks-hybrid-transformer.ipynb). |
 
-### `examples/` — small runnable examples
+### Wiki examples
 
-- [`Basic_Actor_Usage.md`](examples/Basic_Actor_Usage.md)
-- [`advanced_workflow_example.md`](examples/advanced_workflow_example.md)
+- [`../wiki/Basic-Actor-Usage.md`](../wiki/Basic-Actor-Usage.md)
+- [`../wiki/Advanced-Workflow-Example.md`](../wiki/Advanced-Workflow-Example.md)
 
 ### Wiki status topics
 
