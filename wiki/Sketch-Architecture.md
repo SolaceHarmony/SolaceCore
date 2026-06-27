@@ -1,3 +1,6 @@
+<!-- topic: Reference -->
+<!-- title: Sketch Architecture -->
+
 # Kotlin Plans - Codex Vendored Documents Translation
 
 This folder contains Kotlin translations of the codex-vendored documents, converted into executable Kotlin code plans and interfaces.

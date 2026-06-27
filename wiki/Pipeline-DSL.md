@@ -268,7 +268,7 @@ discoverability and refactor safety, not behaviour.
 ## Implementation status
 
 **Sketched, not built.** The
-`docs/sketch-architecture/ConfigTemplates.kt` file has the data
+`wiki/sketch-architecture/ConfigTemplates.kt` file has the data
 class definitions, the ConfigManager interface, the
 ValidationResult shape, and the two starter templates (Ollama +
 Qwen3, LM Studio + Qwen3). The actual block implementations and

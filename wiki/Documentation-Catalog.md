@@ -58,6 +58,18 @@ The working ledger is [curation-tracker.csv](curation-tracker.csv). Use it to se
 | `docs/kotlin-aligned-docs/ARCHITECTURE_OVERVIEW.md` | 1-408 | [Kotlin-Aligned Architecture Overview](Kotlin-Aligned-Architecture-Overview) | Moved, source removed |
 | `docs/kotlin-aligned-docs/IMPLEMENTATION_STATUS.md` | 1-274 | [Kotlin-Aligned Implementation Status](Kotlin-Aligned-Implementation-Status) | Moved, source removed |
 | `docs/kotlin-aligned-docs/QUICK_START_DEVELOPERS.md` | 1-380 | [Kotlin-Aligned Quick Start](Kotlin-Aligned-Quick-Start) | Moved, source removed |
+| `docs/sketch-architecture/README.md` | 1-109 | [Sketch Architecture](Sketch-Architecture) | Moved, source removed |
+| `docs/sketch-architecture/ArchitectureClarificationMCP.kt` | 1-244 | [ArchitectureClarificationMCP.kt](sketch-architecture/ArchitectureClarificationMCP.kt) | Moved unchanged, source removed |
+| `docs/sketch-architecture/ArchitectureOverview.kt` | 1-182 | [ArchitectureOverview.kt](sketch-architecture/ArchitectureOverview.kt) | Moved unchanged, source removed |
+| `docs/sketch-architecture/ArchitectureReview.kt` | 1-320 | [ArchitectureReview.kt](sketch-architecture/ArchitectureReview.kt) | Moved unchanged, source removed |
+| `docs/sketch-architecture/ComponentsOverview.kt` | 1-295 | [ComponentsOverview.kt](sketch-architecture/ComponentsOverview.kt) | Moved unchanged, source removed |
+| `docs/sketch-architecture/ConfigTemplates.kt` | 1-260 | [ConfigTemplates.kt](sketch-architecture/ConfigTemplates.kt) | Moved unchanged, source removed |
+| `docs/sketch-architecture/CoroutineSharedMemory.kt` | 1-318 | [CoroutineSharedMemory.kt](sketch-architecture/CoroutineSharedMemory.kt) | Moved unchanged, source removed |
+| `docs/sketch-architecture/ImplementationStatus.kt` | 1-178 | [ImplementationStatus.kt](sketch-architecture/ImplementationStatus.kt) | Moved unchanged, source removed |
+| `docs/sketch-architecture/MoodTransparencyExperiment.kt` | 1-356 | [MoodTransparencyExperiment.kt](sketch-architecture/MoodTransparencyExperiment.kt) | Moved unchanged, source removed |
+| `docs/sketch-architecture/NeutralHistoryCompletionStatus.kt` | 1-264 | [NeutralHistoryCompletionStatus.kt](sketch-architecture/NeutralHistoryCompletionStatus.kt) | Moved unchanged, source removed |
+| `docs/sketch-architecture/ProviderSpecs.kt` | 1-307 | [ProviderSpecs.kt](sketch-architecture/ProviderSpecs.kt) | Moved unchanged, source removed |
+| `docs/sketch-architecture/QuickStartDevelopers.kt` | 1-261 | [QuickStartDevelopers.kt](sketch-architecture/QuickStartDevelopers.kt) | Moved unchanged, source removed |
 | `docs/components/kernel/README.md` | 1-102 | [Kernel & Ports](Kernel-and-Ports) | Consolidated, source removed |
 | `docs/components/kernel/channel_system.md` | 1-261 | [Kernel & Ports](Kernel-and-Ports) | Consolidated, source removed |
 | `docs/components/kernel/system_architecture.md` | 1-77 | [Architecture Overview](Architecture-Overview) | Consolidated, source removed |

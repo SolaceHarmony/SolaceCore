@@ -342,7 +342,7 @@ The provider spec is read by:
 ## Implementation status
 
 **Sketched, not built.** The
-`docs/sketch-architecture/ProviderSpecs.kt` file has the data
+`wiki/sketch-architecture/ProviderSpecs.kt` file has the data
 class definitions and the Ollama spec fully expanded. Other
 providers (LM Studio, OpenAI, Anthropic) are gestured at but not
 filled out. The actual `ProviderRegistry`, the spec-driven HTTP
@@ -684,7 +684,7 @@ auditability falls out naturally from the layered design.
 ## Implementation status
 
 **Sketched, not fully built.** The
-`docs/sketch-architecture/ArchitectureClarificationMCP.kt` file
+`wiki/sketch-architecture/ArchitectureClarificationMCP.kt` file
 has the type definitions for all three concerns. The actual MCP
 client, format negotiator, and Neutral History store are TODO
 implementations.

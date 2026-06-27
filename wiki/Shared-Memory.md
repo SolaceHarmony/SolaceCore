@@ -262,7 +262,7 @@ fences where ordering matters.
 ## Implementation status
 
 **Magentic-side scaffold exists.** The
-`docs/sketch-architecture/CoroutineSharedMemory.kt` file has the
+`wiki/sketch-architecture/CoroutineSharedMemory.kt` file has the
 shape of all four scheduler structures — `SharedWorkQueue`,
 `SharedDescriptorQueue`, `SharedSchedulerControlState`,
 `SharedParkedStack`. The shape is right; the file uses

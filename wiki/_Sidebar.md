@@ -92,6 +92,7 @@
 - [Roadmap](Roadmap)
 - [Roadmap Issues](Roadmap-Issues)
 - [Setup Instructions](Setup-Instructions)
+- [Sketch Architecture](Sketch-Architecture)
 - [Status Documentation](Status-Documentation)
 - [Task 1 Core Tests](Task-1-Core-Tests)
 - [Task 2 Connection Wiring](Task-2-Connection-Wiring)

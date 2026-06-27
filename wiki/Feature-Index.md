@@ -70,9 +70,9 @@ The status values:
 |---|---|---|---|
 | Genesis | Nov 15 2024 | `e59a719` `docs/ProjectPlan.md` + `SolaceCoreFramework.md` | actor kernel, hot-pluggable supervisor, memory-driven AI vision |
 | SRAF | Jun 4 2025 | `1524574` [Memory & Reflection](Memory-and-Reflection) | Reflection Memory, Supervisor, Mouth Tool, Time Actor, Mood, Confusion Corrector, Multimodal nudging, Zoom levels |
-| Codex translation | Feb 4 2026 | `6d7b1b4` `docs/sketch-architecture/`, `docs/kotlin-aligned-docs/` | MCP, Pipeline, Providers, NeutralHistoryXML rename, CoroutineSharedMemory, InferenceCube |
+| Codex translation | Feb 4 2026 | `6d7b1b4` `wiki/sketch-architecture/`, [Kotlin-aligned notes](Kotlin-Aligned-Documentation) | MCP, Pipeline, Providers, NeutralHistoryXML rename, CoroutineSharedMemory, InferenceCube |
 | Now | May 2026 | `3045c9c` `lib/.../core/mood/` | first SRAF feature lands as code (mood lexical baseline) |
 
 The Feb 2026 codex translation renamed several SRAF concepts (Reflection Memory → Neutral History XML; Supervisor AI → Supervisor+Advisor+Main triad) and dropped others (Time Actor, Mouth Tool, Confusion Corrector, Zoom levels). This folder treats the SRAF terminology as canonical and folds the codex infrastructure in as supporting features.
 
-[← docs](Documentation-Catalog) · [Architecture wiki](Architecture-Overview) · [Recovered design material](../docs/sketch-architecture/README.md) · [Kotlin-aligned notes](Kotlin-Aligned-Documentation)
+[← docs](Documentation-Catalog) · [Architecture wiki](Architecture-Overview) · [Recovered design material](Sketch-Architecture) · [Kotlin-aligned notes](Kotlin-Aligned-Documentation)
