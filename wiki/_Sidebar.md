@@ -8,6 +8,8 @@
 - [Architecture Overview](Architecture-Overview)
 - [Design vs Implementation](Design-vs-Implementation)
 - [Project Status](Project-Status)
+- [Project Status Report](Project-Status-Report)
+- [Quick Status](Quick-Status)
 - [Vision & Solace AI](Vision-and-Solace-AI)
 
 </details>
@@ -63,5 +65,7 @@
 - [Glossary](Glossary)
 - [How the Wiki Publishes](How-The-Wiki-Publishes)
 - [Roadmap](Roadmap)
+- [Roadmap Issues](Roadmap-Issues)
+- [Status Documentation](Status-Documentation)
 
 </details>

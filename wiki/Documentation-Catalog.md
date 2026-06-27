@@ -78,6 +78,13 @@ The working ledger is [curation-tracker.csv](curation-tracker.csv). Use it to se
 | `docs/features/providers/README.md` | 1-398 | [Providers & MCP Tools](Providers-and-MCP-Tools) | Moved, source removed |
 | `docs/features/mcp-tools/README.md` | 1-336 | [Providers & MCP Tools](Providers-and-MCP-Tools) | Moved, source removed |
 | `docs/features/pipeline/README.md` | 1-345 | [Pipeline DSL](Pipeline-DSL) | Moved, source removed |
+| `docs/status/README.md` | 1-184 | [Status Documentation](Status-Documentation) | Moved, source removed |
+| `wiki/Quick-Status.md` | 1-124 | [Quick Status](Quick-Status) | Moved, source removed |
+| `wiki/Project-Status-Report.md` | 1-418 | [Project Status Report](Project-Status-Report) | Moved, source removed |
+| `wiki/Design-vs-Implementation.md` | 1-278 | [Design vs Implementation](Design-vs-Implementation) | Moved, source removed |
+| `wiki/Roadmap.md` | 1-696 | [Roadmap](Roadmap) | Moved, source removed |
+| `wiki/Roadmap-Issues.md` | 1-219 | [Roadmap Issues](Roadmap-Issues) | Moved, source removed |
+| `wiki/roadmap_issues.json` | 1-248 | [roadmap_issues.json](roadmap_issues.json) | Moved unchanged, source removed |
 
 ## Current Rule
 

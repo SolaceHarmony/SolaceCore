@@ -191,7 +191,7 @@ Quick links by interest:
 - **Why this is different from RAG / why memory rhymes**: [`wiki/Memory-and-Reflection.md`](wiki/Memory-and-Reflection.md) — the SRAF design.
 - **The vector-to-neuron mechanism**: [`wiki/Inference-Cube.md`](wiki/Inference-Cube.md) and the [hybrid notebook](wiki/notebooks/liquid-neural-networks-hybrid-transformer.ipynb).
 - **Full architecture deep dive**: [`docs/Architectural_Deepdive.md`](docs/Architectural_Deepdive.md).
-- **Status reality check** (design vs implementation): [`docs/status/DESIGN_VS_IMPLEMENTATION.md`](docs/status/DESIGN_VS_IMPLEMENTATION.md), [`docs/status/QUICK_STATUS.md`](docs/status/QUICK_STATUS.md).
+- **Status reality check** (design vs implementation): [`wiki/Design-vs-Implementation.md`](wiki/Design-vs-Implementation.md), [`wiki/Quick-Status.md`](wiki/Quick-Status.md).
 
 ---
 

@@ -11,22 +11,18 @@ The workflow runs when one of these paths changes on `main`, `development`, or `
 - `wiki/**`
 - `tools/wiki/**`
 - `.github/workflows/publish-wiki.yml`
-- `docs/status/**`
 
 It also runs daily at `06:17 UTC` so generated status pages can refresh even when no source file changed.
 
 ## Generation Steps
 
-1. `tools/wiki/sync_pages.py` mirrors selected authoritative docs into wiki pages.
-2. `tools/wiki/generate_project_status.py` rebuilds `wiki/Project-Status.md` from `docs/status/` and optionally overlays live GitHub Project data.
-3. `tools/wiki/generate_sidebar.py` rebuilds `wiki/_Sidebar.md` from each page's `<!-- topic: ... -->` marker.
-4. The Action syncs the resulting `wiki/` directory to the repository GitHub Wiki remote.
+1. `tools/wiki/generate_project_status.py` rebuilds `wiki/Project-Status.md` from the status pages in `wiki/` and optionally overlays live GitHub Project data.
+2. `tools/wiki/generate_sidebar.py` rebuilds `wiki/_Sidebar.md` from each page's `<!-- topic: ... -->` marker.
+3. The Action syncs the resulting `wiki/` directory to the repository GitHub Wiki remote.
 
 ## Edit Rules
 
 Hand-authored pages live directly in `wiki/`.
-
-Mirrored pages are generated from their source documents. When a page says it is mirrored, edit the source under `docs/`, not the generated wiki page.
 
 Generated files include a marker at the top. Do not edit those by hand unless you are also changing the generator.
 

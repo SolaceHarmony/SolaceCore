@@ -10,7 +10,6 @@ on:
       - 'wiki/**'
       - 'tools/wiki/**'
       - '.github/workflows/publish-wiki.yml'
-      - 'docs/status/**'
   schedule:
     # Refresh generated status/wiki navigation daily even when no docs changed.
     - cron: '17 6 * * *'
@@ -38,10 +37,6 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.x'
-
-      - name: Sync source docs into wiki pages
-        run: |
-          python tools/wiki/sync_pages.py --repo-root "$GITHUB_WORKSPACE"
 
       - name: Generate Project Status
         env:

@@ -1,3 +1,6 @@
+<!-- topic: Orientation -->
+<!-- title: Quick Status -->
+
 # SolaceCore Quick Status Reference
 
 **Last Updated:** 2025-10-30  
@@ -112,8 +115,8 @@
 
 ## Quick Links
 
-- **Full Status Report:** [PROJECT_STATUS.md](PROJECT_STATUS.md)
-- **Design Gap Analysis:** [DESIGN_VS_IMPLEMENTATION.md](DESIGN_VS_IMPLEMENTATION.md)
+- **Full Status Report:** [Project-Status-Report](Project-Status-Report)
+- **Design Gap Analysis:** [Design-vs-Implementation](Design-vs-Implementation)
 - **Master Checklist:** [../MASTER_CHECKLIST.md](../MASTER_CHECKLIST.md)
 - **Architecture Docs:** [../Architectural_Document_Solace_Core_Framework.md](../Architectural_Document_Solace_Core_Framework.md)
 

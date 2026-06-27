@@ -3,7 +3,7 @@
 
 # Project Status
 
-_Generated 2026-06-27 03:22 UTC for `SolaceHarmony/SolaceCore`. Aggregates `docs/status/` plus an optional live project board._
+_Generated 2026-06-27 04:15 UTC for `SolaceHarmony/SolaceCore`. Aggregates status pages in `wiki/` plus an optional live project board._
 
 ## Live Project Board
 
@@ -11,7 +11,7 @@ _Generated 2026-06-27 03:22 UTC for `SolaceHarmony/SolaceCore`. Aggregates `docs
 
 ## In-Repo Status
 
-## From `docs/status/QUICK_STATUS.md`
+## From `wiki/Quick-Status.md`
 
 ## SolaceCore Quick Status Reference
 
@@ -127,8 +127,8 @@ _Generated 2026-06-27 03:22 UTC for `SolaceHarmony/SolaceCore`. Aggregates `docs
 
 ### Quick Links
 
-- **Full Status Report:** [PROJECT_STATUS.md](PROJECT_STATUS.md)
-- **Design Gap Analysis:** [DESIGN_VS_IMPLEMENTATION.md](DESIGN_VS_IMPLEMENTATION.md)
+- **Full Status Report:** [Project-Status-Report](Project-Status-Report)
+- **Design Gap Analysis:** [Design-vs-Implementation](Design-vs-Implementation)
 - **Master Checklist:** [../MASTER_CHECKLIST.md](../MASTER_CHECKLIST.md)
 - **Architecture Docs:** [../Architectural_Document_Solace_Core_Framework.md](../Architectural_Document_Solace_Core_Framework.md)
 
@@ -140,7 +140,7 @@ _Generated 2026-06-27 03:22 UTC for `SolaceHarmony/SolaceCore`. Aggregates `docs
 
 ---
 
-## From `docs/status/PROJECT_STATUS.md`
+## From `wiki/Project-Status-Report.md`
 
 ## SolaceCore Project Status Report
 
@@ -563,7 +563,7 @@ However, to achieve the **full vision** outlined in the design documents, signif
 
 ---
 
-## From `docs/status/DESIGN_VS_IMPLEMENTATION.md`
+## From `wiki/Design-vs-Implementation.md`
 
 ## Design vs Implementation: Gap Analysis
 

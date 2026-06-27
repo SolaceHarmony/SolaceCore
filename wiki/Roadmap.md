@@ -1,9 +1,7 @@
 <!-- topic: Reference -->
-<!-- AUTO-SYNCED from docs/status/IMPLEMENTATION_ROADMAP.md by tools/wiki/sync_pages.py. Edit the source, not this page. -->
+<!-- title: Roadmap -->
 
-# Roadmap
-
-> Mirrored from `docs/status/IMPLEMENTATION_ROADMAP.md`. This page is regenerated on publish; edit the source document.
+# SolaceCore Implementation Roadmap
 
 **Purpose:** Recommended order for implementing missing features from the design
 **Last Updated:** 2025-10-30
@@ -24,7 +22,7 @@
 **Goal:** Make the existing core production-ready
 
 ### 1.1 Integration Tests (2 weeks) 🔥 CRITICAL
-**Why First:** Validate that components work together correctly
+**Why First:** Validate that components work together correctly  
 **Location:** `lib/src/jvmTest/kotlin/ai/solace/core/integration/`
 
 **Tasks:**
@@ -41,7 +39,7 @@
 - Test coverage for critical paths
 
 ### 1.2 Deadlock Detection (2-3 weeks) 🔥 CRITICAL
-**Why Second:** Prevent production hangs
+**Why Second:** Prevent production hangs  
 **Location:** `lib/src/commonMain/kotlin/ai/solace/core/concurrency/`
 
 **Tasks:**
@@ -58,7 +56,7 @@
 - Performance impact < 5%
 
 ### 1.3 Performance Benchmarks (1 week)
-**Why Third:** Establish baselines before optimization
+**Why Third:** Establish baselines before optimization  
 **Location:** `lib/src/jvmTest/kotlin/ai/solace/core/benchmarks/`
 
 **Tasks:**
@@ -74,7 +72,7 @@
 - Performance regression detection
 
 ### 1.4 Enhanced Error Handling (2 weeks)
-**Why Fourth:** Improve resilience
+**Why Fourth:** Improve resilience  
 **Location:** `lib/src/commonMain/kotlin/ai/solace/core/actor/supervision/`
 
 **Tasks:**
@@ -96,7 +94,7 @@
 **Goal:** Enable production deployment and monitoring
 
 ### 2.1 Prometheus Metrics (1-2 weeks) 🔥 HIGH PRIORITY
-**Why First:** Can't run production without visibility
+**Why First:** Can't run production without visibility  
 **Location:** `lib/src/commonMain/kotlin/ai/solace/core/observability/`
 
 **Tasks:**
@@ -113,7 +111,7 @@
 - Metrics have appropriate labels
 
 ### 2.2 Health Checks (1 week)
-**Why Second:** Required for orchestration
+**Why Second:** Required for orchestration  
 **Location:** `lib/src/commonMain/kotlin/ai/solace/core/health/`
 
 **Tasks:**
@@ -129,7 +127,7 @@
 - Configurable health criteria
 
 ### 2.3 Kubernetes Deployment (1-2 weeks)
-**Why Third:** Enable cloud deployment
+**Why Third:** Enable cloud deployment  
 **Location:** `k8s/` directory
 
 **Tasks:**
@@ -148,7 +146,7 @@
 - Graceful shutdown and rolling updates
 
 ### 2.4 Production Docker Images (1 week)
-**Why Fourth:** Optimize deployment
+**Why Fourth:** Optimize deployment  
 **Location:** `Dockerfile` and `.dockerignore`
 
 **Tasks:**
@@ -165,7 +163,7 @@
 - Security scan passes
 
 ### 2.5 Grafana Dashboards (1 week)
-**Why Fifth:** Visualize metrics
+**Why Fifth:** Visualize metrics  
 **Location:** `grafana/dashboards/`
 
 **Tasks:**
@@ -181,7 +179,7 @@
 - Useful for operations team
 
 ### 2.6 Distributed Tracing (Optional, 1-2 weeks)
-**Why Sixth:** Debug complex flows
+**Why Sixth:** Debug complex flows  
 **Location:** `lib/src/commonMain/kotlin/ai/solace/core/tracing/`
 
 **Tasks:**
@@ -202,7 +200,7 @@
 **Goal:** Make the framework easy to use
 
 ### 3.1 Complete API Documentation (2 weeks)
-**Why First:** Developers need reference docs
+**Why First:** Developers need reference docs  
 **Location:** Throughout codebase (KDoc)
 
 **Tasks:**
@@ -218,7 +216,7 @@
 - Searchable documentation
 
 ### 3.2 Getting Started Guide (1 week)
-**Why Second:** Lower barrier to entry
+**Why Second:** Lower barrier to entry  
 **Location:** `docs/getting-started.md`
 
 **Tasks:**
@@ -235,7 +233,7 @@
 - Links to detailed docs
 
 ### 3.3 Best Practices Guide (1 week)
-**Why Third:** Guide developers to success
+**Why Third:** Guide developers to success  
 **Location:** `docs/best-practices.md`
 
 **Tasks:**
@@ -252,7 +250,7 @@
 - Practical examples
 
 ### 3.4 Migration Guide (1 week)
-**Why Fourth:** Support version upgrades
+**Why Fourth:** Support version upgrades  
 **Location:** `docs/migration/`
 
 **Tasks:**
@@ -267,7 +265,7 @@
 - Tools to assist migration
 
 ### 3.5 Enhanced CLI Tool (2-3 weeks)
-**Why Fifth:** Operational convenience
+**Why Fifth:** Operational convenience  
 **Location:** `cli/` directory
 
 **Tasks:**
@@ -290,7 +288,7 @@
 **Goal:** Enable graph-based relationships
 
 ### 4.1 Neo4j Integration (3-4 weeks)
-**Why Now:** Core use case for Solace AI
+**Why Now:** Core use case for Solace AI  
 **Location:** `lib/src/jvmMain/kotlin/ai/solace/core/storage/graph/`
 
 **Tasks:**
@@ -316,7 +314,7 @@
 **Goal:** Enable secure production deployments
 
 ### 5.1 Authentication System (2 weeks)
-**Why First:** Foundation for security
+**Why First:** Foundation for security  
 **Location:** `lib/src/commonMain/kotlin/ai/solace/core/security/auth/`
 
 **Tasks:**
@@ -332,7 +330,7 @@
 - Integration with existing auth systems
 
 ### 5.2 Authorization Framework (2 weeks)
-**Why Second:** Control access
+**Why Second:** Control access  
 **Location:** `lib/src/commonMain/kotlin/ai/solace/core/security/authz/`
 
 **Tasks:**
@@ -348,7 +346,7 @@
 - Performance acceptable
 
 ### 5.3 Message Encryption (1 week)
-**Why Third:** Secure actor communication
+**Why Third:** Secure actor communication  
 **Location:** `lib/src/commonMain/kotlin/ai/solace/core/security/encryption/`
 
 **Tasks:**
@@ -363,7 +361,7 @@
 - Key rotation support
 
 ### 5.4 Audit Logging (1 week)
-**Why Fourth:** Compliance and debugging
+**Why Fourth:** Compliance and debugging  
 **Location:** `lib/src/commonMain/kotlin/ai/solace/core/security/audit/`
 
 **Tasks:**
@@ -379,7 +377,7 @@
 - Tamper-proof storage
 
 ### 5.5 Security Hardening (1-2 weeks)
-**Why Fifth:** Defense in depth
+**Why Fifth:** Defense in depth  
 **Location:** Throughout codebase
 
 **Tasks:**
@@ -401,7 +399,7 @@
 **Goal:** Enable multi-node operation
 
 ### 6.1 Network Transport Layer (2-3 weeks)
-**Why First:** Foundation for distribution
+**Why First:** Foundation for distribution  
 **Location:** `lib/src/commonMain/kotlin/ai/solace/core/network/`
 
 **Tasks:**
@@ -418,7 +416,7 @@
 - Performance acceptable
 
 ### 6.2 Service Discovery (1-2 weeks)
-**Why Second:** Nodes need to find each other
+**Why Second:** Nodes need to find each other  
 **Location:** `lib/src/commonMain/kotlin/ai/solace/core/cluster/discovery/`
 
 **Tasks:**
@@ -434,7 +432,7 @@
 - Multiple discovery methods
 
 ### 6.3 Distributed Actor Communication (3-4 weeks)
-**Why Third:** Core distributed feature
+**Why Third:** Core distributed feature  
 **Location:** `lib/src/commonMain/kotlin/ai/solace/core/actor/distributed/`
 
 **Tasks:**
@@ -451,7 +449,7 @@
 - Handle node failures gracefully
 
 ### 6.4 State Replication (2-3 weeks)
-**Why Fourth:** Consistency across nodes
+**Why Fourth:** Consistency across nodes  
 **Location:** `lib/src/commonMain/kotlin/ai/solace/core/cluster/replication/`
 
 **Tasks:**
@@ -467,7 +465,7 @@
 - Partition tolerance
 
 ### 6.5 Clustering Support (3-4 weeks)
-**Why Fifth:** Full multi-node operation
+**Why Fifth:** Full multi-node operation  
 **Location:** `lib/src/commonMain/kotlin/ai/solace/core/cluster/`
 
 **Tasks:**
@@ -484,7 +482,7 @@
 - No data loss on node failure
 
 ### 6.6 Load Balancing (1-2 weeks)
-**Why Sixth:** Distribute work efficiently
+**Why Sixth:** Distribute work efficiently  
 **Location:** `lib/src/commonMain/kotlin/ai/solace/core/cluster/loadbalancing/`
 
 **Tasks:**
@@ -641,7 +639,7 @@
 | 7. Advanced Features | 3-4 months | 12-16 weeks |
 | 8. Ecosystem | Ongoing | Ongoing |
 
-**Total to Feature-Complete: 14-22 months**
+**Total to Feature-Complete: 14-22 months**  
 **Total to Production-Ready (Phases 1-3): 5-8 months**
 
 ---
@@ -695,7 +693,7 @@ With 1 engineer, multiply timelines by 2-3x.
 
 ## Related Documents
 
-- [PROJECT_STATUS.md](PROJECT_STATUS.md) - Current implementation status
-- [DESIGN_VS_IMPLEMENTATION.md](DESIGN_VS_IMPLEMENTATION.md) - Gap analysis
-- [QUICK_STATUS.md](QUICK_STATUS.md) - Quick reference
+- [Project-Status-Report](Project-Status-Report) - Current implementation status
+- [Design-vs-Implementation](Design-vs-Implementation) - Gap analysis
+- [Quick-Status](Quick-Status) - Quick reference
 - [docs/MASTER_CHECKLIST.md](docs/MASTER_CHECKLIST.md) - Detailed task list

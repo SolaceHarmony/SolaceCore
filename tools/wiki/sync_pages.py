@@ -1,11 +1,9 @@
 #!/usr/bin/env python3
 """Mirror selected authoritative in-repo documents into wiki pages.
 
-Some wiki pages are *not* hand-authored: they are verbatim mirrors of a
-canonical document that already lives under ``docs/`` and is kept current by
-the engineering team (for example the design-vs-implementation gap table and
-the implementation roadmap). Mirroring them keeps a single edit point — the
-source doc — while still surfacing the content in the wiki.
+This script is retained for compatibility with older publishing workflows.
+The authoritative documentation has moved into ``wiki/`` directly, so there
+are currently no source documents to mirror from ``docs/``.
 
 The mapping is an explicit manifest (``MANIFEST`` below) so nothing is mirrored
 by accident and hand-authored pages are never clobbered. Each mirrored page
@@ -22,10 +20,7 @@ import sys
 from pathlib import Path
 
 # (source path relative to repo root, target wiki page filename, topic, title)
-MANIFEST: list[tuple[str, str, str, str]] = [
-    ("docs/status/DESIGN_VS_IMPLEMENTATION.md", "Design-vs-Implementation.md", "Orientation", "Design vs Implementation"),
-    ("docs/status/IMPLEMENTATION_ROADMAP.md", "Roadmap.md", "Reference", "Roadmap"),
-]
+MANIFEST: list[tuple[str, str, str, str]] = []
 
 
 def provenance(source_rel: str) -> str:

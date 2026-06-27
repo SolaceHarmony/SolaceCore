@@ -1,10 +1,13 @@
+<!-- topic: Reference -->
+<!-- title: Status Documentation -->
+
 # SolaceCore Status Documentation
 
 This directory contains comprehensive documentation analyzing the current state of SolaceCore development compared to the original design specifications.
 
 ## 📄 Document Overview
 
-### [QUICK_STATUS.md](QUICK_STATUS.md) - Start Here! ⭐
+### [Quick-Status](Quick-Status) - Start Here! ⭐
 **1-page quick reference** showing project status at a glance
 - TL;DR summary
 - Component scorecard
@@ -15,7 +18,7 @@ This directory contains comprehensive documentation analyzing the current state 
 
 ---
 
-### [PROJECT_STATUS.md](PROJECT_STATUS.md) - Detailed Report 📊
+### [Project-Status-Report](Project-Status-Report) - Detailed Report 📊
 **14,000 word comprehensive status report**
 - What's fully implemented (✅)
 - What's partially implemented (⚠️)
@@ -27,7 +30,7 @@ This directory contains comprehensive documentation analyzing the current state 
 
 ---
 
-### [DESIGN_VS_IMPLEMENTATION.md](DESIGN_VS_IMPLEMENTATION.md) - Gap Analysis 🔍
+### [Design-vs-Implementation](Design-vs-Implementation) - Gap Analysis 🔍
 **17,000 word side-by-side comparison**
 - Design specification vs actual implementation
 - Feature-by-feature status
@@ -38,7 +41,7 @@ This directory contains comprehensive documentation analyzing the current state 
 
 ---
 
-### [IMPLEMENTATION_ROADMAP.md](IMPLEMENTATION_ROADMAP.md) - Action Plan 🗺️
+### [Roadmap](Roadmap) - Action Plan 🗺️
 **18,000 word phased implementation plan**
 - 8 phases of development
 - Detailed task breakdowns
@@ -133,19 +136,19 @@ This directory contains comprehensive documentation analyzing the current state 
 ## 💡 Usage Guide
 
 ### For Project Managers
-**Read:** QUICK_STATUS.md → PROJECT_STATUS.md → IMPLEMENTATION_ROADMAP.md
+**Read:** Quick-Status → Project-Status-Report → Roadmap
 **Focus on:** Timeline estimates, resource requirements, risk areas
 
 ### For Developers
-**Read:** QUICK_STATUS.md → DESIGN_VS_IMPLEMENTATION.md → relevant code
+**Read:** Quick-Status → Design-vs-Implementation → relevant code
 **Focus on:** What's implemented, what's missing, current APIs
 
 ### For Contributors
-**Read:** QUICK_STATUS.md → IMPLEMENTATION_ROADMAP.md → task files
+**Read:** Quick-Status → Roadmap → task files
 **Focus on:** Next priorities, effort estimates, success criteria
 
 ### For Stakeholders
-**Read:** QUICK_STATUS.md only
+**Read:** Quick-Status only
 **Focus on:** TL;DR, component scorecard, timeline to production-ready
 
 ---
@@ -163,10 +166,10 @@ These documents should be updated:
 ## 📞 Questions?
 
 For questions about:
-- **Current implementation:** See PROJECT_STATUS.md
-- **Missing features:** See DESIGN_VS_IMPLEMENTATION.md
-- **Future plans:** See IMPLEMENTATION_ROADMAP.md
-- **Quick answers:** See QUICK_STATUS.md
+- **Current implementation:** See Project-Status-Report
+- **Missing features:** See Design-vs-Implementation
+- **Future plans:** See Roadmap
+- **Quick answers:** See Quick-Status
 
 ---
 

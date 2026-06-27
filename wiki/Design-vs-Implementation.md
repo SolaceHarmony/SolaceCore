@@ -1,9 +1,7 @@
 <!-- topic: Orientation -->
-<!-- AUTO-SYNCED from docs/status/DESIGN_VS_IMPLEMENTATION.md by tools/wiki/sync_pages.py. Edit the source, not this page. -->
+<!-- title: Design vs Implementation -->
 
-# Design vs Implementation
-
-> Mirrored from `docs/status/DESIGN_VS_IMPLEMENTATION.md`. This page is regenerated on publish; edit the source document.
+# Design vs Implementation: Gap Analysis
 
 **Purpose:** Quick reference showing what was designed vs what's implemented
 

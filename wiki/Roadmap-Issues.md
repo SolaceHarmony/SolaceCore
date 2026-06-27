@@ -1,6 +1,9 @@
+<!-- topic: Reference -->
+<!-- title: Roadmap Issues -->
+
 # Creating GitHub Issues from Implementation Roadmap
 
-This document explains how to create GitHub issues from the checklist items in `IMPLEMENTATION_ROADMAP.md`.
+This document explains how to create GitHub issues from the checklist items in `Roadmap`.
 
 ## Overview
 
@@ -145,7 +148,7 @@ Each issue includes:
 - Measurable outcomes
 
 **Footer:**
-- Link back to IMPLEMENTATION_ROADMAP.md
+- Link back to Roadmap
 
 ## After Creating Issues
 
@@ -209,9 +212,9 @@ EOF
 
 ## Related Documentation
 
-- [`IMPLEMENTATION_ROADMAP.md`](IMPLEMENTATION_ROADMAP.md) - Full roadmap with all details
-- [`PROJECT_STATUS.md`](PROJECT_STATUS.md) - Current implementation status
-- [`QUICK_STATUS.md`](QUICK_STATUS.md) - Quick reference guide
+- [`Roadmap`](Roadmap) - Full roadmap with all details
+- [`Project-Status-Report`](Project-Status-Report) - Current implementation status
+- [`Quick-Status`](Quick-Status) - Quick reference guide
 
 ---
 

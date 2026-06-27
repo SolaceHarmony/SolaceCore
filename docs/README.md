@@ -11,12 +11,12 @@ This directory holds the design and reference documentation for SolaceCore. The 
 
 ## Layout
 
-### `components/` — per-module design docs
+### Wiki component topics
 
 | Module | Folder | Notes |
 |---|---|---|
 | Actor system | [`../wiki/Actor-System.md`](../wiki/Actor-System.md) | Actor architecture, supervisor notes, communication sequence, class diagrams, and emotional-model integration now live in the wiki. |
-| Kernel | [`components/kernel/`](components/kernel/) | Port system, channel system, system-architecture overview. |
+| Kernel | [`../wiki/Kernel-and-Ports.md`](../wiki/Kernel-and-Ports.md) | Port system, channel system, system-architecture overview. |
 | Lifecycle | [`../wiki/Lifecycle-and-Resources.md`](../wiki/Lifecycle-and-Resources.md) | The `Disposable` / `Lifecycle` contract and its class diagram now live in the wiki. |
 | Memory | [`../wiki/Memory-and-Reflection.md`](../wiki/Memory-and-Reflection.md) | The SRAF / Reflection Memory design now lives in the wiki, with Mouth Tool and Zoom split into their own topic pages. |
 | Scripting | [`../wiki/Scripting-Engine.md`](../wiki/Scripting-Engine.md) | The dynamic scripting module design now lives in the wiki. |
@@ -28,13 +28,13 @@ This directory holds the design and reference documentation for SolaceCore. The 
 - [`Basic_Actor_Usage.md`](examples/Basic_Actor_Usage.md)
 - [`advanced_workflow_example.md`](examples/advanced_workflow_example.md)
 
-### `status/` — design-vs-implementation tracking
+### Wiki status topics
 
 When you want a gap view (without rewriting the design to match the code), see:
-- [`status/DESIGN_VS_IMPLEMENTATION.md`](status/DESIGN_VS_IMPLEMENTATION.md)
-- [`status/QUICK_STATUS.md`](status/QUICK_STATUS.md)
-- [`status/PROJECT_STATUS.md`](status/PROJECT_STATUS.md)
-- [`status/IMPLEMENTATION_ROADMAP.md`](status/IMPLEMENTATION_ROADMAP.md)
+- [`../wiki/Design-vs-Implementation.md`](../wiki/Design-vs-Implementation.md)
+- [`../wiki/Quick-Status.md`](../wiki/Quick-Status.md)
+- [`../wiki/Project-Status-Report.md`](../wiki/Project-Status-Report.md)
+- [`../wiki/Roadmap.md`](../wiki/Roadmap.md)
 
 ### Storage and operations
 
@@ -85,11 +85,11 @@ The kernel is real. The cognition layers above the kernel are designed and partl
 | InferenceCube state machine | 🚧 Designed in [`../wiki/Inference-Cube.md`](../wiki/Inference-Cube.md), not yet built |
 | Spiking advisor + emotional cue stream | 🚧 Designed, not yet built |
 
-For a more detailed view, [`status/DESIGN_VS_IMPLEMENTATION.md`](status/DESIGN_VS_IMPLEMENTATION.md) is the canonical gap report.
+For a more detailed view, [`../wiki/Design-vs-Implementation.md`](../wiki/Design-vs-Implementation.md) is the canonical gap report.
 
 ## Contributing to docs
 
-- Place component-specific docs in the right `components/<module>/` folder.
+- Place component-specific docs in the wiki component topics.
 - Keep architectural diagrams alongside their component.
 - Cross-link aggressively. The doc tree is large; readers should never get lost.
 - Code samples in docs must compile against the current `lib/` API surface. If you find one that doesn't, fix it (or call it out in the commit message and open an issue).

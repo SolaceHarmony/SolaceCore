@@ -1,3 +1,6 @@
+<!-- topic: Orientation -->
+<!-- title: Project Status Report -->
+
 # SolaceCore Project Status Report
 
 **Generated:** 2025-10-30  
