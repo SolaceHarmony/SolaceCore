@@ -61,7 +61,7 @@
 
 **Tasks:**
 - [ ] Supervisor restart strategies (one-for-one, all-for-one)
-- [ ] Circuit breaker pattern implementation
+- [ ] Basic actor-level circuit breaker pattern implementation
 - [ ] Configurable retry logic
 - [ ] Error escalation mechanisms
 - [ ] Comprehensive error documentation

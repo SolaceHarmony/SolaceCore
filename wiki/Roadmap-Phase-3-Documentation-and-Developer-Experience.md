@@ -23,7 +23,7 @@
 
 ### 3.2 Getting Started Guide (1 week)
 **Why Second:** Lower barrier to entry
-**Location:** `docs/getting-started.md`
+**Location:** [Kotlin-Aligned Quick Start](Kotlin-Aligned-Quick-Start) (Wiki)
 
 **Tasks:**
 - [ ] Installation instructions
@@ -40,7 +40,7 @@
 
 ### 3.3 Best Practices Guide (1 week)
 **Why Third:** Guide developers to success
-**Location:** `docs/best-practices.md`
+**Location:** [LangChain Best Practices](LangChain-Best-Practices) (Wiki)
 
 **Tasks:**
 - [ ] Actor design patterns
@@ -57,7 +57,7 @@
 
 ### 3.4 Migration Guide (1 week)
 **Why Fourth:** Support version upgrades
-**Location:** `docs/migration/`
+**Location:** [LangChain Migration Strategy](LangChain-Migration-Strategy) (Wiki)
 
 **Tasks:**
 - [ ] Breaking changes documentation
