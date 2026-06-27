@@ -249,7 +249,7 @@ suspend fun main() { // Example, typically run in a coroutine scope
 ```
 
 #### 1.1.7. Future Enhancements & Considerations
-The `CHANNELS_README.md` and `docs/components/kernel/README.md` also outline several areas for future development and refinement, which remain relevant:
+The `CHANNELS_README.md` and the wiki [Kernel & Ports](../../wiki/Kernel-and-Ports.md) page also outline several areas for future development and refinement, which remain relevant:
 *   **Connection Implementation Details:**
     *   Implementing the actual message passing mechanism (the current `Port.connect` establishes the connection data class but doesn't actively pipe messages; this is typically handled by higher-level constructs or actor systems that use these ports).
     *   Supporting multiple subscribers for a single `OutputPort`.

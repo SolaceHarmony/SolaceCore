@@ -6,3 +6,4 @@ Vision-and-Solace-AI,docs/architecture/00-solace-project-context.md,1,52,52,comp
 Solace-AI-Overview,docs/architecture/00-solace-project-context.md,54,140,140,complete_split,remove_source,"Companion components and conceptual workflow moved into Solace AI overview."
 Vision-and-Solace-AI,docs/architecture/00-solace-project-context.md,141,169,169,complete_split,remove_source,"Guiding principles moved into the orientation vision page."
 Architecture-Overview,docs/architecture/00-solace-project-context.md,172,240,240,complete_split,remove_source,"Runtime component graph and component overview moved into architecture overview."
+Kernel-and-Ports,docs/components/kernel/README.md,1,102,102,complete,remove_source,"Kernel overview and design principles moved into Kernel & Ports."
