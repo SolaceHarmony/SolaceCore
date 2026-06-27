@@ -1,3 +1,6 @@
+<!-- topic: Reference -->
+<!-- title: LangChain Type-Safe Dynamic Wiring -->
+
 # Making SolaceCore More LangChain-Like with Focus on Type-Safe Dynamic Wiring
 
 ## Type-Safe Dynamic Wiring System

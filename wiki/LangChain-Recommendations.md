@@ -1,3 +1,6 @@
+<!-- topic: Reference -->
+<!-- title: LangChain Recommendations -->
+
 # Recommendations for LangChain Integration
 
 ## Overview

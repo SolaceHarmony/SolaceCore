@@ -57,10 +57,10 @@ When you want a gap view (without rewriting the design to match the code), see:
 
 The chain types live in [`prototypes/`](../prototypes/), not in `lib/`. These docs document the pattern for that downstream use:
 
-- [`langchain-patterns.md`](langchain-patterns.md)
-- [`chain-implementation.md`](chain-implementation.md)
-- [`RECOMMENDATIONS_LANGCHAIN.md`](RECOMMENDATIONS_LANGCHAIN.md)
-- [`notes/langchain/`](notes/langchain/) — exploratory notes.
+- [`../wiki/LangChain-Patterns.md`](../wiki/LangChain-Patterns.md)
+- [`../wiki/LangChain-Chain-Implementation.md`](../wiki/LangChain-Chain-Implementation.md)
+- [`../wiki/LangChain-Recommendations.md`](../wiki/LangChain-Recommendations.md)
+- [`../wiki/LangChain-Type-Safe-Dynamic-Wiring.md`](../wiki/LangChain-Type-Safe-Dynamic-Wiring.md) and related LangChain notes.
 
 ### Tasks
 

@@ -1,3 +1,6 @@
+<!-- topic: Reference -->
+<!-- title: LangChain Usage Design Improvements -->
+
 # Usage and Design Improvements
 
 This document outlines usage issues and proposed improvements for the SolaceCore framework, organized by package and component.

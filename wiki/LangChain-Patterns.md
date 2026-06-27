@@ -1,3 +1,6 @@
+<!-- topic: Reference -->
+<!-- title: LangChain Patterns -->
+
 # LangChain Pattern Implementation in SolaceCore
 
 This guide shows how to implement common LangChain patterns using SolaceCore's actor-based architecture.

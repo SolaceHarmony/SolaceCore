@@ -1,3 +1,6 @@
+<!-- topic: Reference -->
+<!-- title: LangChain Bugs -->
+
 # Known Bugs and Issues
 
 ## Actor System Issues

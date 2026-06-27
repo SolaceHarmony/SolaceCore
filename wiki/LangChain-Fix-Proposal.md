@@ -1,6 +1,9 @@
+<!-- topic: Reference -->
+<!-- title: LangChain Fix Proposal -->
+
 # Fix Proposals for SolaceCore Issues
 
-This document provides detailed proposals for fixing the issues identified in BUGS.md. Each proposal includes code examples, implementation strategies, and potential trade-offs.
+This document provides detailed proposals for fixing the issues identified in LangChain-Bugs. Each proposal includes code examples, implementation strategies, and potential trade-offs.
 
 ## 1. Actor System Fixes
 

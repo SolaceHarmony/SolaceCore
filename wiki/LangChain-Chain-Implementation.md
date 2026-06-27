@@ -1,3 +1,6 @@
+<!-- topic: Reference -->
+<!-- title: LangChain Chain Implementation -->
+
 # SolaceCore Chain Implementation Guide
 
 This document outlines the core Chain implementation for SolaceCore, a Kotlin-based LangChain-like framework. The design follows similar principles to LangChain while leveraging Kotlin's strengths in type safety, coroutines, and null safety.

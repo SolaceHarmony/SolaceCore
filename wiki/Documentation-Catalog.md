@@ -103,6 +103,13 @@ The working ledger is [curation-tracker.csv](curation-tracker.csv). Use it to se
 | `docs/MASTER_CHECKLIST.md` | 1-595 | [Master Checklist](Master-Checklist) | Moved, source removed |
 | `docs/Test_Coverage_Checklist.md` | 1-163 | [Test Coverage Checklist](Test-Coverage-Checklist) | Moved, source removed |
 | `docs/CODE_CHANGES.md` | 1-376 | [LangChain Code Changes](LangChain-Code-Changes) | Renamed by topic, source removed |
+| `docs/langchain-patterns.md` | 1-341 | [LangChain Patterns](LangChain-Patterns) | Renamed by topic, source removed |
+| `docs/chain-implementation.md` | 1-230 | [LangChain Chain Implementation](LangChain-Chain-Implementation) | Renamed by topic, source removed |
+| `docs/RECOMMENDATIONS_LANGCHAIN.md` | 1-380 | [LangChain Recommendations](LangChain-Recommendations) | Renamed by topic, source removed |
+| `docs/notes/langchain/BE_MORE_LIKE_LANGCHAIN_HERE.md` | 1-370 | [LangChain Type-Safe Dynamic Wiring](LangChain-Type-Safe-Dynamic-Wiring) | Renamed by topic, source removed |
+| `docs/notes/langchain/BUGS.md` | 1-100 | [LangChain Bugs](LangChain-Bugs) | Renamed by topic, source removed |
+| `docs/notes/langchain/FIX_PROPOSAL.md` | 1-314 | [LangChain Fix Proposal](LangChain-Fix-Proposal) | Renamed by topic, source removed |
+| `docs/notes/langchain/USAGE_DESIGN_IMPROVEMENTS.md` | 1-395 | [LangChain Usage Design Improvements](LangChain-Usage-Design-Improvements) | Renamed by topic, source removed |
 
 ## Current Rule
 
