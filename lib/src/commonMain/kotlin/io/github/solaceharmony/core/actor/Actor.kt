@@ -184,8 +184,8 @@ abstract class Actor(
             require(port.type == messageClass) {
                 "Port type ${port.type} doesn't match message type $messageClass"
             }
-            require(bufferSize > 0) {
-                "Buffer size must be positive, got $bufferSize"
+            require(bufferSize > 0 || bufferSize == Channel.BUFFERED || bufferSize == Channel.CONFLATED || bufferSize == Channel.UNLIMITED || bufferSize == Channel.RENDEZVOUS) {
+                "Buffer size must be positive or a valid Channel constant, got $bufferSize"
             }
         }
         /**
