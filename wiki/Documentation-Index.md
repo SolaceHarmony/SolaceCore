@@ -84,7 +84,7 @@ The kernel is real. The cognition layers above the kernel are designed and partl
 | Reflection Memory + signature retrieval | 🚧 Designed (see [`Memory-and-Reflection`](Memory-and-Reflection)), not yet built |
 | Mouth Tool (thought→speech filter) | 🚧 Designed, not yet built |
 | Liquid + Transformer hybrid block (LTC port) | 🚧 [Kaggle proof](notebooks/liquid-neural-networks-hybrid-transformer.ipynb) validated; Kotlin port pending |
-| InferenceCube state machine | 🚧 Designed in [`Inference-Cube`](Inference-Cube), not yet built |
+| InferenceCube state machine | ✅ Shipped — core scaffolding, takeover gating actors, and tests in [`Inference-Cube`](Inference-Cube) |
 | Spiking advisor + emotional cue stream | 🚧 Designed, not yet built |
 
 For a more detailed view, [`Design-vs-Implementation`](Design-vs-Implementation) is the canonical gap report.

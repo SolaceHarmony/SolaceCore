@@ -273,8 +273,7 @@ moved into `lib/`.
 **SRAF-side reference exists in §8** but no scaffold; SRAF described
 the requirement, not the implementation.
 
-**The `SharedMemoryManager` for inference data is sketched** in
-the InferenceCube vendor docs but not built.
+**The `SharedMemoryManager` for inference data is fully implemented** under `io.github.solaceharmony.core.inference.SharedMemoryManager` in the `lib` codebase, managing block-level slice mapping for the coroutine inference flow.
 
 The work order:
 
